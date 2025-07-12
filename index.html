@@ -17,7 +17,7 @@
       box-sizing: inherit;
     }
 
-    .title {
+    #title {
       position: fixed;
       top: 0px;
       left: 10px;
@@ -27,23 +27,22 @@
       z-index: 1;
     }
 
-    .title img {
+    #title img {
       width: 100%;
       height: auto;
       display: block;
     }
 
-    .content {
+    #content {
       position: absolute;
-      top: calc(10px + 130px);
-      x-top: 0;
+      top: 100px;
       left: 10px;
       right: 10px;
       bottom: 10px;
       overflow-y: auto;
     }
 
-    .content img {
+    #content img {
       width: 100%;
       display: block;
       margin-bottom: 50px;
@@ -52,14 +51,20 @@
 </head>
 <body>
 
-  <div class="title"><img src="title000.svg"></div>
+  <div id="title"><img src="title000.svg"></div>
 
-  <div class="content" id="content"></div>
+  <div id="content"></div>
 
   <script>
+  
+    const title = document.getElementById('title');
     const content = document.getElementById('content');
     let migCount = 0;
     const batchSize = 5;
+    
+    function setContentTop() {
+        content.style.top = `${title.offsetHeight}px`;
+    }
 
     function loadMoreImages() {
       for (let i = 0; i < batchSize; i++) {
@@ -81,9 +86,15 @@
       }
     }
 
-    loadMoreImages();
+    window.addEventListener('load', () => {
+        setContentTop();
+        loadMoreImages();
+    });
+    
+    window.addEventListener('resize', setContentTop);
 
     content.addEventListener('scroll', onScroll);
+    
   </script>
 
 </body>
