@@ -1,7 +1,90 @@
-<html>
-<head><title>LivingThings</title></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Living Things&trade;</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 10px;
+      height: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+      background-color: #fff;
+    }
+
+    * {
+      box-sizing: inherit;
+    }
+
+    .title {
+      position: fixed;
+      top: 0px;
+      left: 10px;
+      right: 10px;
+      padding: 10px 0px;
+      background-color: inherit;
+      z-index: 1;
+    }
+
+    .title img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .content {
+      position: absolute;
+      top: calc(10px + 100px);
+      x-top: 0;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      overflow-y: auto;
+    }
+
+    .content img {
+      width: 100%;
+      display: block;
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
 <body>
 
-<div style="text-align:center"><img src="title001.svg"></div>
+  <div class="title"><img src="title000.svg"></div>
+
+  <div class="content" id="content"></div>
+
+  <script>
+    const content = document.getElementById('content');
+    let migCount = 0;
+    const batchSize = 5;
+
+    function loadMoreImages() {
+      for (let i = 0; i < batchSize; i++) {
+          
+        //migCount += Math.floor(Math.random() * 999);
+        //migCount %= 1000;
+        const img = document.createElement('img');
+        //img.src = `https://picsum.photos/800/400?random=${migCount}`;
+        img.src = `comic003.svg`;
+        content.appendChild(img);
+        
+      }
+    }
+
+    function onScroll() {
+      const { scrollTop, scrollHeight, clientHeight } = content;
+      if (scrollTop + clientHeight >= scrollHeight - 100) {
+        loadMoreImages();
+      }
+    }
+
+    loadMoreImages();
+
+    content.addEventListener('scroll', onScroll);
+  </script>
+
 </body>
 </html>
