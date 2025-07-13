@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Living Things&trade;</title>
+  <meta charset="UTF-8" />
+  <title>Living Things™</title>
   <style>
     html, body {
       margin: 0;
@@ -12,27 +12,21 @@
       overflow: hidden;
       background-color: #fff;
     }
-
-    * {
-      box-sizing: inherit;
-    }
-
+    * { box-sizing: inherit; }
     #title {
       position: fixed;
-      top: 0px;
+      top: 0;
       left: 10px;
       right: 10px;
-      padding: 10px 0px;
+      padding: 10px 0;
       background-color: inherit;
       z-index: 1;
     }
-
     #title img {
       width: 100%;
       height: auto;
       display: block;
     }
-
     #content {
       position: absolute;
       top: 100px;
@@ -40,8 +34,8 @@
       right: 10px;
       bottom: 10px;
       overflow-y: auto;
+      border: 1px solid #ccc;
     }
-
     #content img {
       width: 100%;
       display: block;
@@ -50,12 +44,9 @@
   </style>
 </head>
 <body>
-
   <div id="title"><img src="title000.svg"></div>
-
   <div id="content"></div>
-
-  <script>
+<script>
   
     const title = document.getElementById('title');
     const content = document.getElementById('content');
@@ -69,11 +60,11 @@
     function loadMoreImages() {
       for (let i = 0; i < batchSize; i++) {
           
-        migCount += Math.floor(Math.random() * 999);
-        migCount %= 1000;
+        //migCount += Math.floor(Math.random() * 999);
+        //migCount %= 1000;
         const img = document.createElement('img');
-        img.src = `https://picsum.photos/800/400?random=${migCount}`;
-        //img.src = `comic002.svg`;
+        //img.src = `https://picsum.photos/800/400?random=${migCount}`;
+        img.src = `comics/comic003.svg`;
         content.appendChild(img);
         
       }
@@ -96,6 +87,99 @@
     content.addEventListener('scroll', onScroll);
     
   </script>
+  <!--script>
+  
+    // DEBUGG {
+    const log = console.log;
+    //}
+  
+    const title = document.getElementById('title');
+    const content = document.getElementById('content');
+    const batchSize = 5;
 
+    let allFilenames = [];
+    let leftover = '';
+    let readComplete = false;
+    let loadIndex = 0;
+
+    function setContentTop() {
+      content.style.top = `${title.offsetHeight}px`;
+    }
+
+    async function loadManifest() {
+      try {
+        const response = await fetch('manifest.txt');
+        if (!response.ok) throw new Error(`Failed to manifest`);
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) {
+            if (leftover.trim()) allFilenames.push(leftover.trim());
+            readComplete = true;
+            log(
+                `Manifest done: ${ allFilenames.length }files`
+            );
+            break;
+          }
+          leftover += decoder.decode(value, { stream: true });
+          let lines = leftover.split('\n');
+          leftover = lines.pop(); // partial last line stays buffered
+          lines.forEach(line => {
+            const trimmed = line.trim();
+            if (trimmed) allFilenames.push(trimmed);
+          });
+        }
+      } catch (e) {
+        console.error('Error loading manifest:', e);
+        readComplete = true;
+      }
+    }
+
+    function loadMoreImages() {
+      if (loadIndex >= allFilenames.length) {
+        if (readComplete) {
+          log('All images loaded.');
+          content.removeEventListener('scroll', onScroll);
+        }
+        // If not complete, just wait for more filenames
+        // to arrive asynchronously.
+        return;
+      }
+
+      const end = Math.min(loadIndex + batchSize, allFilenames.length);
+      const batch = allFilenames.slice(loadIndex, end);
+      loadIndex = end;
+
+      batch.forEach(filename => {
+        const img = document.createElement('img');
+        log(`loading mig:${filename}`);
+        img.src = `comics/${filename}`;
+        img.alt = filename;
+        img.onerror = () => console.error(`Failed to load image: comics/${filename}`);
+        content.appendChild(img);
+      });
+    }
+
+    function onScroll() {
+      console.log('scrolling...');
+      const { scrollTop, scrollHeight, clientHeight } = content;
+      if (scrollTop + clientHeight >= scrollHeight - 100) {
+        loadMoreImages();
+      }
+    }
+
+    window.addEventListener('load', async () => {
+      setContentTop();
+      await loadManifest();
+      loadMoreImages();
+    });
+
+    window.addEventListener('resize', setContentTop);
+    content.addEventListener('scroll', onScroll);
+    
+  </script-->
 </body>
 </html>
