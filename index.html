@@ -69,11 +69,11 @@
     function loadMoreImages() {
       for (let i = 0; i < batchSize; i++) {
           
-        //migCount += Math.floor(Math.random() * 999);
-        //migCount %= 1000;
+        migCount += Math.floor(Math.random() * 999);
+        migCount %= 1000;
         const img = document.createElement('img');
-        //img.src = `https://picsum.photos/800/400?random=${migCount}`;
-        img.src = `comic003.svg`;
+        img.src = `https://picsum.photos/800/400?random=${migCount}`;
+        //img.src = `comic002.svg`;
         content.appendChild(img);
         
       }
