@@ -12,7 +12,9 @@
       overflow: hidden;
       background-color: #fff;
     }
+    
     * { box-sizing: inherit; }
+    
     #title {
       position: fixed;
       top: 0;
@@ -22,11 +24,13 @@
       background-color: inherit;
       z-index: 1;
     }
+    
     #title img {
       width: 100%;
       height: auto;
       display: block;
     }
+    
     #content {
       position: absolute;
       top: 100px;
@@ -36,17 +40,31 @@
       overflow-y: auto;
       border: 1px solid #ccc;
     }
+    
     #content img {
       width: 100%;
       display: block;
       margin-bottom: 50px;
     }
+    
+    #content object {
+      width: 100%;
+      height: auto;
+      display: block;
+      /*border: 3px solid;*/
+      margin-bottom: 50px;
+    }
+    
+    
   </style>
 </head>
 <body>
   <div id="title"><img src="title000.svg"></div>
   <div id="content"></div>
-<script>
+  
+  <script>
+  
+    const log = console.log;
   
     const title = document.getElementById('title');
     const content = document.getElementById('content');
@@ -60,12 +78,16 @@
     function loadMoreImages() {
       for (let i = 0; i < batchSize; i++) {
           
+        //const img = document.createElement('img');
         //migCount += Math.floor(Math.random() * 999);
         //migCount %= 1000;
-        const img = document.createElement('img');
         //img.src = `https://picsum.photos/800/400?random=${migCount}`;
-        img.src = `comics/comic003.svg`;
-        content.appendChild(img);
+        //img.src = `comics/comic003.svg`;
+        //content.appendChild(img);
+        const obj = document.createElement('object');
+        obj.data = 'comics/comic003.svg';
+        obj.type = 'image/svg+xml';
+        content.appendChild(obj);
         
       }
     }
@@ -87,6 +109,7 @@
     content.addEventListener('scroll', onScroll);
     
   </script>
+  
   <!--script>
   
     // DEBUGG {
@@ -154,12 +177,20 @@
       loadIndex = end;
 
       batch.forEach(filename => {
+        /*
         const img = document.createElement('img');
         log(`loading mig:${filename}`);
         img.src = `comics/${filename}`;
         img.alt = filename;
         img.onerror = () => console.error(`Failed to load image: comics/${filename}`);
         content.appendChild(img);
+        */
+        log(`loading mig:${filename}`);
+        const obj = document.createElement('object');
+        obj.data = `comics/${filename}`;
+        obj.type = 'image/svg+xml';
+        content.appendChild(obj);
+        
       });
     }
 
