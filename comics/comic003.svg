@@ -8,20 +8,30 @@
   }
 
   :root {
-    --x--outline-color: #909;
-    --x--dot-color: #090;
     --pinkie-color: hsl(320,100%,90%);
     --foot-color: hsla(320,100%,40%,0.3);
-    --x--text-color: gold;
-    --x--circle-color: grey;
-    --x--border-color: green;
+    /*
+    --outline-color: #909;
+    --dot-color: hsl(320,100%,85%);
+    --text-color: gold;
+    --circle-color: grey;
+    --border-color: green;
+    --title-color: black;
+    */
   }
+  
 </style>
 
 <defs>
     <pattern id="dotz" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
       <circle cx="2" cy="2" r="1" fill="var(--dot-color,var(--outline-color, #000))" transform="scale(1)" transform-origin="2 2" />
     </pattern>
+    
+    <linearGradient id="pinkFade" x1="1" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="var(--pinkie-color,#fff)" stop-opacity="1" />
+      <stop offset="100%" stop-color="var(--pinkie-color,#fff)" stop-opacity="0" />
+    </linearGradient>
+
     <filter id="blur">
       <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
     </filter>
@@ -61,7 +71,11 @@
         <ellipse cx="414.5" cy="575" rx="3.3" ry="6" transform="rotate(25,414.5,575)"  />
     </g>
 
-    <path id="motionLines" d="M 500 526 C 498 517 497 509 496 501 L 495 500 C 495 508 497 516 499 524 L 500 526 Z  M 466 532 C 456 522 456 505 464 481 C 471 491 483 498 502 503 L 503 502 C 484 498 471 489 464 478 C 454 502 455 522 466 532 Z  M 493 542 C 471 526 462 506 465 480 L 464 480 C 460 506 470 526 493 542 Z  M 524 455 C 495 467 474 489 462 521 L 462 522 C 472 493 492 470 524 455 Z  M 513 463 C 492 475 473 501 464 534 L 464 536 C 471 505 491 479 513 463 Z  M 470 474 C 475 488 488 497 510 499 L 511 498 C 490 496 476 488 470 474 Z  M 483 512 Q 477 489 483 457 C 488 464 497 470 511 473 L 512 472 C 498 469 488 462 483 455 Q 474 487 483 512 Z  M 504 501 C 488 490 482 475 484 457 L 483 457 C 481 475 488 490 504 501 Z  M 488 452 C 491 462 501 468 517 470 L 517 469 C 502 468 492 462 488 452 Z" fill="var(--outline-color,#000)"/>
+    <g id="motion">
+        <path id="motionFill0" d="M 464 480 Q 472 493 495.5 500.5 L 500 527 L 473 522 Q 462 505 464 480 Z" fill="url(#pinkFade)" />
+        <path id="motionFill1" d="M 483 456 Q 497 471 511 472 L 516 496 L 490.8 488 Q 482 475 483 456 Z " fill="url(#pinkFade)" />
+        <path id="motionLines" d="M 500 526 C 498 517 497 509 496 501 L 495 500 C 495 508 497 516 499 524 L 500 526 Z  M 466 532 C 456 522 456 505 464 481 C 471 491 483 498 502 503 L 503 502 C 484 498 471 489 464 478 C 454 502 455 522 466 532 Z  M 493 542 C 471 526 462 506 465 480 L 464 480 C 460 506 470 526 493 542 Z  M 524 455 C 495 467 474 489 462 521 L 462 522 C 472 493 492 470 524 455 Z  M 513 463 C 492 475 473 501 464 534 L 464 536 C 471 505 491 479 513 463 Z  M 470 474 C 475 488 488 497 510 499 L 511 498 C 490 496 476 488 470 474 Z  M 483 512 Q 477 489 483 457 C 488 464 497 470 511 473 L 512 472 C 498 469 488 462 483 455 Q 474 487 483 512 Z  M 504 501 C 488 490 482 475 484 457 L 483 457 C 481 475 488 490 504 501 Z  M 488 452 C 491 462 501 468 517 470 L 517 469 C 502 468 492 462 488 452 Z" fill="var(--outline-color,#000)"/>
+    </g>
 
     <g id="thoughtCircles" transform="translate(200 250) rotate(320)" fill="var(--circle-color,var(--outline-color,#000))">
         <circle cx="0" cy="40" r="2.5" />
@@ -89,7 +103,7 @@
     <path d=" M 17 289 L 17 73 L 191 73" fill="none" vector-effect="non-scaling-stroke" stroke-width="1" stroke="var(--border-color,var(--outline-color,#000))" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3"/>
     <line x1="17" y1="30" x2="583" y2="30" vector-effect="non-scaling-stroke" stroke-width="1" stroke="var(--border-color,var(--outline-color,#000))" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3"/>
     
-    <path id="LivingThingsTitle" d="M 177 51 L 177 44 L 169 45 L 169 45 L 170 47 L 173 46 L 173 48 L 173 48   C 171 50 168 49 168 45 C 168 43 171 41 172 43 L 175 37 C 170 35 163 38 162 43 L 162 36 L 157 36 L 158 43 L 154 36   L 148 38 L 149 53 L 152 53 L 152 46 L 152 46 L 156 54 L 162 52 L 162 48 C 162 48 162 48 162 49 C 164 54 169 55 173 53 L 172 54 L 178 53 L 177 52 C 184 56 193 53 190 47 C 189 44 185 44 183 43 C 181 42 184 41 187 44 L 191 40 C 184 32 173 38 178 44 C 180 46 183 45 184 47 C 185 48 182 49 180 47 L 177 51 Z  M 134 42 L 132 43 L 132 36 L 126 37 L 126 37 L 126 37 L 126 36 L 108 36 L 108 40 L 113 39 L 113 53 L 122 52 L 121 39 L 124 39 L 126 53 L 132 53 L 132 48 L 132 48 L 132 48 L 132 48 L 132 48 L 135 47 L 135 53 L 139 53 L 139 36 L 134 36 L 134 42 L 134 42 Z  M 86 52 L 81 54  L 76 45 L 76 53 L 73 53 L 72 38 L 79 36 L 82 42 L 81 36 L 86 37 L 86 42 C 88 38 94 35 99 37 L 96 43 C 94 42 91 43 91 45 C 91 49 95 49 97 47  L 97 46 L 95 47 L 94 44 L 94 44 L 100 44 L 101 54  L 96 53  C 94 55 89 54 86 49  Z  M 45 38 C 48 35 52 41 44 43 C 37 38 43 34 45 38 Z  M 28 37 L 37 36 L 37 50 L 42 49 L 42 53 L 29 54 Z  M 140 44 L 147 43 L 146 54 L 141 53 Z  M 141 41 L 141 36 L 146.5 36 L 146 41 Z  M 43 44 C 35 38 42 32 45 37 C 47 35 49 36 50 38 L 57 36 L 58 46 L 61 36 L 64 37 L 72 36 L 71 53 L 65 53 L 64 39 L 60 54  L 57 53.4 L 54 54 L 50 40 C 50 41 48 43 45 44 L 49 44 L 48 54 L 43 54.5 L 42 44  Z  M 140 42 L 140 35 L 148 35 L 147 42 Z" fill-rule="evenodd" fill="var(--border-color,var(--outline-color,#000))"/>
+    <path id="LivingThingsTitle" d="M 177 51 L 177 44 L 169 45 L 169 45 L 170 47 L 173 46 L 173 48 L 173 48   C 171 50 168 49 168 45 C 168 43 171 41 172 43 L 175 37 C 170 35 163 38 162 43 L 162 36 L 157 36 L 158 43 L 154 36   L 148 38 L 149 53 L 152 53 L 152 46 L 152 46 L 156 54 L 162 52 L 162 48 C 162 48 162 48 162 49 C 164 54 169 55 173 53 L 172 54 L 178 53 L 177 52 C 184 56 193 53 190 47 C 189 44 185 44 183 43 C 181 42 184 41 187 44 L 191 40 C 184 32 173 38 178 44 C 180 46 183 45 184 47 C 185 48 182 49 180 47 L 177 51 Z  M 134 42 L 132 43 L 132 36 L 126 37 L 126 37 L 126 37 L 126 36 L 108 36 L 108 40 L 113 39 L 113 53 L 122 52 L 121 39 L 124 39 L 126 53 L 132 53 L 132 48 L 132 48 L 132 48 L 132 48 L 132 48 L 135 47 L 135 53 L 139 53 L 139 36 L 134 36 L 134 42 L 134 42 Z  M 86 52 L 81 54  L 76 45 L 76 53 L 73 53 L 72 38 L 79 36 L 82 42 L 81 36 L 86 37 L 86 42 C 88 38 94 35 99 37 L 96 43 C 94 42 91 43 91 45 C 91 49 95 49 97 47  L 97 46 L 95 47 L 94 44 L 94 44 L 100 44 L 101 54  L 96 53  C 94 55 89 54 86 49  Z  M 45 38 C 48 35 52 41 44 43 C 37 38 43 34 45 38 Z  M 28 37 L 37 36 L 37 50 L 42 49 L 42 53 L 29 54 Z  M 140 44 L 147 43 L 146 54 L 141 53 Z  M 141 41 L 141 36 L 146.5 36 L 146 41 Z  M 43 44 C 35 38 42 32 45 37 C 47 35 49 36 50 38 L 57 36 L 58 46 L 61 36 L 64 37 L 72 36 L 71 53 L 65 53 L 64 39 L 60 54  L 57 53.4 L 54 54 L 50 40 C 50 41 48 43 45 44 L 49 44 L 48 54 L 43 54.5 L 42 44  Z  M 140 42 L 140 35 L 148 35 L 147 42 Z" fill-rule="evenodd" fill="var(--title-color,var(--border-color,var(--outline-color,#000)))"/>
     
     </g>
     
