@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scrolling Flowers</title>
+  <style>
+    #scrollDiv {
+      width: 250px;
+      height: 150px;
+      overflow-y: auto;
+      border: 1px solid black;
+      margin: 20px auto;
+      font-family: sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom, pink, transparent);
+
+    }
+    p {
+      /*margin: 120px 0;*/
+      user-select: none;
+    }
+    object {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: none;
+    }
+  </style>
+</head>
+<body>
+
+<div id="scrollDiv"></div>
+
+<script>
+  const scrollDiv = document.getElementById('scrollDiv');
+
+  const flowers = [
+    "Rose", "Lily", "Tulip", "Daisy", "Orchid", "Sunflower", "Marigold", "Peony", "Hydrangea", "Lavender",
+    "Chrysanthemum", "Carnation", "Iris", "Zinnia", "Begonia", "Anemone", "Geranium", "Daffodil", "Amaryllis", "Aster",
+    "Azalea", "Camellia", "Cosmos", "Cyclamen", "Dahlia", "Delphinium", "Foxglove", "Freesia", "Gardenia", "Gladiolus",
+    "Heliotrope", "Hibiscus", "Hollyhock", "Hyacinth", "Jasmine", "Lilac", "Magnolia", "Morning Glory", "Nasturtium", "Pansy",
+    "Petunia", "Phlox", "Poppy", "Primrose", "Ranunculus", "Snapdragon", "Snowdrop", "Statice", "Sweet Pea", "Tuberose",
+    "Verbena", "Violet", "Wisteria", "Yarrow", "Allium", "Calendula", "Campanula", "Clematis", "Columbine", "Coreopsis",
+    "Crocus", "Echinacea", "Foxglove", "Gaillardia", "Gazania", "Hellebore", "Larkspur", "Lobelia", "Love-in-a-mist", "Lupine",
+    "Monarda", "Nemesia", "Nigella", "Penstemon", "Persian Buttercup", "Plumeria", "Queen Anne's Lace", "Rhododendron", "Rudbeckia", "Salvia",
+    "Scabiosa", "Sedum", "Spider Lily", "Stock", "Strawflower", "Tithonia", "Trillium", "Tropaeolum", "Viola", "Wallflower",
+    "Waxflower", "Yarrow", "Zantedeschia", "Zephyranthes", "Bluestar", "Balloon Flower", "Coral Bells", "Sea Holly", "Bee Balm", "Bluebell"
+  ];
+
+  const visibleCount = 5;
+  const threshold = 20;
+
+  let startIndex = 0;
+  let isAdjustingScroll = false;
+  let lastScrollTop = 0;
+  let scrollScheduled = false;
+
+  function createWerd(index) {
+    const p = document.createElement('p');
+    p.textContent = flowers[index];
+    return p;
+  }
+  
+
+  function init() {
+    for (let i = 0; i < visibleCount; i++) {
+      scrollDiv.appendChild(createWerd(startIndex + i));
+    }
+    //scrollDiv.scrollTop = scrollDiv.firstChild.offsetHeight * 2;
+    lastScrollTop = scrollDiv.scrollTop;
+  }
+
+  function prependWerd() {
+    if (startIndex <= 0) return;
+    startIndex--;
+    const p = createWerd(startIndex);
+    scrollDiv.insertBefore(p, scrollDiv.firstChild);
+    scrollDiv.removeChild(scrollDiv.lastChild);
+    scrollDiv.scrollTop += p.offsetHeight;
+  }
+
+  function appendWerd() {
+    if (startIndex + visibleCount >= flowers.length) return;
+    const p = createWerd(startIndex + visibleCount);
+    scrollDiv.appendChild(p);
+    scrollDiv.removeChild(scrollDiv.firstChild);
+    scrollDiv.scrollTop -= scrollDiv.firstChild.offsetHeight;
+    startIndex++;
+  }
+
+  function onScroll() {
+    if (isAdjustingScroll || scrollScheduled) return;
+
+    scrollScheduled = true;
+    requestAnimationFrame(() => {
+      scrollScheduled = false;
+      const { scrollTop, scrollHeight, clientHeight } = scrollDiv;
+
+      if (scrollTop <= threshold && scrollTop < lastScrollTop) {
+        isAdjustingScroll = true;
+        prependWerd();
+        isAdjustingScroll = false;
+      } else if (scrollTop + clientHeight >= scrollHeight - threshold && scrollTop > lastScrollTop) {
+        isAdjustingScroll = true;
+        appendWerd();
+        isAdjustingScroll = false;
+      }
+
+      lastScrollTop = scrollDiv.scrollTop;
+    });
+  }
+
+  scrollDiv.addEventListener('scroll', onScroll);
+  init();
+</script>
+
+</body>
+</html>

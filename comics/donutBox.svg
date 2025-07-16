@@ -14,6 +14,8 @@
     --dd-orange: hsl(31, 95%, 48.5%);
     --dd-brown: hsl(36, 100%, 19%);
     --outline-color: var(--dd-brown);
+    --donut-dark: rgb(213,170,106);
+    --donut-lite: rgb(242,225,200);
     --show-decor: 0.3;
   }
   
@@ -26,8 +28,8 @@
     </pattern>
     
     <linearGradient id="donutFade" x1="0" y1="1" x2="1" y2="2">
-      <stop offset="0%" stop-color="rgb(213,170,106)" />
-      <stop offset="100%" stop-color="rgb(242,225,200)" />
+      <stop offset="0%" stop-color="var(--donut-lite)" />
+      <stop offset="100%" stop-color="var(--donut-dark)" />
     </linearGradient>
     
     <linearGradient id="fade6" href="#donutFade" />
@@ -66,7 +68,7 @@
             <path d="M 314 492 C 322 418 380 345 456 312 L 529 287 C 535 300 535 316 529 335 C 537 334 543 339 546 350 Q 600 344 600 368 L 525 410 C 516 341 440 347 410 479 L 314 492 Z " />
         </g>
         
-        <path id="throat" d=" M 168 163 C 205 145 242 134 277 130 L 314 179 C 379 176 442 166 502 151 C 462 178 441 211 438 250 C 468 269 506 278 554 277 C 359 349 207 351 99 282 C 116 243 139 203 168 163 Z " fill="var(--outline-color,#000)"/>
+        <path id="throat" d=" M 168 163 C 205 145 242 134 277 130 L 314 179 C 379 176 442 166 502 151 C 462 178 441 211 438 250 C 468 269 506 278 554 277 C 359 349 207 351 99 282 C 116 243 139 203 168 163 Z " fill="url(#dotz)" x-fill="var(--outline-color,#000)"/>
         
         <path id="lidTop" d=" M 233 89 C 341 47 455 34 577 49 L 578 53 Q 396 41 273 130 C 238 134 203 146 170 166 L 233 89 Z " fill="url(#fade6)"/>
             
@@ -89,7 +91,7 @@
         
             M 534 353 L 580 331 L 577 335 L 541 354 L 534 353 Z
         
-            M 512 142 C 468 186 446 222 446 251 C 480 268 518 275 561 270 L 541 281 C 490 281 454 271 435 252 C 434 225 449 192 486 152 L 512 142 Z
+            M 512 142 C 468 186 446 222 446 251 C 480 268 518 275 561 270 L 541 281 C 490 281 454 271 430 255 C 434 225 449 192 486 152 Z
 
             M 365 80 Q 470 40 585 50 V55 Q475 42 365 80 Z
             " />

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Living Things™</title>
   <style>
     html, body {
@@ -62,7 +63,7 @@
   <div id="title"><img src="title000.svg"></div>
   <div id="content"></div>
   
-  <script>
+  <!--script>
   
     const log = console.log;
   
@@ -108,7 +109,7 @@
 
     content.addEventListener('scroll', onScroll);
     
-  </script>
+  </script-->
   
   <!--script>
   
@@ -152,7 +153,9 @@
           leftover = lines.pop(); // partial last line stays buffered
           lines.forEach(line => {
             const trimmed = line.trim();
-            if (trimmed) allFilenames.push(trimmed);
+            if (trimmed) {
+                allFilenames.push(trimmed);
+            }
           });
         }
       } catch (e) {
@@ -177,18 +180,12 @@
       loadIndex = end;
 
       batch.forEach(filename => {
-        /*
-        const img = document.createElement('img');
-        log(`loading mig:${filename}`);
-        img.src = `comics/${filename}`;
-        img.alt = filename;
-        img.onerror = () => console.error(`Failed to load image: comics/${filename}`);
-        content.appendChild(img);
-        */
+        
         log(`loading mig:${filename}`);
         const obj = document.createElement('object');
         obj.data = `comics/${filename}`;
         obj.type = 'image/svg+xml';
+        obj.onerror = () => console.error(`Failed on: ${filename}`);
         content.appendChild(obj);
         
       });
@@ -202,9 +199,9 @@
       }
     }
 
-    window.addEventListener('load', async () => {
+    window.addEventListener('load', () => {
       setContentTop();
-      await loadManifest();
+      loadManifest();
       loadMoreImages();
     });
 
@@ -212,5 +209,117 @@
     content.addEventListener('scroll', onScroll);
     
   </script-->
+
+<script>
+  const log = console.log;
+  const content = document.getElementById('content');
+  const allFilenames = [];
+  let loadIndex = 0;
+  const batchSize = 3;
+  let readComplete = false;
+  let leftover = '';
+
+  function loadManifest() {
+    fetch('manifest.txt')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch manifest');
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+
+        function readChunk() {
+          reader.read().then(({ done, value }) => {
+            if (done) {
+              if (leftover.trim()) allFilenames.push(leftover.trim());
+              readComplete = true;
+              log(`Manifest complete: ${allFilenames.length} files`);
+              return;
+            }
+
+            leftover += decoder.decode(value, { stream: true });
+            const lines = leftover.split('\n');
+            leftover = lines.pop(); // save last partial line
+
+            for (const line of lines) {
+              const trimmed = line.trim();
+              if (trimmed) allFilenames.push(trimmed);
+            }
+
+            readChunk();
+          });
+        }
+
+        readChunk();
+      })
+      .catch(err => {
+        console.error('Manifest load error:', err);
+        readComplete = true;
+      });
+  }
+
+  function loadMoreImages() {
+    let count = 0;
+    while (loadIndex < allFilenames.length && count < batchSize) {
+      const filename = allFilenames[loadIndex++];
+      const obj = document.createElement('object');
+      obj.data = `comics/${filename}`;
+      obj.type = 'image/svg+xml';
+      obj.style.width = '100%';
+      obj.style.height = 'auto';
+      obj.style.display = 'block';
+      obj.style.marginBottom = '50px';
+      obj.onerror = () => console.error('Failed to load:', filename);
+      content.appendChild(obj);
+      count++;
+    }
+  }
+
+  function onScroll() {
+    const { scrollTop, scrollHeight, clientHeight } = content;
+    const nearBottom = scrollTop + clientHeight >= scrollHeight - 100;
+
+    if (nearBottom) {
+      loadMoreImages();
+    }
+  }
+
+  function setContentTop() {
+    const title = document.getElementById('title');
+    if (title) {
+      content.style.top = `${title.offsetHeight}px`;
+    }
+  }
+
+  function tryLoadIfReady() {
+    // Load a batch if scroll is at bottom and there's content
+    const { scrollTop, scrollHeight, clientHeight } = content;
+    if (scrollTop + clientHeight >= scrollHeight - 100 && loadIndex < allFilenames.length) {
+      loadMoreImages();
+    }
+  }
+
+  window.addEventListener('load', () => {
+    setContentTop();
+    loadManifest();
+
+    // Set up scroll and resize listeners
+    content.addEventListener('scroll', onScroll);
+    window.addEventListener('resize', () => {
+      setContentTop();
+    });
+
+    // Start polling for new data every 300ms
+    const interval = setInterval(() => {
+      tryLoadIfReady();
+      if (readComplete && loadIndex >= allFilenames.length) {
+        clearInterval(interval);
+        log('All images loaded.');
+      }
+    }, 300);
+    
+  });
+</script>
+
+
+
 </body>
 </html>
