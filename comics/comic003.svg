@@ -97,7 +97,7 @@
         
     <g id="copyright" transform="translate(578 765) rotate(270)"
     fill="var(--text-color,var(--outline-color,#000))">
-        <text style="font-family:'Times New Roman';font-weight:400;font-size:19px;font-style:normal;stroke:none;">&#xA9;MCMLXXXVIII &#xB7; Trilobyte</text>
+        <text style="font-family:'Times New Roman';font-weight:400;font-size:12px;">&#xA9;MCMLXXXVIII &#xB7; Trilobyte</text>
     </g>
         
     <g id="border">

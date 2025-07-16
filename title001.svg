@@ -1,7 +1,6 @@
-
-<svg width="615px" height="277px" xmlns="http://www.w3.org/2000/svg"
-viewbox="0 0 615 277"
->
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 615 277">
+    
     <g id="ikon">
     <g xfill="red" fill="var(--title-color,#800)">
         <path d=" M 154.694 106.399 L 66.734 97.895 L 18.284 105.751 L 16.935 116.58 L 155.635 117.398 L 154.694 106.399 Z " />
