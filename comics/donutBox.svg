@@ -34,7 +34,7 @@
     
     <pattern id="pinkDotz" x="0" y="0" width="4" height="4" viewBox="-2 -2 4 4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1)">
       <path d="M-2 -2h4v4h-4z" fill="var(--dd-pink)" />
-      <circle r="0.8" fill="var(--dd-pink-dark)" />
+      <circle r="0.8" fill="#fff" />
     </pattern>
     
     <linearGradient id="donutFade" x1="0" y1="1" x2="1" y2="2">
