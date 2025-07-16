@@ -34,7 +34,7 @@
     
     <pattern id="pinkDotz" x="0" y="0" width="4" height="4" viewBox="-2 -2 4 4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1)">
       <path d="M-2 -2h4v4h-4z" fill="var(--dd-pink)" />
-      <circle r="0.8" fill="#fff" />
+      <circle r="0.8" fill="var(--dd-pink-dark)" />
     </pattern>
     
     <linearGradient id="donutFade" x1="0" y1="1" x2="1" y2="2">
@@ -52,7 +52,7 @@
         <stop offset="0%" stop-color="#fff" stop-opacity="1" />
         <stop offset="20%" stop-color="#fff" stop-opacity="0" />
       </linearGradient>
-      <rect x="0" y="0" width="1" height="1" fill="url(#fade-gradient)" />
+      <rect width="1" height="1" fill="url(#fade-gradient)" />
     </mask>
 
 </defs>
@@ -80,12 +80,12 @@
         
         <use href="#frontPanel" fill="var(--dd-pink)" />
         <use href="#frontPanel"
-        fill="url(#pinkDotz)" mask="url(#fade-mask)"
+            fill="url(#pinkDotz)" mask="url(#fade-mask)"
         />
             
         <path id="sidePanel" d="m 160 475 l -9 -76 l 7 -16 l -60 -102 c 30 26 77 41 141 47 c 16 35 25 59 28 76 l -10 7 l 25 -3 l -7 6 c -1 31 -4 58 -11 73 z" fill="url(#orangeDotz)" x-fill="var(--dd-orange,#fff)" />
         
-        <g id="panelDecor" opacity="var(--show-decor,0)" vector-effect="non-scaling-stroke" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="2">
+        <g id="panelDecor" opacity="var(--show-decor,0)" fill="#fff" fill-opacity="0.5" stroke="#fff" stroke-width="2">
             
             <path d="M 381 484 C 387 456 342 434 274 437 C 248 421 218 445 239 487 L 160 479 L 159 427 C 159 418 161 405 172 401 L 178 402 C 188 372 231 355 262 383 C 380 348 503 371 501 423 L 381 484 Z " />
                 
@@ -98,7 +98,7 @@
         
         <path id="lidTop" d=" M 233 89 C 341 47 455 34 577 49 L 578 53 Q 396 41 273 130 C 238 134 203 146 170 166 L 233 89 Z " fill="url(#fade6)"/>
             
-        <path id="lidFace" d="M 592 111 L 587 52 L 578 53 Q 396 41 273 130 Q 291 155 314 182 C 426 174 518 150 592 111 Z " fill="url(#fade7)"/>
+        <path id="lidFace" d="M 592 111 L 587 52 L 578 53 Q 396 41 273 129 Q 291 155 314 182 C 426 174 518 150 592 111 Z " fill="url(#fade7)"/>
             
         <g id="boxOutline" fill="var(--outline-color,#000)">
             
