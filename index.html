@@ -1,325 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Living Things™</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 10px;
-      height: 100%;
-      box-sizing: border-box;
-      overflow: hidden;
-      background-color: #fff;
-    }
-    
-    * { box-sizing: inherit; }
-    
-    #title {
-      position: fixed;
-      top: 0;
-      left: 10px;
-      right: 10px;
-      padding: 10px 0;
-      background-color: inherit;
-      z-index: 1;
-    }
-    
-    #title img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    #content {
-      position: absolute;
-      top: 100px;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      overflow-y: auto;
-      border: 1px solid #ccc;
-    }
-    
-    #content img {
-      width: 100%;
-      display: block;
-      margin-bottom: 50px;
-    }
-    
-    #content object {
-      width: 100%;
-      height: auto;
-      display: block;
-      /*border: 3px solid;*/
-      margin-bottom: 50px;
-    }
-    
-    
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Living Things&#x2122;</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    overflow: hidden;
+    font-family: sans-serif;
+    box-sizing: border-box;
+  }
+  #scroller {
+    position: relative;
+    height: 100vh;
+    overflow-y: scroll;
+    background: #f9f9f9;
+  }
+  #topSpacer, #bottomSpacer {
+    width: 1px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  #bottomSpacer {
+    top: 0; /* will be updated dynamically */
+  }
+  .comic-object {
+    position: absolute;
+    left: 0; right: 0;
+    width: 100%;
+    border: 9px solid #ddd;
+    margin-bottom: 20px;
+    background: white;
+    box-sizing: border-box;
+    min-height: 80vh;
+  }
+</style>
 </head>
 <body>
-  <div id="title"><img src="title000.svg"></div>
-  <div id="content"></div>
-  
-  <!--script>
-  
-    const log = console.log;
-  
-    const title = document.getElementById('title');
-    const content = document.getElementById('content');
-    let migCount = 0;
-    const batchSize = 5;
-    
-    function setContentTop() {
-        content.style.top = `${title.offsetHeight}px`;
-    }
 
-    function loadMoreImages() {
-      for (let i = 0; i < batchSize; i++) {
-          
-        //const img = document.createElement('img');
-        //migCount += Math.floor(Math.random() * 999);
-        //migCount %= 1000;
-        //img.src = `https://picsum.photos/800/400?random=${migCount}`;
-        //img.src = `comics/comic003.svg`;
-        //content.appendChild(img);
-        const obj = document.createElement('object');
-        obj.data = 'comics/comic003.svg';
-        obj.type = 'image/svg+xml';
-        content.appendChild(obj);
-        
-      }
-    }
-
-    function onScroll() {
-      const { scrollTop, scrollHeight, clientHeight } = content;
-      if (scrollTop + clientHeight >= scrollHeight - 100) {
-        loadMoreImages();
-      }
-    }
-
-    window.addEventListener('load', () => {
-        setContentTop();
-        loadMoreImages();
-    });
-    
-    window.addEventListener('resize', setContentTop);
-
-    content.addEventListener('scroll', onScroll);
-    
-  </script-->
-  
-  <!--script>
-  
-    // DEBUGG {
-    const log = console.log;
-    //}
-  
-    const title = document.getElementById('title');
-    const content = document.getElementById('content');
-    const batchSize = 5;
-
-    let allFilenames = [];
-    let leftover = '';
-    let readComplete = false;
-    let loadIndex = 0;
-
-    function setContentTop() {
-      content.style.top = `${title.offsetHeight}px`;
-    }
-
-    async function loadManifest() {
-      try {
-        const response = await fetch('manifest.txt');
-        if (!response.ok) throw new Error(`Failed to manifest`);
-
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) {
-            if (leftover.trim()) allFilenames.push(leftover.trim());
-            readComplete = true;
-            log(
-                `Manifest done: ${ allFilenames.length }files`
-            );
-            break;
-          }
-          leftover += decoder.decode(value, { stream: true });
-          let lines = leftover.split('\n');
-          leftover = lines.pop(); // partial last line stays buffered
-          lines.forEach(line => {
-            const trimmed = line.trim();
-            if (trimmed) {
-                allFilenames.push(trimmed);
-            }
-          });
-        }
-      } catch (e) {
-        console.error('Error loading manifest:', e);
-        readComplete = true;
-      }
-    }
-
-    function loadMoreImages() {
-      if (loadIndex >= allFilenames.length) {
-        if (readComplete) {
-          log('All images loaded.');
-          content.removeEventListener('scroll', onScroll);
-        }
-        // If not complete, just wait for more filenames
-        // to arrive asynchronously.
-        return;
-      }
-
-      const end = Math.min(loadIndex + batchSize, allFilenames.length);
-      const batch = allFilenames.slice(loadIndex, end);
-      loadIndex = end;
-
-      batch.forEach(filename => {
-        
-        log(`loading mig:${filename}`);
-        const obj = document.createElement('object');
-        obj.data = `comics/${filename}`;
-        obj.type = 'image/svg+xml';
-        obj.onerror = () => console.error(`Failed on: ${filename}`);
-        content.appendChild(obj);
-        
-      });
-    }
-
-    function onScroll() {
-      console.log('scrolling...');
-      const { scrollTop, scrollHeight, clientHeight } = content;
-      if (scrollTop + clientHeight >= scrollHeight - 100) {
-        loadMoreImages();
-      }
-    }
-
-    window.addEventListener('load', () => {
-      setContentTop();
-      loadManifest();
-      loadMoreImages();
-    });
-
-    window.addEventListener('resize', setContentTop);
-    content.addEventListener('scroll', onScroll);
-    
-  </script-->
+<div id="scroller">
+  <div id="topSpacer"></div>
+  <div id="bottomSpacer"></div>
+</div>
 
 <script>
-  const log = console.log;
-  const content = document.getElementById('content');
-  const allFilenames = [];
-  let loadIndex = 0;
-  const batchSize = 3;
-  let readComplete = false;
-  let leftover = '';
+(async function(){
+  // CONFIG
+  const BUFFER_BEFORE = 4;  // comics before current index to keep loaded
+  const BUFFER_AFTER = 5;  // comics after current index to keep loaded
 
-  function loadManifest() {
-    fetch('manifest.txt')
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch manifest');
-        const reader = res.body.getReader();
-        const decoder = new TextDecoder();
+  const scroller = document.getElementById('scroller');
+  const topSpacer = document.getElementById('topSpacer');
+  const bottomSpacer = document.getElementById('bottomSpacer');
 
-        function readChunk() {
-          reader.read().then(({ done, value }) => {
-            if (done) {
-              if (leftover.trim()) allFilenames.push(leftover.trim());
-              readComplete = true;
-              log(`Manifest complete: ${allFilenames.length} files`);
-              return;
+  let manifest = [];
+  let totalComics = 0;
+
+  // Map: comicIndex -> height in px (updated dynamically on load)
+  const comicHeights = new Map();
+
+  // Pool of currently loaded comic <object> elements, keyed by comicIndex
+  const loadedComics = new Map();
+
+  // Current top comic index in viewport (approximate)
+  let currentIndex = 0;
+
+  // Helper to fetch and parse manifest file
+  async function loadManifest(url) {
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error('Failed to load manifest');
+    const text = await resp.text();
+    return text.split('\n').map(s => s.trim()).filter(Boolean);
+  }
+
+  // Create a comic <object> for a given index
+  function createComicObject(index) {
+    const obj = document.createElement('object');
+    obj.className = 'comic-object';
+    obj.type = 'image/svg+xml';
+    obj.data = `comics/${manifest[index]}`;
+    obj.dataset.index = index;
+
+    obj.style.minHeight = '80vh';
+
+    // When SVG loads, measure height and update layout
+    obj.addEventListener('load', () => {
+      // Safety: index may have changed if recycled
+      const idx = parseInt(obj.dataset.index, 10);
+      if (isNaN(idx)) return;
+      // Measure height of the SVG document inside object
+      try {
+        const svgDoc = obj.contentDocument;
+        if (svgDoc) {
+          const svgEl = svgDoc.documentElement;
+          if (svgEl) {
+            const bbox = svgEl.getBoundingClientRect();
+            // If height is reasonable, store it
+            if (bbox.height > 0) {
+              comicHeights.set(idx, bbox.height);
+              layout(); // re-layout after height update
             }
-
-            leftover += decoder.decode(value, { stream: true });
-            const lines = leftover.split('\n');
-            leftover = lines.pop(); // save last partial line
-
-            for (const line of lines) {
-              const trimmed = line.trim();
-              if (trimmed) allFilenames.push(trimmed);
-            }
-
-            readChunk();
-          });
+          }
         }
-
-        readChunk();
-      })
-      .catch(err => {
-        console.error('Manifest load error:', err);
-        readComplete = true;
-      });
-  }
-
-  function loadMoreImages() {
-    let count = 0;
-    while (loadIndex < allFilenames.length && count < batchSize) {
-      const filename = allFilenames[loadIndex++];
-      const obj = document.createElement('object');
-      obj.data = `comics/${filename}`;
-      obj.type = 'image/svg+xml';
-      obj.style.width = '100%';
-      obj.style.height = 'auto';
-      obj.style.display = 'block';
-      obj.style.marginBottom = '50px';
-      obj.onerror = () => console.error('Failed to load:', filename);
-      content.appendChild(obj);
-      count++;
-    }
-  }
-
-  function onScroll() {
-    const { scrollTop, scrollHeight, clientHeight } = content;
-    const nearBottom = scrollTop + clientHeight >= scrollHeight - 100;
-
-    if (nearBottom) {
-      loadMoreImages();
-    }
-  }
-
-  function setContentTop() {
-    const title = document.getElementById('title');
-    if (title) {
-      content.style.top = `${title.offsetHeight}px`;
-    }
-  }
-
-  function tryLoadIfReady() {
-    // Load a batch if scroll is at bottom and there's content
-    const { scrollTop, scrollHeight, clientHeight } = content;
-    if (scrollTop + clientHeight >= scrollHeight - 100 && loadIndex < allFilenames.length) {
-      loadMoreImages();
-    }
-  }
-
-  window.addEventListener('load', () => {
-    setContentTop();
-    loadManifest();
-
-    // Set up scroll and resize listeners
-    content.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', () => {
-      setContentTop();
+      } catch(e) {
+        // Cross-origin issues? fallback:
+        comicHeights.set(idx, obj.offsetHeight || window.innerHeight * 0.8);
+        layout();
+      }
     });
 
-    // Start polling for new data every 300ms
-    const interval = setInterval(() => {
-      tryLoadIfReady();
-      if (readComplete && loadIndex >= allFilenames.length) {
-        clearInterval(interval);
-        log('All images loaded.');
+    return obj;
+  }
+
+  // Calculate total height of comics 0..index-1
+  function heightUpTo(index) {
+    let h = 0;
+    for(let i=0; i<index; i++) {
+      h += comicHeights.get(i) || window.innerHeight * 0.8;
+    }
+    return h;
+  }
+
+  // Layout the scroll container, position loaded comics, update spacers
+  function layout() {
+    const totalHeight = heightUpTo(totalComics);
+    const beforeHeight = heightUpTo(Math.max(0, currentIndex - BUFFER_BEFORE));
+    const afterHeight = totalHeight - heightUpTo(Math.min(totalComics, currentIndex + BUFFER_AFTER + 1));
+
+    topSpacer.style.height = beforeHeight + 'px';
+    bottomSpacer.style.height = afterHeight + 'px';
+    bottomSpacer.style.top = (beforeHeight + afterHeight + [...loadedComics.values()].reduce((a,b) => a + b.offsetHeight, 0)) + 'px';
+
+    // Position loaded comics
+    loadedComics.forEach((obj, idx) => {
+      const top = heightUpTo(idx);
+      obj.style.top = top + 'px';
+    });
+  }
+
+  // Determine which comics to load/unload based on scroll position
+  function recycle() {
+    const scrollTop = scroller.scrollTop;
+
+    // Estimate currentIndex based on scrollTop
+    let acc = 0;
+    let idx = 0;
+    for (; idx < totalComics; idx++) {
+      const h = comicHeights.get(idx) || window.innerHeight * 0.8;
+      if (acc + h > scrollTop) break;
+      acc += h;
+    }
+    currentIndex = idx;
+
+    // Load buffer range
+    const start = Math.max(0, currentIndex - BUFFER_BEFORE);
+    const end = Math.min(totalComics - 1, currentIndex + BUFFER_AFTER);
+
+    // Add missing comics
+    for(let i=start; i<=end; i++) {
+      if (!loadedComics.has(i)) {
+        const obj = createComicObject(i);
+        loadedComics.set(i, obj);
+        scroller.appendChild(obj);
       }
-    }, 300);
-    
-  });
+    }
+
+    // Remove comics outside buffer
+    loadedComics.forEach((obj, i) => {
+      if(i < start || i > end) {
+        scroller.removeChild(obj);
+        loadedComics.delete(i);
+        comicHeights.delete(i); // optionally free height cache to reduce memory
+      }
+    });
+
+    layout();
+  }
+
+  // Initialize: load manifest, setup listeners, and initial load
+  async function init() {
+    manifest = await loadManifest('comics/manifest.js');
+    totalComics = manifest.length;
+
+    // Initial recycle + layout
+    recycle();
+
+    // Listen scroll events, debounce layout
+    let ticking = false;
+    scroller.addEventListener('scroll', () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          recycle();
+          ticking = false;
+        });
+      }
+    });
+  }
+
+  init().catch(console.error);
+
+})();
 </script>
-
-
 
 </body>
 </html>

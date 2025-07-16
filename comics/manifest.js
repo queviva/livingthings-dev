@@ -9,7 +9,6 @@ eggerPlease.svg
 drunkinDonuts.svg
 comic003.svg
 forRent.svg
-comic004.svg
 ../title000.svg
 lampHouse.svg
 ../title001.svg
@@ -20,7 +19,6 @@ comic001.svg
 comic002.svg
 forRent.svg
 comic003.svg
-comic004.svg
 ../title000.svg
 ../title001.svg
 ../title002.svg
@@ -28,7 +26,6 @@ comic000.svg
 comic001.svg
 comic002.svg
 comic003.svg
-comic004.svg
 ../title000.svg
 ../title001.svg
 ../title002.svg
