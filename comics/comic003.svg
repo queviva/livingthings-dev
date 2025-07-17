@@ -89,16 +89,11 @@
         <circle cx="0" cy="0" r="6" />
     </g>
     
-    <g id="dialog" fill="var(--text-color,var(--outline-color,#000))">
-        <text transform="matrix(1.373,0,0,1.373,67.339,167.223)" style="font-family:'Comic Neue';font-weight:400;font-size:33px;font-style:normal;stroke:none;">If I just keep scrolling,</text>
-        <text transform="matrix(1.373,0,0,1.373,67.339,219.315)" style="font-family:'Comic Neue';font-weight:400;font-size:33px;font-style:italic;stroke:none;">one of these </text>
-        <text transform="matrix(1.373,0,0,1.373,324.852,219.315)" style="font-family:'Comic Neue';font-weight:400;font-size:33px;font-style:normal;stroke:none;">won't suck.</text>
-    </g>
-        
-    <g id="copyright" transform="translate(578 765) rotate(270)"
-    fill="var(--text-color,var(--outline-color,#000))">
-        <text style="font-family:'Times New Roman';font-weight:400;font-size:12px;">&#xA9;MCMLXXXVIII &#xB7; Trilobyte</text>
-    </g>
+    <text id="dialog" transform="translate(80 140)" style="font-family:'Comic Neue'; font-weight:400; font-size:36px;" fill="var(--text-color,var(--outline-color,#000))">
+      <tspan>If I just keep scrolling,</tspan>
+      <tspan x="0" dy="1.2em" style="font-style:italic;">one of these </tspan>
+      <tspan>won't suck ...</tspan>
+    </text>
         
     <g id="border">
     <path d=" M 583 523 L 583 770 L 460 770" fill="none" vector-effect="non-scaling-stroke" stroke-width="1" stroke="var(--border-color,var(--outline-color,#000))" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="3"/>
@@ -108,7 +103,11 @@
     <path id="LivingThingsTitle" d="M 177 51 L 177 44 L 169 45 L 169 45 L 170 47 L 173 46 L 173 48 L 173 48   C 171 50 168 49 168 45 C 168 43 171 41 172 43 L 175 37 C 170 35 163 38 162 43 L 162 36 L 157 36 L 158 43 L 154 36   L 148 38 L 149 53 L 152 53 L 152 46 L 152 46 L 156 54 L 162 52 L 162 48 C 162 48 162 48 162 49 C 164 54 169 55 173 53 L 172 54 L 178 53 L 177 52 C 184 56 193 53 190 47 C 189 44 185 44 183 43 C 181 42 184 41 187 44 L 191 40 C 184 32 173 38 178 44 C 180 46 183 45 184 47 C 185 48 182 49 180 47 L 177 51 Z  M 134 42 L 132 43 L 132 36 L 126 37 L 126 37 L 126 37 L 126 36 L 108 36 L 108 40 L 113 39 L 113 53 L 122 52 L 121 39 L 124 39 L 126 53 L 132 53 L 132 48 L 132 48 L 132 48 L 132 48 L 132 48 L 135 47 L 135 53 L 139 53 L 139 36 L 134 36 L 134 42 L 134 42 Z  M 86 52 L 81 54  L 76 45 L 76 53 L 73 53 L 72 38 L 79 36 L 82 42 L 81 36 L 86 37 L 86 42 C 88 38 94 35 99 37 L 96 43 C 94 42 91 43 91 45 C 91 49 95 49 97 47  L 97 46 L 95 47 L 94 44 L 94 44 L 100 44 L 101 54  L 96 53  C 94 55 89 54 86 49  Z  M 45 38 C 48 35 52 41 44 43 C 37 38 43 34 45 38 Z  M 28 37 L 37 36 L 37 50 L 42 49 L 42 53 L 29 54 Z  M 140 44 L 147 43 L 146 54 L 141 53 Z  M 141 41 L 141 36 L 146.5 36 L 146 41 Z  M 43 44 C 35 38 42 32 45 37 C 47 35 49 36 50 38 L 57 36 L 58 46 L 61 36 L 64 37 L 72 36 L 71 53 L 65 53 L 64 39 L 60 54  L 57 53.4 L 54 54 L 50 40 C 50 41 48 43 45 44 L 49 44 L 48 54 L 43 54.5 L 42 44  Z  M 140 42 L 140 35 L 148 35 L 147 42 Z" fill-rule="evenodd" fill="var(--title-color,var(--border-color,var(--outline-color,#000)))"/>
     
     </g>
-
+        
+    <g id="copyright" transform="translate(578 765) rotate(270)"
+    fill="var(--text-color,var(--outline-color,#000))">
+        <text style="font-family:'Times New Roman';font-weight:400;font-size:12px;">&#xA9;MCMLXXXVIII &#xB7; Trilobyte</text>
+    </g>
 </g>
 </defs>
 
