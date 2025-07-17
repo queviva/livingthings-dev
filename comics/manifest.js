@@ -1,4 +1,5 @@
 comic000.svg
+forRentVert.svg
 comic001.svg
 comic002.svg
 t-commute.svg

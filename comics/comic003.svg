@@ -89,7 +89,7 @@
         <circle cx="0" cy="0" r="6" />
     </g>
     
-    <text id="dialog" transform="translate(80 140)" style="font-family:'Comic Neue'; font-weight:400; font-size:36px;" fill="var(--text-color,var(--outline-color,#000))">
+    <text id="dialog" transform="translate(80 140)" style="font-family:'Comic Neue'; font-weight:400; font-size:40px;" fill="var(--text-color,var(--outline-color,#000))">
       <tspan>If I just keep scrolling,</tspan>
       <tspan x="0" dy="1.2em" style="font-style:italic;">one of these </tspan>
       <tspan>won't suck ...</tspan>
