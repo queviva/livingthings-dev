@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 888 544"
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 600 242" width="600" height="242"
 >
     
 <style type="text/css">
@@ -23,30 +23,30 @@
 
 <defs>
     
-    <pattern id="dotz" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(0.4)">
+    <pattern id="dotz" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(0.4)">
       <circle cx="2" cy="2" r="1" fill="var(--dot-color,var(--outline-color, #000))" transform="scale(2)" transform-origin="2 2" />
     </pattern>
     
-    <pattern id="orangeDotz" x="0" y="0" width="4" height="4" viewBox="-2 -2 4 4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1)">
+    <pattern id="orangeDotz" width="4" height="4" viewBox="-2 -2 4 4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1)">
       <path d="M-2 -2h4v4h-4z" fill="var(--dd-orange)" />
       <circle r="0.5" fill="#fff" />
     </pattern>
     
-    <pattern id="pinkDotz" x="0" y="0" width="4" height="4" viewBox="-2 -2 4 4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1)">
+    <pattern id="pinkDotz" width="4" height="4" viewBox="-2 -2 4 4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1)">
       <path d="M-2 -2h4v4h-4z" fill="var(--dd-pink)" />
       <circle r="0.8" fill="#fff" />
     </pattern>
     
-    <linearGradient id="donutFade" x1="0" y1="1" x2="1" y2="2">
-      <stop offset="0%" stop-color="var(--donut-lite)" />
-      <stop offset="100%" stop-color="var(--donut-dark)" />
-    </linearGradient>
     
-    <linearGradient id="fade6" href="#donutFade" />
-    <linearGradient id="fade7" href="#donutFade" x1="-1" y1="2" x2="1" y2="0" />
-    <linearGradient id="fade8" href="#donutFade" x1="0" y1="1" x2="1" y2="0"
-    />
+    <linearGradient id="donutFade" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="var(--donut-lite)" />
+      <stop offset="90%" stop-color="var(--donut-dark)" />
+    </linearGradient>
 
+    <linearGradient id="fade6" href="#donutFade" gradientTransform="rotate(-45)" />
+    <linearGradient id="fade7" href="#donutFade" gradientTransform="translate(-0.5 0)" />
+    <linearGradient id="fade8" href="#donutFade" gradientTransform="rotate(45) translate(-0.25 0)" />
+    
     <mask id="fade-mask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
       <linearGradient id="fade-gradient" gradientTransform="rotate(-30)">
         <stop offset="0%" stop-color="#fff" stop-opacity="1" />
@@ -58,8 +58,9 @@
 </defs>
  
 <defs>
-    <g id="ikon">
+  <g id="ikon">
             
+    <g id="boxDude" transform="scale(0.3)">
         <ellipse id="shadow" cx="395" cy="482" rx="350" ry="16" fill="rgb(97,58,0)" />
                 
         <clipPath id="nutClip">
@@ -129,14 +130,40 @@
             -->
         
         </g>
-
-<!-- DEBUGG -->
-<path id="test" fill="none" stroke="blue" stroke-width="1" opacity="0.5" d="
-
-            
-" />
+      </g>
+        
+    <g id="border">
+    
+      <path d="M 17 17 H 583" stroke-width="1" stroke="var(--border-color,var(--outline-color,#000))" fill="none" />
+    
+      <path id="LivingThingsTitle" d="M 149 19 L 149 12 L 141 13 L 141 13 L 142 15 L 145 14 L 145 16 L 145 16 C 143 18 140 17 140 13 C 140 11 143 9 144 11 L 147 5 C 142 3 135 6 134 11 L 134 4 L 129 4 L 130 11 L 126 4 L 120 6 L 121 21 L 124 21 L 124 14 L 124 14 L 128 22 L 134 20 L 134 16 C 134 16 134 16 134 17 C 136 22 141 23 145 21 L 144 22 L 150 21 L 149 20 C 156 24 165 21 162 15 C 161 12 157 12 155 11 C 153 10 156 9 159 12 L 163 8 C 156 0 145 6 150 12 C 152 14 155 13 156 15 C 157 16 154 17 152 15 L 149 19 Z M 106 10 L 104 11 L 104 4 L 98 5 L 98 5 L 98 5 L 98 4 L 80 4 L 80 8 L 85 7 L 85 21 L 94 20 L 93 7 L 96 7 L 98 21 L 104 21 L 104 16 L 104 16 L 104 16 L 104 16 L 104 16 L 107 15 L 107 21 L 111 21 L 111 4 L 106 4 L 106 10 L 106 10 Z M 58 20 L 53 22 L 48 13 L 48 21 L 45 21 L 44 6 L 51 4 L 54 10 L 53 4 L 58 5 L 58 10 C 60 6 66 3 71 5 L 68 11 C 66 10 63 11 63 13 C 63 17 67 17 69 15 L 69 14 L 67 15 L 66 12 L 66 12 L 72 12 L 73 22 L 68 21 C 66 23 61 22 58 17 Z M 17 6 C 20 3 24 9 16 11 C 9 6 15 2 17 6 Z M 0 5 L 9 4 L 9 18 L 14 17 L 14 21 L 1 22 Z M 112 12 L 119 11 L 118 22 L 113 21.6 Z M 113 9 L 113 4 L 118.5 4 L 118 9 Z M 15 12 C 7 6 14 0 17 5 C 19 3 21 4 22 6 L 29 4 L 30 14 L 33 4 L 36 5 L 44 4 L 43 21 L 37 21 L 36 7 L 32 22 L 29 21.4 L 26 22 L 22 8 C 22 9 20 11 17 12 L 21 12 L 20 22 L 15 22.5 L 14 12 Z M 112 10 L 112 3 L 120 3 L 119 10 Z" fill-rule="evenodd" fill="var(--title-color,var(--border-color,var(--outline-color,#000)))" transform="translate(28 20)" />
     
     </g>
+                 
+    <!-- DEBUGG -->
+    <!--<rect width="600" height="800" fill="rgba(200,0,0,0.4)" x="0" y="0" />-->
+    <!--<circle r="10" fill="#909" cx="00" cy="00" />-->
+    
+    <g opacity="0.5">
+        <defs>
+  <rect id="rex" x="17" y="55" width="134" height="170" fill="#ccc" stroke="#909"/>
+        </defs>
+  <use href="#rex" />
+  <use href="#rex" x="144" />
+  <use href="#rex" x="288" />
+  <use href="#rex" x="432" />
+  
+  </g>
+
+    
+    <path id="test" fill="none" stroke="blue" stroke-width="1" opacity="0.5" d="
+
+            
+    " />
+    
+    
+  </g>
+    
 </defs>
 
 <use href="#ikon"/>
