@@ -16,7 +16,7 @@
     --outline-color: var(--dd-brown);
     --donut-dark: rgb(213,170,106);
     --donut-lite: rgb(242,225,200);
-    --show-decor: 0.3;
+    --show-decor: 0.0;
   }
   
 </style>
@@ -59,8 +59,23 @@
  
 <defs>
   <g id="ikon">
+    
+    <rect width="600" height="800" fill="url(#orangeDotz)" />
+    <g>
+      <defs>
+        <rect id="rex" x="17" y="55" width="134" height="170" fill="none" stroke="#909"/>
+        <clipPath id="panel1" maskUnits="userSpaceOnUse">
+          <path d="M17 55h134v170H17Z" />
+        </clipPath>
+      </defs>
+      <use href="#rex" />
+      <use href="#rex" x="144" />
+      <use href="#rex" x="288" />
+      <use href="#rex" x="432" />
+    </g>
             
-    <g id="boxDude" transform="scale(0.3)">
+      <g clip-path="url(#panel1)" transform="translate(0 105) scale(0.13)">
+    <g id="boxDude">
         <ellipse id="shadow" cx="395" cy="482" rx="350" ry="16" fill="rgb(97,58,0)" />
                 
         <clipPath id="nutClip">
@@ -131,7 +146,8 @@
         
         </g>
       </g>
-        
+       </g>
+       
     <g id="border">
     
       <path d="M 17 17 H 583" stroke-width="1" stroke="var(--border-color,var(--outline-color,#000))" fill="none" />
@@ -144,17 +160,6 @@
     <!--<rect width="600" height="800" fill="rgba(200,0,0,0.4)" x="0" y="0" />-->
     <!--<circle r="10" fill="#909" cx="00" cy="00" />-->
     
-    <g opacity="0.5">
-        <defs>
-  <rect id="rex" x="17" y="55" width="134" height="170" fill="#ccc" stroke="#909"/>
-        </defs>
-  <use href="#rex" />
-  <use href="#rex" x="144" />
-  <use href="#rex" x="288" />
-  <use href="#rex" x="432" />
-  
-  </g>
-
     
     <path id="test" fill="none" stroke="blue" stroke-width="1" opacity="0.5" d="
 

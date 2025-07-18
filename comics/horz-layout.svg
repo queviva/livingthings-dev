@@ -10,7 +10,7 @@
 
   :root {
     --outline-color: #909;
-    --text-color: #900;
+    --text-color: #909;
     --dot-color: #090;
   }
   
@@ -120,7 +120,6 @@
     
     <!--<path id="panel-background" d="M17 55 h566 v170 H17Z" fill="url(#fade)" />-->
         
-     
     
     <g clip-path="url(#panel_1)">
       <circle r="80" fill="#909" cx="100" cy="100" />

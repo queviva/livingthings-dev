@@ -51,7 +51,7 @@
 <defs>
 <g id="ikon">
     
-    <rect width="600" height="800" x-fill="none" fill="rgba(200,0,0,0.4)" x="0" y="0" />
+    <!--<rect width="600" height="800" x-fill="none" fill="rgba(200,0,0,0.4)" x="0" y="0" />-->
     
     <g opacity="1">
     <g id="stuff" transform="translate(-10 -20)">
