@@ -102,6 +102,17 @@
     <rect width="1" height="1" fill="url(#fade-gradient)" />
   </mask>
   
+  <mask id="text-mask" maskUnits="userSpaceOnUse">
+    <rect width="100%" height="100%" fill="white" />
+    <text x="30" y="80" style="fill:#000;">
+        <tspan>If I just keep scrolling</tspan>
+        <tspan x="22" dy="1.2em" style="font-style:italic;">
+            one of these
+        </tspan>
+        <tspan>won't suck...</tspan>
+    </text>
+  </mask>
+  
 </defs>
   
 <defs>
@@ -122,12 +133,9 @@
         
     
     <g clip-path="url(#panel_1)">
-      <circle r="80" fill="#909" cx="100" cy="100" />
-      <text id="dialog" transform="translate(22 70)" style="fill:#fff;">
-      <tspan>If I just keep scrolling,</tspan>
-      <tspan x="0" dy="1.2em" style="font-style:italic;">one of these </tspan>
-      <tspan>won't suck ...</tspan>
-    </text>
+      <circle r="80" fill="#909" cx="100" cy="100"
+      mask="url(#text-mask)" />
+
     </g>
     <g clip-path="url(#panel_2)">
         <circle r="80" fill="#909" cx="100" cy="100" />
@@ -196,6 +204,7 @@
     " /-->
     
     </g>
+    
     
   </g>
     
