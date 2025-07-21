@@ -1,0 +1,80 @@
+<html>
+<head><title>LivingThings&trade;</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.ico">
+
+<style>
+  body, div, object {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  object {
+      width: 100%;
+      height: auto;
+  }
+  
+  object:not([data-cred]) {
+    margin-bottom: 50px;
+  }
+  
+  div.cred {
+    padding: 3px;
+    height: 50px;
+    width: 100%;
+    font-family: 'Times New Roman';
+    font-size: 8px;
+    font-style: italic;
+    font-weight: 100;
+    text-align: right;
+  }
+  
+</style>
+</head>
+<body>
+    
+  <div>
+    <object type="image/svg+xml" data="title001.svg"
+     style="padding: 5px;"
+    ></object>
+    <object data-port data-cred type="image/svg+xml" data="comics/kathy01.svg"></object>
+    <div class="cred">
+        (The Wheeling Daily Scoundrel 5-3-84)
+    </div>
+    <object data-x-port type="image/svg+xml" data="comics/kathy01.svg"></object>
+    <object data-cred type="image/svg+xml" data="comics/stPattys2025.svg"></object>
+    <div class="cred">(The Wheeling Daily Scoundrel)</div>
+  </div>
+  
+<script>
+  
+const log = console.log;
+
+const objs = document.querySelectorAll('[data-port]');
+
+function updateViewBox() {
+
+  objs.forEach(obj => {
+      
+    obj.contentDocument.querySelector('svg').setAttribute('viewBox',
+      window.innerHeight >= window.innerWidth ?
+      '0 0 650 882.5':
+      '0 0 1300 480'
+    );
+  
+  });
+  
+}
+
+objs.forEach(obj => obj.addEventListener('load', () => {
+  updateViewBox();
+  window.addEventListener('resize', updateViewBox);
+  window.addEventListener('orientationchange', updateViewBox);
+}));
+
+</script>
+</body>
+</html>
