@@ -15,21 +15,54 @@
     }
 </style>
 
+<defs id="pats-n-filters">
+    <pattern id="dotz" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(0.9)">
+      <circle cx="2" cy="2" r="1" fill="var(--dot-color,var(--text-color, #000))" transform="scale(1.2)" transform-origin="2 2" />
+    </pattern>
+</defs>
+
 <g>
+    
+  <g id="title"
+   stroke-miterlimit="300"
+   stroke-width="var(--stroke-width, 0)"
+   stroke="var(--stroke-color, none)"
+  >
 
-<path id="title" d=" M 858 86 L 853 48 L 812 49.33 L 812 49.33 L 815 63 L 834 58.51 L 833 73 L 833 73 L 833 73 L 833 73 L 833 73 L 833 73 L 833 73 C 820 81 803 77 803 52.27 C 803 41 819 33 828 43 L 846 7 C 814 -4 778 12 768 42 L 768 4 L 742 4 L 745.17 43 L 726 4 L 689.84 11.77 L 689.84 11.77 L 689.84 11.77 L 689.84 11.77 L 694 101 L 714 100 L 713 58 L 713 58 L 736 103 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 72 C 769 73 769.38 73 769 74 C 780 106 813 110 831 97 L 830 106 L 860 101 L 859 96.37 C 894 117 946 99 933 64 C 928 49 899 50 891 43 C 880 34 899 29 916 45 L 936 23 C 896 -20 833.44 15 860 45 C 872 59 893 53 898.81 64.31 C 903 74 883 74.59 874 64 L 858 86 Z  M 612 38 L 598 39 L 598 1 L 563.28 6 L 563.28 6 L 563.28 6 L 563.88 3 L 460 4 L 460 24 L 488 21.24 L 488.83 100 L 539 96 L 533 17 L 555 20 L 562 102 L 598 100 L 598 71 L 598 71 L 598 71 L 598 71 L 614 68 L 616.84 100 L 639 98.92 L 639 1 L 609 1 L 612 38 L 612 38 Z  M 206 20 L 184 102 L 170 101.61 L 151 102 L 123 11 L 170 3 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 188 0 L 209 7 L 208 10.51 L 254.6 4 L 246.13 101 L 213 99 L 206 20 L 206 20 L 206 20 L 206 20 L 206 20 L 206 20 L 206 20 Z  M 336 95 L 336 95 L 304 103 L 278 55 L 278 55 L 279 100 L 261 100 L 254.6 11 L 254.6 11 L 254.6 11 L 254.6 11 L 291 3 L 308 39.45 L 306 3 L 333 7 L 334 37.76 C 345 12 379 -2 409 8 L 390 44 C 381 34 365 42 365 53 C 365 76 388 78 396 67 L 396 67 L 396 67 L 396 67 L 396 67 L 396 67 L 396 60 L 384 64.64 L 381.56 49 L 381.56 49 L 416 49 L 422 105 L 394 102 L 394 98 C 377 111 349.35 107 336 77 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 Z  M 0 7 L 51 3 L 52 82 L 80 79 L 80 99 L 7.13 99 L 0 7 L 0 7 L 0 7 L 0 7 L 0 7 L 0 7 L 0 7 L 0 7 L 0 7 Z  M 81 47 L 124 45.84 L 115 102 L 84.07 101 L 81 47 L 81 47 L 81 47 L 81 47 Z  M 646 49 L 683 48 L 679 103 L 649 102 L 646 49 L 646 49 L 646 49 Z " fill-rule="evenodd" fill="var(--text-color, #000)"/>
+  <path id="living" d="
+  
+    M 0 7 L 51 3 L 52 82 L 80 79 L 80 99 L 7.13 99 L 0 7 L 0 7 L 0 7 L 0 7 L 0 7 L 0 7 L 0 7 L 0 7 L 0 7 Z
+    
+    M 81 47 L 124 45.84 L 115 102 L 84.07 101 L 81 47 L 81 47 L 81 47 L 81 47 Z
+    
+    M 206 20 L 184 102 L 170 101.61 L 151 102 L 123 11 L 170 3 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 174 59 L 188 0 L 209 7 L 208 10.51 L 254.6 4 L 246.13 101 L 213 99 L 206 20 L 206 20 L 206 20 L 206 20 L 206 20 L 206 20 L 206 20 Z
+    
+    M 336 95 L 336 95 L 304 103 L 278 55 L 278 55 L 279 100 L 261 100 L 254.6 11 L 254.6 11 L 254.6 11 L 254.6 11 L 291 3 L 308 39.45 L 306 3 L 333 7 L 334 37.76 C 345 12 379 -2 409 8 L 390 44 C 381 34 365 42 365 53 C 365 76 388 78 396 67 L 396 67 L 396 67 L 396 67 L 396 67 L 396 67 L 396 60 L 384 64.64 L 381.56 49 L 381.56 49 L 416 49 L 422 105 L 394 102 L 394 98 C 377 111 349.35 107 336 77 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 L 336 95 Z
+    
+  " fill-rule="evenodd" fill="var(--text-color, #000)"/>
+  
+  <path id="things" d="
+    M 612 38 L 598 39 L 598 1 L 563.28 6 L 563.28 6 L 563.28 6 L 563.88 3 L 460 4 L 460 24 L 488 21.24 L 488.83 100 L 539 96 L 533 17 L 555 20 L 562 102 L 598 100 L 598 71 L 598 71 L 598 71 L 598 71 L 614 68 L 616.84 100 L 639 98.92 L 639 1 L 609 1 L 612 38 L 612 38 Z
+    
+    M 646 44 L 685 48 L 679 103 L 649 102 Z
+    
+    M 858 86 L 853 48 L 812 49.33 L 812 49.33 L 815 63 L 834 58.51 L 833 73 L 833 73 L 833 73 L 833 73 L 833 73 L 833 73 L 833 73 C 820 81 803 77 803 52.27 C 803 41 819 33 828 43 L 846 7 C 814 -4 778 12 768 42 L 768 4 L 742 4 L 745.17 43 L 726 4 L 689.84 11.77 L 689.84 11.77 L 689.84 11.77 L 689.84 11.77 L 694 101 L 714 100 L 713 58 L 713 58 L 736 103 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 94 L 768 72 C 769 73 769.38 73 769 74 C 780 106 813 110 831 97 L 830 106 L 860 101 L 859 96.37 C 894 117 946 99 933 64 C 928 49 899 50 891 43 C 880 34 899 29 916 45 L 936 23 C 896 -20 833.44 15 860 45 C 872 59 893 53 898.81 64.31 C 903 74 883 74.59 874 64 L 858 86 Z
+    
+    
+  " fill-rule="evenodd" fill="var(--text-color, #000)"/>
 
-<g style="opacity:calc(1 - var(--show-hearts));">
-  <circle id="circ1" cx="106" cy="22" r="21" fill="var(--circ1-color, var(--text-color, #000))"/>
-  <circle id="circ2" cx="666" cy="24" r="21" fill="var(--circ2-color, var(--text-color, #000))"/>
-</g>
+  </g>
+  
+  <g style="opacity:calc(1 - var(--show-hearts));">
+    <circle id="circ1" cx="106" cy="22" r="21" fill="var(--circ1-color, var(--text-color, #000))"/>
+    <circle id="circ2" cx="666" cy="24" r="21" fill="var(--circ2-color, var(--text-color, #000))"/>
+  </g>
 
-<g style="opacity:var(--show-hearts);">
-  <path id="heart" d=" M 33.36 9 C 58 -12 88 37 25 56 C -27 18 16 -18 33.36 9 Z  M 31 19 C 51 -0 72 34 26 47 C -11 18 20.37 -4 31 19 Z " fill="var(--heart-color, var(--text-color, #000))" fill-rule="evenodd" transform="translate(70 -7)" />
-  <path id="square" d=" M 2.39 41.9 L 0 0 L 46.07 1.76 L 41.68 41.9 L 2.39 41.9 Z  M 9 34 L 8 8 L 37 9 L 34 34 L 9 34 Z " fill="var(--square-color, var(--text-color, #000))" fill-rule="evenodd" transform="translate(645.5 0)"
+  <g style="opacity:var(--show-hearts);">
+    <path id="heart" d=" M 33.36 9 C 58 -12 88 37 25 56 C -27 18 16 -18 33.36 9 Z  M 31 19 C 51 -0 72 34 26 47 C -11 18 20.37 -4 31 19 Z " fill="var(--heart-color, var(--text-color, #000))" fill-rule="evenodd" transform="translate(70 -7)" />
+    <path id="square" d=" M 2.39 41.9 L 0 0 L 46.07 1.76 L 41.68 41.9 L 2.39 41.9 Z  M 9 34 L 8 8 L 37 9 L 34 34 L 9 34 Z " fill="var(--square-color, var(--text-color, #000))" fill-rule="evenodd" transform="translate(638 0) rotate(-10) scale(1.04)"
         />
-</g>
-
+  </g>
 
 </g>
 

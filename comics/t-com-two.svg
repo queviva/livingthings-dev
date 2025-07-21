@@ -117,9 +117,9 @@
   
 <defs>
   <g id="ikon">
-      
-    <path d="M0 0 H600 V242 H0Z" fill="url(#newsprint)" />
     
+    <path d="M0 0 H600 V242 H0Z" fill="url(#newsprint)" />
+  
     <g
      opacity="0.7"
      filter="url(#shake)"
@@ -131,25 +131,23 @@
     
     <!--<path id="panel-background" d="M17 55 h566 v170 H17Z" fill="url(#fade)" />-->
     
-    <g clip-path="url(#panel_1)">
+    <g clip-path="url(#panel_1and2)">
       <circle r="80" fill="#909" cx="100" cy="100"
       mask="url(#text-mask)" />
-    </g>
-    
-    <g clip-path="url(#panel_2)">
-      <circle r="80" fill="#909" cx="100" cy="100" />
+      
       <circle r="80" fill="#909" cx="260" cy="200" />
     </g>
     
     <g clip-path="url(#panel_3)">
-        <circle r="80" fill="#909" cx="260" cy="200" />
-        <circle r="80" fill="#909" cx="380" cy="50" />
+      <circle r="80" fill="#909" cx="260" cy="200" />
+      <circle r="80" fill="#909" cx="380" cy="50" />
     </g>
     
     <g clip-path="url(#panel_4)">
         <circle r="80" fill="#909" cx="380" cy="50" />
         <circle r="80" fill="#909" cx="560" cy="160" />
     </g>
+    
     
     <g id="border">
         
@@ -166,8 +164,7 @@
       <path id="panel-borders" d="
       
         M 17 17 H583
-        M 17 55 H151 V225 H17Z
-        M161 55 H295 V225 H161Z
+        M 17 55 H295 V225 H17Z
         M305 55 H439 V225 H305Z
         M449 55 H583 V225 H449Z
         
@@ -212,7 +209,6 @@
     
     <!-- DEBUGG -->
     <!-- :%s/\v(\d+\.\d{3})/\=printf("%d", float2nr(submatch(1) + 0.5))/g -->
-    <!--<circle r="5" cx="0" cy="0" fill="#909" />-->
     <!--path id="test" fill="none" stroke="orange" stroke-width="1" opacity="0.5" d="
             
     " /-->

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 340 90"
+    x-viewBox="0 0 175 175"
+    x-preserveAspectRatio="xMidYMid meet"
+    x-width="100%"
+    x-height="auto"
+    style="border:2px solid orange;"
+>
+  <style>
+      rect {
+        width:80px;
+        height:80px;
+      }
+  </style>
+  <circle cx="0" cy="0" r="2" fill="#900" />
+  <rect x="5" y="5" id="sq1" fill="#E74C3C" />
+  <rect x="90" y="5" id="sq2" fill="#3498DB" />
+  <defs>
+    <g id="two-guys">
+      <rect x="5" y="5" id="sq3" fill="#2ECC71" />
+      <rect x="90" y="5" id="sq4" fill="#F1C40F" />
+    </g>
+  </defs>
+  <use href="#two-guys" transform="translate(170 0)" />
+  <use href="#two-guys" transform="translate(0 85)" />
+</svg>
+        

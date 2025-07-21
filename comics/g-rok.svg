@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 600 242" width="600" height="242"
+>
+
+    <filter id="noise2" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence id="turb" baseFrequency="0.05" seed="3" />
+    </filter>
+  
+	<rect x="0" y="0" width="100%" height="100%" filter="url(#noise2)"></rect>
+</svg>
