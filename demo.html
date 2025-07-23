@@ -47,68 +47,74 @@
         --show-hearts : 0;
         --outline-color : #909;
     " type="image/svg+xml" data="comics/lids.svg"></object>
-    <object data-cred type="image/svg+xml" data="comics/stPattys2025.svg"></object>
+    <object type="image/svg+xml" data="comics/stPattys2025.svg"></object>
+    <object data-cred data-port="P3" type="image/svg+xml" data="comics/samp3panel.svg"></object>
     <div class="cred">(The Wheeling Daily Scoundrel)</div>
-    <object data-port="P3" type="image/svg+xml" data="comics/horz-layout.svg"></object>
+    <object data="comics/hexapoid.svg"></object>
   </div>
   
 <script>
-  
-const log = console.log;
 
-const ports_p2 = document.querySelectorAll('[data-port="P2"]');
-const ports_p3 = document.querySelectorAll('[data-port="P3"]');
+document.addEventListener('DOMContentLoaded', () => {
 
-const updateViewBox = (obj, val) => {
+    const log = console.log;
 
-    obj.contentDocument.querySelector('svg').setAttribute(
-        'viewBox', val
-    );
+    const portConfigs = {
+        P2: {
+            portrait: '0 0 650 882.5',
+            landscape: '0 0 1300 480'
+        },
+        P3: {
+            portrait: '0 0 434 1260',
+            landscape: '0 0 1300 480'
+        }
+    };
 
-};
+    const getOrientation = () =>
+        window.innerHeight >= window.innerWidth ? 'portrait' : 'landscape';
 
-const updateP2s = () => {
-    const val = window.innerHeight >= window.innerWidth ?
-        '0 0 650 882.5' : '0 0 1300 480';
-    ports_p2.forEach(obj => updateViewBox(obj, val));
-};
+    const updatePorts = (portType) => {
+        const viewBoxVal = portConfigs[portType][getOrientation()];
+        const ports = document.querySelectorAll(`[data-port="${portType}"]`);
+        ports.forEach(obj => updateViewBox(obj, viewBoxVal));
+    };
 
-const updateP3s = () => {
-    const val = window.innerHeight >= window.innerWidth ?
-        '0 0 434 1300' : '0 0 1300 480';
-    ports_p3.forEach(obj => updateViewBox(obj, val));
-};
+    const updateViewBox = (obj, val) => {
+        obj.contentDocument.querySelector('svg').setAttribute('viewBox', val);
+    };
 
-ports_p2.forEach(obj => obj.addEventListener('load', () => {
-    const val = window.innerHeight >= window.innerWidth ?
-        '0 0 650 882.5' : '0 0 1300 480';
-    updateViewBox(obj, val);
-}));
+    const handleLoad = (portType, obj) => {
+        const viewBoxVal = portConfigs[portType][getOrientation()];
+        updateViewBox(obj, viewBoxVal);
+    };
 
-ports_p3.forEach(obj => obj.addEventListener('load', () => {
-    const val = window.innerHeight >= window.innerWidth ?
-        '0 0 434 1300' : '0 0 1300 480';
-    updateViewBox(obj, val);
-}));
+    // Initialize
+    ['P2', 'P3'].forEach(portType => {
+        const ports = document.querySelectorAll(`[data-port="${portType}"]`);
 
-window.addEventListener('resize', updateP2s);
-window.addEventListener('orientationchange', updateP2s);
-window.addEventListener('resize', updateP3s);
-window.addEventListener('orientationchange', updateP3s);
+        ports.forEach(obj => {
+            obj.addEventListener('load', () => handleLoad(portType, obj));
+        });
 
-const stys = document.querySelectorAll('[data-stys]');
-
-stys.forEach(obj => obj.addEventListener('load', () => {
-
-    const vals = obj.dataset.stys.replace(/\s/g, '').split(';');
-    vals.pop();
-    vals.forEach(v => {
-        const [a, b] = v.split(':');
-        obj.contentDocument.documentElement.style.setProperty(a, b);
+        window.addEventListener('resize', () => updatePorts(portType));
+        window.addEventListener('orientationchange', () => updatePorts(portType));
     });
 
-}));
 
+    const stys = document.querySelectorAll('[data-stys]');
+
+    stys.forEach(obj => obj.addEventListener('load', () => {
+
+        const vals = obj.dataset.stys.replace(/\s/g, '').split(';');
+        vals.pop();
+        vals.forEach(v => {
+            const [a, b] = v.split(':');
+            obj.contentDocument.documentElement.style.setProperty(a, b);
+        });
+
+    }));
+
+});
 
 </script>
 </body>

@@ -122,7 +122,7 @@
     @media(orientation: portrait) {
       #bg-paper.P3:not([data-no-port]) {
         width: 434px;
-        height: 1300px;
+        height: 1260px;
       }
       #title-line.P3:not([data-no-port]) {
         width: 408px;
@@ -220,6 +220,34 @@
         M12.5 12.5 H1287.5 V388 H12.5Z
         
     -->
+
+      <clipPath id="1of4">
+        <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+      </clipPath>
+
+      <clipPath id="2of4">
+        <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+      </clipPath>
+
+      <clipPath id="3of4">
+        <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+      </clipPath>
+
+      <clipPath id="4of4">
+        <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+      </clipPath>
+  
+      <clipPath id="1of3">
+        <path d="M13 12.5 H421 V388 H 13Z"/>
+      </clipPath>
+  
+      <clipPath id="2of3">
+        <path d="M446 12.5 H854 V388 H 446Z"/>
+      </clipPath>
+  
+      <clipPath id="3of3">
+        <path d="M879 12.5 H1287 V388 H 879Z"/>
+      </clipPath>
     
     <mask id="fade-mask"
      maskUnits="objectBoundingBox"
@@ -237,6 +265,24 @@
 
   </defs>
 
+  <defs id="line-caps">
+      
+    <marker id="slant-cap" markerWidth="3" markerHeight="1"
+            refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d=" M 0 0 L 1 0 L 3 1 L 0 1 Z" fill="context-stroke"/>
+    </marker>
+    
+    <marker id="point-cap"
+      markerWidth="4" markerHeight="1"
+      refX="1" refY="0.5"
+      orient="auto-start-reverse"
+      markerUnits="strokeWidth"
+    >
+      <path d="M0 0.5 L1 0 L4 0.5 L1 1 Z" fill="context-stroke"/>
+    </marker>
+    
+  </defs>
+  
   <defs>
     <g id="ikon">
 
@@ -252,39 +298,33 @@
 
           <defs>
             
-              <path id="thought-bubble" transform="translate(300 100) scale(15)" d="
-                M -4 -1
-                A 3 2 0 1 1 2 -2
-                A 2.7 1.2 0 1 1 5 1
-                A 2.2 1.2 0 1 1 1 2
-                A 3 1.4 0 1 1 -4 1
-                A 1.7 1.3 0 1 1 -4 -1
-                Z
-              " stroke-miterlimit="3" fill="none" stroke="#000" stroke-width="0.3"/>
+            <path id="thought-bubble" d="M -40 -10 C -65 -38 60 -36 30 -8 C 70 -18 70 13 45 10 C 75 16 72 -18 38 -13 C 65 -38 -70 -40 -45 -10 Z  M 6 24 C 5 29 -45 30 -37 8 C -70 12 -65 -12 -36 -10 C -70 -15 -72 14 -40 10 C -45 33 10 32 10 25 Z  M 52 10 C 66 25 2 30 0 20 C 2 34 66 29 58 10 Z "
+             fill="var(--outline-color, #000)"
+            />
             
             <path id="hex" transform="scale(0.5) rotate(30)" d="M 400 0 L 200 350 L -200 350 L -400 0 L -200 -350 L 200 -350 Z"
              fill="url(#dotz)"
              stroke="var(--outline-color, #000)"
              stroke-width="20"
             />
-                     
-            <clipPath id="1of3">
-                <path d="M13 12.5 H421 V388 H 13Z"/>
-            </clipPath>
-        
-            <clipPath id="2of3">
-                <path d="M446 12.5 H854 V388 H 446Z"/>
-            </clipPath>
-        
-            <clipPath id="3of3">
-                <path d="M879 12.5 H1287 V388 H 879Z"/>
-            </clipPath>
+
             
           </defs>
             
-          <!--g id="4_panel_layout">
+          <!--
+          <g id="4_panel_layout">
           <g class="first-two" clip-path="url(#1and2of4)">
-            <g id="panel_1of4">
+            <g id="panel_1of4" clip-path="url(#1of4)">
+            
+             <g transform="translate(160 50)">
+              <use href="#thought-bubble" transform="scale(2.4)"/>
+              <text x="0" y="0" text-anchor="middle">
+                  <tspan>What in</tspan>
+                  <tspan font-style="italic">hell</tspan>
+                  <tspan x="0" dy="1.2em">are you thinking</tspan>
+              </text>
+
+            </g>
             
             </g>
             <g id="panel_2of4">
@@ -299,8 +339,9 @@
                 
             </g>
           </g>
-          </g-->
-
+          </g>
+          -->
+          
           <g id="3_panel_layout">
           <g class="P1of3" clip-path="url(#1of3)">
               <use href="#hex" transform="translate(100 300)"/>
@@ -407,29 +448,30 @@
         </g>
 
         <g id="borders" transform="translate(0 80)" fill="none" stroke="var(--border-color, var(--outline-color, #000))" stroke-width="3">
+            
+          <!-- 3-panel borders -->
           <g>
             <path class="P1of3" d="M13 12.5 H421 V388 H 13Z"/>
             <path class="P2of3" d="M13 12.5 H421 V388 H 13Z"/>
             <path class="P3of3" d="M13 12.5 H421 V388 H 13Z"/>
-          </g>
-          <g class="next-two">
           </g>
           
           <!--
           13, 421, 446, 854, 879, 1287,
           -->
           
-          <!-- 4-panel layout -->
+          <!-- 4-panel borders -->
           <!--
           <g class="first-two">
-            <path d="M12.5 12.5 H312.5 V388 H12.5Z" />
-            <path d="M337.5 12.5 H637.5 V388 H337.5Z" />
+            <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+            <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
           </g>
           <g class="next-two">
-            <path d="M12.5 12.5 H312.5 V388 H12.5Z" />
-            <path d="M337.5 12.5 H637.5 V388 H337.5Z" />
+            <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+            <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
           </g>
           -->
+          
         </g>
         
       </g>
