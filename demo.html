@@ -39,40 +39,76 @@
     <object type="image/svg+xml" data="title001.svg"
      style="padding: 5px;"
     ></object>
-    <object data-port data-cred type="image/svg+xml" data="comics/kathy01.svg"></object>
+    <object data-port="P2" data-cred type="image/svg+xml" data="comics/lids.svg"></object>
     <div class="cred">
         (The Wheeling Daily Scoundrel 5-3-84)
     </div>
-    <object data-x-port type="image/svg+xml" data="comics/kathy01.svg"></object>
+    <object data-stys="
+        --show-hearts : 0;
+        --outline-color : #909;
+    " type="image/svg+xml" data="comics/lids.svg"></object>
     <object data-cred type="image/svg+xml" data="comics/stPattys2025.svg"></object>
     <div class="cred">(The Wheeling Daily Scoundrel)</div>
+    <object data-port="P3" type="image/svg+xml" data="comics/horz-layout.svg"></object>
   </div>
   
 <script>
   
 const log = console.log;
 
-const objs = document.querySelectorAll('[data-port]');
+const ports_p2 = document.querySelectorAll('[data-port="P2"]');
+const ports_p3 = document.querySelectorAll('[data-port="P3"]');
 
-function updateViewBox() {
+const updateViewBox = (obj, val) => {
 
-  objs.forEach(obj => {
-      
-    obj.contentDocument.querySelector('svg').setAttribute('viewBox',
-      window.innerHeight >= window.innerWidth ?
-      '0 0 650 882.5':
-      '0 0 1300 480'
+    obj.contentDocument.querySelector('svg').setAttribute(
+        'viewBox', val
     );
-  
-  });
-  
-}
 
-objs.forEach(obj => obj.addEventListener('load', () => {
-  updateViewBox();
-  window.addEventListener('resize', updateViewBox);
-  window.addEventListener('orientationchange', updateViewBox);
+};
+
+const updateP2s = () => {
+    const val = window.innerHeight >= window.innerWidth ?
+        '0 0 650 882.5' : '0 0 1300 480';
+    ports_p2.forEach(obj => updateViewBox(obj, val));
+};
+
+const updateP3s = () => {
+    const val = window.innerHeight >= window.innerWidth ?
+        '0 0 434 1300' : '0 0 1300 480';
+    ports_p3.forEach(obj => updateViewBox(obj, val));
+};
+
+ports_p2.forEach(obj => obj.addEventListener('load', () => {
+    const val = window.innerHeight >= window.innerWidth ?
+        '0 0 650 882.5' : '0 0 1300 480';
+    updateViewBox(obj, val);
 }));
+
+ports_p3.forEach(obj => obj.addEventListener('load', () => {
+    const val = window.innerHeight >= window.innerWidth ?
+        '0 0 434 1300' : '0 0 1300 480';
+    updateViewBox(obj, val);
+}));
+
+window.addEventListener('resize', updateP2s);
+window.addEventListener('orientationchange', updateP2s);
+window.addEventListener('resize', updateP3s);
+window.addEventListener('orientationchange', updateP3s);
+
+const stys = document.querySelectorAll('[data-stys]');
+
+stys.forEach(obj => obj.addEventListener('load', () => {
+
+    const vals = obj.dataset.stys.replace(/\s/g, '').split(';');
+    vals.pop();
+    vals.forEach(v => {
+        const [a, b] = v.split(':');
+        obj.contentDocument.documentElement.style.setProperty(a, b);
+    });
+
+}));
+
 
 </script>
 </body>

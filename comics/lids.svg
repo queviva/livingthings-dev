@@ -2,7 +2,7 @@
  style="isolation:isolate;overflow:visible;"
  viewBox="0 0 1300 480"
 >
-    
+
   <style>
     @font-face {
       font-family: 'Comic Neue';
@@ -15,9 +15,10 @@
       --text-color: #909;
       --dot-color: #090;
       --show-hearts: 0;
+      --circ-color: #ea0;
       */
     }
-  
+
     text {
       font-family:'Comic Neue';
       font-weight: 600;
@@ -31,36 +32,37 @@
       font-size:17px;
       fill:var(--text-color, var(--outline-color, #000));
     }
-    
+
     #title-line {
       fill: var(--border-color, var(--outline-color, #000));
       height: 2px;
     }
-      
+
     #LIVING {
       fill: var(--title-color, var(--outline-color, #000));
     }
-    
+
     #THINGS {
       fill: var(--title-color, var(--outline-color, #000));
     }
-    
+
     #heart {
       fill: var(--heart-color, var(--outline-color, #000));
     }
-    
+
     #square {
       fill: var(--square-color, var(--outline-color, #000));
     }
-    
+
     #title-hearts {
       opacity: var(--show-hearts, 1);
     }
-    
+
     #title-circs {
       opacity: calc(1 - var(--show-hearts, 1));
+      fill: var(--circ-color, var(--outline-color, #000));
     }
-      
+    
     @media(orientation: portrait) {
       #bg-paper {
         width: 650px;
@@ -87,9 +89,9 @@
       }
     }
   </style>
-  
+
   <defs id="patts-n-filters">
-      
+
     <pattern id="hatch" viewBox="-2 -2 4 4" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(3)">
       <path d="M-2 0 H2 M0 -2 V2"
        fill="none"
@@ -98,16 +100,16 @@
        transform="scale(1)"
       />
     </pattern>
-     
+
     <pattern id="dotz" viewBox="-2 -2 4 4" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(2.5)">
       <circle r="1" fill="var(--dot-color,var(--outline-color, #000))" transform="scale(1.5)" />
     </pattern>
-     
+
     <linearGradient id="fade" gradientUnits="objectBoundingBox">
       <stop offset="0%" stop-color="#000" stop-opacity="0"/>
       <stop offset="100%" stop-color="#000" />
     </linearGradient>
-    
+
     <filter id="blur">
       <feGaussianBlur in="SourceGraphic" stdDeviation="0.3" />
     </filter>
@@ -120,15 +122,46 @@
       <!-- shift image back based on displacement's scale -->
       <feOffset in="blurred" dx="8" dy="5" result="final" />
     </filter>
-    
+
     <pattern id="newsprint" patternUnits="userSpaceOnUse" width="600" height="800">
       <image href="newsprint.jpg" width="600" height="800" preserveAspectRatio="none" />
     </pattern>
-    
+
   </defs>
-  
+
   <defs id="clips-n-masks">
-      
+    
+    <clipPath id="clip_1">
+        <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+    </clipPath>
+    
+    <clipPath id="clip_2">
+        <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+    </clipPath>
+    
+    <clipPath id="clip_3">
+        <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+    </clipPath>
+    
+    <clipPath id="clip_4">
+        <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+    </clipPath>
+    
+    <clipPath id="clip_1and2">
+        <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+        <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+    </clipPath>
+    
+    <clipPath id="clip_2and3">
+        <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+        <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+    </clipPath>
+    
+    <clipPath id="clip_3and4">
+        <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+        <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+    </clipPath>
+    
     <mask id="fade-mask"
      maskUnits="objectBoundingBox"
      maskContentUnits="objectBoundingBox"
@@ -142,40 +175,30 @@
       </linearGradient>
       <rect width="1" height="1" fill="url(#fade-gradient)" />
     </mask>
-  
+
   </defs>
-  
+
   <defs>
     <g id="ikon">
+
       <rect id="bg-paper" x="0" y="0" fill="url(#newsprint)" />
-      
+
       <g
        opacity="0.7"
        filter="url(#shake)"
        mask="url(#fade-mask)"
       >
-          
+
         <g id="panel-areas" transform="translate(0 80)">
-            
+
           <style>
-              
+
             #panel-areas circle {
               fill: var(--outline-color);
             }
-              
+
           </style>
-          
-          <defs id="panel-clips">
-              <clipPath id="clip_1and2">
-                  <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
-                  <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
-              </clipPath>
-              <clipPath id="clip_3and4">
-                  <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
-                  <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
-              </clipPath>
-          </defs>
-          
+
           <g class="first-two" clip-path="url(#clip_1and2)">
             <g id="panel_1">
               <mask id="dialog-mask-1" maskUnits="userSpaceOnUse">
@@ -199,9 +222,9 @@
                     <tspan>I wouldn't count on it.</tspan>
                 </text>
               </mask>
-                <circle r="190" cx="550" cy="340"
-                  mask="url(#dialog-mask-2)"
-                />
+              <circle r="190" cx="550" cy="340"
+                mask="url(#dialog-mask-2)"
+              />
             </g>
           </g>
           <g class="next-two" >
@@ -247,50 +270,50 @@
               </g>
             </g>
           </g>
-        
+
         </g>
-        
+
         <g id="title-group">
-            
+
           <rect id="title-line" x="12.5" y="12.5" />
-          
+
           <g id="title-graphic" transform="translate(25 20) scale(2.5)">
 
             <path id="LIVING" d="
-            
+
                 M 0 4.62 L 8.528 3.998 L 8.626 16.959 L 13.18 16.44 L 13.18 19.654 L 1.169 19.654 L 0 4.62 Z
-            
+
                 M 13.305 11.772 L 20.473 11.443 L 18.912 20.218 L 13.789 19.955 L 13.305 11.772 Z
-            
+
 
                 M 20.273 5.271 L 24.817 20.217 L 29.177 19.937 L 28.002 3.998 Z
                 M 27.064 19.937 L 30.31 20.217 L 34.392 4.532 L 30.96 3.348 L 27.064 19.937 Z
-                
-                
+
+
                 M 41.761 4.006 L 33.678 5.153 L 35.064 19.717 L 40.372 20.076 L 41.761 4.006 Z
-                
-            
+
+
                 M 41.761 5.271 L 47.812 3.998 L 55.237 19.073 L 49.943 20.31 L 41.761 5.271 Z
                 M 41.761 5.271 L 45.543 5.99 L 45.77 19.754 L 42.896 19.783 L 41.761 5.271 Z
                 M 50.234 3.998 L 54.745 4.532 L 55.237 19.073 L 51.243 17.206 L 50.234 3.998 Z
-                
-                
+
+
                 M 64.07 10.583 C 62.647 8.968 59.953 10.222 59.958 12.001 C 59.97 16.5 64.895 16.109 65.403 13.375 L 66.298 17.409 C 64.372 21.631 57.533 22.182 54.962 15.637 C 51.963 8.002 60.087 2.105 67.134 4.694 L 64.07 10.583 Z
                 M 69.317 20.502 L 64.681 20.046 L 65.038 13.279 L 63.132 13.878 L 62.587 11.473 L 68.319 11.473 L 69.317 20.502 Z
 
             "/>
 
             <path id="THINGS" d="
-            
+
                 M 92.019 6.86 L 87.447 6.208 L 88.457 19.198 L 80.182 19.792 L 80.084 6.832 L 75.53 7.35 L 75.53 4.136 L 92.492 3.861 L 92.019 6.86 Z
-                
+
                 M 90.907 4.728 L 98.109 3.543 L 98.109 19.762 L 92.296 20.132 L 90.907 4.728 Z
                 M 96.562 10.003 L 102.376 9.511 L 102.376 14.208 L 96.562 15.287 L 96.562 10.003 Z
                 M 99.939 3.543 L 104.899 3.543 L 104.899 19.573 L 101.179 19.762 L 99.939 3.543 Z
-            
-            
+
+
                 M 105.771 10.957 L 112.343 10.492 L 111.636 20.249 L 106.339 20.169 L 105.771 10.957 Z
-                
+
 
                 M 113.154 5.278 L 119.204 4.006 L 126.137 18.786 L 120.843 20.25 L 113.154 5.278 Z
                 M 113.154 5.278 L 116.935 5.988 L 117.219 19.803 L 113.871 20.076 L 113.154 5.278 Z
@@ -302,24 +325,24 @@
 
                 M 143.459 13.968 C 144.883 15.583 148.273 15.488 147.431 13.896 C 146.519 12.171 143.148 13.04 141.184 10.852 C 136.708 5.864 147.021 0 153.531 7.142 L 150.332 10.852 C 147.576 8.182 144.383 8.94 146.235 10.533 C 147.582 11.692 152.274 11.525 153.167 13.968 C 155.383 20.029 145.636 23.018 140.027 18.484 L 143.459 13.968 Z
 
-                
+
                 " />
 
             <g id="title-circs">
               <circle cx="17" cy="7.3" r="3.8" />
               <circle cx="109.2" cy="6.5" r="3.8" />
             </g>
-            
+
             <g id="title-hearts">
-                
+
               <path id="heart" d="M 16.089 4.464 C 20.26 0.852 25.207 8.953 14.734 12.088 C 6.118 5.836 13.26 -0.162 16.089 4.464 Z  M 15.831 6.053 C 19.07 2.662 22.505 8.426 14.986 10.611 C 8.76 5.827 13.959 2.006 15.831 6.053 Z" fill-rule="evenodd" />
 
               <path id="square" d=" M 105.92 9.623 L 105.528 2.75 L 113.085 3.039 L 112.365 9.623 L 105.92 9.623 Z  M 107.159 8.337 L 106.917 4.07 L 111.655 4.251 L 111.208 8.337 L 107.159 8.337 Z " fill-rule="evenodd" />
             </g>
-            
+
           </g>
         </g>
-        
+
         <g id="borders" transform="translate(0 80)" fill="none" stroke="var(--border-color, var(--outline-color, #000))" stroke-width="3">
           <g class="first-two">
             <path d="M12.5 12.5 H312.5 V388 H12.5Z" />
@@ -330,11 +353,11 @@
             <path d="M337.5 12.5 H637.5 V388 H337.5Z" />
           </g>
         </g>
-        
+
       </g>
     </g>
   </defs>
+
   <use href="#ikon"/>
-    
+
 </svg>
-        
