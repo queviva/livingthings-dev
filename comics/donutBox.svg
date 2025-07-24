@@ -64,8 +64,11 @@
   <g id="ikon">
           
     <g id="boxDude">
-        <ellipse id="shadow" cx="420" cy="485" rx="350" ry="16" fill="var(--dd-brown, #000)" />
+        
+        <!--<ellipse id="shadow" cx="420" cy="485" rx="350" ry="16" fill="var(-dd-brown, #000)" />-->
                 
+        <path d="M 20 472 H 420 L 690 500 H 240 Z " id="shadow" fill="var(--dd-brown, #000)" />
+        
         <clipPath id="nutClip">
             <path d="m640 85 h210 v150 h-50 l-56 -38q-25 28 -18 60v8H640z"/>
         </clipPath>
