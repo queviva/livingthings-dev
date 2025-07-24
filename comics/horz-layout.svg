@@ -283,7 +283,7 @@
     
   </defs>
   
-  <defs>
+  <defs id="ikon-def">
     <g id="ikon">
 
       <rect id="bg-paper" class="P3" x-data-no-port="1" x="0" y="0" fill="url(#newsprint)" />
@@ -297,8 +297,10 @@
         <g id="panel-areas" transform="translate(0 80)">
 
           <defs>
-            
-            <path id="thought-bubble" d="M -40 -10 C -65 -38 60 -36 30 -8 C 70 -18 70 13 45 10 C 75 16 72 -18 38 -13 C 65 -38 -70 -40 -45 -10 Z  M 6 24 C 5 29 -45 30 -37 8 C -70 12 -65 -12 -36 -10 C -70 -15 -72 14 -40 10 C -45 33 10 32 10 25 Z  M 52 10 C 66 25 2 30 0 20 C 2 34 66 29 58 10 Z "
+            <path id="thought-bubble" d="M -37.5 -8 A 38 14 0 1 1 37.5 -8 A 15 7 -15 0 1 40 3 A 30 14 0 0 1 -12.5 16 A 20 9 0 0 1 -39 3.5 A 9 6 0 0 1 -37.5 -8 Z "
+             fill="none" stroke="#000" stroke-width="3"
+            />
+            <path id="thought-bubble-x" d="M -40 -10 C -65 -38 60 -36 30 -8 C 70 -18 70 13 45 10 C 75 16 72 -18 38 -13 C 65 -38 -70 -40 -45 -10 Z  M 6 24 C 5 29 -45 30 -37 8 C -70 12 -65 -12 -36 -10 C -70 -15 -72 14 -40 10 C -45 33 10 32 10 25 Z  M 52 10 C 66 25 2 30 0 20 C 2 34 66 29 58 10 Z "
              fill="var(--outline-color, #000)"
             />
             
@@ -344,8 +346,14 @@
           
           <g id="3_panel_layout">
           <g class="P1of3" clip-path="url(#1of3)">
-              <use href="#hex" transform="translate(100 300)"/>
+              <use href="#hex" transform="translate(100 350)"/>
               <circle r="60" transform="translate(365 55)"/>
+              <use href="#thought-bubble" transform="translate(280 150)scale(1.5)"/>
+              <circle r="6" cx="240" cy="181" fill="none" stroke="#000" stroke-width="4"/>
+              <circle r="4" cx="230" cy="189" fill="none" stroke="#000" stroke-width="4"/>
+              <text text-anchor="middle" x="280" y="154">
+                  oh no
+              </text>
           </g>
           
           <g class="P2of3" clip-path="url(#1of3)">
