@@ -1,0 +1,558 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+ style="isolation:isolate;overflow:visible;"
+ viewBox="0 0 1300 480"
+>
+
+  <style id="comic-styles">
+      
+    @font-face {
+      font-family: 'Comic Neue';
+      src: url('neue.ttf') format('truetype');
+    }
+
+    :root {
+      --dd-pink: hsl(330, 80%, 57%);
+      --dd-pink-dark: hsl(330, 80%, 37%);
+      --dd-orange: hsl(31, 95%, 48.5%);
+      --dd-brown: hsl(36, 100%, 19%);
+      --outline-color: var(--dd-brown);
+      --border-color: var(--dd-brown);
+      --text-color: var(--dd-brown);
+      --donut-dark: rgb(213,170,106);
+      --donut-lite: rgb(242,225,200);
+      --show-decor: 1;
+      --show-hearts: 0;
+      /*
+      --circ-color: #ea0;
+      */
+    }
+
+    text {
+      font-family:'Comic Neue';
+      font-weight: 600;
+      font-size:25px;
+      fill: var(--text-color, var(--outline-color, #000));
+    }
+    
+    .text-bubble {
+      fill: none;
+      stroke: var(--text-color, var(--outline-color, #000));
+      stroke-width: 3px;
+    }
+    
+    .bub-line {
+      fill: var(--text-color, var(--outline-color, #000));
+    }
+
+    #copyright {
+      font-family:'Times New Roman';
+      font-weight: 300;
+      font-size:17px;
+      fill:var(--text-color, var(--outline-color, #000));
+    }
+
+    #title-line {
+      fill: var(--border-color, var(--outline-color, #000));
+      height: 2px;
+    }
+
+    #LIVING {
+      fill: var(--title-color, var(--outline-color, #000));
+    }
+
+    #THINGS {
+      fill: var(--title-color, var(--outline-color, #000));
+    }
+
+    #heart {
+      fill: var(--heart-color, var(--outline-color, #000));
+    }
+
+    #square {
+      fill: var(--square-color, var(--outline-color, #000));
+    }
+
+    #title-hearts {
+      opacity: var(--show-hearts, 1);
+    }
+
+    #title-circs {
+      opacity: calc(1 - var(--show-hearts, 1));
+      fill: var(--circ-color, var(--outline-color, #000));
+    }
+    
+  </style>
+
+  <style id="port-scrape-styles">
+        
+    #bg-paper[data-no-port] {
+        width: 1300px;
+        height: 480px;
+    }
+    
+    #title-line[data-no-port] {
+        width: 1275px;
+    }
+    
+    @media(orientation: portrait) {
+      #bg-paper:not([data-no-port]) {
+        width: 650px;
+        height: 882.5px;
+      }
+      .next-two:not([data-no-port]) {
+        transform: translate(0, 400px);
+      }
+      #title-line:not([data-no-port]) {
+        width: 625px;
+      }
+      #panelDecor {
+        --show-decor: 1;
+      }
+    }
+
+    @media(orientation: landscape) {
+      #bg-paper:not([data-no-port]) {
+        width: 1300px;
+        height: 480px;
+      }
+      .next-two:not([data-no-port]) {
+        transform: translate(650px, 0);
+      }
+      #title-line:not([data-no-port]) {
+        width: 1275px;
+      }
+      #panelDecor {
+        --show-decor: 0;
+      }
+    }
+    
+  </style>
+
+  <style id="3-panel-port-styles">
+      
+    @media(orientation: portrait) {
+      #bg-paper.P3:not([data-no-port]) {
+        width: 434px;
+        height: 1260px;
+      }
+      #title-line.P3:not([data-no-port]) {
+        width: 408px;
+      }
+      .P2of3 {
+        transform: translate(0px, 388px);
+      }
+      .P3of3 {
+        transform: translate(0px, 776px);
+      }
+    }
+      
+    @media(orientation: landscape) {
+      #bg-paper.P3:not([data-no-port]) {
+        width: 1300px;
+        height: 480px;
+      }
+      #title-lineP3.:not([data-no-port]) {
+        width: 1275px;
+      }
+      .P2of3 {
+        transform: translate(432.5px, 0px);
+      }
+      .P3of3 {
+        transform: translate(865.5px, 0px);
+      }
+    }
+    
+  </style>
+  
+  <defs id="donutbox-grads-n-masks">
+      
+      <pattern id="dotz" viewBox="-2 -2 4 4" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1)">
+        <circle r="1" fill="#fff" transform="scale(0.7)" />
+      </pattern>
+      
+      <pattern id="orangeDotz" width="4" height="4" viewBox="-2 -2 4 4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1)">
+        <path d="M-2 -2h4v4h-4z" fill="var(--dd-orange)" />
+        <circle r="0.5" fill="#fff" />
+      </pattern>
+      
+      <linearGradient id="donutFade" gradientUnits="objectBoundingBox">
+        <stop offset="0%" stop-color="var(--donut-lite)" />
+        <stop offset="90%" stop-color="var(--donut-dark)" />
+      </linearGradient>
+
+      <linearGradient id="fade6" href="#donutFade" gradientTransform="rotate(-45)" />
+      <linearGradient id="fade7" href="#donutFade" gradientTransform="translate(-0.5 0)" />
+      <linearGradient id="fade8" href="#donutFade" gradientTransform="rotate(45) translate(-0.25 0)" />
+      
+      <mask id="fade-mask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+        <linearGradient id="fade-gradient" gradientTransform="rotate(-30)">
+          <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+          <stop offset="20%" stop-color="#fff" stop-opacity="0" />
+        </linearGradient>
+        <rect width="1" height="1" fill="url(#fade-gradient)" />
+      </mask>
+
+  </defs>
+   
+  <defs id="patts-n-filters">
+
+    <pattern id="hatch" viewBox="-2 -2 4 4" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(3)">
+      <path d="M-2 0 H2 M0 -2 V2"
+       fill="none"
+       stroke="var(--dot-color,var(--outline-color, #000))"
+       stroke-width="0.5"
+       transform="scale(1)"
+      />
+    </pattern>
+
+    <linearGradient id="fade" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" />
+    </linearGradient>
+
+    <filter id="blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.3" />
+    </filter>
+
+    <filter id="shake" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feImage href="newsprint.jpg" x="0" y="0" width="120%" height="120%" preserveAspectRatio="xMidYMid slice" result="mig" />
+      <feDisplacementMap in="SourceGraphic" in2="mig" result="rat" scale="20" xChannelSelector="R" yChannelSelector="B" />
+      <feGaussianBlur in="rat" stdDeviation="0.3" result="blur" />
+      <!-- shift image back based on displacement's scale -->
+      <feOffset in="blurred" dx="6.5" dy="5" result="final" />
+    </filter>
+
+    <pattern id="newsprint" patternUnits="userSpaceOnUse" width="600" height="800">
+      <image href="newsprint.jpg" width="600" height="800" preserveAspectRatio="none" />
+    </pattern>
+
+  </defs>
+
+  <defs id="clips-n-masks">
+    
+    <!--
+        1of4 _AND_ 3of4
+        M12.5 12.5 H312.5 V388 H12.5Z
+        
+        2of4 AND 4of4
+        M337.5 12.5 H637.5 V388 H337.5Z
+        
+        1and2of4 _AND_ 3and4of4
+        M12.5 12.5 H 637.5 V388 H12.5Z
+        
+        2and3of4
+        M337.5 12.5 H650 V388 H337.5Z
+        M0 12.5 H312.5 V388 H0Z
+        
+        1of3
+        M13 12.5 H421 V388 H 13Z
+        
+        2of3
+        M446 12.5 H854 V388 H 446Z
+        
+        3of3
+        M879 12.5 H1287 V388 H 879Z
+
+        full-size
+        M12.5 12.5 H1287.5 V388 H12.5Z
+        
+    -->
+
+      <clipPath id="1and2of4">
+        <path d="M12.5 12.5 H 637.5 V388 H12.5Z "/>
+      </clipPath>
+  
+    
+    <mask id="fade-mask"
+     maskUnits="objectBoundingBox"
+     maskContentUnits="objectBoundingBox"
+    >
+      <linearGradient id="fade-gradient"
+       x1="0%" y1="100%"
+       x2="90%" y2="0%"
+      >
+        <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+        <stop offset="100%" stop-color="#fff" stop-opacity="0.2" />
+      </linearGradient>
+      <rect width="1" height="1" fill="url(#fade-gradient)" />
+    </mask>
+
+  </defs>
+
+  <defs id="line-caps">
+      
+    <marker id="slant-cap" markerWidth="3" markerHeight="1"
+            refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d=" M 0 0 L 1 0 L 3 1 L 0 1 Z" fill="context-stroke"/>
+    </marker>
+    
+    <marker id="point-cap"
+      markerWidth="4" markerHeight="1"
+      refX="1" refY="0.5"
+      orient="auto-start-reverse"
+      markerUnits="strokeWidth"
+    >
+      <path d="M0 0.5 L1 0 L4 0.5 L1 1 Z" fill="context-stroke"/>
+    </marker>
+    
+  </defs>
+  
+  <defs id="ikon-def">
+    <g id="ikon">
+
+      <rect id="bg-paper" class="P2" x-data-no-port="1" x="0" y="0" fill="url(#newsprint)" />
+
+      <g id="entire-comic"
+       x-opacity="0.7"
+       x-filter="url(#shake)"
+       x-mask="url(#fade-mask)"
+      >
+
+        <g id="panel-area" transform="translate(0 80)">
+
+          <g class="first-two" clip-path="url(#1and2of4)">
+            
+            <!--<circle r="200" cx="200" cy="200" fill="#909"/>-->
+                      
+            <g id="boxDude" transform="translate(-18 167) scale(0.45)">
+                
+                <!--<ellipse id="shadow" cx="420" cy="485" rx="350" ry="16" fill="var(-dd-brown, #000)" />-->
+                        
+                <path d="M 40 472 H 420 L 690 488 L 280 500 Z " id="shadow" fill="var(--dd-brown, #000)" />
+                
+                <g id="nut">
+                    
+                    <path id="nutFill" d="M 657 200 a 99 72 -38 1 1 0 0.01z M762 154 q-50 25 -33 56 Q785 194 762 154Z " fill="url(#fade8)"/>
+                
+                    <path id="nutOutlinez" d="M 642 199 a 108 78 -30 1 1 0 0.01 z M 659 200 a 96 68 -38 1 1 0 0.01 z M 735 205 C 726 196 723 177 758 158 C 769 168 768 179 763 189 C 765 188 767 187 768 187 C 771 176 771 164 767 153 C 770 152 774 150 777 149 L 786 144 C 724 158 711 198 729 210
+                    Z" fill-rule="evenodd" fill="rgb(97,58,0)"/>
+                </g>
+                    
+                <path id="frontPanel" d="
+                M 374 487 L 622 359  L 817 301 Q 808 270 790 244 L 812 185 Q 760 180 718 215 Q 715 260 742 298  C 684 318 634 331 588 338 L 590 322 L 564 326 L 581 265 C 477 315 363 336 239 328 C 255 363 264 387 267 404 L 257 411 L 282 408 L 275 414 C 274 445 271 472 264 487 Z " fill="var(--dd-pink, #fff)"/>
+                
+                <path id="sidePanel" d="m 160 475 l -9 -76 l 7 -16 l -60 -102 c 30 26 77 41 141 47 c 16 35 25 59 28 76 l -10 7 l 25 -3 l -7 6 c -1 31 -4 58 -11 73 z" fill="var(--dd-orange, #fff)" />
+                
+                <g id="panelDecor" opacity="var(--show-decor, 0)" fill="#fff" fill-opacity="0.1" stroke="#fff" stroke-width="3" stroke-opacity="0.3">
+                    
+                    <path d="M 381 484 C 387 456 342 434 274 437 C 248 421 218 445 239 487 L 160 479 L 159 427 C 159 418 161 405 172 401 L 178 402 C 188 372 231 355 262 383 C 380 348 503 371 501 423 L 381 484 Z " />
+                        
+                    <!--<path d="M 192 324 C 211 344 218 372 212 408 L 201 407 C 193 444 179 461 158 458 L 151 400 L 159 383 C 171 365 169 341 155 312 L 192 324 Z " />-->
+                    
+                    <!--<path d="M 314 492 C 322 418 380 345 456 312 L 529 287 C 535 300 535 316 529 335 C 537 334 543 339 546 350 Q 600 344 600 368 L 525 410 C 516 341 440 347 410 479 L 314 492 Z " />-->
+                </g>
+                
+                <path id="throat" d=" M 168 163 C 205 145 242 134 277 130 L 314 179 C 379 176 442 166 502 151 C 462 178 441 211 438 250 C 468 269 506 278 554 277 C 359 349 207 351 99 282 C 116 243 139 203 168 163 Z " fill="var(--outline-color,#000)"/>
+                
+                <path id="lidTop" d=" M 233 89 C 341 47 455 34 577 49 L 578 53 Q 396 41 273 130 C 238 134 203 146 170 166 L 233 89 Z " fill="url(#fade6)"/>
+                    
+                <path id="lidFace" d="M 592 111 L 587 52 L 578 53 Q 396 41 273 129 Q 291 155 314 182 C 426 174 518 150 592 111 Z " fill="url(#fade7)"/>
+                    
+                <g id="boxOutlinez" fill="var(--outline-color,#000)">
+                    
+                    <path d=" M 250 350 C 259 369 265 386 269 403 L 279 400 L 261 410 C 272 407 285 406 301 407 C 290 408 283 411 277 414 C 277 434 275 452 272 467 L 267 474 C 272 454 274 435 273 416 L 259 423 L 278 410 C 272 410 262 411 247 414 L 265 405 C 262 387 256 368 246 347 L 250 350 Z " fill="var(--dd-pink-dark,rgba(0,0,0,0.4))" />
+                    
+                    <path d="
+                    M 104 287 C 127 323 151 359 171 400 L 164 400 C 146 365 120 330 93 284 C 114 225 164 153 231 85 C 354 39 474 26 592 48 L 597 111 C 541 150 445 175 310 187 L 269 136 C 225 139 184 159 145 197 L 171 158 C 213 137 246 128 280 124 L 320 175 C 431 167 519 143 585 105 L 578 53 C 472 38 359 52 237 97 C 175 152 128 220 104 287 Z
+                    
+                    M 158 398 L 198 403 L 192 405 L 161 401 L 158 398 Z
+                    
+                    M 571 324 L 558 327 C 562 308 567 289 574 270 C 398 354 185 356 103 290 L 102 280 C 181 343 398 346 590 256 C 578 283 572 306 571 324 Z
+                    
+                    M 513 340 C 537 331 565 323 594 318 C 595 325 595 332 593 338 L 582 339 C 584 334 585 329 584 325 C 565 328 541 332 513 340 Z
+                    
+                    M 534 353 L 580 331 L 577 335 L 541 354 L 534 353 Z
+                
+                    M 512 142 C 468 186 446 222 446 251 C 480 268 518 275 561 270 L 541 281 C 490 281 454 271 430 255 C 434 225 449 192 486 152 Z
+
+                    M 365 80 Q 470 40 585 50 V55 Q475 42 365 80 Z
+                    
+                              
+                    M 741 302.5 C 687 322 595 341 545 350 L 567 339 C 605 335 688 317 737 297 Z
+                    
+                    M 267 497 L 155 484 C 156 450 153 422 143 401 L 155 373 L 160 385 L 152 401 C 160 425 164 448 164 470 L 271 483 C 326 483 360 483 394 471 C 481 434 602 340 812 299  Q 800 255 772 227 Q 815 253 831 312  C 502 366 532 450 379 492 C 362 494 324 496 267 497 Z
+                    
+                    M 752 318 Q 702 270 710 217 Q 755 170 816 183 Q 797 223 798 251 L 786 238 Q 790 215 800 193 Q 760 185 722 218 Q 730 270 812 299 Z
+                    
+                    " />
+                    
+                    <!--
+                    M 265 128 C 317 93 372 72 429 62 C 370 79 320 103 279 134 L 265 128 Z
+                    -->
+                  
+                </g>
+                
+            </g>
+
+          </g>
+          <g class="next-two" clip-path="url(#1and2of4)">
+
+            <g transform="translate(380 160)">
+              <ellipse cx="104" cy="219" rx="98" ry="3" fill="rgb(55,33,0)"/>
+
+              <path d=" M 58.4 8 C 80 36.55 87.27 93 65 125 Q 72 124 77 124 L 76 132 L 85 137 Q 87 138 83.92 141 C 81 145 72 152 68 154 C 85 154 112.93 168 121 188 C 154.47 195 180 195 199 188 L 215 126 L 195 97 L 154 78.55 L 166 41 L 152 4 C 119.19 2 88 4 58.4 8 Z " fill="rgb(97,58,0)"/>
+
+              <path d=" M 103 75 C 97 82 85 82 82 78.09 C 80 103 75 115 64 125 L 82 122 L 80 134 L 86 135 L 89.07 127 L 94 126 L 99 125 L 92 128 L 92 141 Q 83.32 148 76 154 C 93 157 110 170 121 188 L 138 148 L 141 131 L 159 136 C 148 132 139 124 143 124 C 126 119 101 85 103 75 Z " fill="rgb(85,52,2)"/>
+
+              <path d=" M 32 7 L 38 17 Q -6 75 44 119 C 42.18 123 40 126 38 130 C 47 120 56 112 65 105 C 75 77.21 71.76 51 58 25 L 32 7 Z " fill="rgb(185,185,185)"/>
+
+              <path d=" M 62 156 C 82 150 108.16 161 121 188 C 145 193 171 195 199 188 L 183.23 213 L 125 212.27 L 70 181 L 62 156 Z " fill="rgb(185,185,185)"/>
+
+              <path d=" M 47 20 L 56 7 C 86 28 93 98 62 125 C 58 124 54 121 52 117 C 55 113 59 108.99 64 106 C 72 85 70 59 56 25 L 47 20 Z " fill="rgb(235,213,179)"/>
+
+              <path d=" M 77 123 L 76 132.25 L 85 136 L 84 141 L 67 154 L 81 156 L 94 141 L 99 126 L 89.07 127 L 83 122 L 77 123 Z " fill="rgb(235,213,179)"/>
+
+              <path d=" M 39 18 L 33 8.5 C 1 49 6 91 39 130 L 46 120 C 13 103.21 11.4 39 39 18 Z " fill="rgb(40,40,40)"/>
+
+              <path d=" M 168 47 L 158 80 L 195 100 L 168 47 Z " fill="rgb(0,0,0)"/>
+
+              <path d=" M 162 34 L 158 52 L 147 68 L 141 78.09 L 144 94 L 150 100 L 163 94 L 184 106 L 203 110 L 203 109 L 195 98 L 166 80 L 164 75 L 169 50 L 162 34 Z " fill="#ea0" x-fill="rgb(249,202,131)"/>
+
+              <path d=" M 24 67 C 31 73 39 73 48 67 C 47 116 29 104 27 73 L 21 68 L 24 67 Z " fill="rgb(0,0,0)"/>
+
+              <path d=" M 33 7 C 59.27 41 65.5 78 52 117 L 37 127 C 66 107 60 41 30 7 L 33 7 Z " fill="rgb(0,0,0)"/>
+
+              <path d=" M 40 19 C 31 27 24 39 20.87 53 C 21 39 27 26 37 16 Z " fill="rgb(0,0,0)"/>
+
+              <path d=" M 24 93.01 C 31 106 37 115 46 118 L 45 121 C 36.47 119 30 109 24 93.01 Z " fill="rgb(0,0,0)"/>
+
+              <path d=" M 60 113 C 70.35 79.81 68 49 53 21 L 54 16.59 C 73 50 77 84 61 116 L 60 113 Z " fill="rgb(0,0,0)"/>
+
+              <path d=" M 50 119 Q 57 126 61 127 C 68 127 82 108 82 78.09 C 78 110 66 122 61 123 C 57 123 54 121 52 117 L 50 119 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 45 18 Q 51 6 57 6 C 65 6 76 21 80 51 C 72 22 61 10 58 10 C 55 10 52 14 50 21 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 85 119 C 78.03 122 71 124 64 123 L 62.36 127 C 70 127 76 125 83 121 L 85 119 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 75 123 L 74 133 L 85 138 L 87 134 L 78 131 L 80 121 L 75 123 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 101 190 C 89.41 179 81 170 73 172 C 91 162.41 102 204 141 211 C 152 212 165 212 179 211 L 183.23 215 L 125 212.27 C 117.91 205 107 196 101 190 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 78 172 Q 81 178 96 184 Q 81 170 78 172 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 82 125 L 82 123 Q 101 95 103 66.99 Q 106 94.83 82 125 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 69 153 C 91 151.95 108 162 119 183 L 115.27 181 C 98.35 160 84 154 68 157 L 69 153 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 195 190 C 173 196 150 196 124 188 L 125 188 C 154.39 194 180 193 199 184.95 L 195 190 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 181 215 L 183.23 215 L 179 211 C 165 212 152 212 141 211 C 136 210 127 210 120 207.3 C 98 197 79 184 75 179 C 70 172.09 68 165 68 157 L 87 141 L 91 126 L 87 127 L 82 142 L 61.75 154 C 62 164.75 65 177 69 185 Q 93 205 124 219 L 182 219 L 181 215 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 85 141 C 88 141 91 140.84 95 141 C 90 141 87 142 83 143 L 85 141 Z " fill="rgb(0,0,0)"/>
+
+              <path d=" M 116 122 C 136 125.8 154 131 170 141 L 166 142 C 148 132 125 126 102 124 L 116 122 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 121 187 L 126 183 L 121 185 L 125 181 L 123.97 181 L 118 186 L 123 185 L 121 187 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 168 82 C 168 86 167 89 166 92 L 166 92 L 166 92 L 166 92 C 176 99 189 106 203 110 L 206 115 C 187 109 173 103 163 96 C 160 99 155 102 151 102 C 146 102 134.01 84.55 142 72 C 146.18 67 162 47 162 25 L 166 36 C 163.08 50 153 62 146 73 C 141.01 82 144 94 152 96 C 160 98 163 87 164 81 C 164 71 151 70 153 84.61 C 150 80 152 75 154 73 C 157 71 159 70 162 71 C 164 64 166 57 168 48 L 170 52 C 169 62 166 66 165 74 C 166 75 167 77 167 79 C 169 80.8 172 83 174 84 Q 176 72 173.89 59 L 176 62 Q 177 71.2 176 84 L 176 84 C 177 85 178 86 179 86.13 C 179 81 179 75 179 68 L 180 70 C 181 75 181 81 180 87 C 181 87 182 88 183 88 C 183 85 183 81 183.23 77 L 185 77 C 185 81 185 84.27 184 88 C 187 90 191 91 194 92.84 L 198 100
+              Z " fill-rule="evenodd" fill="rgb(217,138,19)"/>
+
+              <path d=" M 155 0 C 128 -3.11 95 -1 56 6 L 61 10 C 97 4 127 2 152 6 C 165 52 187 91 212 128 C 205 149 200 170 195 190 C 190 199 183 208.53 176 213 L 182 219 Q 197 203 203 190 C 206 168 212 146 218.58 125 C 192 96 171 54 155 0 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 77 11 C 103 7 130 7 149 10 Q 171 74 203 122 L 198 119 Q 172 83 147 16.59 C 131 12 115 11 83 13 L 77 11 Z " fill="rgb(255,255,255)" fill-opacity="0.22"/>
+
+              <path d=" M 145.43 126 Q 159 128 172 131 L 168 132 Q 159 130 146 127 C 145.44 127 143 126 145.43 126 Z " fill="rgb(255,255,255)" fill-opacity="0.22"/>
+
+              <path d=" M 196 111 C 181 85 169 61 160.36 39 L 158 45 L 191 110 L 196 111 Z " fill="rgb(255,255,255)" fill-opacity="0.48"/>
+
+              <path d=" M 145 134 C 154 136 163 140 171 147 L 169 147 C 161 141 153 138 144 135 C 143 134 143 133 145 134 Z " fill="rgb(255,255,255)" fill-opacity="0.22"/>
+
+              <path d=" M 83.89 127.47 L 85 129 Q 120 119 156 127 Q 124 114 83.89 127.47 Z " fill="rgb(55,33,0)"/>
+
+              <path d=" M 58 27 C 49 23 40 17 34 9 C 4 43 6 88 38 127 C 46 118 57 108 67 101 L 64 109 C 50 116 40 135 38 133 C 8 97 -1 48.37 33 1 C 40.62 11 48 18 56 22 L 58 27 L 58 27 Z " fill="rgb(0,0,0)"/>
+
+            </g>
+              
+          </g>
+          
+        </g>
+
+        <g id="title-group">
+
+          <rect id="title-line" class="P2" x-data-no-port="1" x="12.5" y="12.5" />
+
+          <g id="title-graphic" transform="translate(25 20) scale(2.5)">
+
+            <path id="LIVING" d="
+
+                M 0 4.62 L 8.528 3.998 L 8.626 16.959 L 13.18 16.44 L 13.18 19.654 L 1.169 19.654 L 0 4.62 Z
+
+                M 13.305 11.772 L 20.473 11.443 L 18.912 20.218 L 13.789 19.955 L 13.305 11.772 Z
+
+
+                M 20.273 5.271 L 24.817 20.217 L 29.177 19.937 L 28.002 3.998 Z
+                M 27.064 19.937 L 30.31 20.217 L 34.392 4.532 L 30.96 3.348 L 27.064 19.937 Z
+
+
+                M 41.761 4.006 L 33.678 5.153 L 35.064 19.717 L 40.372 20.076 L 41.761 4.006 Z
+
+
+                M 41.761 5.271 L 47.812 3.998 L 55.237 19.073 L 49.943 20.31 L 41.761 5.271 Z
+                M 41.761 5.271 L 45.543 5.99 L 45.77 19.754 L 42.896 19.783 L 41.761 5.271 Z
+                M 50.234 3.998 L 54.745 4.532 L 55.237 19.073 L 51.243 17.206 L 50.234 3.998 Z
+
+
+                M 64.07 10.583 C 62.647 8.968 59.953 10.222 59.958 12.001 C 59.97 16.5 64.895 16.109 65.403 13.375 L 66.298 17.409 C 64.372 21.631 57.533 22.182 54.962 15.637 C 51.963 8.002 60.087 2.105 67.134 4.694 L 64.07 10.583 Z
+                M 69.317 20.502 L 64.681 20.046 L 65.038 13.279 L 63.132 13.878 L 62.587 11.473 L 68.319 11.473 L 69.317 20.502 Z
+
+            "/>
+
+            <path id="THINGS" d="
+
+                M 92.019 6.86 L 87.447 6.208 L 88.457 19.198 L 80.182 19.792 L 80.084 6.832 L 75.53 7.35 L 75.53 4.136 L 92.492 3.861 L 92.019 6.86 Z
+
+                M 90.907 4.728 L 98.109 3.543 L 98.109 19.762 L 92.296 20.132 L 90.907 4.728 Z
+                M 96.562 10.003 L 102.376 9.511 L 102.376 14.208 L 96.562 15.287 L 96.562 10.003 Z
+                M 99.939 3.543 L 104.899 3.543 L 104.899 19.573 L 101.179 19.762 L 99.939 3.543 Z
+
+
+                M 105.771 10.957 L 112.343 10.492 L 111.636 20.249 L 106.339 20.169 L 105.771 10.957 Z
+
+
+                M 113.154 5.278 L 119.204 4.006 L 126.137 18.786 L 120.843 20.25 L 113.154 5.278 Z
+                M 113.154 5.278 L 116.935 5.988 L 117.219 19.803 L 113.871 20.076 L 113.154 5.278 Z
+                M 121.85 4.147 L 126.137 4.154 L 126.137 18.786 L 122.636 17.213 L 121.85 4.147 Z
+
+                M 141.076 20.076 L 136.283 20.751 L 136.817 13.437 L 133.781 14.336 L 133.235 11.931 L 140.079 11.721 L 141.076 20.076 Z
+
+                M 135.83 10.503 C 134.407 8.889 131.718 10.143 131.718 11.921 C 131.718 16.704 135.775 16.905 137.573 14.602 L 138.058 17.329 C 136.132 21.551 128.383 22.151 126.235 15.557 C 123.7 7.774 131.847 2.025 138.894 4.615 L 135.83 10.503 Z
+
+                M 143.459 13.968 C 144.883 15.583 148.273 15.488 147.431 13.896 C 146.519 12.171 143.148 13.04 141.184 10.852 C 136.708 5.864 147.021 0 153.531 7.142 L 150.332 10.852 C 147.576 8.182 144.383 8.94 146.235 10.533 C 147.582 11.692 152.274 11.525 153.167 13.968 C 155.383 20.029 145.636 23.018 140.027 18.484 L 143.459 13.968 Z
+
+
+                " />
+
+            <g id="title-circs">
+              <circle cx="17" cy="7.3" r="3.8" />
+              <circle cx="109.2" cy="6.5" r="3.8" />
+            </g>
+
+            <g id="title-hearts">
+
+              <path id="heart" d="M 16.089 4.464 C 20.26 0.852 25.207 8.953 14.734 12.088 C 6.118 5.836 13.26 -0.162 16.089 4.464 Z  M 15.831 6.053 C 19.07 2.662 22.505 8.426 14.986 10.611 C 8.76 5.827 13.959 2.006 15.831 6.053 Z" fill-rule="evenodd" />
+
+              <path id="square" d=" M 105.92 9.623 L 105.528 2.75 L 113.085 3.039 L 112.365 9.623 L 105.92 9.623 Z  M 107.159 8.337 L 106.917 4.07 L 111.655 4.251 L 111.208 8.337 L 107.159 8.337 Z " fill-rule="evenodd" />
+            </g>
+
+          </g>
+        </g>
+
+        <g id="borders" transform="translate(0 80)" fill="none" stroke="var(--border-color, var(--outline-color, #000))" stroke-width="3" marker-start="url(#slant-cap)" marker-end="url(#slant-cap)">
+          
+          <!-- full-size border corners -->
+          <g class="first-two">
+            <path d="M12.5 180 V12.5 H500"/>
+          </g>
+          <g class="next-two">
+            <path d="M540 388 H637.5 V100"/>
+          </g>
+        </g>
+        
+      </g>
+    </g>
+    
+  </defs>
+
+  <use href="#ikon"/>
+
+</svg>

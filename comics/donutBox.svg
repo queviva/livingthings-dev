@@ -67,13 +67,9 @@
         
         <!--<ellipse id="shadow" cx="420" cy="485" rx="350" ry="16" fill="var(-dd-brown, #000)" />-->
                 
-        <path d="M 20 472 H 420 L 690 500 H 240 Z " id="shadow" fill="var(--dd-brown, #000)" />
+        <path d="M 40 472 H 420 L 690 488 L 280 500 Z " id="shadow" fill="var(--dd-brown, #000)" />
         
-        <clipPath id="nutClip">
-            <path d="m640 85 h210 v150 h-50 l-56 -38q-25 28 -18 60v8H640z"/>
-        </clipPath>
-        
-        <g id="nut" clip-path="url(#nutClip)">
+        <g id="nut">
             
             <path id="nutFill" d="M 657 200 a 99 72 -38 1 1 0 0.01z M762 154 q-50 25 -33 56 Q785 194 762 154Z " fill="url(#fade8)"/>
         
@@ -81,7 +77,7 @@
             Z" fill-rule="evenodd" fill="rgb(97,58,0)"/>
         </g>
             
-        <defs>
+        <defs id="frontPanelDef">
         <path id="frontPanel" d="
         M 374 487 L 622 359  L 817 301 Q 808 270 790 244 L 812 185 Q 760 180 718 215 Q 715 260 742 298  C 684 318 634 331 588 338 L 590 322 L 564 326 L 581 265 C 477 315 363 336 239 328 C 255 363 264 387 267 404 L 257 411 L 282 408 L 275 414 C 274 445 271 472 264 487 Z " />
         </defs>
@@ -108,7 +104,7 @@
             
         <path id="lidFace" d="M 592 111 L 587 52 L 578 53 Q 396 41 273 129 Q 291 155 314 182 C 426 174 518 150 592 111 Z " fill="url(#fade7)"/>
             
-        <g id="boxOutline" fill="var(--outline-color,#000)">
+        <g id="boxOutlinez" fill="var(--outline-color,#000)">
             
             <path d=" M 250 350 C 259 369 265 386 269 403 L 279 400 L 261 410 C 272 407 285 406 301 407 C 290 408 283 411 277 414 C 277 434 275 452 272 467 L 267 474 C 272 454 274 435 273 416 L 259 423 L 278 410 C 272 410 262 411 247 414 L 265 405 C 262 387 256 368 246 347 L 250 350 Z " fill="var(--dd-pink-dark,rgba(0,0,0,0.4))" />
             
@@ -142,8 +138,8 @@
           
         </g>
         
-      </g>
-  
+    </g>
+
   </g>
 </defs>
 

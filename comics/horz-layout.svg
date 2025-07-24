@@ -2,6 +2,7 @@
  style="isolation:isolate;overflow:visible;"
  viewBox="0 0 1300 480"
 >
+<!-- :%s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g -->
 
   <style id="comic-styles">
       
