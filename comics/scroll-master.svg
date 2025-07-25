@@ -1,0 +1,390 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+ style="isolation:isolate;overflow:visible;"
+ viewBox="0 0 1300 480"
+>
+<!--
+  :%s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
+ -->
+
+  <style id="comic-styles">
+      
+    @font-face {
+      font-family: 'Comic Neue';
+      src: url('neue.ttf') format('truetype');
+    }
+
+    :root {
+      --pinkie-color: hsl(320,100%,90%);
+      --foot-color: hsla(320,100%,40%,0.3);
+      /*
+      --outline-color: #000;
+      --border-color: #000;
+      --text-color: #000;
+      --dot-color: #000;
+      --show-hearts: 0;
+      --circ-color: #ea0;
+      */
+    }
+
+    text {
+      font-family:'Comic Neue';
+      font-weight: 400;
+      font-size: 50px;
+      fill: var(--text-color, var(--outline-color, #000));
+    }
+    
+    .text-bubble {
+      fill: none;
+      stroke: var(--text-color, var(--outline-color, #000));
+      stroke-width: 3px;
+    }
+    
+    .bub-line {
+      fill: var(--text-color, var(--outline-color, #000));
+    }
+    
+
+    #copyright {
+      font-family:'Times New Roman';
+      font-weight: 300;
+      font-size:17px;
+      fill:var(--text-color, var(--outline-color, #000));
+    }
+
+    #title-line {
+      fill: var(--border-color, var(--outline-color, #000));
+      height: 2px;
+    }
+
+    #LIVING {
+      fill: var(--title-color, var(--outline-color, #000));
+    }
+
+    #THINGS {
+      fill: var(--title-color, var(--outline-color, #000));
+    }
+
+    #heart {
+      fill: var(--heart-color, var(--outline-color, #000));
+    }
+
+    #square {
+      fill: var(--square-color, var(--outline-color, #000));
+    }
+
+    #title-hearts {
+      opacity: var(--show-hearts, 1);
+    }
+
+    #title-circs {
+      opacity: calc(1 - var(--show-hearts, 1));
+      fill: var(--circ-color, var(--outline-color, #000));
+    }
+    
+    </style>
+
+  <style id="port-scrape-styles">
+        
+    #bg-paper[data-no-port] {
+        width: 1300px;
+        height: 480px;
+    }
+    
+    #title-line[data-no-port] {
+        width: 1275px;
+    }
+    
+    @media(orientation: portrait) {
+      #bg-paper:not([data-no-port]) {
+        width: 650px;
+        height: 882.5px;
+      }
+      .next-two:not([data-no-port]) {
+        transform: translate(0, 400px);
+      }
+      #title-line:not([data-no-port]) {
+        width: 625px;
+      }
+      #thought-circles {
+        transform: translate(280px, 175px) rotate(335deg);
+      }
+    }
+
+    @media(orientation: landscape) {
+      #bg-paper:not([data-no-port]) {
+        width: 1300px;
+        height: 480px;
+      }
+      .next-two:not([data-no-port]) {
+        transform: translate(650px, 0);
+      }
+      #title-line:not([data-no-port]) {
+        width: 1275px;
+      }
+      #thought-circles {
+        transform: translate(500px, 170px) rotate(310deg);
+      }
+    }
+    
+  </style>
+
+  <defs id="patts-n-filters">
+
+    <pattern id="hatch" viewBox="-2 -2 4 4" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(3)">
+      <path d="M-2 0 H2 M0 -2 V2"
+       fill="none"
+       stroke="var(--dot-color,var(--outline-color, #000))"
+       stroke-width="0.5"
+       transform="scale(1)"
+      />
+    </pattern>
+
+    <pattern id="dotz" viewBox="-2 -2 4 4" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1)">
+      <circle r="1" fill="var(--dot-color,var(--outline-color, #000))" transform="scale(1)" />
+    </pattern>
+
+    <linearGradient id="fade" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" />
+    </linearGradient>
+
+    <filter id="blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.3" />
+    </filter>
+
+    <filter id="shake" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feImage href="newsprint.jpg" x="0" y="0" width="120%" height="120%" preserveAspectRatio="xMidYMid slice" result="mig" />
+      <feDisplacementMap in="SourceGraphic" in2="mig" result="rat" scale="20" xChannelSelector="R" yChannelSelector="B" />
+      <feGaussianBlur in="rat" stdDeviation="0.3" result="blur" />
+      <!-- shift image back based on displacement's scale -->
+      <feOffset in="blurred" dx="6.5" dy="5" result="final" />
+    </filter>
+
+    <pattern id="newsprint" patternUnits="userSpaceOnUse" width="600" height="800">
+      <image href="newsprint.jpg" width="600" height="800" preserveAspectRatio="none" />
+    </pattern>
+
+  </defs>
+
+  <defs id="clips-n-masks">
+    
+    <clipPath id="1and2of4">
+      <path d="M12.5 12.5 H 637.5 V388 H12.5Z"/>
+    </clipPath>
+
+    <mask id="fade-mask"
+     maskUnits="objectBoundingBox"
+     maskContentUnits="objectBoundingBox"
+    >
+      <linearGradient id="fade-gradient"
+       x1="0%" y1="100%"
+       x2="90%" y2="0%"
+      >
+        <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+        <stop offset="100%" stop-color="#fff" stop-opacity="0.2" />
+      </linearGradient>
+      <rect width="1" height="1" fill="url(#fade-gradient)" />
+    </mask>
+
+  </defs>
+
+  <defs id="line-caps">
+      
+    <marker id="slant-cap" markerWidth="3" markerHeight="1"
+            refX="1" refY="0.5" orient="auto" markerUnits="strokeWidth">
+      <path d=" M 0 0 L 1 0 L 3 1 L 0 1 Z" fill="context-stroke"/>
+    </marker>
+          
+    <marker id="slant-cap-end" markerWidth="3" markerHeight="1"
+            refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d=" M 0 1 L 1 1 L 3 0 L 0 0 Z" fill="context-stroke"/>
+    </marker>
+    
+    <marker id="point-cap"
+      markerWidth="4" markerHeight="1"
+      refX="1" refY="0.5"
+      orient="auto-start-reverse"
+      markerUnits="strokeWidth"
+    >
+      <path d="M0 0.5 L1 0 L4 0.5 L1 1 Z" fill="context-stroke"/>
+    </marker>
+    
+  </defs>
+  
+  <defs id="ikon-def">
+    <g id="ikon">
+
+      <rect id="bg-paper" class="P2" x-data-no-port="1" x="0" y="0" fill="url(#newsprint)" />
+
+      <g id="entire-comic"
+       opacity="0.7"
+       x-filter="url(#shake)"
+       mask="url(#fade-mask)"
+      >
+
+        <g id="panel-area" transform="translate(0 80)">
+          <g class="first-two">
+
+            <g id="dialog-1" transform="translate(40 80)">
+              <text>
+                <tspan>
+                    If I just keep scrolling
+                </tspan>
+                <tspan x="0" y="1em" font-style="italic">
+                    one of these
+                </tspan>
+                <tspan>
+                    won't suck...
+                </tspan>
+              </text>
+            </g>
+        
+            <g id="thought-circles"
+             fill="var(--circle-color,var(--outline-color,#000))">
+              <circle cx="0" cy="40" r="2.5" />
+              <circle cx="0" cy="33" r="3" />
+              <circle cx="0" cy="24" r="4" />
+              <circle cx="0" cy="13" r="5" />
+              <circle cx="0" cy="0" r="6" />
+            </g>
+            
+          </g>
+          <g class="next-two">
+
+            <g id="stuff" transform="translate(2 -390)">
+              <path id="pillowFill" d=" M 137 430 C 133 464 136 496 145 525 C 134 580 134 631 144 677 L 134 684 C 136 689 139 694 142 698 C 131 717 126 731 126 740 C 187 747 251 741 311 729 C 304 714 299 701 295 690 C 298 638 288 595 263 561 C 263 548 262 535 260 520 C 259 503 261 488 265 475 C 305 480 341 481 373 480 L 395 507 C 374 532 363 571 364 615 L 372 618 C 378 591 384 565 390 544 C 395 540 409 540 431 540 L 400 487 Q 403 468 402 460 C 373 450 337 449 294 458 C 244 439 191 429 137 430 L 137 430 Z  M 467 620 C 481 648 493 682 501 723 C 474 727 450 726 427 722 L 419 705 L 467 620 Z  M 455 590 L 459 601 C 456 606 451 611 445 617 L 455 590 Z " fill-rule="evenodd" fill="url(#dotz)"/>
+              
+              <path id ="shadow" d=" M 376 746 C 351 748 324 750 296 751 C 169 757 65 755 65 747 C 64 742 88 738 127 733 C 126 736 126 738 126 740 C 187 747 251 741 311 729 L 319 741 L 369 732 L 376 746 L 376 746 Z  M 389 745 C 470 739 527 731 527 724 C 527 722 517 720 501 718 C 501 720 501 722 502 724 C 487 726 443 725 425 720 L 429 732 L 397 731 Q 391 741 389 745 Z " fill-rule="evenodd" fill="var(--outline-color,#000)"/>
+              
+              <path id="shade" d="M 262 480 C 255 481 246 475 233 461 C 252 513 249 537 233 526 C 247 538 258 551 265 565 L 261 521 Z  M 138 433 Q 142 454 169 459 C 160 529 167 606 192 670 L 200 668 L 185 675 L 195 673 Q 291 710 288 619 C 296 638 297 667 296 689 C 299 701 304 714 311 728 C 243 743 181 747 124 740 C 128 722 134 709 141 698 L 134 683 L 145 676 C 133 635 133 584 145 524 C 136 501 134 471 138 433 Z M 418 705 L 426 721 Q 460 730 500 724 Q 500 700 492 684 Q 472 712 438 670 Z " fill-rule="evenodd" fill="var(--outline-color,#000)" fill-opacity="0.1"/>
+
+              <path id="pillowOutLine" d="M 265 562 C 296 607 305 662 291 715 C 301 634 277 561 219 514 C 236 526 250 540 261 556 C 263 535 255 507 239 477 C 257 501 266 530 265 562 Z  M 145 691 C 144 692 143 694 142 695 C 139 692 137 688 136 684 C 146 677 162 669 184 662 C 169 665 156 669 146 674 C 135 631 137 525 163 473 C 156 487 150 503 146 519 L 146 519 C 139 494 136 464 139 433 C 189 429 243 440 302 462 L 306 463 C 303 462 300 461 298 459 Q 350 445 400 459 C 402 460 402 475 400 485 C 399 484 399 483 398 482 L 395 481 C 405 496 416 517 427 540 L 433 540 C 423 521 412 504 402 488 C 404 470 406 459 402 457 Q 350 442 290 456 L 290 456 C 249 439 185 423 136 427 L 136 427 C 130 456 136 496 144 526 L 144 525 C 134 568 134 618 142 676 L 142 676 C 139 678 135 680 132 683 C 135 689 138 694 140 698 L 140 698 C 128 718 120 741 125 742 C 173 748 239 745 311 730 L 311 730 L 310 727 C 242 740 129 745 129 738 C 128 725 137 706 151 688 C 157 686 162 684 168 683 L 169 680 C 160 682 150 685 142 689 Z M 461 599 C 460 596 458 592 456 588 L 456 588 L 453 595 C 455 598 456 601 458 604 Z M 470 619 C 491 670 505 714 503 724 C 502 730 453 729 426 723 L 424 718 C 458 725 496 724 497 721 C 500 711 486 671 466 624 Z" fill-rule="evenodd" fill="var(--outline-color,#000)" />
+              
+              <g id="pinkie">
+                <path id="pinkie-fill" d=" M 264 474 L 259 523 C 263 535 264 548 264 561 C 290 605 301 649 296 691 C 304 714 311 730 318 742 L 369 733 L 382 757 Q 388 748 402 730 L 429 731 L 417 706 C 459 637 491 581 513 538 L 483 516 L 441 522 L 447 541 L 458 542 L 468 550 L 466 560 L 481 561 C 472 592 455 613 430 627 C 406 627 384 623 364 616 C 360 583 371 546 395 507 L 374 480 C 338 481 301 479 264 474 Z " fill="var(--pinkie-color, #fff)" />
+                <path opacity="1" id="footBottom" d=" M 447 540 C 445 536 443 531 442 526 L 444 523 C 457 542 480 547 511 538 L 514 538 C 485 591 436 680 382 758 L 394 690 C 434 672 465 629 487 561 C 480 562 473 562 467 560 L 470 549 L 459 541 L 447 540 Z " fill-rule="evenodd" fill="var(--foot-color,var(--outline-color,#000))"
+                />
+                <path d=" M 259 524 C 258 502 259 484 262 471 C 304 478 341 480 375 478 C 381 488 389 497 398 506 C 375 532 365 569 366 617 L 362 615 C 363 569 373 533 393 507 C 385 498 378 490 372 481 C 344 482 308 481 266 477 C 262 489 261 507 261 529 L 259 524 Z " fill="var(--outline-color,#000)"/>
+                <path d=" M 270 479 L 293 509 C 323 513 352 513 381 510 L 373 511 C 348 515 322 515 293 511 C 283 544 287 591 303 652 L 303 653 C 284 592 281 544 292 510 L 270 482 L 270 479 Z " fill="var(--outline-color,#000)"/>
+                <path d=" M 446 540 Q 442 532 439 520 C 460 519 474 517 484 514 C 490 521 502 527 516 537 C 485 594 436 685 382 761 C 363 731 350 690 342 639 L 343 633 C 350 680 364 720 382 755 C 422 702 483 590 511 538 L 483 518 C 472 520 459 523 444 523 Q 446 533 449 541 L 446 540 Z  M 466 561 Q 480 565 498 557 Q 480 563 467 558 L 466 561 Z " fill-rule="evenodd" fill="var(--outline-color,#000)"/>
+                <path d=" M 349 672 L 351 681 C 340 668 334 653 333 636 C 336 650 342 662 349 672 Z " fill="var(--outline-color,#000)"/>
+                <path d=" M 369 734 C 350 736 333 739 318 744 C 308 727 300 709 295 694 L 295 694 L 296 687 C 301 706 309 723 318 739 C 332 735 349 732 368 731 L 369 734 Z  M 400 733 C 410 733 420 733 431 734 L 420 703 L 416 707 L 426 730 C 418 729 410 729 403 729 L 400 733 Z " fill-rule="evenodd" fill="var(--outline-color,#000)"/>
+                <path d=" M 338 654 L 339 658 C 325 688 318 716 319 742 L 317 739 C 315 715 322 686 338 654 Z " fill="var(--outline-color,#000)"/>
+                <path d=" M 489 560 C 484 585 442 676 396 692 C 391 712 387 733 384 755 L 380 755 C 383 734 387 713 392 693 C 380 710 363 681 343 607 L 346 607 C 366 680 378 702 394 688 C 434 671 469 620 487 560 L 489 560 L 489 560 Z " fill="var(--outline-color,#000)"/>
+                <path d=" M 482 561 L 479 562 C 468 598 439 627 409 636 L 413 636 C 444 625 470 600 482 561 Z " fill="var(--outline-color,#000)"/>
+                <path d=" M 432 625 Q 378 627 344 603 C 323 626 310 649 304 673 L 305 672 C 315 644 328 623 346 609 C 363 621 390 628 428 629 L 432 625 L 432 625 Z " fill="var(--outline-color,#000)"/>
+              </g>
+         
+              <g id="cellfone" fill="var(--outline-color,#000)">
+                
+                <path id="cellFill" d="M 390 545 q 25 -8 70 -3 l9 8 q-12 35 -25 66 q -5 7 -13 10.5 q -30 2 -58 -8 Q 378 580 390 545 z " fill="var(--cell-color,none)" />
+                
+                <path id="cellLines" d="M 396 593 L 382.4 578 L 381 585 L 394 601 Z  M 393 604 L 380.6 588 L 379.7 593 L 391.8 609 Z  M 390.4 614 L 379 598 L 378.4 601 L 389.7 617 Z  M 396 592 L 383 575 C 387 559 390 550 392 547 C 396 539 454 543 456 543 C 458 544 466 549 467 551 Q 468 555 440 621 L 446 615 C 463 573 471 552 472 550 C 472 546 460 540 459 540 C 457 539 393 536 389 543 C 385 549 379 574 371 619 L 375 620 C 375 620 375 620 375 620 L 389 624 C 399 582 405 561 408 557 C 410 555 420 553 430 553 L 430 553 L 429 552 C 415 553 408 555 408 556 C 406 559 401 570 396 592 Z
+                " fill-rule="evenodd" fill="var(--outline-color,#000)"/>
+                <ellipse cx="412" cy="564" rx="3.5" ry="6" transform="rotate(25,412,564)"  />
+                <ellipse cx="422" cy="563" rx="3.5" ry="6" transform="rotate(25,422,563)"  />
+                <ellipse cx="414.5" cy="575" rx="3.3" ry="6" transform="rotate(25,414.5,575)"  />
+              </g>
+
+              <g id="motion">
+                  <path id="motionFill0" d="M 464 480 Q 472 493 495.5 500.5 L 500 527 L 473 522 Q 462 505 464 480 Z" fill="url(#pinkFade)" />
+                  <path id="motionFill1" d="M 483 456 Q 497 471 511 472 L 516 496 L 490.8 488 Q 482 475 483 456 Z " fill="url(#pinkFade)" />
+                  <path id="motionLines" d="M 500 526 C 498 517 497 509 496 501 L 495 500 C 495 508 497 516 499 524 L 500 526 Z  M 466 532 C 456 522 456 505 464 481 C 471 491 483 498 502 503 L 503 502 C 484 498 471 489 464 478 C 454 502 455 522 466 532 Z  M 493 542 C 471 526 462 506 465 480 L 464 480 C 460 506 470 526 493 542 Z  M 524 455 C 495 467 474 489 462 521 L 462 522 C 472 493 492 470 524 455 Z  M 513 463 C 492 475 473 501 464 534 L 464 536 C 471 505 491 479 513 463 Z  M 470 474 C 475 488 488 497 510 499 L 511 498 C 490 496 476 488 470 474 Z  M 483 512 Q 477 489 483 457 C 488 464 497 470 511 473 L 512 472 C 498 469 488 462 483 455 Q 474 487 483 512 Z  M 504 501 C 488 490 482 475 484 457 L 483 457 C 481 475 488 490 504 501 Z  M 488 452 C 491 462 501 468 517 470 L 517 469 C 502 468 492 462 488 452 Z" fill="var(--outline-color,#000)"/>
+              </g>
+
+            </g>
+                    
+          </g>
+        </g>
+
+        <g id="title-group">
+
+          <rect id="title-line" class="P2" x-data-no-port="1" x="12.5" y="12.5" />
+
+          <g id="title-graphic" transform="translate(25 20) scale(2.5)">
+
+            <path id="LIVING" d="
+
+                M 0 4.62 L 8.528 3.998 L 8.626 16.959 L 13.18 16.44 L 13.18 19.654 L 1.169 19.654 L 0 4.62 Z
+
+                M 13.305 11.772 L 20.473 11.443 L 18.912 20.218 L 13.789 19.955 L 13.305 11.772 Z
+
+
+                M 20.273 5.271 L 24.817 20.217 L 29.177 19.937 L 28.002 3.998 Z
+                M 27.064 19.937 L 30.31 20.217 L 34.392 4.532 L 30.96 3.348 L 27.064 19.937 Z
+
+
+                M 41.761 4.006 L 33.678 5.153 L 35.064 19.717 L 40.372 20.076 L 41.761 4.006 Z
+
+
+                M 41.761 5.271 L 47.812 3.998 L 55.237 19.073 L 49.943 20.31 L 41.761 5.271 Z
+                M 41.761 5.271 L 45.543 5.99 L 45.77 19.754 L 42.896 19.783 L 41.761 5.271 Z
+                M 50.234 3.998 L 54.745 4.532 L 55.237 19.073 L 51.243 17.206 L 50.234 3.998 Z
+
+
+                M 64.07 10.583 C 62.647 8.968 59.953 10.222 59.958 12.001 C 59.97 16.5 64.895 16.109 65.403 13.375 L 66.298 17.409 C 64.372 21.631 57.533 22.182 54.962 15.637 C 51.963 8.002 60.087 2.105 67.134 4.694 L 64.07 10.583 Z
+                M 69.317 20.502 L 64.681 20.046 L 65.038 13.279 L 63.132 13.878 L 62.587 11.473 L 68.319 11.473 L 69.317 20.502 Z
+
+            "/>
+
+            <path id="THINGS" d="
+
+                M 92.019 6.86 L 87.447 6.208 L 88.457 19.198 L 80.182 19.792 L 80.084 6.832 L 75.53 7.35 L 75.53 4.136 L 92.492 3.861 L 92.019 6.86 Z
+
+                M 90.907 4.728 L 98.109 3.543 L 98.109 19.762 L 92.296 20.132 L 90.907 4.728 Z
+                M 96.562 10.003 L 102.376 9.511 L 102.376 14.208 L 96.562 15.287 L 96.562 10.003 Z
+                M 99.939 3.543 L 104.899 3.543 L 104.899 19.573 L 101.179 19.762 L 99.939 3.543 Z
+
+
+                M 105.771 10.957 L 112.343 10.492 L 111.636 20.249 L 106.339 20.169 L 105.771 10.957 Z
+
+
+                M 113.154 5.278 L 119.204 4.006 L 126.137 18.786 L 120.843 20.25 L 113.154 5.278 Z
+                M 113.154 5.278 L 116.935 5.988 L 117.219 19.803 L 113.871 20.076 L 113.154 5.278 Z
+                M 121.85 4.147 L 126.137 4.154 L 126.137 18.786 L 122.636 17.213 L 121.85 4.147 Z
+
+                M 141.076 20.076 L 136.283 20.751 L 136.817 13.437 L 133.781 14.336 L 133.235 11.931 L 140.079 11.721 L 141.076 20.076 Z
+
+                M 135.83 10.503 C 134.407 8.889 131.718 10.143 131.718 11.921 C 131.718 16.704 135.775 16.905 137.573 14.602 L 138.058 17.329 C 136.132 21.551 128.383 22.151 126.235 15.557 C 123.7 7.774 131.847 2.025 138.894 4.615 L 135.83 10.503 Z
+
+                M 143.459 13.968 C 144.883 15.583 148.273 15.488 147.431 13.896 C 146.519 12.171 143.148 13.04 141.184 10.852 C 136.708 5.864 147.021 0 153.531 7.142 L 150.332 10.852 C 147.576 8.182 144.383 8.94 146.235 10.533 C 147.582 11.692 152.274 11.525 153.167 13.968 C 155.383 20.029 145.636 23.018 140.027 18.484 L 143.459 13.968 Z
+
+
+                " />
+
+            <g id="title-circs">
+              <circle cx="17" cy="7.3" r="3.8" />
+              <circle cx="109.2" cy="6.5" r="3.8" />
+            </g>
+
+            <g id="title-hearts">
+
+              <path id="heart" d="M 16.089 4.464 C 20.26 0.852 25.207 8.953 14.734 12.088 C 6.118 5.836 13.26 -0.162 16.089 4.464 Z  M 15.831 6.053 C 19.07 2.662 22.505 8.426 14.986 10.611 C 8.76 5.827 13.959 2.006 15.831 6.053 Z" fill-rule="evenodd" />
+
+              <path id="square" d=" M 105.92 9.623 L 105.528 2.75 L 113.085 3.039 L 112.365 9.623 L 105.92 9.623 Z  M 107.159 8.337 L 106.917 4.07 L 111.655 4.251 L 111.208 8.337 L 107.159 8.337 Z " fill-rule="evenodd" />
+            </g>
+
+          </g>
+        </g>
+
+        <g id="borders" transform="translate(0 80)" fill="none" stroke="var(--border-color, var(--outline-color, #000))" stroke-width="3" x-marker-start="url(#slant-cap-end)" x-marker-end="url(#slant-cap)">
+          
+          <!-- full-size border corners -->
+          <g class="first-two">
+            <path d="M 12 180 V11 H500 L497 14 H15 V177 Z" fill="var(--border-color, var(--outline-color, #000)" stroke="none" />
+          </g>
+          <g class="next-two">
+            <path d="
+            M 540 389 H637.5 V100
+            L 634.5 104 V386 H544
+            Z" fill="var(--border-color, var(--outline-color, #000)" stroke="none" />
+          </g>
+        </g>
+        
+      </g>
+    </g>
+  </defs>
+
+  <use href="#ikon"/>
+
+</svg>
