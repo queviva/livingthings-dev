@@ -184,14 +184,6 @@
       <linearGradient id="fade7" href="#donutFade" gradientTransform="translate(-0.5 0)" />
       <linearGradient id="fade8" href="#donutFade" gradientTransform="rotate(45) translate(-0.25 0)" />
       
-      <mask id="fade-mask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
-        <linearGradient id="fade-gradient" gradientTransform="rotate(-30)">
-          <stop offset="0%" stop-color="#fff" stop-opacity="1" />
-          <stop offset="20%" stop-color="#fff" stop-opacity="0" />
-        </linearGradient>
-        <rect width="1" height="1" fill="url(#fade-gradient)" />
-      </mask>
-
   </defs>
    
   <defs id="patts-n-filters">
@@ -216,7 +208,7 @@
 
     <filter id="shake" width="120%" height="120%" color-interpolation-filters="sRGB">
       <feImage href="newsprint.jpg" x="0" y="0" width="120%" height="120%" preserveAspectRatio="xMidYMid slice" result="mig" />
-      <feDisplacementMap in="SourceGraphic" in2="mig" result="rat" scale="20" xChannelSelector="R" yChannelSelector="B" />
+      <feDisplacementMap in="SourceGraphic" in2="mig" result="rat" scale="10" xChannelSelector="R" yChannelSelector="B" />
       <feGaussianBlur in="rat" stdDeviation="0.3" result="blur" />
       <!-- shift image back based on displacement's scale -->
       <feOffset in="blurred" dx="6.5" dy="5" result="final" />
@@ -230,38 +222,9 @@
 
   <defs id="clips-n-masks">
     
-    <!--
-        1of4 _AND_ 3of4
-        M12.5 12.5 H312.5 V388 H12.5Z
-        
-        2of4 AND 4of4
-        M337.5 12.5 H637.5 V388 H337.5Z
-        
-        1and2of4 _AND_ 3and4of4
-        M12.5 12.5 H 637.5 V388 H12.5Z
-        
-        2and3of4
-        M337.5 12.5 H650 V388 H337.5Z
-        M0 12.5 H312.5 V388 H0Z
-        
-        1of3
-        M13 12.5 H421 V388 H 13Z
-        
-        2of3
-        M446 12.5 H854 V388 H 446Z
-        
-        3of3
-        M879 12.5 H1287 V388 H 879Z
-
-        full-size
-        M12.5 12.5 H1287.5 V388 H12.5Z
-        
-    -->
-
-      <clipPath id="1and2of4">
-        <path d="M12.5 12.5 H 637.5 V388 H12.5Z "/>
-      </clipPath>
-  
+    <clipPath id="1and2of4">
+      <path d="M12.5 12.5 H 637.5 V388 H12.5Z "/>
+    </clipPath>
     
     <mask id="fade-mask"
      maskUnits="objectBoundingBox"
@@ -274,7 +237,7 @@
         <stop offset="0%" stop-color="#fff" stop-opacity="1" />
         <stop offset="100%" stop-color="#fff" stop-opacity="0.2" />
       </linearGradient>
-      <rect width="1" height="1" fill="url(#fade-gradient)" />
+      <rect width="100%" height="100%" fill="url(#fade-gradient)" />
     </mask>
 
   </defs>
@@ -312,13 +275,11 @@
 
           <g class="first-two" clip-path="url(#1and2of4)">
             
-            <!--<circle r="200" cx="200" cy="200" fill="#909"/>-->
-                      
-            <g id="boxDude" transform="translate(-18 167) scale(0.45)">
+            <g id="donut-box" transform="translate(-10 160) scale(0.45)">
                 
                 <!--<ellipse id="shadow" cx="420" cy="485" rx="350" ry="16" fill="var(-dd-brown, #000)" />-->
                         
-                <path d="M 40 472 H 420 L 690 488 L 280 500 Z " id="shadow" fill="var(--dd-brown, #000)" />
+                <path d="M 40 472 H 420 L 690 488 L 260 500 Z " id="shadow" fill="var(--dd-brown, #000)" />
                 
                 <g id="nut">
                     
@@ -383,11 +344,45 @@
                 </g>
                 
             </g>
-
+            
+            <g transform="translate(90 40) scale(0.7)">
+            <text x="0" y="0" text-anchor="middle" font-size="16" font-family="sans-serif">
+              <tspan x="0">Drunkin' Donuts</tspan>
+              <tspan x="0" dy="1.1em" font-weight="100">
+                  This Wednesday
+              </tspan>
+              <tspan x="0" dy="0.9em" font-weight="100">
+                  225 Kelton Ave
+              </tspan>
+              <tspan x="-0.2ch" dy="0.8em" font-weight="100"
+               font-size="50" letter-spacing="-0.1ch"
+              >@8:00pm</tspan>
+            </text>
+            </g>
+            
+            <g transform="translate(270 50)">
+            <text>
+               <tspan>Would you like to drink beer and</tspan>
+               <tspan x="0" dy="1em">eat donuts...</tspan>
+            </text>
+            </g>
+            
           </g>
           <g class="next-two" clip-path="url(#1and2of4)">
+              
+            <g transform="translate(530 70)">
+            <text text-anchor="end">
+               <tspan>
+                    Wow! Drinking
+                 <tspan font-style="italic">and</tspan>
+                    donuts?
+               </tspan>
+               <tspan>Sounds amazing!</tspan>
+               <!--<tspan x="-1ch" dy="1em">Sounds amazing!</tspan>-->
+            </text>
+            </g>
 
-            <g transform="translate(380 160)">
+            <g id="beer-can" transform="translate(380 160)">
               <ellipse cx="104" cy="219" rx="98" ry="3" fill="rgb(55,33,0)"/>
 
               <path d=" M 58.4 8 C 80 36.55 87.27 93 65 125 Q 72 124 77 124 L 76 132 L 85 137 Q 87 138 83.92 141 C 81 145 72 152 68 154 C 85 154 112.93 168 121 188 C 154.47 195 180 195 199 188 L 215 126 L 195 97 L 154 78.55 L 166 41 L 152 4 C 119.19 2 88 4 58.4 8 Z " fill="rgb(97,58,0)"/>
@@ -463,6 +458,10 @@
 
             </g>
               
+            <text id="copyright" transform="translate(633 385) rotate(270)">
+                <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
+                <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
+            </text>
           </g>
           
         </g>
@@ -537,14 +536,12 @@
           </g>
         </g>
 
-        <g id="borders" transform="translate(0 80)" fill="none" stroke="var(--border-color, var(--outline-color, #000))" stroke-width="3" marker-start="url(#slant-cap)" marker-end="url(#slant-cap)">
-          
-          <!-- full-size border corners -->
+        <g id="borders" transform="translate(0 80)" fill="var(--border-color, var(--outline-color, #000)" stroke="none">
           <g class="first-two">
-            <path d="M12.5 180 V12.5 H500"/>
+            <path d="M 12 180 V11 H500 L497 14 H15 V177 Z"/>
           </g>
           <g class="next-two">
-            <path d="M540 388 H637.5 V100"/>
+            <path d="M 540 389 H637.5 V100 L 634.5 103 V386 H543 Z"/>
           </g>
         </g>
         

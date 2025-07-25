@@ -2,7 +2,9 @@
  style="isolation:isolate;overflow:visible;"
  viewBox="0 0 1300 480"
 >
-<!-- :%s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g -->
+<!--
+  :%s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
+ -->
 
   <style id="comic-styles">
       
@@ -77,7 +79,7 @@
       fill: var(--circ-color, var(--outline-color, #000));
     }
     
-    </style>
+  </style>
 
   <style id="port-scrape-styles">
         
@@ -287,7 +289,7 @@
   <defs id="ikon-def">
     <g id="ikon">
 
-      <rect id="bg-paper" class="P3" x-data-no-port="1" x="0" y="0" fill="url(#newsprint)" />
+      <rect id="bg-paper" class="P2" x-data-no-port="1" x="0" y="0" fill="url(#newsprint)" />
 
       <g id="entire-comic"
        x-opacity="0.7"
@@ -295,39 +297,19 @@
        x-mask="url(#fade-mask)"
       >
 
-        <g id="panel-areas" transform="translate(0 80)">
+        <g id="panel-area" transform="translate(0 80)">
 
-          <defs>
-            <path id="thought-bubble" d="M -37.5 -8 A 38 14 0 1 1 37.5 -8 A 15 7 -15 0 1 40 3 A 30 14 0 0 1 -12.5 16 A 20 9 0 0 1 -39 3.5 A 9 6 0 0 1 -37.5 -8 Z "
-             fill="none" stroke="#000" stroke-width="3"
-            />
-            <path id="thought-bubble-x" d="M -40 -10 C -65 -38 60 -36 30 -8 C 70 -18 70 13 45 10 C 75 16 72 -18 38 -13 C 65 -38 -70 -40 -45 -10 Z  M 6 24 C 5 29 -45 30 -37 8 C -70 12 -65 -12 -36 -10 C -70 -15 -72 14 -40 10 C -45 33 10 32 10 25 Z  M 52 10 C 66 25 2 30 0 20 C 2 34 66 29 58 10 Z "
-             fill="var(--outline-color, #000)"
-            />
-            
-            <path id="hex" transform="scale(0.5) rotate(30)" d="M 400 0 L 200 350 L -200 350 L -400 0 L -200 -350 L 200 -350 Z"
-             fill="url(#dotz)"
-             stroke="var(--outline-color, #000)"
-             stroke-width="20"
-            />
-
-            
-          </defs>
-            
-          <!--
           <g id="4_panel_layout">
           <g class="first-two" clip-path="url(#1and2of4)">
             <g id="panel_1of4" clip-path="url(#1of4)">
             
              <g transform="translate(160 50)">
-              <use href="#thought-bubble" transform="scale(2.4)"/>
               <text x="0" y="0" text-anchor="middle">
                   <tspan>What in</tspan>
                   <tspan font-style="italic">hell</tspan>
                   <tspan x="0" dy="1.2em">are you thinking</tspan>
               </text>
-
-            </g>
+             </g>
             
             </g>
             <g id="panel_2of4">
@@ -338,13 +320,19 @@
             <g id="panel_3of4">
                 
             </g>
+            
+            <text id="copyright" transform="translate(330.5 385) rotate(270)">
+              <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
+              <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
+            </text>
+          
             <g id="panel_4of4">
                 
             </g>
           </g>
           </g>
-          -->
           
+          <!--
           <g id="3_panel_layout">
           <g class="P1of3" clip-path="url(#1of3)">
               <use href="#hex" transform="translate(100 350)"/>
@@ -354,6 +342,10 @@
               <circle r="4" cx="230" cy="189" fill="none" stroke="#000" stroke-width="4"/>
               <text text-anchor="middle" x="280" y="154">
                   oh no
+              </text>
+              <text id="copyright" transform="translate(416 385) rotate(270)">
+                <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
+                <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
               </text>
           </g>
           
@@ -379,16 +371,16 @@
                   <tspan>fuckin'</tspan>
                   <tspan font-style="italic">lids...</tspan>
               </text>
-              
+            
           </g>
           </g>
-          
+          -->
           
         </g>
 
         <g id="title-group">
 
-          <rect id="title-line" class="P3" x-data-no-port="1" x="12.5" y="12.5" />
+          <rect id="title-line" class="P2" x-data-no-port="1" x="12.5" y="12.5" />
 
           <g id="title-graphic" transform="translate(25 20) scale(2.5)">
 
@@ -458,19 +450,21 @@
 
         <g id="borders" transform="translate(0 80)" fill="none" stroke="var(--border-color, var(--outline-color, #000))" stroke-width="3">
             
+          <!--
+          13, 421, 446, 854, 879, 1287,
+          -->
+          
           <!-- 3-panel borders -->
+          <!--
           <g>
             <path class="P1of3" d="M13 12.5 H421 V388 H 13Z"/>
             <path class="P2of3" d="M13 12.5 H421 V388 H 13Z"/>
             <path class="P3of3" d="M13 12.5 H421 V388 H 13Z"/>
           </g>
-          
-          <!--
-          13, 421, 446, 854, 879, 1287,
           -->
           
           <!-- 4-panel borders -->
-          <!--
+
           <g class="first-two">
             <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
             <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
@@ -478,6 +472,26 @@
           <g class="next-two">
             <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
             <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+          </g>
+          
+          <!-- border corners !!!CSS-VAR-DASHES!!! -->
+          <!--
+          <g class="first-two">
+            <path d="M 12 180 V11 H500 L497 14 H15 V177 Z" fill="var(-border-color, var(-outline-color, #000)" stroke="none" />
+          </g>
+          <g class="next-two">
+            <path d="M 540 389 H637.5 V100 L 634.5 103 V386 H543
+            Z" fill="var(-border-color, var(-outline-color, #000)" stroke="none" />
+          </g>
+          -->
+          
+          <!-- stroke border corners -->
+          <!--
+          <g class="first-two">
+            <path d="M12.5 180 V12.5 H500"/>
+          </g>
+          <g class="next-two">
+            <path d="M540 388 H637.5 V100"/>
           </g>
           -->
           
