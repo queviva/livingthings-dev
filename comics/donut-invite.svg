@@ -11,6 +11,7 @@
     }
 
     :root {
+      --bg-color: url(#newsprint);
       --dd-pink: hsl(330, 80%, 57%);
       --dd-pink-dark: hsl(330, 80%, 37%);
       --dd-orange: hsl(31, 95%, 48.5%);
@@ -22,7 +23,10 @@
       --donut-lite: rgb(242,225,200);
       --show-decor: 1;
       --show-hearts: 0;
+      --heart-color: var(--dd-orange);
+      --square-color: var(--dd-pink);
       /*
+      --bg-color: rgb(235,213,179);
       --circ-color: #ea0;
       */
     }
@@ -105,9 +109,6 @@
       #title-line:not([data-no-port]) {
         width: 625px;
       }
-      #panelDecor {
-        --show-decor: 1;
-      }
     }
 
     @media(orientation: landscape) {
@@ -121,49 +122,10 @@
       #title-line:not([data-no-port]) {
         width: 1275px;
       }
-      #panelDecor {
-        --show-decor: 0;
-      }
     }
     
   </style>
 
-  <style id="3-panel-port-styles">
-      
-    @media(orientation: portrait) {
-      #bg-paper.P3:not([data-no-port]) {
-        width: 434px;
-        height: 1260px;
-      }
-      #title-line.P3:not([data-no-port]) {
-        width: 408px;
-      }
-      .P2of3 {
-        transform: translate(0px, 388px);
-      }
-      .P3of3 {
-        transform: translate(0px, 776px);
-      }
-    }
-      
-    @media(orientation: landscape) {
-      #bg-paper.P3:not([data-no-port]) {
-        width: 1300px;
-        height: 480px;
-      }
-      #title-lineP3.:not([data-no-port]) {
-        width: 1275px;
-      }
-      .P2of3 {
-        transform: translate(432.5px, 0px);
-      }
-      .P3of3 {
-        transform: translate(865.5px, 0px);
-      }
-    }
-    
-  </style>
-  
   <defs id="donutbox-grads-n-masks">
       
       <pattern id="dotz" viewBox="-2 -2 4 4" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1)">
@@ -214,8 +176,8 @@
       <feOffset in="blurred" dx="6.5" dy="5" result="final" />
     </filter>
 
-    <pattern id="newsprint" patternUnits="userSpaceOnUse" width="600" height="800">
-      <image href="newsprint.jpg" width="600" height="800" preserveAspectRatio="none" />
+    <pattern id="newsprint" patternUnits="userSpaceOnUse" width="100%" height="100%">
+      <image href="newsprint.jpg" width="100%" height="100%" preserveAspectRatio="none" />
     </pattern>
 
   </defs>
@@ -262,9 +224,9 @@
   
   <defs id="ikon-def">
     <g id="ikon">
-
-      <rect id="bg-paper" class="P2" x-data-no-port="1" x="0" y="0" fill="url(#newsprint)" />
-
+        
+      <rect id="bg-paper" class="P2" x-data-no-port="1" x="0" y="0" height="100%" width="100%" fill="var(--bg-color, none)"/>
+      
       <g id="entire-comic"
        x-opacity="0.7"
        x-filter="url(#shake)"
@@ -294,7 +256,7 @@
                 
                 <path id="sidePanel" d="m 160 475 l -9 -76 l 7 -16 l -60 -102 c 30 26 77 41 141 47 c 16 35 25 59 28 76 l -10 7 l 25 -3 l -7 6 c -1 31 -4 58 -11 73 z" fill="var(--dd-orange, #fff)" />
                 
-                <g id="panelDecor" opacity="var(--show-decor, 0)" fill="#fff" fill-opacity="0.1" stroke="#fff" stroke-width="3" stroke-opacity="0.3">
+                <g id="panelDecor" opacity="var(--show-decor, 0)" fill="#fff" fill-opacity="0.1" stroke="#fff" stroke-width="3" stroke-opacity="0.5">
                     
                     <path d="M 381 484 C 387 456 342 434 274 437 C 248 421 218 445 239 487 L 160 479 L 159 427 C 159 418 161 405 172 401 L 178 402 C 188 372 231 355 262 383 C 380 348 503 371 501 423 L 381 484 Z " />
                         
@@ -522,8 +484,8 @@
                 " />
 
             <g id="title-circs">
-              <circle cx="17" cy="7.3" r="3.8" />
-              <circle cx="109.2" cy="6.5" r="3.8" />
+              <circle cx="17" cy="7.3" r="3.8"/>
+              <circle cx="109.2" cy="6.5" r="3.8"/>
             </g>
 
             <g id="title-hearts">

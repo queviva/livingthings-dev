@@ -90,7 +90,7 @@ viewBox="0 0 615 277">
 
   <g id="morris">
 
-    <path d="M570 274 L598 274 L608 276 L540 276 Z " fill="var(--outline-color, #000)"/>
+    <ellipse cx="575" cy="275" rx="35" ry="2" fill="var(--outline-color, #000)"/>
     
     <path d="
     M 556 275.141

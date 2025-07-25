@@ -2,9 +2,10 @@
  style="isolation:isolate;overflow:visible;"
  viewBox="0 0 1300 480"
 >
-<!--
+    
+  <!--
   :%s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
- -->
+  -->
 
   <style id="comic-styles">
       
@@ -14,13 +15,16 @@
     }
 
     :root {
+      --bg-color: url(#newsprint);
       /*
       --outline-color: #000;
       --border-color: #000;
       --text-color: #000;
       --dot-color: #000;
-      --show-hearts: 0;
       --circ-color: #ea0;
+      --circ-1-color: #000;
+      --circ-2-color: #000;
+      --show-hearts: 0;
       */
     }
 
@@ -40,7 +44,6 @@
     .bub-line {
       fill: var(--text-color, var(--outline-color, #000));
     }
-    
 
     #copyright {
       font-family:'Times New Roman';
@@ -77,6 +80,14 @@
     #title-circs {
       opacity: calc(1 - var(--show-hearts, 1));
       fill: var(--circ-color, var(--outline-color, #000));
+    }
+    
+    #title-circs > circle:nth-of-type(1) {
+      fill: var(--circ-1-color, var(--circ-color, var(--outline-color, #000)));
+    }
+    
+    #title-circs > circle:nth-of-type(2) {
+      fill: var(--circ-2-color, var(--circ-color, var(--outline-color, #000)));
     }
     
   </style>
@@ -187,9 +198,9 @@
       <!-- shift image back based on displacement's scale -->
       <feOffset in="blurred" dx="6.5" dy="5" result="final" />
     </filter>
-
-    <pattern id="newsprint" patternUnits="userSpaceOnUse" width="600" height="800">
-      <image href="newsprint.jpg" width="600" height="800" preserveAspectRatio="none" />
+    
+    <pattern id="newsprint" patternUnits="userSpaceOnUse" width="100%" height="100%">
+      <image href="newsprint.jpg" width="100%" height="100%" preserveAspectRatio="none" />
     </pattern>
 
   </defs>
@@ -289,16 +300,16 @@
   <defs id="ikon-def">
     <g id="ikon">
 
-      <rect id="bg-paper" class="P2" x-data-no-port="1" x="0" y="0" fill="url(#newsprint)" />
-
+      <rect id="bg-paper" class="P2" x-data-no-port="1" x="0" y="0" height="100%" width="100%" fill="var(--bg-color, none)"/>
+      
       <g id="entire-comic"
        x-opacity="0.7"
        x-filter="url(#shake)"
        x-mask="url(#fade-mask)"
       >
 
-        <g id="panel-area" transform="translate(0 80)">
-
+        <g id="panel-area" transform="translate(0 95)">
+            
           <g id="4_panel_layout">
           <g class="first-two" clip-path="url(#1and2of4)">
             <g id="panel_1of4" clip-path="url(#1of4)">
@@ -321,7 +332,7 @@
                 
             </g>
             
-            <text id="copyright" transform="translate(330.5 385) rotate(270)">
+            <text id="copyright" transform="translate(330.5 370) rotate(270)">
               <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
               <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
             </text>
