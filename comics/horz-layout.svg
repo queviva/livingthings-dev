@@ -8,16 +8,16 @@
   -->
 
   <style id="comic-styles">
-      
-    @font-face {
-      font-family: 'Comic Neue';
-      src: url('neue.ttf') format('truetype');
-    }
 
     :root {
     
+      --show-hearts: 0;
       --bg-fill: url(#newsprint);
+      --bg-opacity: 0.9;
+      --bg-filter: url(#shake);
+      --bg-mask: url(#fade-mask);
       /*
+      --bg-fill: url(#newsprint);
       --bg-opacity: 0.7;
       --bg-filter: url(#shake);
       --bg-mask: url(#fade-mask);
@@ -32,11 +32,16 @@
       */
       
     }
+      
+    @font-face {
+      font-family: 'Comic Neue';
+      src: url('neue.ttf') format('truetype');
+    }
 
     text {
       font-family:'Comic Neue';
       font-weight: 600;
-      font-size:25px;
+      font-size:30px;
       fill: var(--text-color, var(--outline-color, #000));
     }
     
@@ -195,7 +200,7 @@
     
   </style>
   
-  <style id="border-styles">
+  <style id="panel-hacks-REMOVE">
     #ikon.P3 g.P2,
     #ikon.P2 g.P3 {
       display: none;
@@ -386,33 +391,66 @@
             
           <g id="4_panel_layout" class="P2">
           <!-- -->
-          <g class="top-half" clip-path="url(#clip1thru2of4)">
-            <g id="panel1of4" x-clip-path="url(#clip1of4)">
-            
-              <circle cx="220" cy="190" r="230" fill="#909"/>
-              <circle cx="500" cy="300" r="230" fill="#990"/>
-             <g transform="translate(160 50)">
-              <text x="0" y="0" text-anchor="middle">
-                  <tspan>What in</tspan>
-                  <tspan font-style="italic">hell</tspan>
-                  <tspan x="0" dy="1.2em">are you thinking</tspan>
+          <g class="top-half" x-clip-path="url(#clip1and2of4)">
+            <g id="panel1of4" clip-path="url(#clip1of4)">
+             <g transform="translate(30 42)">
+              <text x-text-anchor="middle">
+                  <tspan>Hey Buck, it's gonna</tspan>
+                  <tspan x="-0.4ch" dy="1em">cost you 50 cents to</tspan>
+                  <tspan x="0" dy="1em">be my friend today</tspan>
               </text>
              </g>
+             <use transform="translate(20 170) scale(0.8)" href="buck.svg#ikon" />
+             <use transform="translate(182 160) scale(0.8)" href="morris.svg#ikon" />
+             <path d="M12 374 Q 148 360 312 374 V388 H12 Z"/>
             
             </g>
-            <g id="panel2of4">
-                
+            <g id="panel2of4" clip-path="url(#clip2of4)">
+             
+             <g transform="translate(490 42)">
+             <text text-anchor="middle">
+                 And what if I don't
+                 <tspan x="0" dy="0.9em">
+                    <tspan font-style="italic">want</tspan> to be your
+                 </tspan>
+                 <tspan x="0" dy="0.9em">friend today?</tspan>
+             </text>
+             </g>
+             <use transform="translate(345 115) scale(1.5)" href="buck.svg#ikon" />
             </g>
           </g>
-          <g class="bottom-half" clip-path="url(#clip1and2of4)">
-            <g id="panel3of4" x-clip-path="url(#clip3of4)">
+          <g class="bottom-half" x-clip-path="url(#clip1and2of4)">
+            <g id="panel3of4" clip-path="url(#clip3of4)">
+                             
+             <g transform="translate(160 42)">
+             <text text-anchor="middle">
+                 Then the janitor
+                 <tspan x="0" dy="0.9em">
+                 wipes you off the
+                 </tspan>
+                 <tspan x="0" dy="0.9em">wall with a spatula.</tspan>
+             </text>
+             </g>
+             
+             <path d="M 12 375 L 104 358 L 112 400 H 220 L 210 340 L 409 300 V 400 H 12 Z "/>
+             <use href="morris.svg#ikon" transform="translate(40 100) scale(1.5)"/>
                 
-              <circle cx="220" cy="300" r="230" fill="#099"/>
             </g>
-            
-            <g id="panel4of4" x-clip-path="url(#clip4of4)">
-              <circle cx="550" cy="230" r="230" fill="#900"/>
+            <g id="panel4of4" clip-path="url(#clip4of4)">
                 
+             <g transform="translate(490 42)">
+             <text text-anchor="middle">
+                 Heck, what's a little
+                 <tspan x="0" dy="0.9em">
+                 extortion among
+                 </tspan>
+                 <tspan x="0" dy="0.9em">friends ?</tspan>
+             </text>
+             </g>
+             
+             <use href="buck.svg#ikon" transform="translate(440 200) scale(0.6)"/>
+             
+             <ellipse cx="480" cy="350" rx="50" ry="2"/>
             </g>
           </g>
           <!-- -->
@@ -426,9 +464,9 @@
               
               <circle r="60" transform="translate(365 55)"/>
               
-              <ellipse rx="55" ry="22" cx="280" cy="150" fill="none" stroke="#000" stroke-width="4"/>
-              <circle r="6" cx="240" cy="181" fill="none" stroke="#000" stroke-width="4"/>
-              <circle r="4" cx="230" cy="189" fill="none" stroke="#000" stroke-width="4"/>
+              <ellipse rx="55" ry="22" cx="280" cy="150" fill="none" stroke="#000" stroke-width="3"/>
+              <circle r="6" cx="240" cy="181" fill="none" stroke="#000" stroke-width="3"/>
+              <circle r="4" cx="230" cy="189" fill="none" stroke="#000" stroke-width="3"/>
               <text text-anchor="middle" x="280" y="158">
                   oh no
               </text>
@@ -556,7 +594,7 @@
             <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
           </g>
           <g class="P2 bottom-half">
-            <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+            <!--<path d="M12.5 12.5 H312.5 V388 H12.5Z"/>-->
             <use href="#copyright" transform="translate(330.3 370)"/>
             <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
           </g>
