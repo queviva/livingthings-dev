@@ -305,7 +305,8 @@
              fill="var(--outline-color, #000)"
             />
             
-            <path id="hex" transform="scale(0.5) rotate(30)" d="M 400 0 L 200 350 L -200 350 L -400 0 L -200 -350 L 200 -350 Z"
+            <path id="hex" transform="scale(0.5)" d="M 0 400 L -346 200 L -346 -200 L 0 -400 L 346 -200 L 346 200 Z
+            "
              fill="url(#dotz)"
              stroke="var(--outline-color, #000)"
              stroke-width="20"

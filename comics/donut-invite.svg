@@ -307,7 +307,7 @@
                 
             </g>
             
-            <g transform="translate(90 40) scale(0.7)">
+            <g transform="translate(530 255) scale(1 1.1)">
             <text x="0" y="0" text-anchor="middle" font-size="16" font-family="sans-serif">
               <tspan x="0">Drunkin' Donuts</tspan>
               <tspan x="0" dy="1.1em" font-weight="100">
@@ -322,27 +322,50 @@
             </text>
             </g>
             
-            <g transform="translate(270 50)">
-            <text>
-               <tspan>Would you like to drink beer and</tspan>
-               <tspan x="0" dy="1em">eat donuts...</tspan>
+            <text transform="translate(150 50)">
+               Would you like to drink beer and eat donuts...
             </text>
-            </g>
+            <text transform="translate(440 100)">
+              <tspan>The donuts are</tspan>
+              <tspan x="0" dy="1em">actually</tspan>
+              <tspan font-style="italic">free.</tspan>
+            </text>
+            
+            <text transform="translate(440 180)">
+              You should really
+              <tspan x="0" y="1em">checkout:</tspan>
+            </text>
+            
+            <path class="bub-line" d="M225 130 L 255 80 L270 70Z"/>
             
           </g>
           <g class="next-two" clip-path="url(#1and2of4)">
               
-            <g transform="translate(530 70)">
-            <text text-anchor="end">
+            <text transform="translate(530 67)" text-anchor="end">
                <tspan>
                     Wow! Drinking
                  <tspan font-style="italic">and</tspan>
                     donuts?
                </tspan>
                <tspan>Sounds amazing!</tspan>
-               <!--<tspan x="-1ch" dy="1em">Sounds amazing!</tspan>-->
             </text>
-            </g>
+            
+            <text transform="translate(290 120)" text-anchor="end">
+              Plus the donuts
+              <tspan x="-0.5ch" dy="1em">are free?</tspan>
+            </text>
+
+            <text transform="translate(290 220)" text-anchor="end">
+              What am I wait-
+              <tspan x="0" dy="1em">ing for? I'm already</tspan>
+              <tspan x="0" dy="1em">a fat drunk.</tspan>
+            </text>
+            <text transform="translate(290 319)" text-anchor="end">
+                I should call
+                <tspan x="0" y="0.9em" font-size="40" font-weight="800">505.577.5259</tspan>
+            </text>
+
+            <path class="bub-line" d="M418 130 L 378 100 L360 95Z"/>
 
             <g id="beer-can" transform="translate(380 160)">
               <ellipse cx="104" cy="219" rx="98" ry="3" fill="rgb(55,33,0)"/>

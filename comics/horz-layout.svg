@@ -15,17 +15,22 @@
     }
 
     :root {
-      --bg-color: url(#newsprint);
+    
+      --bg-fill: url(#newsprint);
       /*
+      --bg-opacity: 0.7;
+      --bg-filter: url(#shake);
+      --bg-mask: url(#fade-mask);
       --outline-color: #000;
       --border-color: #000;
       --text-color: #000;
       --dot-color: #000;
-      --circ-color: #ea0;
+      --circ-color: #000;
       --circ-1-color: #000;
       --circ-2-color: #000;
-      --show-hearts: 0;
+      --show-hearts: 1;
       */
+      
     }
 
     text {
@@ -51,6 +56,10 @@
       font-size:17px;
       fill:var(--text-color, var(--outline-color, #000));
     }
+    
+  </style>
+    
+  <style id="title-styles">
 
     #title-line {
       fill: var(--border-color, var(--outline-color, #000));
@@ -91,12 +100,31 @@
     }
     
   </style>
+    
+  <style id="border-styles">
+    
+    #borders  path:not(.corn) {
+      fill: none;
+      stroke: var(--border-color, var(--outline-color, #000));
+      stroke-width: 3px;
+    }
+    
+    #borders path.corn {
+      fill: var(-border-color, var(-outline-color, #000);
+      stroke: none;
+    }
+    
+  </style>
 
   <style id="port-scrape-styles">
         
-    #bg-paper[data-no-port] {
+    #bg-rect[data-no-port] {
         width: 1300px;
         height: 480px;
+    }
+    
+    .bottom-half[data-no-port] {
+      transform: translate(650px, 0);
     }
     
     #title-line[data-no-port] {
@@ -104,11 +132,11 @@
     }
     
     @media(orientation: portrait) {
-      #bg-paper:not([data-no-port]) {
+      #bg-rect:not([data-no-port]) {
         width: 650px;
         height: 882.5px;
       }
-      .next-two:not([data-no-port]) {
+      .bottom-half:not([data-no-port]) {
         transform: translate(0, 400px);
       }
       #title-line:not([data-no-port]) {
@@ -117,11 +145,11 @@
     }
 
     @media(orientation: landscape) {
-      #bg-paper:not([data-no-port]) {
+      #bg-rect:not([data-no-port]) {
         width: 1300px;
         height: 480px;
       }
-      .next-two:not([data-no-port]) {
+      .bottom-half:not([data-no-port]) {
         transform: translate(650px, 0);
       }
       #title-line:not([data-no-port]) {
@@ -134,37 +162,44 @@
   <style id="3-panel-port-styles">
       
     @media(orientation: portrait) {
-      #bg-paper.P3:not([data-no-port]) {
+      #ikon.P3 #bg-rect:not([data-no-port]) {
         width: 434px;
         height: 1260px;
       }
-      #title-line.P3:not([data-no-port]) {
+      #ikon.P3 #title-line:not([data-no-port]) {
         width: 408px;
       }
-      .P2of3 {
+      .panel2of3 {
         transform: translate(0px, 388px);
       }
-      .P3of3 {
+      .panel3of3 {
         transform: translate(0px, 776px);
       }
     }
       
     @media(orientation: landscape) {
-      #bg-paper.P3:not([data-no-port]) {
+      #ikon.P3 #bg-rect:not([data-no-port]) {
         width: 1300px;
         height: 480px;
       }
-      #title-lineP3.:not([data-no-port]) {
+      #ikon.P3 #title-line:not([data-no-port]) {
         width: 1275px;
       }
-      .P2of3 {
+      .panel2of3 {
         transform: translate(432.5px, 0px);
       }
-      .P3of3 {
+      .panel3of3 {
         transform: translate(865.5px, 0px);
       }
     }
     
+  </style>
+  
+  <style id="border-styles">
+    #ikon.P3 g.P2,
+    #ikon.P2 g.P3 {
+      display: none;
+    }
   </style>
   
   <defs id="patts-n-filters">
@@ -172,14 +207,20 @@
     <pattern id="hatch" viewBox="-2 -2 4 4" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(3)">
       <path d="M-2 0 H2 M0 -2 V2"
        fill="none"
-       stroke="var(--dot-color,var(--outline-color, #000))"
+       stroke="var(--dot-color, var(--outline-color, #000))"
        stroke-width="0.5"
        transform="scale(1)"
       />
     </pattern>
 
-    <pattern id="dotz" viewBox="-2 -2 4 4" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(2.5)">
-      <circle r="1" fill="var(--dot-color,var(--outline-color, #000))" transform="scale(1.5)" />
+    <pattern id="dotz" viewBox="-2 -2 4 4" width="4" height="4"
+      patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1.5)">
+      <circle r="1" fill="var(--dot-color,var(--outline-color, #000))" transform="scale(1.5)"/>
+    </pattern>
+    
+    <pattern id="xdotz" viewBox="-2 -2 4 4" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1.5)">
+      <path d="M1 0 A1 1 0 1 0 1 0.01H9V9H-9V-9H9V0Z"
+      fill="var(--dot-color,var(--outline-color, #000))" transform="scale(1.5)"/>
     </pattern>
 
     <linearGradient id="fade" gradientUnits="objectBoundingBox">
@@ -234,32 +275,43 @@
         M12.5 12.5 H1287.5 V388 H12.5Z
         
     -->
-
-      <clipPath id="1of4">
+    
+      <clipPath id="clip1thru2of4">
+        <path d="M12.5 12.5 H 637.5 V388 H12.5Z"/>
+      </clipPath>
+      
+      <clipPath id="clip1and2of4">
+        <path d="
+        M12.5 12.5 H312.5 V388 H12.5Z
+        M337.5 12.5 H637.5 V388 H337.5Z
+        "/>
+      </clipPath>
+      
+      <clipPath id="clip1of4">
         <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
       </clipPath>
 
-      <clipPath id="2of4">
+      <clipPath id="clip2of4">
         <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
       </clipPath>
 
-      <clipPath id="3of4">
+      <clipPath id="clip3of4">
         <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
       </clipPath>
 
-      <clipPath id="4of4">
+      <clipPath id="clip4of4">
         <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
       </clipPath>
   
-      <clipPath id="1of3">
+      <clipPath id="clip1of3">
         <path d="M13 12.5 H421 V388 H 13Z"/>
       </clipPath>
   
-      <clipPath id="2of3">
+      <clipPath id="clip2of3">
         <path d="M446 12.5 H854 V388 H 446Z"/>
       </clipPath>
   
-      <clipPath id="3of3">
+      <clipPath id="clip3of3">
         <path d="M879 12.5 H1287 V388 H 879Z"/>
       </clipPath>
     
@@ -297,23 +349,48 @@
     
   </defs>
   
+  <defs id="copyright-defs">
+      
+    <text id="copyright" transform="rotate(270)">
+      <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
+      <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
+    </text>
+    
+    <mask id="copyright-mask">
+        <rect width="100%" height="100%" fill="#fff"/>
+        <use href="#copyright" fill="#000"
+          transform="translate(416 385)"
+        />
+    </mask>
+          
+  </defs>
+  
+  <defs id="shapes-defs">
+      
+    <path id="hex" d="M 0 160 L -138.4 80 L -138.4 -80 L 0 -160 L 138.4 -80 L 138.4 80 Z"/>
+    
+  </defs>
+  
   <defs id="ikon-def">
-    <g id="ikon">
+    <g id="ikon" class="P2">
 
-      <rect id="bg-paper" class="P2" x-data-no-port="1" x="0" y="0" height="100%" width="100%" fill="var(--bg-color, none)"/>
+      <rect id="bg-rect" x-data-no-port="1" x="0" y="0" width="100%" height="100%" fill="var(--bg-fill, none)"/>
       
       <g id="entire-comic"
-       x-opacity="0.7"
-       x-filter="url(#shake)"
-       x-mask="url(#fade-mask)"
+       opacity="var(--bg-opacity, 1)"
+       filter="var(--bg-filter, none)"
+       mask="var(--bg-mask, none)"
       >
 
-        <g id="panel-area" transform="translate(0 95)">
+        <g id="panels" transform="translate(0 80)">
             
-          <g id="4_panel_layout">
-          <g class="first-two" clip-path="url(#1and2of4)">
-            <g id="panel_1of4" clip-path="url(#1of4)">
+          <g id="4_panel_layout" class="P2">
+          <!-- -->
+          <g class="top-half" clip-path="url(#clip1thru2of4)">
+            <g id="panel1of4" x-clip-path="url(#clip1of4)">
             
+              <circle cx="220" cy="190" r="230" fill="#909"/>
+              <circle cx="500" cy="300" r="230" fill="#990"/>
              <g transform="translate(160 50)">
               <text x="0" y="0" text-anchor="middle">
                   <tspan>What in</tspan>
@@ -323,44 +400,42 @@
              </g>
             
             </g>
-            <g id="panel_2of4">
+            <g id="panel2of4">
                 
             </g>
           </g>
-          <g class="next-two" clip-path="url(#1and2of4)">
-            <g id="panel_3of4">
+          <g class="bottom-half" clip-path="url(#clip1and2of4)">
+            <g id="panel3of4" x-clip-path="url(#clip3of4)">
                 
+              <circle cx="220" cy="300" r="230" fill="#099"/>
             </g>
             
-            <text id="copyright" transform="translate(330.5 370) rotate(270)">
-              <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
-              <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
-            </text>
-          
-            <g id="panel_4of4">
+            <g id="panel4of4" x-clip-path="url(#clip4of4)">
+              <circle cx="550" cy="230" r="230" fill="#900"/>
                 
             </g>
           </g>
+          <!-- -->
           </g>
           
-          <!--
-          <g id="3_panel_layout">
-          <g class="P1of3" clip-path="url(#1of3)">
-              <use href="#hex" transform="translate(100 350)"/>
+          <g id="3_panel_layout" class="P3">
+          <!-- -->
+          <g class="panel1of3" clip-path="url(#clip1of3)">
+              
+              <use href="#hex" fill="url(#xdotz)" transform="translate(100 350)" stroke="var(--outline-color, #000)" stroke-width="8"/>
+              
               <circle r="60" transform="translate(365 55)"/>
-              <use href="#thought-bubble" transform="translate(280 150)scale(1.5)"/>
+              
+              <ellipse rx="55" ry="22" cx="280" cy="150" fill="none" stroke="#000" stroke-width="4"/>
               <circle r="6" cx="240" cy="181" fill="none" stroke="#000" stroke-width="4"/>
               <circle r="4" cx="230" cy="189" fill="none" stroke="#000" stroke-width="4"/>
-              <text text-anchor="middle" x="280" y="154">
+              <text text-anchor="middle" x="280" y="158">
                   oh no
-              </text>
-              <text id="copyright" transform="translate(416 385) rotate(270)">
-                <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
-                <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
               </text>
           </g>
           
-          <g class="P2of3" clip-path="url(#1of3)">
+          <g class="panel2of3" clip-path="url(#clip1of3)"
+          mask="url(#copyright-mask)">
             <mask id="dialog-3" maskUnits="userSpaceOnUse">
               <rect width="100%" height="100%" fill="#fff"/>
               <text x="240" y="190" text-anchor="middle" fill="#000"
@@ -374,8 +449,8 @@
             
           </g>
           
-          <g class="P3of3" clip-path="url(#1of3)">
-              <use href="#hex" transform="translate(300 40) rotate(8)"/>
+          <g class="panel3of3" clip-path="url(#clip1of3)">
+              <use href="#hex" transform="translate(300 40) rotate(8)" stroke="var(--outline-color, #000)" stroke-width="8" fill="url(#xdotz)"/>
               <rect class="text-bubble" x="40" y="320" height="50" width="180" />
               <path class="bub-line" d="M190 210L130 320h8Z"/>
               <text x="60" y="352">
@@ -384,16 +459,16 @@
               </text>
             
           </g>
+          <!-- -->
           </g>
-          -->
           
         </g>
 
-        <g id="title-group">
+        <g id="titles">
 
-          <rect id="title-line" class="P2" x-data-no-port="1" x="12.5" y="12.5" />
+          <rect id="title-line" x-data-no-port="1" x="12.5" y="12.5" />
 
-          <g id="title-graphic" transform="translate(25 20) scale(2.5)">
+          <g id="title-graphics" transform="translate(25 20) scale(2.5)">
 
             <path id="LIVING" d="
 
@@ -459,49 +534,50 @@
           </g>
         </g>
 
-        <g id="borders" transform="translate(0 80)" fill="none" stroke="var(--border-color, var(--outline-color, #000))" stroke-width="3">
+        <g id="borders" transform="translate(0 80)">
             
           <!--
           13, 421, 446, 854, 879, 1287,
           -->
           
           <!-- 3-panel borders -->
-          <!--
-          <g>
-            <path class="P1of3" d="M13 12.5 H421 V388 H 13Z"/>
-            <path class="P2of3" d="M13 12.5 H421 V388 H 13Z"/>
-            <path class="P3of3" d="M13 12.5 H421 V388 H 13Z"/>
+          <!-- -->
+          <g class="P3">
+            <path class="panel1of3" d="M13 12.5 H421 V388 H 13Z"/>
+            <path class="panel2of3" d="M13 12.5 H421 V388 H 13Z"/>
+            <path class="panel3of3" d="M13 12.5 H421 V388 H 13Z"/>
           </g>
-          -->
+          <!-- -->
           
           <!-- 4-panel borders -->
+          <!-- -->
+          <g class="P2 top-half">
+            <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+            <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+          </g>
+          <g class="P2 bottom-half">
+            <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+            <use href="#copyright" transform="translate(330.3 370)"/>
+            <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+          </g>
+          <!-- -->
 
-          <g class="first-two">
-            <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
-            <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
-          </g>
-          <g class="next-two">
-            <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
-            <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
-          </g>
-          
-          <!-- border corners !!!CSS-VAR-DASHES!!! -->
+          <!-- border corners -->
           <!--
-          <g class="first-two">
-            <path d="M 12 180 V11 H500 L497 14 H15 V177 Z" fill="var(-border-color, var(-outline-color, #000)" stroke="none" />
+          <g class="P2 top-half">
+            <path class="corn" d="M 12 180 V11 H500 L497 14 H15 V177 Z"/>
           </g>
-          <g class="next-two">
-            <path d="M 540 389 H637.5 V100 L 634.5 103 V386 H543
-            Z" fill="var(-border-color, var(-outline-color, #000)" stroke="none" />
+          <g class="P2 bottom-half">
+            <path class="corn" d="M 540 389 H637.5 V100 L 634.5 103 V386 H543 Z"/>
           </g>
           -->
           
           <!-- stroke border corners -->
           <!--
-          <g class="first-two">
+          <g class="P2 top-half">
             <path d="M12.5 180 V12.5 H500"/>
           </g>
-          <g class="next-two">
+          <g class="P2 bottom-half">
             <path d="M540 388 H637.5 V100"/>
           </g>
           -->
