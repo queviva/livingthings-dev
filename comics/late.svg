@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" 
+viewBox="0 0 500 500">
+
+ 
+<defs>
+  <marker id="slant-cap" markerWidth="3" markerHeight="1"
+    refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
+    <path d=" M 0 0 L 1 0 L 3 1 L 0 1 Z" fill="context-stroke"/>
+  </marker>
+</defs>
+    
+<image href="clock.png" transform="scale(0.5)" />
+
+<path d="
+    M 100 100 
+    L 200 200
+  "
+  fill="none"
+  stroke="green"
+  stroke-width="3"
+  marker-start="url(#slant-cap)"
+  marker-end="url(#slant-cap)"
+/>
+
+
+
+
+</svg>

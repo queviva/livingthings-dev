@@ -10,7 +10,7 @@
   <style id="comic-styles">
 
     :root {
-    
+
       --show-hearts: 0;
       --bg-fill: url(#newsprint);
       --bg-opacity: 0.9;
@@ -390,115 +390,115 @@
         <g id="panels" transform="translate(0 80)">
             
           <g id="4_panel_layout" class="P2">
-          <!-- -->
-          <g class="top-half" x-clip-path="url(#clip1and2of4)">
-            <g id="panel1of4" clip-path="url(#clip1of4)">
-             <g transform="translate(30 42)">
-              <text x-text-anchor="middle">
-                  <tspan>Hey Calvin, it's gonna</tspan>
-                  <tspan x="-0.4ch" dy="1em">cost you 50 cents to</tspan>
-                  <tspan x="0" dy="1em">be my friend today</tspan>
-              </text>
-             </g>
-             <use transform="translate(20 170) scale(0.8)" href="buck.svg#ikon" />
-             <use transform="translate(182 160) scale(0.8)" href="morris.svg#ikon" />
-             <path d="M12 374 Q 148 360 312 374 V388 H12 Z"/>
-            
+            <!-- -->
+            <g class="top-half" x-clip-path="url(#clip1and2of4)">
+              <g id="panel1of4" clip-path="url(#clip1of4)">
+               <g transform="translate(30 42)">
+                <text x-text-anchor="middle">
+                    <tspan>Hey Calvin, it's gonna</tspan>
+                    <tspan x="-0.4ch" dy="1em">cost you 50 cents to</tspan>
+                    <tspan x="0" dy="1em">be my friend today</tspan>
+                </text>
+               </g>
+               <use transform="translate(20 170) scale(0.8)" href="buck.svg#ikon" />
+               <use transform="translate(182 160) scale(0.8)" href="morris.svg#ikon" />
+               <path d="M12 374 Q 148 360 312 374 V388 H12 Z"/>
+              
+              </g>
+              <g id="panel2of4" clip-path="url(#clip2of4)">
+               
+               <g transform="translate(490 42)">
+               <text text-anchor="middle">
+                   And what if I don't
+                   <tspan x="0" dy="0.9em">
+                      <tspan font-style="italic">want</tspan> to be your
+                   </tspan>
+                   <tspan x="0" dy="0.9em">friend today?</tspan>
+               </text>
+               </g>
+               <use transform="translate(345 115) scale(1.5)" href="buck.svg#ikon" />
+              </g>
             </g>
-            <g id="panel2of4" clip-path="url(#clip2of4)">
-             
-             <g transform="translate(490 42)">
-             <text text-anchor="middle">
-                 And what if I don't
-                 <tspan x="0" dy="0.9em">
-                    <tspan font-style="italic">want</tspan> to be your
-                 </tspan>
-                 <tspan x="0" dy="0.9em">friend today?</tspan>
-             </text>
-             </g>
-             <use transform="translate(345 115) scale(1.5)" href="buck.svg#ikon" />
+            <g class="bottom-half" x-clip-path="url(#clip1and2of4)">
+              <g id="panel3of4" clip-path="url(#clip3of4)">
+                               
+               <g transform="translate(160 42)">
+               <text text-anchor="middle">
+                   Then the janitor
+                   <tspan x="0" dy="0.9em">
+                   wipes you off the
+                   </tspan>
+                   <tspan x="0" dy="0.9em">wall with a spatula.</tspan>
+               </text>
+               </g>
+               
+               <path d="M 12 375 L 104 358 L 112 400 H 220 L 210 340 L 409 300 V 400 H 12 Z "/>
+               <use href="morris.svg#ikon" transform="translate(40 100) scale(1.5)"/>
+                  
+              </g>
+              <g id="panel4of4" clip-path="url(#clip4of4)">
+                  
+               <g transform="translate(490 42)">
+               <text text-anchor="middle">
+                   Heck, what's a little
+                   <tspan x="0" dy="0.9em">
+                   extortion among
+                   </tspan>
+                   <tspan x="0" dy="0.9em">friends ?</tspan>
+               </text>
+               </g>
+               
+               <use href="buck.svg#ikon" transform="translate(440 200) scale(0.6)"/>
+               
+               <ellipse cx="480" cy="350" rx="50" ry="2"/>
+              </g>
             </g>
-          </g>
-          <g class="bottom-half" x-clip-path="url(#clip1and2of4)">
-            <g id="panel3of4" clip-path="url(#clip3of4)">
-                             
-             <g transform="translate(160 42)">
-             <text text-anchor="middle">
-                 Then the janitor
-                 <tspan x="0" dy="0.9em">
-                 wipes you off the
-                 </tspan>
-                 <tspan x="0" dy="0.9em">wall with a spatula.</tspan>
-             </text>
-             </g>
-             
-             <path d="M 12 375 L 104 358 L 112 400 H 220 L 210 340 L 409 300 V 400 H 12 Z "/>
-             <use href="morris.svg#ikon" transform="translate(40 100) scale(1.5)"/>
-                
-            </g>
-            <g id="panel4of4" clip-path="url(#clip4of4)">
-                
-             <g transform="translate(490 42)">
-             <text text-anchor="middle">
-                 Heck, what's a little
-                 <tspan x="0" dy="0.9em">
-                 extortion among
-                 </tspan>
-                 <tspan x="0" dy="0.9em">friends ?</tspan>
-             </text>
-             </g>
-             
-             <use href="buck.svg#ikon" transform="translate(440 200) scale(0.6)"/>
-             
-             <ellipse cx="480" cy="350" rx="50" ry="2"/>
-            </g>
-          </g>
-          <!-- -->
+            <!-- -->
           </g>
           
           <g id="3_panel_layout" class="P3">
-          <!-- -->
-          <g class="panel1of3" clip-path="url(#clip1of3)">
-              
-              <use href="#hex" fill="url(#xdotz)" transform="translate(100 350)" stroke="var(--outline-color, #000)" stroke-width="8"/>
-              
-              <circle r="60" transform="translate(365 55)"/>
-              
-              <ellipse rx="55" ry="22" cx="280" cy="150" fill="none" stroke="#000" stroke-width="3"/>
-              <circle r="6" cx="240" cy="181" fill="none" stroke="#000" stroke-width="3"/>
-              <circle r="4" cx="230" cy="189" fill="none" stroke="#000" stroke-width="3"/>
-              <text text-anchor="middle" x="280" y="158">
-                  oh no
-              </text>
-          </g>
-          
-          <g class="panel2of3" clip-path="url(#clip1of3)"
-          mask="url(#copyright-mask)">
-            <mask id="dialog-3" maskUnits="userSpaceOnUse">
-              <rect width="100%" height="100%" fill="#fff"/>
-              <text x="240" y="190" text-anchor="middle" fill="#000"
-              style="font-weight:700;font-size:50px"
-              >
-                <tspan>really loud</tspan>
-                <tspan x="240" dy="1.2em">terrible music</tspan>
-              </text>
-            </mask>
-            <circle r="200" cx="240" cy="200" mask="url(#dialog-3)"/>
+            <!-- -->
+            <g class="panel1of3" clip-path="url(#clip1of3)">
+                
+                <use href="#hex" fill="url(#xdotz)" transform="translate(100 350)" stroke="var(--outline-color, #000)" stroke-width="8"/>
+                
+                <circle r="60" transform="translate(365 55)"/>
+                
+                <ellipse rx="55" ry="22" cx="280" cy="150" fill="none" stroke="#000" stroke-width="3"/>
+                <circle r="6" cx="240" cy="181" fill="none" stroke="#000" stroke-width="3"/>
+                <circle r="4" cx="230" cy="189" fill="none" stroke="#000" stroke-width="3"/>
+                <text text-anchor="middle" x="280" y="158">
+                    oh no
+                </text>
+            </g>
             
-          </g>
-          
-          <g class="panel3of3" clip-path="url(#clip1of3)">
-              <use href="#hex" transform="translate(300 40) rotate(8)" stroke="var(--outline-color, #000)" stroke-width="8" fill="url(#xdotz)"/>
-              <rect class="text-bubble" x="40" y="320" height="50" width="180" />
-              <path class="bub-line" d="M190 210L130 320h8Z"/>
-              <text x="60" y="352">
-                  <tspan>fuckin'</tspan>
-                  <tspan font-style="italic">lids...</tspan>
-              </text>
+            <g class="panel2of3" clip-path="url(#clip1of3)"
+             mask="url(#copyright-mask)">
+              <mask id="dialog-3" maskUnits="userSpaceOnUse">
+                <rect width="100%" height="100%" fill="#fff"/>
+                <text x="240" y="190" text-anchor="middle" fill="#000"
+                style="font-weight:700;font-size:50px"
+                >
+                  <tspan>really loud</tspan>
+                  <tspan x="240" dy="1.2em">terrible music</tspan>
+                </text>
+              </mask>
+              <circle r="200" cx="240" cy="200" mask="url(#dialog-3)"/>
+              
+            </g>
             
-          </g>
-          <!-- -->
-          </g>
+            <g class="panel3of3" clip-path="url(#clip1of3)">
+                <use href="#hex" transform="translate(300 40) rotate(8)" stroke="var(--outline-color, #000)" stroke-width="8" fill="url(#xdotz)"/>
+                <rect class="text-bubble" x="40" y="320" height="50" width="180" />
+                <path class="bub-line" d="M190 210L130 320h8Z"/>
+                <text x="60" y="352">
+                    <tspan>fuckin'</tspan>
+                    <tspan font-style="italic">lids...</tspan>
+                </text>
+              
+            </g>
+            <!-- -->
+            </g>
           
         </g>
 
@@ -555,8 +555,8 @@
                 M 143.459 13.968 C 144.883 15.583 148.273 15.488 147.431 13.896 C 146.519 12.171 143.148 13.04 141.184 10.852 C 136.708 5.864 147.021 0 153.531 7.142 L 150.332 10.852 C 147.576 8.182 144.383 8.94 146.235 10.533 C 147.582 11.692 152.274 11.525 153.167 13.968 C 155.383 20.029 145.636 23.018 140.027 18.484 L 143.459 13.968 Z
 
 
-                " />
-
+            " />
+            
             <g id="title-circs">
               <circle cx="17" cy="7.3" r="3.8" />
               <circle cx="109.2" cy="6.5" r="3.8" />
