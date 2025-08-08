@@ -3,14 +3,14 @@
   xmlns:xlink="http://www.w3.org/1999/xlink" 
   style="
     isolation:isolate;
-    overflow:hidden;
+    x-overflow:hidden;
   " 
   viewBox="0 0 803 871" 
   width="803" 
   height="871"
 >
 
-<defs>
+<defs id="marker-defs">
   <marker id="slant-cap" markerWidth="3" markerHeight="1"
     refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
     <path d=" M 0 0 L 1 0 L 3 1 L 0 1 Z" fill="context-stroke"/>
@@ -23,13 +23,25 @@
 
   <path id="back-leg" d="M 238 291 Q 200 300 178 316 L 147 372 Q 140 380 132 376 C 97 358 24 360 24 372 S 90 394 144 394 L 182 324 Q 205 308 235 308 Z "/>
   
-  <g id="body-fills" fill-rule="evenodd" fill="hsla(40,100%,50%,0.2)">
+  <g id="body-fills" fill-rule="evenodd" fill="hsla(40,100%,70%,1)">
     <path id="body-fill" d="M 180 82 Q 195 90 216 92 Q 214 100 215 108 Q 218 63 252 77 C 285 27 300 160 287 215 C 400 260 370 308 310 295 Q 300 305 295 320 L 284 314 Q 220 330 140 245 C 110 130 170 70 180 82 Z M 188 105 Q 200 138 198 228 Q 260 269 280 295 Q 225 305 172 240 C 155 200 170 97 188 105 Z " />
     <path id="bell-fill" d="M 188 80 C 192 35 100 90 138 124 Z " /> 
-    <g id="test" fill="none" stroke="hsla(0, 100%, 80%, 0.4" stroke-width="22"/>
+    <g id="test" fill="none" stroke="hsla(40, 100%, 20%, 0.2" stroke-width="22"/>
   </g>
   
-  <path id="outline-strokes" d="
+  <path id="under-bell" fill="hsla(40,100%,20%,1)" d="
+    M 188 85
+    C 190 45 120 100 139 125
+    C 150 110 170 65 188 85
+    Z
+  "/>
+  <path id="outline-strokes" 
+    fill="none"
+    stroke="hsla(40,100%,20%,1)"
+    stroke-width="3"
+    stroke-linecap="round"
+    
+   d="
     M 138 238
     C 110 130 168 72 182 82
     S 205 158 205 214
@@ -68,12 +80,7 @@
     C 264 6 150 15 152 70
 
 
-  " fill="none"
-    stroke="hsla(40,100%,20%,1)"
-    stroke-width="3"
-    stroke-linecap="round"
-    
-  />
+  "/>
 
   <g id="thin-lines"
     fill="none"
@@ -102,16 +109,18 @@
   <g id="arms" fill="#111">
     <ellipse cx="189" cy="225" rx="5" ry="11"/>
     <path d="M 187 216 Q 183 172 179 156 L 188 142 Q 187 179 190 216 Z "/>
-    <path mask="url(#watch-mask)" d="M 184 223 C 128 230 81 220 69 203 Q 110 220 112 253 L 85 253 L 93 271 L 117 258 Q 112 200 53 193 C 65 220 81 230 186 231 Z "/>
+    <path mask="url(#watch-mask)" d="M 184 223 C 128 230 81 220 66 203 Q 105 210 112 253 L 85 253 L 93 271 L 117 258 Q 112 200 53 193 C 65 220 81 230 186 231 Z "/>
   </g>
 
   <g id="front-leg" fill="#111">
     <path d="M 309 265 Q 282 288 252 326 Q 279 350 290 379 C 249 366 198 370 196 382 S 230 399 239 399 L 314 404 Q 314 370 264 326 Q 291 293 315 276 C 320 273 320 260 309 265 Z "/>
+    <ellipse rx="150" ry="10" cx="220" cy="400" fill="rgba(0,0,0,0.55)"/>
   </g>
+
 
  </g> 
 
- <script><![CDATA[
+ <!--script><![CDATA[
 
     const NS = 'http://www.w3.org/2000/svg';
     const svg = document.getElementById('svg');
@@ -129,72 +138,48 @@
 
     };
     
-    svg.addEventListener('pointerdown', e => {
+    svg.addEventListener('mousedown', e => {
       
+      e.stopPropagation();
+      e.preventDefault();
       drawPath = document.createElementNS(NS, 'path');
       test.appendChild(drawPath);
       let xy = convertCoords(e);
       coords.push(`M  ${xy.x} ${xy.y}`);
       drawPath.setAttribute('d', coords.join(''));
-      svg.addEventListener('pointermove', draw);
+      svg.addEventListener('mousemove', draw, {passive:false});
 
-    });
+    }, {passive: false});
 
-    svg.addEventListener('pointerup', () => {
+    svg.addEventListener('mouseup', e => {
+      e.stopPropagation();
+      e.preventDefault();
       console.log(test);
       coords = [];
-      svg.removeEventListener('pointermove', draw);
-    });
+      svg.removeEventListener('mousemove', draw, {passive:false});
+    }, {passive: false});
 
-    svg.addEventListener('dblclick', () => {
-      coords = [];
-      test.setAttribute('d', '');
-    });
-
-const draw = e => {
-
-  const pt = convertCoords(e); 
-
-  const last = coords.at(-1);
-  if (last) {
-    const [lx, ly] = last.match(/[\d.]+/g).map(Number);
-    const dx = pt.x - lx;
-    const dy = pt.y - ly;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    if (dist < 2) return;  // skip small moves
-  }
-
-  const coordStr = `L ${Math.round(pt.x)} ${Math.round(pt.y)}`;
-  coords.push(coordStr);
-  drawPath.setAttribute('d', coords.join(' '));
-};
-
-
-    /*
-    svg.addEventListener('dblclick', () => {
-        coords = [];
-    });
-
-    svg.addEventListener("pointerup", e => {
+    const draw = e => {
 
       e.stopPropagation();
       e.preventDefault();
+    
+      const pt = convertCoords(e); 
+    
+      const last = coords.at(-1);
+      if (last) {
+        const [lx, ly] = last.match(/[\d.]+/g).map(Number);
+        const dx = pt.x - lx;
+        const dy = pt.y - ly;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 2) return;
+      }
+    
+      coords.push(`L ${Math.round(pt.x)} ${Math.round(pt.y)}`);
+      drawPath.setAttribute('d', coords.join(' '));
+    };
 
-      const pt = svg.createSVGPoint();
-      pt.x = e.clientX;
-      pt.y = e.clientY;
-
-      // Transform screen coords into SVG coords
-      const svgCoords = pt.matrixTransform(svg.getScreenCTM().inverse());
-
-      let d = '';
-      d += coords.length === 0 ? 'M' : 'L';
-      d += ` ${Math.round(svgCoords.x.toFixed(0))} ${Math.round(svgCoords.y.toFixed(0))}`;
-      coords.push(d);
-      console.log(coords.join('\n'));
-    });
-    */
-  ]]></script>
+  ]]></script-->
 
 
 
