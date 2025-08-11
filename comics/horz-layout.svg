@@ -65,6 +65,18 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
       fill:var(--text-color, var(--outline-color, #000));
     }
 
+    @media(orientation: portrait) {
+      .land-only {
+        display: none;
+      }
+    }
+
+    @media(orientation: landscape) {
+      .port-only {
+        display: none;
+      }
+    }
+
   </style>
     
   <style id="title-styles">
@@ -434,7 +446,7 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
   </defs>
   
   <defs id="ikon-def">
-    <g id="ikon" class="P3">
+    <g id="ikon" class="P1">
 
       <rect id="bg-rect" x-data-no-port="1" x="0" y="0" width="100%" height="100%" fill="var(--bg-fill, none)"/>
       
@@ -444,17 +456,15 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
        mask="var(--bg-mask, none)"
       >
 
-
-
         <g id="panels" transform="translate(0 80)">
             
           <g id="one_panel_layout" class="P1">
-            <rect x="-400" y="-400" 
-             width="4000" 
-             height="4000"
-             fill="rgba(0,100,0,0.8)" />
-            <ellipse cx="300" cy="300" rx="100" ry="30"/>
-            <use href="hexapoid.svg#ikon" transform="translate(400 -50)" />
+            <rect x="-500" y="-500" 
+             width="5000" 
+             height="5000"
+             fill="rgba(255,255,255,1)" />
+             <!-- <use href="hexapoid.svg#ikon" transform="translate(350 -30)"/> -->
+            <use href="boston-avalanche.svg#ikon" transform="translate(-5 -270) scale(1.39)" />
           </g>
         
           <g id="four_panel_layout" class="P2">

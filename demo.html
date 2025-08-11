@@ -42,7 +42,7 @@
     ></object>
     <object data-stys="--show-hearts: 0;" data-port="P2" type="image/svg+xml" data="comics/scroll-master.svg"></object>
     <object data="comics/comic000.svg"></object>
-    <object data-port="P3" type="image/svg+xml" data="comics/horz-layout.svg"></object>
+    <object data-port="P1" type="image/svg+xml" data="comics/horz-layout.svg"></object>
     <object data-port="P2" data-cred type="image/svg+xml" data="comics/lids.svg"></object>
     <div class="cred">
         (The Wheeling Daily Scoundrel 5-3-84)
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Initialize
-    ['P2', 'P3'].forEach(portType => {
+    ['P1', 'P2', 'P3'].forEach(portType => {
         const ports = document.querySelectorAll(`[data-port="${portType}"]`);
 
         ports.forEach(obj => {
