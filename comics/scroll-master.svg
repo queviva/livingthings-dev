@@ -2,9 +2,6 @@
  style="isolation:isolate;overflow:visible;"
  viewBox="0 0 1300 480"
 >
-<!--
-  :%s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
- -->
 
   <style id="comic-styles">
       
@@ -81,8 +78,8 @@
       fill: var(--circ-color, var(--outline-color, #000));
     }
     
-    </style>
-
+  </style>
+ 
   <style id="port-scrape-styles">
         
     #bg-paper[data-no-port] {

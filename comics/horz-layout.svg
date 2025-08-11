@@ -3,9 +3,9 @@
  viewBox="0 0 1300 480"
 >
     
-  <!--
-  :%s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
-  -->
+<!--
+s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
+-->
 
   <style id="comic-styles">
 
@@ -13,9 +13,11 @@
 
       --show-hearts: 0;
       --bg-fill: url(#newsprint);
+      /*
       --bg-opacity: 0.9;
       --bg-filter: url(#shake);
       --bg-mask: url(#fade-mask);
+      */
       /*
       --bg-fill: url(#newsprint);
       --bg-opacity: 0.7;
@@ -23,6 +25,7 @@
       --bg-mask: url(#fade-mask);
       --outline-color: #000;
       --border-color: #000;
+      --border-size: 2;
       --text-color: #000;
       --dot-color: #000;
       --circ-color: #000;
@@ -61,7 +64,7 @@
       font-size:17px;
       fill:var(--text-color, var(--outline-color, #000));
     }
-    
+
   </style>
     
   <style id="title-styles">
@@ -105,23 +108,53 @@
     }
     
   </style>
-    
-  <style id="border-styles">
-    
-    #borders  path:not(.corn) {
-      fill: none;
-      stroke: var(--border-color, var(--outline-color, #000));
-      stroke-width: 3px;
+
+  <style id="1-panel-port-styles">
+
+    #panels g.P1 {
+      clip-path: url(#full-wide);
+      transform: translate(0, 0);
     }
-    
-    #borders path.corn {
-      fill: var(-border-color, var(-outline-color, #000);
-      stroke: none;
+
+    @media(orientation: portrait) {
+
+      #panels g.P1 {
+        clip-path: url(#full-high);
+        transform: translate(-325px, 200px);
+      }
+
+      .P1 #bg-rect:not([data-no-port]) {
+        width: 650px;
+        height: 882.5px;
+      }
+      .P1 #title-line:not([data-no-port]) {
+        width: 625px;
+      }
+      #borders path.P1 {
+        d: path("M12.5 12.5 H637.5 V788.5 H12.5 Z");
+      }
     }
-    
+
+    @media(orientation: landscape) {
+      #panels g.P1 {
+        clip-path: url(#full-wide);
+        transform: translate(0, 0);
+      }
+
+      .P1 #bg-rect:not([data-no-port]) {
+        width: 1300px;
+        height: 480px;
+      }
+      .P1 #title-line:not([data-no-port]) {
+        width: 1275px;
+      }
+      #borders path.P1 {
+        d: path("M12.5 12.5 H1288.5 V388.5 H12.5 Z");
+      }
+    }
   </style>
 
-  <style id="port-scrape-styles">
+  <style id="4-panel-port-styles">
         
     #bg-rect[data-no-port] {
         width: 1300px;
@@ -201,9 +234,25 @@
   </style>
   
   <style id="panel-hacks-REMOVE">
+    #ikon.P1 g.P2,
+    #ikon.P1 g.P3,
+    #ikon.P2 g.P1,
+    #ikon.P3 g.P1,
     #ikon.P3 g.P2,
     #ikon.P2 g.P3 {
       display: none;
+    }
+  </style>
+
+  <style id="border-styles">
+    #borders path {
+      fill: none;
+      stroke: var(--border-color, var(--outline-color, #000));
+      stroke-width: var(--border-size, 2);
+    }
+    #borders path.slants {
+      marker-start: url(#slant-cap);
+      marker-end: url(#slant-cap);
     }
   </style>
   
@@ -281,45 +330,53 @@
         
     -->
     
-      <clipPath id="clip1thru2of4">
-        <path d="M12.5 12.5 H 637.5 V388 H12.5Z"/>
-      </clipPath>
-      
-      <clipPath id="clip1and2of4">
-        <path d="
-        M12.5 12.5 H312.5 V388 H12.5Z
-        M337.5 12.5 H637.5 V388 H337.5Z
-        "/>
-      </clipPath>
-      
-      <clipPath id="clip1of4">
-        <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
-      </clipPath>
-
-      <clipPath id="clip2of4">
-        <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
-      </clipPath>
-
-      <clipPath id="clip3of4">
-        <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
-      </clipPath>
-
-      <clipPath id="clip4of4">
-        <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
-      </clipPath>
-  
-      <clipPath id="clip1of3">
-        <path d="M13 12.5 H421 V388 H 13Z"/>
-      </clipPath>
-  
-      <clipPath id="clip2of3">
-        <path d="M446 12.5 H854 V388 H 446Z"/>
-      </clipPath>
-  
-      <clipPath id="clip3of3">
-        <path d="M879 12.5 H1287 V388 H 879Z"/>
-      </clipPath>
+    <clipPath id="clip1thru2of4">
+      <path d="M12.5 12.5 H 637.5 V388 H12.5Z"/>
+    </clipPath>
     
+    <clipPath id="clip1and2of4">
+      <path d="
+      M12.5 12.5 H312.5 V388 H12.5Z
+      M337.5 12.5 H637.5 V388 H337.5Z
+      "/>
+    </clipPath>
+    
+    <clipPath id="clip1of4">
+      <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+    </clipPath>
+
+    <clipPath id="clip2of4">
+      <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+    </clipPath>
+
+    <clipPath id="clip3of4">
+      <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+    </clipPath>
+
+    <clipPath id="clip4of4">
+      <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+    </clipPath>
+
+    <clipPath id="clip1of3">
+      <path d="M13 12.5 H421 V388 H 13Z"/>
+    </clipPath>
+
+    <clipPath id="clip2of3">
+      <path d="M446 12.5 H854 V388 H 446Z"/>
+    </clipPath>
+
+    <clipPath id="clip3of3">
+      <path d="M879 12.5 H1287 V388 H 879Z"/>
+    </clipPath>
+
+    <clipPath id="full-wide">
+      <path d="M12.5 12.5 H1287.5 V388.5 H12.5Z"/>
+    </clipPath>
+
+    <clipPath id="full-high">
+      <path d="M337.5 -187.5 H962.5 V587.5 H337.5 Z"/>
+    </clipPath>
+
     <mask id="fade-mask"
      maskUnits="objectBoundingBox"
      maskContentUnits="objectBoundingBox"
@@ -377,7 +434,7 @@
   </defs>
   
   <defs id="ikon-def">
-    <g id="ikon" class="P2">
+    <g id="ikon" class="P3">
 
       <rect id="bg-rect" x-data-no-port="1" x="0" y="0" width="100%" height="100%" fill="var(--bg-fill, none)"/>
       
@@ -387,9 +444,20 @@
        mask="var(--bg-mask, none)"
       >
 
+
+
         <g id="panels" transform="translate(0 80)">
             
-          <g id="4_panel_layout" class="P2">
+          <g id="one_panel_layout" class="P1">
+            <rect x="-400" y="-400" 
+             width="4000" 
+             height="4000"
+             fill="rgba(0,100,0,0.8)" />
+            <ellipse cx="300" cy="300" rx="100" ry="30"/>
+            <use href="hexapoid.svg#ikon" transform="translate(400 -50)" />
+          </g>
+        
+          <g id="four_panel_layout" class="P2">
             <!-- -->
             <g class="top-half" x-clip-path="url(#clip1and2of4)">
               <g id="panel1of4" clip-path="url(#clip1of4)">
@@ -456,7 +524,7 @@
             <!-- -->
           </g>
           
-          <g id="3_panel_layout" class="P3">
+          <g id="three_panel_layout" class="P3">
             <!-- -->
             <g class="panel1of3" clip-path="url(#clip1of3)">
                 
@@ -498,7 +566,7 @@
               
             </g>
             <!-- -->
-            </g>
+          </g>
           
         </g>
 
@@ -572,23 +640,18 @@
           </g>
         </g>
 
-        <g id="borders" transform="translate(0 80)">
-            
+        <g id="borders" transform="translate(0 80)" >
+
           <!--
           13, 421, 446, 854, 879, 1287,
           -->
           
-          <!-- 3-panel borders -->
-          <!-- -->
           <g class="P3">
             <path class="panel1of3" d="M13 12.5 H421 V388 H 13Z"/>
             <path class="panel2of3" d="M13 12.5 H421 V388 H 13Z"/>
             <path class="panel3of3" d="M13 12.5 H421 V388 H 13Z"/>
           </g>
-          <!-- -->
           
-          <!-- 4-panel borders -->
-          <!-- -->
           <g class="P2 top-half">
             <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
             <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
@@ -598,7 +661,10 @@
             <use href="#copyright" transform="translate(330.3 370)"/>
             <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
           </g>
-          <!-- -->
+
+          <g class="P1">
+            <path class="P1" d="M12.5 12.5 H1288.5 V388.5 H12.5 Z"/>
+          </g>
 
           <!-- border corners -->
           <!--
