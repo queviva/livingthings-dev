@@ -15,8 +15,8 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
       --bg-fill: url(#newsprint);
       /*
       --bg-opacity: 0.9;
-      --bg-filter: url(#shake);
       --bg-mask: url(#fade-mask);
+      --bg-filter: url(#shake);
       */
       /*
       --bg-fill: url(#newsprint);
@@ -459,12 +459,9 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
         <g id="panels" transform="translate(0 80)">
             
           <g id="one_panel_layout" class="P1">
-            <rect x="-500" y="-500" 
-             width="5000" 
-             height="5000"
-             fill="rgba(255,255,255,1)" />
-             <!-- <use href="hexapoid.svg#ikon" transform="translate(350 -30)"/> -->
-            <use href="boston-avalanche.svg#ikon" transform="translate(-5 -270) scale(1.39)" />
+            <path d="M-500 -500h4000v4000H-500Z" fill="#090"/>
+            <use href="hexapoid.svg#ikon" transform="translate(350 -30)"/>
+            <!-- <use opacity="0.8" href="boston-avalanche.svg#ikon" transform="translate(-5 -270) scale(1.39)" /> -->
           </g>
         
           <g id="four_panel_layout" class="P2">
