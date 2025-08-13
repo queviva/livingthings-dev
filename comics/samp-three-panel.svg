@@ -2,23 +2,12 @@
  style="isolation:isolate;overflow:visible;"
  viewBox="0 0 1300 480"
 >
-    
-<!--
-s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
--->
 
   <style id="comic-styles">
 
     :root {
 
       --show-hearts: 0;
-      --bg-fill: url(#newsprint);
-      /*
-      --bg-opacity: 0.9;
-      --bg-mask: url(#fade-mask);
-      --bg-filter: url(#shake);
-      */
-      /*
       --bg-fill: url(#newsprint);
       --bg-opacity: 0.7;
       --bg-filter: url(#shake);
@@ -31,8 +20,6 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
       --circ-color: #000;
       --circ-1-color: #000;
       --circ-2-color: #000;
-      --show-hearts: 1;
-      */
       
     }
       
@@ -121,95 +108,7 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
     
   </style>
 
-  <style id="one-panel-clip-styles">
-
-    #panels g.P1 {
-      clip-path: url(#full-wide);
-      transform: translate(0, 0);
-    }
-
-    @media(orientation: portrait) {
-
-      #panels g.P1 {
-        clip-path: url(#full-high);
-        transform: translate(-325px, 200px);
-      }
-
-      .P1 #bg-rect:not([data-no-port]) {
-        width: 650px;
-        height: 882.5px;
-      }
-      .P1 #title-line:not([data-no-port]) {
-        width: 625px;
-      }
-      #borders path.P1 {
-        d: path("M12.5 12.5 H637.5 V788.5 H12.5 Z");
-      }
-    }
-
-    @media(orientation: landscape) {
-      #panels g.P1 {
-        clip-path: url(#full-wide);
-        transform: translate(0, 0);
-      }
-
-      .P1 #bg-rect:not([data-no-port]) {
-        width: 1300px;
-        height: 480px;
-      }
-      .P1 #title-line:not([data-no-port]) {
-        width: 1275px;
-      }
-      #borders path.P1 {
-        d: path("M12.5 12.5 H1288.5 V388.5 H12.5 Z");
-      }
-    }
-  </style>
-
-  <style id="four-panel-port-styles">
-        
-    #bg-rect[data-no-port] {
-        width: 1300px;
-        height: 480px;
-    }
-    
-    .bottom-half[data-no-port] {
-      transform: translate(650px, 0);
-    }
-    
-    #title-line[data-no-port] {
-        width: 1275px;
-    }
-    
-    @media(orientation: portrait) {
-      #bg-rect:not([data-no-port]) {
-        width: 650px;
-        height: 882.5px;
-      }
-      .bottom-half:not([data-no-port]) {
-        transform: translate(0, 400px);
-      }
-      #title-line:not([data-no-port]) {
-        width: 625px;
-      }
-    }
-
-    @media(orientation: landscape) {
-      #bg-rect:not([data-no-port]) {
-        width: 1300px;
-        height: 480px;
-      }
-      .bottom-half:not([data-no-port]) {
-        transform: translate(650px, 0);
-      }
-      #title-line:not([data-no-port]) {
-        width: 1275px;
-      }
-    }
-    
-  </style>
-
-  <style id="three-panel-port-styles">
+  <style id="3-panel-orientation-styles">
       
     @media(orientation: portrait) {
       #ikon.P3 #bg-rect:not([data-no-port]) {
@@ -244,17 +143,6 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
     }
     
   </style>
-  
-  <style id="panel-hacks-REMOVE">
-    #ikon.P1 g.P2,
-    #ikon.P1 g.P3,
-    #ikon.P2 g.P1,
-    #ikon.P3 g.P1,
-    #ikon.P3 g.P2,
-    #ikon.P2 g.P3 {
-      display: none;
-    }
-  </style>
 
   <style id="border-styles">
     #borders path {
@@ -262,28 +150,10 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
       stroke: var(--border-color, var(--outline-color, #000));
       stroke-width: var(--border-size, 2);
     }
-    #borders path.slants {
-      marker-start: url(#slant-cap);
-      marker-end: url(#slant-cap);
-    }
   </style>
   
-  <defs id="patterns-and-filters">
+  <defs id="patts-n-filters">
 
-    <pattern id="hatch" viewBox="-2 -2 4 4" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(3)">
-      <path d="M-2 0 H2 M0 -2 V2"
-       fill="none"
-       stroke="var(--dot-color, var(--outline-color, #000))"
-       stroke-width="0.5"
-       transform="scale(1)"
-      />
-    </pattern>
-
-    <pattern id="dotz" viewBox="-2 -2 4 4" width="4" height="4"
-      patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1.5)">
-      <circle r="1" fill="var(--dot-color,var(--outline-color, #000))" transform="scale(1.5)"/>
-    </pattern>
-    
     <pattern id="xdotz" viewBox="-2 -2 4 4" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1.5)">
       <path d="M1 0 A1 1 0 1 0 1 0.01H9V9H-9V-9H9V0Z"
       fill="var(--dot-color,var(--outline-color, #000))" transform="scale(1.5)"/>
@@ -300,10 +170,13 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
 
     <filter id="shake" width="120%" height="120%" color-interpolation-filters="sRGB">
       <feImage href="newsprint.jpg" x="0" y="0" width="120%" height="120%" preserveAspectRatio="xMidYMid slice" result="mig" />
-      <feDisplacementMap in="SourceGraphic" in2="mig" result="rat" scale="20" xChannelSelector="R" yChannelSelector="B" />
+      <feDisplacementMap in="SourceGraphic" in2="mig" result="rat" 
+       scale="15" xChannelSelector="R" yChannelSelector="B" />
       <feGaussianBlur in="rat" stdDeviation="0.3" result="blur" />
       <!-- shift image back based on displacement's scale -->
-      <feOffset in="blurred" dx="6.5" dy="5" result="final" />
+      <feOffset in="blurred" 
+       dx="6.5" 
+       dy="2" result="final" />
     </filter>
     
     <pattern id="newsprint" patternUnits="userSpaceOnUse" width="100%" height="100%">
@@ -313,80 +186,9 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
   </defs>
 
   <defs id="clips-n-masks">
-    
-    <!--
-        1of4 _AND_ 3of4
-        M12.5 12.5 H312.5 V388 H12.5Z
-        
-        2of4 AND 4of4
-        M337.5 12.5 H637.5 V388 H337.5Z
-        
-        1and2of4 _AND_ 3and4of4
-        M12.5 12.5 H 637.5 V388 H12.5Z
-        
-        2and3of4
-        M337.5 12.5 H650 V388 H337.5Z
-        M0 12.5 H312.5 V388 H0Z
-        
-        1of3
-        M13 12.5 H421 V388 H 13Z
-        
-        2of3
-        M446 12.5 H854 V388 H 446Z
-        
-        3of3
-        M879 12.5 H1287 V388 H 879Z
-
-        full-size
-        M12.5 12.5 H1287.5 V388 H12.5Z
-        
-    -->
-    
-    <clipPath id="clip1thru2of4">
-      <path d="M12.5 12.5 H 637.5 V388 H12.5Z"/>
-    </clipPath>
-    
-    <clipPath id="clip1and2of4">
-      <path d="
-      M12.5 12.5 H312.5 V388 H12.5Z
-      M337.5 12.5 H637.5 V388 H337.5Z
-      "/>
-    </clipPath>
-    
-    <clipPath id="clip1of4">
-      <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
-    </clipPath>
-
-    <clipPath id="clip2of4">
-      <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
-    </clipPath>
-
-    <clipPath id="clip3of4">
-      <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
-    </clipPath>
-
-    <clipPath id="clip4of4">
-      <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
-    </clipPath>
 
     <clipPath id="clip1of3">
       <path d="M13 12.5 H421 V388 H 13Z"/>
-    </clipPath>
-
-    <clipPath id="clip2of3">
-      <path d="M446 12.5 H854 V388 H 446Z"/>
-    </clipPath>
-
-    <clipPath id="clip3of3">
-      <path d="M879 12.5 H1287 V388 H 879Z"/>
-    </clipPath>
-
-    <clipPath id="full-wide">
-      <path d="M12.5 12.5 H1287.5 V388.5 H12.5Z"/>
-    </clipPath>
-
-    <clipPath id="full-high">
-      <path d="M337.5 -187.5 H962.5 V587.5 H337.5 Z"/>
     </clipPath>
 
     <mask id="fade-mask"
@@ -405,24 +207,6 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
 
   </defs>
 
-  <defs id="line-caps">
-      
-    <marker id="slant-cap" markerWidth="3" markerHeight="1"
-            refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
-      <path d=" M 0 0 L 1 0 L 3 1 L 0 1 Z" fill="context-stroke"/>
-    </marker>
-    
-    <marker id="point-cap"
-      markerWidth="4" markerHeight="1"
-      refX="1" refY="0.5"
-      orient="auto-start-reverse"
-      markerUnits="strokeWidth"
-    >
-      <path d="M0 0.5 L1 0 L4 0.5 L1 1 Z" fill="context-stroke"/>
-    </marker>
-    
-  </defs>
-  
   <defs id="copyright-defs">
       
     <text id="copyright" transform="rotate(270)">
@@ -446,7 +230,7 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
   </defs>
   
   <defs id="ikon-def">
-    <g id="ikon" class="P1">
+    <g id="ikon" class="P3">
 
       <rect id="bg-rect" x-data-no-port="1" x="0" y="0" width="100%" height="100%" fill="var(--bg-fill, none)"/>
       
@@ -457,82 +241,7 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
       >
 
         <g id="panels" transform="translate(0 80)">
-            
-          <g id="one_panel_layout" class="P1">
-            <path d="M-500 -500h4000v4000H-500Z" fill="#090"/>
-            <use href="hexapoid.svg#ikon" transform="translate(350 -30)"/>
-            <!-- <use opacity="0.8" href="boston-avalanche.svg#ikon" transform="translate(-5 -270) scale(1.39)" /> -->
-          </g>
-        
-          <g id="four_panel_layout" class="P2">
-            <!-- -->
-            <g class="top-half" x-clip-path="url(#clip1and2of4)">
-              <g id="panel1of4" clip-path="url(#clip1of4)">
-               <g transform="translate(30 42)">
-                <text x-text-anchor="middle">
-                    <tspan>Hey Calvin, it's gonna</tspan>
-                    <tspan x="-0.4ch" dy="1em">cost you 50 cents to</tspan>
-                    <tspan x="0" dy="1em">be my friend today</tspan>
-                </text>
-               </g>
-               <use transform="translate(20 170) scale(0.8)" href="buck.svg#ikon" />
-               <use transform="translate(182 160) scale(0.8)" href="morris.svg#ikon" />
-               <path d="M12 374 Q 148 360 312 374 V388 H12 Z"/>
-              
-              </g>
-              <g id="panel2of4" clip-path="url(#clip2of4)">
-               
-               <g transform="translate(490 42)">
-               <text text-anchor="middle">
-                   And what if I don't
-                   <tspan x="0" dy="0.9em">
-                      <tspan font-style="italic">want</tspan> to be your
-                   </tspan>
-                   <tspan x="0" dy="0.9em">friend today?</tspan>
-               </text>
-               </g>
-               <use transform="translate(345 115) scale(1.5)" href="buck.svg#ikon" />
-              </g>
-            </g>
-            <g class="bottom-half" x-clip-path="url(#clip1and2of4)">
-              <g id="panel3of4" clip-path="url(#clip3of4)">
-                               
-               <g transform="translate(160 42)">
-               <text text-anchor="middle">
-                   Then the janitor
-                   <tspan x="0" dy="0.9em">
-                   wipes you off the
-                   </tspan>
-                   <tspan x="0" dy="0.9em">wall with a spatula.</tspan>
-               </text>
-               </g>
-               
-               <path d="M 12 375 L 104 358 L 112 400 H 220 L 210 340 L 409 300 V 400 H 12 Z "/>
-               <use href="morris.svg#ikon" transform="translate(40 100) scale(1.5)"/>
-                  
-              </g>
-              <g id="panel4of4" clip-path="url(#clip4of4)">
-                  
-               <g transform="translate(490 42)">
-               <text text-anchor="middle">
-                   Heck, what's a little
-                   <tspan x="0" dy="0.9em">
-                   extortion among
-                   </tspan>
-                   <tspan x="0" dy="0.9em">friends ?</tspan>
-               </text>
-               </g>
-               
-               <use href="buck.svg#ikon" transform="translate(440 200) scale(0.6)"/>
-               
-               <ellipse cx="480" cy="350" rx="50" ry="2"/>
-              </g>
-            </g>
-            <!-- -->
-          </g>
-          
           <g id="three_panel_layout" class="P3">
-            <!-- -->
             <g class="panel1of3" clip-path="url(#clip1of3)">
                 
                 <use href="#hex" fill="url(#xdotz)" transform="translate(100 350)" stroke="var(--outline-color, #000)" stroke-width="8"/>
@@ -573,9 +282,7 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
                 </text>
               
             </g>
-            <!-- -->
           </g>
-          
         </g>
 
         <g id="titles">
@@ -650,49 +357,11 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
 
         <g id="borders" transform="translate(0 80)" >
 
-          <!--
-          13, 421, 446, 854, 879, 1287,
-          -->
-          
           <g class="P3">
             <path class="panel1of3" d="M13 12.5 H421 V388 H 13Z"/>
             <path class="panel2of3" d="M13 12.5 H421 V388 H 13Z"/>
             <path class="panel3of3" d="M13 12.5 H421 V388 H 13Z"/>
           </g>
-          
-          <g class="P2 top-half">
-            <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
-            <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
-          </g>
-          <g class="P2 bottom-half">
-            <!--<path d="M12.5 12.5 H312.5 V388 H12.5Z"/>-->
-            <use href="#copyright" transform="translate(330.3 370)"/>
-            <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
-          </g>
-
-          <g class="P1">
-            <path class="P1" d="M12.5 12.5 H1288.5 V388.5 H12.5 Z"/>
-          </g>
-
-          <!-- border corners -->
-          <!--
-          <g class="P2 top-half">
-            <path class="corn" d="M 12 180 V11 H500 L497 14 H15 V177 Z"/>
-          </g>
-          <g class="P2 bottom-half">
-            <path class="corn" d="M 540 389 H637.5 V100 L 634.5 103 V386 H543 Z"/>
-          </g>
-          -->
-          
-          <!-- stroke border corners -->
-          <!--
-          <g class="P2 top-half">
-            <path d="M12.5 180 V12.5 H500"/>
-          </g>
-          <g class="P2 bottom-half">
-            <path d="M540 388 H637.5 V100"/>
-          </g>
-          -->
           
         </g>
         
