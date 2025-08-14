@@ -38,15 +38,15 @@
   <div>
     <object type="image/svg+xml" data="title001.svg"
      style="padding: 5px;"
-     data-stys="--title-color:#909;"
+     data-stys="--title-color:#900;"
     ></object>
     <object data-stys="--show-hearts: 0;" data-port="P2" type="image/svg+xml" data="comics/scroll-master.svg"></object>
     <object data="comics/comic000.svg"></object>
-    <object data-port="P1" type="image/svg+xml" data="comics/horz-layout.svg"></object>
+    <object id="nig" data-stys="
+        --bg-fill: #909;
+    " data-port="P1" type="image/svg+xml" data="comics/horz-layout.svg"></object>
     <object data-port="P2" data-cred type="image/svg+xml" data="comics/lids.svg"></object>
-    <div class="cred">
-        (The Wheeling Daily Scoundrel 5-3-84)
-    </div>
+    <div class="cred">(The Wheeling Daily Scoundrel)</div>
     <object data-stys="
         --show-hearts : 0;
         --outline-color : #909;
@@ -66,21 +66,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const portConfigs = {
         P1: {
-            portrait: '0 0 650 882.5',
-            landscape: '0 0 1300 480'
+            port: '0 0 650 882.5',
+            land: '0 0 1300 480'
         },
         P2: {
-            portrait: '0 0 650 882.5',
-            landscape: '0 0 1300 480'
+            port: '0 0 650 882.5',
+            land: '0 0 1300 480'
         },
         P3: {
-            portrait: '0 0 434 1260',
-            landscape: '0 0 1300 480'
+            port: '0 0 434 1260',
+            land: '0 0 1300 480'
         }
     };
 
-    const getOrientation = () =>
-        window.innerHeight >= window.innerWidth ? 'portrait' : 'landscape';
+    const getOrientation = () => {
+        return window.innerHeight >= window.innerWidth ? 'port' : 'land';
+    };
+
+    const updateViewBox = (obj, val) => {
+        obj.contentDocument.querySelector('svg').setAttribute('viewBox', val);
+    };
 
     const updatePorts = (portType) => {
         const viewBoxVal = portConfigs[portType][getOrientation()];
@@ -88,21 +93,20 @@ document.addEventListener('DOMContentLoaded', () => {
         ports.forEach(obj => updateViewBox(obj, viewBoxVal));
     };
 
-    const updateViewBox = (obj, val) => {
-        obj.contentDocument.querySelector('svg').setAttribute('viewBox', val);
-    };
-
     const handleLoad = (portType, obj) => {
         const viewBoxVal = portConfigs[portType][getOrientation()];
         updateViewBox(obj, viewBoxVal);
     };
 
-    // Initialize
     ['P1', 'P2', 'P3'].forEach(portType => {
         const ports = document.querySelectorAll(`[data-port="${portType}"]`);
 
         ports.forEach(obj => {
-            obj.addEventListener('load', () => handleLoad(portType, obj));
+            if (obj.contentDocument.documentElement.querySelector('svg')) {
+                handleLoad(portType, obj);
+            } else {
+                obj.addEventListener('load', () => handleLoad(portType, obj), {once: true});
+            }
         });
 
         window.addEventListener('resize', () => updatePorts(portType));
@@ -112,16 +116,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const stys = document.querySelectorAll('[data-stys]');
 
-    stys.forEach(obj => obj.addEventListener('load', () => {
-
-        const vals = obj.dataset.stys.replace(/\s/g, '').split(';');
-        vals.pop();
-        vals.forEach(v => {
+    const loadStys = obj => {
+        obj.dataset.stys.replace(/\s/g, '').split(';').filter(Boolean).forEach(v => {
             const [a, b] = v.split(':');
             obj.contentDocument.documentElement.style.setProperty(a, b);
         });
+    };
 
-    }));
+    stys.forEach(obj => {
+        if(obj.contentDocument.querySelector('svg')) {
+            loadStys(obj);
+        } else {
+            obj.addEventListener('load', () => {loadStys(obj)}, {once: true});
+        }
+    });
 
 });
 

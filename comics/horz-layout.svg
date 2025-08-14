@@ -12,8 +12,8 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
     :root {
 
       --show-hearts: 0;
-      --bg-fill: url(#newsprint);
       /*
+      --bg-fill: url(#newsprint);
       --bg-opacity: 0.9;
       --bg-mask: url(#fade-mask);
       --bg-filter: url(#shake);
@@ -674,8 +674,7 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
             <path class="P1" d="M12.5 12.5 H1288.5 V388.5 H12.5 Z"/>
           </g>
 
-          <!-- border corners -->
-          <!--
+          <!-- border corners
           <g class="P2 top-half">
             <path class="corn" d="M 12 180 V11 H500 L497 14 H15 V177 Z"/>
           </g>
@@ -684,8 +683,7 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
           </g>
           -->
           
-          <!-- stroke border corners -->
-          <!--
+          <!-- stroke border corners
           <g class="P2 top-half">
             <path d="M12.5 180 V12.5 H500"/>
           </g>
