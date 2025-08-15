@@ -12,8 +12,8 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
     :root {
 
       --show-hearts: 0;
-      /*
       --bg-fill: url(#newsprint);
+      /*
       --bg-opacity: 0.9;
       --bg-mask: url(#fade-mask);
       --bg-filter: url(#shake);
@@ -161,7 +161,7 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
         width: 1275px;
       }
       #borders path.P1 {
-        d: path("M12.5 12.5 H1288.5 V388.5 H12.5 Z");
+        d: path("M12.5 12.5 H1288.5 V387.5 H12.5 Z");
       }
     }
   </style>
@@ -314,75 +314,47 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
 
   <defs id="clips-n-masks">
     
-    <!--
-        1of4 _AND_ 3of4
-        M12.5 12.5 H312.5 V388 H12.5Z
-        
-        2of4 AND 4of4
-        M337.5 12.5 H637.5 V388 H337.5Z
-        
-        1and2of4 _AND_ 3and4of4
-        M12.5 12.5 H 637.5 V388 H12.5Z
-        
-        2and3of4
-        M337.5 12.5 H650 V388 H337.5Z
-        M0 12.5 H312.5 V388 H0Z
-        
-        1of3
-        M13 12.5 H421 V388 H 13Z
-        
-        2of3
-        M446 12.5 H854 V388 H 446Z
-        
-        3of3
-        M879 12.5 H1287 V388 H 879Z
-
-        full-size
-        M12.5 12.5 H1287.5 V388 H12.5Z
-        
-    -->
-    
     <clipPath id="clip1thru2of4">
-      <path d="M12.5 12.5 H 637.5 V388 H12.5Z"/>
+      <path d="M12.5 12.5 H 637.5 V387.5 H12.5Z"/>
     </clipPath>
     
     <clipPath id="clip1and2of4">
       <path d="
-      M12.5 12.5 H312.5 V388 H12.5Z
-      M337.5 12.5 H637.5 V388 H337.5Z
+      M12.5 12.5 H312.5 V387.5 H12.5Z
+      M337.5 12.5 H637.5 V387.5 H337.5Z
       "/>
     </clipPath>
     
     <clipPath id="clip1of4">
-      <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+      <path d="M12.5 12.5 H312.5 V387.5 H12.5Z"/>
     </clipPath>
 
     <clipPath id="clip2of4">
-      <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+      <path d="M337.5 12.5 H637.5 V387.5 H337.5Z"/>
     </clipPath>
 
     <clipPath id="clip3of4">
-      <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+      <path d="M12.5 12.5 H312.5 V387.5 H12.5Z"/>
     </clipPath>
 
     <clipPath id="clip4of4">
-      <path d="M337.5 12.5 H637.5 V388 H337.5Z"/>
+      <path d="M337.5 12.5 H637.5 V387.5 H337.5Z"/>
     </clipPath>
 
     <clipPath id="clip1of3">
-      <path d="M13 12.5 H421 V388 H 13Z"/>
+      <path d="M13 12.5 H421 V387.5 H 13Z"/>
     </clipPath>
 
     <clipPath id="clip2of3">
-      <path d="M446 12.5 H854 V388 H 446Z"/>
+      <path d="M446 12.5 H854 V387.5 H 446Z"/>
     </clipPath>
 
     <clipPath id="clip3of3">
-      <path d="M879 12.5 H1287 V388 H 879Z"/>
+      <path d="M879 12.5 H1287 V387.5 H 879Z"/>
     </clipPath>
 
     <clipPath id="full-wide">
-      <path d="M12.5 12.5 H1287.5 V388.5 H12.5Z"/>
+      <path d="M12.5 12.5 H1287.5 V387.5 H12.5Z"/>
     </clipPath>
 
     <clipPath id="full-high">
@@ -446,7 +418,7 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
   </defs>
   
   <defs id="ikon-def">
-    <g id="ikon" class="P1">
+    <g id="ikon" class="P2">
 
       <rect id="bg-rect" x-data-no-port="1" x="0" y="0" width="100%" height="100%" fill="var(--bg-fill, none)"/>
       
@@ -465,7 +437,6 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
           </g>
         
           <g id="four_panel_layout" class="P2">
-            <!-- -->
             <g class="top-half" x-clip-path="url(#clip1and2of4)">
               <g id="panel1of4" clip-path="url(#clip1of4)">
                <g transform="translate(30 42)">
@@ -528,7 +499,6 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
                <ellipse cx="480" cy="350" rx="50" ry="2"/>
               </g>
             </g>
-            <!-- -->
           </g>
           
           <g id="three_panel_layout" class="P3">
@@ -650,10 +620,6 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
 
         <g id="borders" transform="translate(0 80)" >
 
-          <!--
-          13, 421, 446, 854, 879, 1287,
-          -->
-          
           <g class="P3">
             <path class="panel1of3" d="M13 12.5 H421 V388 H 13Z"/>
             <path class="panel2of3" d="M13 12.5 H421 V388 H 13Z"/>
@@ -671,7 +637,7 @@ s/\v(-?\d+\.\d{3})/\=float2nr(round(str2float(submatch(1))))/g
           </g>
 
           <g class="P1">
-            <path class="P1" d="M12.5 12.5 H1288.5 V388.5 H12.5 Z"/>
+            <path class="P1"/>
           </g>
 
           <!-- border corners
