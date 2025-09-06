@@ -1,9 +1,5 @@
-
-
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="-36 -72 540 684" width="540pt" height="684pt">
    
-
-
 <style type="text/css">
     
   @font-face {
@@ -11,7 +7,14 @@
     src: url('neue.ttf') format('truetype');
   }
 
-
+  text {
+    font-family:'Comic Neue';
+    font-weight:400;
+    font-size:14px;
+    font-style:normal;
+    fill:#000;
+    stroke:none;
+  }
 
 </style>
     
@@ -20,17 +23,9 @@
 <g>
             
 
-<rect x="-36" y="-72" width="540" height="684"
-             fill="none"
-             />
-            
-            
-
-<g>
+<g id="lamp">
 
 <ellipse cx="90.43573007321767" cy="565.3777812700515" rx="67.85858396353326" ry="2.5850341584016405" fill="rgb(0,0,0)"/>
-            
-            
 
 <path d=" M 104.811 373.22 L 83.545 371.526 L 95.035 378.199 L 98.625 377.353 L 104.729 377.226 C 105.852 388.265 102.937 393.82 95.963 393.871 C 98.103 401.079 100.552 404.424 103.307 403.905 C 111.712 404.159 116.39 395.187 117.318 376.964 L 104.811 373.22 Z  M 117.591 536.226 L 125.383 536.576 C 121.752 504.803 122.827 471.204 128.613 435.783 L 108.484 434.121 C 103.368 475.92 104.889 510.624 113.053 536.022 L 117.591 536.226 L 122.387 562.446 L 105.935 562.446 L 102.634 546.41 L 105.031 546.41 C 102.699 483.866 96.465 452.62 101.968 425.713 L 99.267 412.24 L 100.026 404.139 L 123.726 407.012 L 121.425 415.23 L 133.632 416.877 L 139.613 429.925 L 133.632 430.223 C 126.945 466.35 126.414 505.081 132.031 546.41 L 136.59 547.425 L 139.613 561.526 L 122.387 562.446 L 117.591 536.226 Z " fill-rule="evenodd" fill="rgb(159,172,179)"/>
 
@@ -80,7 +75,7 @@
 
 </g>
 
-<g>
+<g id="teapot">
 
 <path d=" M 308.942 559.95 C 276.25 551.395 249.676 533.253 239.618 526.52 L 232.718 542.708 L 269.347 561.589 L 306.164 563.125 L 308.942 559.95 L 308.942 559.95 Z " fill="rgb(232,232,232)"/>
 
@@ -138,7 +133,7 @@
 
 <path d=" M 293.798 392.487 C 299.859 397.19 304.244 401.748 306.944 406.152 C 302.761 400.806 293.214 394.944 286.438 392.618 L 293.798 392.487 Z " fill="rgb(0,0,0)"/>
 
-<g>
+<g id="tricorn">
 
 <path d=" M 264.811 346.987 L 267.855 374.481 L 274.458 378.09 L 286.414 375.927 C 300.043 378.691 310.151 383.777 316.716 391.161 L 316.699 402.844 L 332.963 402.652 L 342.411 377.118 C 336.944 375.915 333.71 373.001 330.523 372.98 C 333.328 361.432 311.413 348.313 302.694 356.984 C 296.324 352.608 287.508 346.81 281.829 343.822 L 280.004 351.846 L 264.811 346.987 Z " fill="rgb(93,93,93)"/>
 
@@ -170,7 +165,7 @@
 
 <path d=" M 226.462 520.627 C 259.262 528.728 276.585 561.589 337.591 561.589 L 337.162 564.419 C 258.745 556.652 268.053 534.675 224.563 522.462 L 226.462 520.627 Z " fill="rgb(0,0,0)"/>
 
-<g>
+<g id="resume">
 
 <path d=" M 175.389 486.86 C 178.931 479.162 185.867 473.914 196.188 471.106 C 214.559 475.164 233.842 477.445 254.015 477.928 C 264.031 491.826 261.197 512.488 254.015 539.895 C 231.344 531.31 213.654 528.728 192.4 530.575 L 204.849 489.183 L 175.389 486.86 Z " fill="rgb(232,232,232)"/>
 
@@ -186,7 +181,7 @@
 
 <path d=" M 404.371 557.883 L 406.812 564.535 L 257.634 564.535 C 240.516 553.877 216.879 547.439 204.993 546.479 L 206.869 510.106 C 225.06 485.768 242.442 497.356 242.277 541.472 Q 262.533 555.088 284.561 557.883 C 312.915 559.841 352.859 559.848 404.371 557.883 Z  M 211.799 512.734 L 209.696 542.058 C 230.639 519.649 232.617 485.334 211.799 512.734 L 211.799 512.734 Z " fill-rule="evenodd" fill="rgb(0,0,0)"/>
 
-<g>
+<g id="button_one">
 
 <path d=" M 382.538 503.385 C 383.295 499.973 385.842 497.633 388.222 498.161 C 390.601 498.689 391.919 501.887 391.162 505.298 C 390.405 508.709 387.858 511.05 385.479 510.522 C 383.099 509.994 381.781 506.796 382.538 503.385 Z " fill="rgb(70,70,70)"/>
 
@@ -196,7 +191,7 @@
 
 </g>
 
-<g>
+<g id="button_two">
 
 <path d=" M 363.384 508.05 C 364.169 504.513 366.809 502.087 369.276 502.634 C 371.743 503.181 373.109 506.497 372.324 510.034 C 371.539 513.57 368.899 515.997 366.432 515.449 C 363.965 514.902 362.599 511.586 363.384 508.05 Z " fill="rgb(70,70,70)"/>
 
@@ -228,99 +223,99 @@
 
 <g clip-path="url(#_clipPath_OEnqbs3eUREKBggv070USM1DD6p8HITD)">
 
-<text transform="matrix(1,0,0,1,60.585,23.193)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">Well,
+<text transform="matrix(1,0,0,1,60.585,23.193)" >Well,
 
 </text>
 
-<text transform="matrix(1,0,0,1,93.832,23.193)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">it's
+<text transform="matrix(1,0,0,1,93.832,23.193)" >it's
 
 </text>
 
-<text transform="matrix(1,0,0,1,116.201,23.193)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">definitely
+<text transform="matrix(1,0,0,1,116.201,23.193)" >definitely
 
 </text>
 
-<text transform="matrix(1,0,0,1,175.194,23.193)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">an
+<text transform="matrix(1,0,0,1,175.194,23.193)" >an
 
 </text>
 
-<text transform="matrix(1,0,0,1,196.779,23.193)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">impressive
+<text transform="matrix(1,0,0,1,196.779,23.193)" >impressive
 
 </text>
 
-<text transform="matrix(1,0,0,1,265.025,23.193)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">resume,
+<text transform="matrix(1,0,0,1,265.025,23.193)" >resume,
 
 </text>
 
-<text transform="matrix(1,0,0,1,317.816,23.193)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">your
+<text transform="matrix(1,0,0,1,317.816,23.193)" >your
 
 </text>
 
-<text transform="matrix(1,0,0,1,350.601,23.193)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:italic;fill:#000000;stroke:none;">quill-menship
+<text transform="matrix(1,0,0,1,350.601,23.193)" style="font-style:italic;">quill-menship
 
 </text>
 
-<text transform="matrix(1,0,0,1,437.356,23.193)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">is
+<text transform="matrix(1,0,0,1,437.356,23.193)" >is
 
 </text>
 
-<text transform="matrix(1,0,0,1,60.585,39.293)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">excellent,
+<text transform="matrix(1,0,0,1,60.585,39.293)" >excellent,
 
 </text>
 
-<text transform="matrix(1,0,0,1,120.811,39.293)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">but
+<text transform="matrix(1,0,0,1,120.811,39.293)" >but
 
 </text>
 
-<text transform="matrix(1,0,0,1,145.392,39.293)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">this
+<text transform="matrix(1,0,0,1,145.392,39.293)" >this
 
 </text>
 
-<text transform="matrix(1,0,0,1,171.836,39.293)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">position
+<text transform="matrix(1,0,0,1,171.836,39.293)" >position
 
 </text>
 
-<text transform="matrix(1,0,0,1,223.843,39.293)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">is
+<text transform="matrix(1,0,0,1,223.843,39.293)" >is
 
 </text>
 
-<text transform="matrix(1,0,0,1,238.779,39.293)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">for
+<text transform="matrix(1,0,0,1,238.779,39.293)" >for
 
 </text>
 
-<text transform="matrix(1,0,0,1,261.33,39.293)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">the
+<text transform="matrix(1,0,0,1,261.33,39.293)" >the
 
 </text>
 
-<text transform="matrix(1,0,0,1,285.786,39.293)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">chief
+<text transform="matrix(1,0,0,1,285.786,39.293)" >chief
 
 </text>
 
-<text transform="matrix(1,0,0,1,320.069,39.293)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:italic;fill:#000000;stroke:none;">LIGHTHOUSE
+<text transform="matrix(1,0,0,1,320.069,39.293)" style="font-style:italic;">LIGHTHOUSE
 
 </text>
 
-<text transform="matrix(1,0,0,1,410.703,39.293)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">of
+<text transform="matrix(1,0,0,1,410.703,39.293)" >of
 
 </text>
 
-<text transform="matrix(1,0,0,1,427.836,39.293)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">the
+<text transform="matrix(1,0,0,1,427.836,39.293)" >the
 
 </text>
 
-<text transform="matrix(1,0,0,1,60.585,55.393)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">entire
+<text transform="matrix(1,0,0,1,60.585,55.393)" >entire
 
 </text>
 
-<text transform="matrix(1,0,0,1,99.239,55.393)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">Massachusettes
+<text transform="matrix(1,0,0,1,99.239,55.393)" >Massachusetts
 
 </text>
 
-<text transform="matrix(1,0,0,1,196.343,55.393)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">Bay
+<text transform="matrix(1,0,0,1,190.343,55.393)" >Bay
 
 </text>
 
-<text transform="matrix(1,0,0,1,223.181,55.393)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">Colony.
+<text transform="matrix(1,0,0,1,217.181,55.393)" >Colony.
 
 </text>
 
@@ -338,167 +333,167 @@
 
 <g clip-path="url(#_clipPath_0whChDmPxxXpe9DXnJRZztPD0i1xjX6d)">
 
-<text transform="matrix(1,0,0,1,26.524,83.855)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">It's
+<text transform="matrix(1,0,0,1,26.524,83.855)" >It's
 
 </text>
 
-<text transform="matrix(1,0,0,1,49.623,83.855)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">true
+<text transform="matrix(1,0,0,1,49.623,83.855)" >true
 
 </text>
 
-<text transform="matrix(1,0,0,1,78.393,83.855)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">that
+<text transform="matrix(1,0,0,1,78.393,83.855)" >that
 
 </text>
 
-<text transform="matrix(1,0,0,1,106.168,83.855)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">most
+<text transform="matrix(1,0,0,1,106.168,83.855)" >most
 
 </text>
 
-<text transform="matrix(1,0,0,1,139.922,83.855)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">of
+<text transform="matrix(1,0,0,1,139.922,83.855)" >of
 
 </text>
 
-<text transform="matrix(1,0,0,1,156.161,83.855)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">my
+<text transform="matrix(1,0,0,1,156.161,83.855)" >my
 
 </text>
 
-<text transform="matrix(1,0,0,1,179.037,83.855)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">experience
+<text transform="matrix(1,0,0,1,179.037,83.855)" >experience
 
 </text>
 
-<text transform="matrix(1,0,0,1,249.415,83.855)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">has
+<text transform="matrix(1,0,0,1,249.415,83.855)" >has
 
 </text>
 
-<text transform="matrix(1,0,0,1,275.006,83.855)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">been
+<text transform="matrix(1,0,0,1,275.006,83.855)" >been
 
 </text>
 
-<text transform="matrix(1,0,0,1,309.306,83.855)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">in
+<text transform="matrix(1,0,0,1,309.306,83.855)" >in
 
 </text>
 
-<text transform="matrix(1,0,0,1,325.265,83.855)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">facilities
+<text transform="matrix(1,0,0,1,325.265,83.855)" >facilities
 
 </text>
 
-<text transform="matrix(1,0,0,1,26.524,99.955)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">managment,
+<text transform="matrix(1,0,0,1,26.524,99.955)" >managment,
 
 </text>
 
-<text transform="matrix(1,0,0,1,105.742,99.955)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">but
+<text transform="matrix(1,0,0,1,105.742,99.955)" >but
 
 </text>
 
-<text transform="matrix(1,0,0,1,129.787,99.955)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">I'm
+<text transform="matrix(1,0,0,1,129.787,99.955)" >I'm
 
 </text>
 
-<text transform="matrix(1,0,0,1,154.993,99.955)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">young,
+<text transform="matrix(1,0,0,1,154.993,99.955)" >young,
 
 </text>
 
-<text transform="matrix(1,0,0,1,198.456,99.955)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">and
+<text transform="matrix(1,0,0,1,198.456,99.955)" >and
 
 </text>
 
-<text transform="matrix(1,0,0,1,226.238,99.955)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">I
+<text transform="matrix(1,0,0,1,226.238,99.955)" >I
 
 </text>
 
-<text transform="matrix(1,0,0,1,237.123,99.955)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">have
+<text transform="matrix(1,0,0,1,237.123,99.955)" >have
 
 </text>
 
-<text transform="matrix(1,0,0,1,269.554,99.955)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">a
+<text transform="matrix(1,0,0,1,269.554,99.955)" >a
 
 </text>
 
-<text transform="matrix(1,0,0,1,282.174,99.955)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">lot
+<text transform="matrix(1,0,0,1,282.174,99.955)" >lot
 
 </text>
 
-<text transform="matrix(1,0,0,1,301.795,99.955)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">of
+<text transform="matrix(1,0,0,1,301.795,99.955)" >of
 
 </text>
 
-<text transform="matrix(1,0,0,1,318.391,99.955)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">ambition.
+<text transform="matrix(1,0,0,1,318.391,99.955)" >ambition.
 
 </text>
 
-<text transform="matrix(1,0,0,1,26.524,116.055)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">I
+<text transform="matrix(1,0,0,1,26.524,116.055)" >I
 
 </text>
 
-<text transform="matrix(1,0,0,1,38.75,116.055)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">think
+<text transform="matrix(1,0,0,1,38.75,116.055)" >think
 
 </text>
 
-<text transform="matrix(1,0,0,1,74.691,116.055)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">that
+<text transform="matrix(1,0,0,1,74.691,116.055)" >that
 
 </text>
 
-<text transform="matrix(1,0,0,1,104.165,116.055)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">I
+<text transform="matrix(1,0,0,1,104.165,116.055)" >I
 
 </text>
 
-<text transform="matrix(1,0,0,1,116.391,116.055)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">could
+<text transform="matrix(1,0,0,1,116.391,116.055)" >could
 
 </text>
 
-<text transform="matrix(1,0,0,1,154.922,116.055)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">really
+<text transform="matrix(1,0,0,1,154.922,116.055)" >really
 
 </text>
 
-<text transform="matrix(1,0,0,1,193.58,116.055)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">do
+<text transform="matrix(1,0,0,1,193.58,116.055)" >do
 
 </text>
 
-<text transform="matrix(1,0,0,1,215.144,116.055)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">well
+<text transform="matrix(1,0,0,1,215.144,116.055)" >well
 
 </text>
 
-<text transform="matrix(1,0,0,1,243.148,116.055)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">with
+<text transform="matrix(1,0,0,1,243.148,116.055)" >with
 
 </text>
 
-<text transform="matrix(1,0,0,1,272.943,116.055)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">something
+<text transform="matrix(1,0,0,1,272.943,116.055)" >something
 
 </text>
 
-<text transform="matrix(1,0,0,1,341.309,116.055)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">more
+<text transform="matrix(1,0,0,1,341.309,116.055)" >more
 
 </text>
 
-<text transform="matrix(1,0,0,1,26.524,132.155)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">along
+<text transform="matrix(1,0,0,1,26.524,132.155)" >along
 
 </text>
 
-<text transform="matrix(1,0,0,1,64.058,132.155)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">the
+<text transform="matrix(1,0,0,1,64.058,132.155)" >the
 
 </text>
 
-<text transform="matrix(1,0,0,1,87.256,132.155)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">lines
+<text transform="matrix(1,0,0,1,87.256,132.155)" >lines
 
 </text>
 
-<text transform="matrix(1,0,0,1,118.756,132.155)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">of
+<text transform="matrix(1,0,0,1,118.756,132.155)" >of
 
 </text>
 
-<text transform="matrix(1,0,0,1,134.632,132.155)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:italic;fill:#000000;stroke:none;">signaling
+<text transform="matrix(1,0,0,1,134.632,132.155)" style="font-style:italic;">signaling
 
 </text>
 
-<text transform="matrix(1,0,0,1,191.878,132.155)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:italic;fill:#000000;stroke:none;">people
+<text transform="matrix(1,0,0,1,191.878,132.155)" style="font-style:italic;">people
 
 </text>
 
-<text transform="matrix(1,0,0,1,236.062,132.155)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">with
+<text transform="matrix(1,0,0,1,236.062,132.155)" >with
 
 </text>
 
-<text transform="matrix(1,0,0,1,263.796,132.155)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">light.
+<text transform="matrix(1,0,0,1,263.796,132.155)" >light.
 
 </text>
 
@@ -516,167 +511,167 @@
 
 <g clip-path="url(#_clipPath_PwhTF9FU7MO7AQJ0RPhxebveZnCDCWfG)">
 
-<text transform="matrix(1,0,0,1,103.25,159.601)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">Hmm
+<text transform="matrix(1,0,0,1,103.25,159.601)" >Hmm
 
 </text>
 
-<text transform="matrix(1,0,0,1,142.025,159.601)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">-
+<text transform="matrix(1,0,0,1,142.025,159.601)" >-
 
 </text>
 
-<text transform="matrix(1,0,0,1,153.15,159.601)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">look,
+<text transform="matrix(1,0,0,1,153.15,159.601)" >look,
 
 </text>
 
-<text transform="matrix(1,0,0,1,185.597,159.601)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">I
+<text transform="matrix(1,0,0,1,185.597,159.601)" >I
 
 </text>
 
-<text transform="matrix(1,0,0,1,196.582,159.601)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">don't
+<text transform="matrix(1,0,0,1,196.582,159.601)" >don't
 
 </text>
 
-<text transform="matrix(1,0,0,1,231.395,159.601)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">think
+<text transform="matrix(1,0,0,1,231.395,159.601)" >think
 
 </text>
 
-<text transform="matrix(1,0,0,1,266.095,159.601)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">the
+<text transform="matrix(1,0,0,1,266.095,159.601)" >the
 
 </text>
 
-<text transform="matrix(1,0,0,1,290.114,159.601)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">lighthouse
+<text transform="matrix(1,0,0,1,290.114,159.601)" >lighthouse
 
 </text>
 
-<text transform="matrix(1,0,0,1,355.601,159.601)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">opportunity
+<text transform="matrix(1,0,0,1,355.601,159.601)" >opportunity
 
 </text>
 
-<text transform="matrix(1,0,0,1,428.676,159.601)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">will
+<text transform="matrix(1,0,0,1,428.676,159.601)" >will
 
 </text>
 
-<text transform="matrix(1,0,0,1,103.25,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">be
+<text transform="matrix(1,0,0,1,103.25,175.701)" >be
 
 </text>
 
-<text transform="matrix(1,0,0,1,124.505,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">a
+<text transform="matrix(1,0,0,1,124.505,175.701)" >a
 
 </text>
 
-<text transform="matrix(1,0,0,1,138.48,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">good
+<text transform="matrix(1,0,0,1,138.48,175.701)" >good
 
 </text>
 
-<text transform="matrix(1,0,0,1,174.883,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">fit
+<text transform="matrix(1,0,0,1,174.883,175.701)" >fit
 
 </text>
 
-<text transform="matrix(1,0,0,1,192.722,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">for
+<text transform="matrix(1,0,0,1,192.722,175.701)" >for
 
 </text>
 
-<text transform="matrix(1,0,0,1,216.091,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">you,
+<text transform="matrix(1,0,0,1,216.091,175.701)" >you,
 
 </text>
 
-<text transform="matrix(1,0,0,1,245.746,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">but
+<text transform="matrix(1,0,0,1,245.746,175.701)" >but
 
 </text>
 
-<text transform="matrix(1,0,0,1,271.145,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">if
+<text transform="matrix(1,0,0,1,271.145,175.701)" >if
 
 </text>
 
-<text transform="matrix(1,0,0,1,284.979,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">you're
+<text transform="matrix(1,0,0,1,284.979,175.701)" >you're
 
 </text>
 
-<text transform="matrix(1,0,0,1,327.122,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">willing
+<text transform="matrix(1,0,0,1,327.122,175.701)" >willing
 
 </text>
 
-<text transform="matrix(1,0,0,1,369.895,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">to
+<text transform="matrix(1,0,0,1,369.895,175.701)" >to
 
 </text>
 
-<text transform="matrix(1,0,0,1,387.244,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">werk
+<text transform="matrix(1,0,0,1,387.244,175.701)" >werk
 
 </text>
 
-<text transform="matrix(1,0,0,1,421.463,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">in
+<text transform="matrix(1,0,0,1,421.463,175.701)" >in
 
 </text>
 
-<text transform="matrix(1,0,0,1,439.134,175.701)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">a
+<text transform="matrix(1,0,0,1,439.134,175.701)" >a
 
 </text>
 
-<text transform="matrix(1,0,0,1,103.25,191.801)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:italic;fill:#000000;stroke:none;">church,
+<text transform="matrix(1,0,0,1,103.25,191.801)" style="font-style:italic;">church,
 
 </text>
 
-<text transform="matrix(1,0,0,1,152.668,191.801)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">I
+<text transform="matrix(1,0,0,1,152.668,191.801)" >I
 
 </text>
 
-<text transform="matrix(1,0,0,1,164.244,191.801)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">have
+<text transform="matrix(1,0,0,1,164.244,191.801)" >have
 
 </text>
 
-<text transform="matrix(1,0,0,1,197.366,191.801)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">a
+<text transform="matrix(1,0,0,1,197.366,191.801)" >a
 
 </text>
 
-<text transform="matrix(1,0,0,1,210.678,191.801)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">small
+<text transform="matrix(1,0,0,1,210.678,191.801)" >small
 
 </text>
 
-<text transform="matrix(1,0,0,1,247.524,191.801)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">part-time
+<text transform="matrix(1,0,0,1,247.524,191.801)" >part-time
 
 </text>
 
-<text transform="matrix(1,0,0,1,309.234,191.801)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">opening
+<text transform="matrix(1,0,0,1,309.234,191.801)" >opening
 
 </text>
 
-<text transform="matrix(1,0,0,1,363.258,191.801)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">that
+<text transform="matrix(1,0,0,1,363.258,191.801)" >that
 
 </text>
 
-<text transform="matrix(1,0,0,1,392.082,191.801)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">might
+<text transform="matrix(1,0,0,1,392.082,191.801)" >might
 
 </text>
 
-<text transform="matrix(1,0,0,1,431.854,191.801)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">be
+<text transform="matrix(1,0,0,1,431.854,191.801)" >be
 
 </text>
 
-<text transform="matrix(1,0,0,1,103.25,207.901)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">better...
+<text transform="matrix(1,0,0,1,103.25,207.901)" >better...
 
 </text>
 
-<text transform="matrix(1,0,0,1,147.63,207.901)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">depending
+<text transform="matrix(1,0,0,1,147.63,207.901)" >depending
 
 </text>
 
-<text transform="matrix(1,0,0,1,214.69,207.901)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">on...
+<text transform="matrix(1,0,0,1,214.69,207.901)" >on...
 
 </text>
 
-<text transform="matrix(1,0,0,1,240.94,207.901)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">a
+<text transform="matrix(1,0,0,1,240.94,207.901)" >a
 
 </text>
 
-<text transform="matrix(1,0,0,1,252.84,207.901)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">few
+<text transform="matrix(1,0,0,1,252.84,207.901)" >few
 
 </text>
 
-<text transform="matrix(1,0,0,1,276.556,207.901)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">other
+<text transform="matrix(1,0,0,1,276.556,207.901)" >other
 
 </text>
 
-<text transform="matrix(1,0,0,1,312.592,207.901)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">factors.
+<text transform="matrix(1,0,0,1,312.592,207.901)" >factors.
 
 </text>
 
@@ -692,45 +687,22 @@
 
 </defs>
 
-<g clip-path="url(#_clipPath_wTFAqRCi1nZRfm6hFpvOMkA4yffonmwA)">
-
-<text transform="matrix(1,0,0,1,286.632,261.9)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">What are your feelings on
+<text transform="matrix(1,0,0,1,286.632,261.9)" >What are your feelings on
 
 </text>
 
-<text transform="matrix(1,0,0,1,186.636,283.1)" style="font-family:'Comic Neue';font-weight:400;font-size:18px;font-style:italic;fill:#000000;stroke:none;">Taxation Without Representation?
+<text transform="matrix(1,0,0,1,186.636,283.1)" style="font-size:18px;font-style:italic;">Taxation Without Representation?
 
 </text>
 
-</g>
 
-<defs>
+<g>
 
-<clipPath id="_clipPath_wTFAqRCi1nZRfm6hFpvOMkA4yffonmwA">
-
-<rect x="0" y="0" width="299.83" height="54.1" transform="matrix(1,0,0,1,148.528,243.9)"/>
-
-</clipPath>
-
-</defs>
-
-<g clip-path="url(#_clipPath_t6MTouvqvpsxXmFfb3Xh8JInvJx7LHlz)">
-
-<text transform="matrix(1,0,0,1,26.524,241.1)" style="font-family:'Comic Neue';font-weight:400;font-size:14px;font-style:normal;fill:#000000;stroke:none;">I'm listening.
+<text transform="matrix(1,0,0,1,26.524,241.1)" >I'm listening.
 
 </text>
 
 </g>
-
-<defs>
-
-<clipPath id="_clipPath_t6MTouvqvpsxXmFfb3Xh8JInvJx7LHlz">
-
-<rect x="0" y="0" width="97.943" height="22.319" transform="matrix(1,0,0,1,26.524,228.5)"/>
-
-</clipPath>
-
-</defs>
 
 <path d=" M 53.038 260.475 L 66.529 312.839 L 57.401 267.73 L 53.038 260.475 Z " fill="rgb(0,0,0)"/>
 
