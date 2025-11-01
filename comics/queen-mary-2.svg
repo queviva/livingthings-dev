@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<svg width="800" height="499.99999999999994" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <style>circle {
+   fill: green;
+   fill-opacity: 0.75;
+   stroke: orange;
+   stroke-width: 0.5;
+  }</style>
+ <defs>
+  <ellipse fill="#000" id="hole" rx="2" ry="4"/>
+  <mask id="arc_mask">
+   <rect fill="#fff" height="100%" id="svg_1" width="100%"/>
+   <path d="m423,149q-61,19 -233,95q170,-86 240,-102l-7,7z" fill="#000" id="svg_2"/>
+  </mask>
+ </defs>
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="ikon">
+   <g fill="#eee" id="svg_3">
+    <path d="m16,340l396,-148l11,-43l-401.36,170.6l-5.64,20.4zm27,-65l109,-71l0,13l-109,62l0,-4z" id="svg_4"/>
+    <path d="m36,319l0,-15l-9,0l0,-8l148,-83l0,-17l-13,0l0,-22l154.04,13.06l-29.57,12.75l-96.67,-3.81l0.24,14.67l73.53,-0.12l-227.57,108.45z" id="svg_5"/>
+   </g>
+   <g fill="#900" id="stax">
+    <path d="m212.47,111.59l-2,-19c-2,-15 -41,-10 -50,10l1,25c11,-18 49,-27 51,-15l0,-1z" id="svg_6"/>
+    <path d="m146.47,156.59l-2,-16c-2,-13 -34,-9 -41,8l1,21c9,-15 41,-22 42,-13" id="svg_7"/>
+    <path d="m92.47,193.59l-2,-16c-1,-12 -29,-8 -36,8l1,20c8,-15 35,-21 36,-12l1,0z" id="svg_8"/>
+    <path d="m28,394l347,-41l-4,47l-343,0l0,-6z" id="svg_9"/>
+   </g>
+  </g>
+ </g>
+</svg>
