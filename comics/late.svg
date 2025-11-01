@@ -120,7 +120,7 @@
 
  </g> 
 
- <!--script><![CDATA[
+ <script><![CDATA[
 
     const NS = 'http://www.w3.org/2000/svg';
     const svg = document.getElementById('svg');
@@ -138,25 +138,25 @@
 
     };
     
-    svg.addEventListener('mousedown', e => {
+    svg.addEventListener('touchstart', e => {
       
       e.stopPropagation();
       e.preventDefault();
       drawPath = document.createElementNS(NS, 'path');
       test.appendChild(drawPath);
-      let xy = convertCoords(e);
+      let xy = convertCoords(e.touches[0]);
       coords.push(`M  ${xy.x} ${xy.y}`);
       drawPath.setAttribute('d', coords.join(''));
-      svg.addEventListener('mousemove', draw, {passive:false});
+      svg.addEventListener('touchmove', draw, {passive:false});
 
     }, {passive: false});
 
-    svg.addEventListener('mouseup', e => {
+    svg.addEventListener('touchend', e => {
       e.stopPropagation();
       e.preventDefault();
       console.log(test);
       coords = [];
-      svg.removeEventListener('mousemove', draw, {passive:false});
+      svg.removeEventListener('touchmove', draw, {passive:false});
     }, {passive: false});
 
     const draw = e => {
@@ -164,7 +164,7 @@
       e.stopPropagation();
       e.preventDefault();
     
-      const pt = convertCoords(e); 
+      const pt = convertCoords(e.touches[0]); 
     
       const last = coords.at(-1);
       if (last) {
@@ -179,7 +179,7 @@
       drawPath.setAttribute('d', coords.join(' '));
     };
 
-  ]]></script-->
+  ]]></script>
 
 
 
