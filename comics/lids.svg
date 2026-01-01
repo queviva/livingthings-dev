@@ -64,6 +64,10 @@
     }
     
     @media(orientation: portrait) {
+      #ikon {
+        transform: scale(2, 2) translate(0px, -400px);
+      }
+
       #bg-paper {
         width: 650px;
         height: 882.5px;
@@ -115,8 +119,8 @@
     </filter>
 
 
-    <filter id="shake" width="120%" height="120%" color-interpolation-filters="sRGB">
-      <feImage href="newsprint.jpg" x="0" y="0" width="120%" height="120%" preserveAspectRatio="xMidYMid slice" result="mig" />
+    <filter id="shake" width="120%" height="220%" color-interpolation-filters="sRGB">
+      <feImage href="newsprint.jpg" x="0" y="0" width="120%" height="220%" preserveAspectRatio="xMidYMid slice" result="mig" />
       <feDisplacementMap in="SourceGraphic" in2="mig" result="rat" scale="20" xChannelSelector="R" yChannelSelector="B" />
       <feGaussianBlur in="rat" stdDeviation="0.3" result="blur" />
       <!-- shift image back based on displacement's scale -->

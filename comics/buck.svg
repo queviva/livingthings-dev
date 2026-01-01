@@ -17,7 +17,7 @@
    patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(0.3)">
    <circle r="1" fill="var(--dot-color,var(--outline-color, #000))" transform="scale(1.5)"/>
   </pattern>
-  <pattern id="green_dotz" viewBox="-2 -2 4 4" width="4" height="4"
+  <pattern id="dotz_green" viewBox="-2 -2 4 4" width="4" height="4"
    patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(0.3)">
    <circle r="1" fill="var(--logo-color, #000)" transform="scale(1.5)"/>
   </pattern>
@@ -31,7 +31,7 @@
   
    <path d="M 106 227 L 127 207 L 147 204 L 136 226 L 115 244 L 105 248 L 80 249 L 106 227 Z"/>
   
-   <path fill="url(#green_dotz)" d="M 117 155 C 117 116 83 134 82 175 Q 85 180 82 182 C 97 204 117 198 113 180 L 117 155 Z"/>
+   <path fill="url(#dotz_green)" d="M 117 155 C 117 116 83 134 82 175 Q 85 180 82 182 C 97 204 117 198 113 180 L 117 155 Z"/>
 
   </g>
   

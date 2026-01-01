@@ -40,7 +40,6 @@
       <circle r="0.8" fill="#fff" />
     </pattern>
     
-    
     <linearGradient id="donutFade" gradientUnits="objectBoundingBox">
       <stop offset="0%" stop-color="var(--donut-lite)" />
       <stop offset="90%" stop-color="var(--donut-dark)" />
@@ -67,7 +66,7 @@
         
         <!--<ellipse id="shadow" cx="420" cy="485" rx="350" ry="16" fill="var(-dd-brown, #000)" />-->
                 
-        <path d="M 40 472 H 420 L 690 488 L 280 500 Z " id="shadow" fill="var(--dd-brown, #000)" />
+        <path id="shadow" d="M 40 472 H 420 L 690 488 L 280 500 Z " fill="var(--dd-brown, #000)" />
         
         <g id="nut">
             
@@ -78,14 +77,11 @@
         </g>
             
         <defs id="frontPanelDef">
-        <path id="frontPanel" d="
-        M 374 487 L 622 359  L 817 301 Q 808 270 790 244 L 812 185 Q 760 180 718 215 Q 715 260 742 298  C 684 318 634 331 588 338 L 590 322 L 564 326 L 581 265 C 477 315 363 336 239 328 C 255 363 264 387 267 404 L 257 411 L 282 408 L 275 414 C 274 445 271 472 264 487 Z " />
+            <path id="frontPanel" d="M 374 487 L 622 359  L 817 301 Q 808 270 790 244 L 812 185 Q 760 180 718 215 Q 715 260 742 298  C 684 318 634 331 588 338 L 590 322 L 564 326 L 581 265 C 477 315 363 336 239 328 C 255 363 264 387 267 404 L 257 411 L 282 408 L 275 414 C 274 445 271 472 264 487 Z " />
         </defs>
         
         <use href="#frontPanel" fill="var(--dd-pink)" />
-        <use href="#frontPanel"
-            fill="url(#pinkDotz)" mask="url(#fade-mask)"
-        />
+        <use href="#frontPanel" fill="url(#pinkDotz)" mask="url(#fade-mask)" />
             
         <path id="sidePanel" d="m 160 475 l -9 -76 l 7 -16 l -60 -102 c 30 26 77 41 141 47 c 16 35 25 59 28 76 l -10 7 l 25 -3 l -7 6 c -1 31 -4 58 -11 73 z" fill="url(#orangeDotz)" x-fill="var(--dd-orange,#fff)" />
         
@@ -96,6 +92,7 @@
             <path d="M 192 324 C 211 344 218 372 212 408 L 201 407 C 193 444 179 461 158 458 L 151 400 L 159 383 C 171 365 169 341 155 312 L 192 324 Z " />
             
             <path d="M 314 492 C 322 418 380 345 456 312 L 529 287 C 535 300 535 316 529 335 C 537 334 543 339 546 350 Q 600 344 600 368 L 525 410 C 516 341 440 347 410 479 L 314 492 Z " />
+        
         </g>
         
         <path id="throat" d=" M 168 163 C 205 145 242 134 277 130 L 314 179 C 379 176 442 166 502 151 C 462 178 441 211 438 250 C 468 269 506 278 554 277 C 359 349 207 351 99 282 C 116 243 139 203 168 163 Z " fill="var(--outline-color,#000)"/>

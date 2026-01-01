@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thucydides Trap Casualties Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f9; padding: 20px; }
+    .chart-container { width: 100%; max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    h1 { text-align: center; color: #1f2937; }
+    .legend { display: flex; justify-content: center; gap: 20px; margin-top: 15px; font-size: 14px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .color-box { width: 16px; height: 16px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="chart-container">
+    <h1>Thucydides Trap: Historical & Projected Casualties (Updated to 2025)</h1>
+    <canvas id="thucydidesChart"></canvas>
+    <div class="legend">
+      <div class="legend-item"><div class="color-box" style="background:#4ade80;"></div><span>No War</span></div>
+      <div class="legend-item"><div class="color-box" style="background:#ef4444;"></div><span>Hot War</span></div>
+      <div class="legend-item"><div class="color-box" style="background:#fbbf24;"></div><span>Cold/Proxy War</span></div>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('thucydidesChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [
+          "1. Spain vs Portugal\n(Late 15th)",
+          "2. Habsburgs vs France\n(16th)",
+          "3. Ottomans vs Habsburgs\n(16th–17th)",
+          "4. Sweden vs Habsburgs\n(17th)",
+          "5. England vs Dutch\n(17th)",
+          "6. GB vs France\n(17th–18th)",
+          "7. France vs UK\n(18th–19th)",
+          "8. Russia vs FR/UK\n(19th)",
+          "9. Germany vs France\n(19th–20th)",
+          "10. Japan vs China/Russia\n(19th–20th)",
+          "11. US vs UK\n(Early 20th)",
+          "12. Germany vs UK+\n(WWI)",
+          "13. Ger/Jap vs USSR/FR/UK\n(WWII Europe)",
+          "14. Japan vs US\n(WWII Pacific)",
+          "15. USSR vs US\n(Cold War)",
+          "16. Germany vs UK/FR\n(1990s–)",
+          "17. China/BRICS vs US\n(1990s–2025)"
+        ],
+        datasets: [{
+          label: 'Approx. Deaths (millions)',
+          data: [
+            0.005, 0.5, 1, 8, 0.1, 1.5, 5, 0.5, 1.4, 0.1,
+            0.0085, 20, 10, 2.5, 5, 0.0005, 0.55
+          ],
+          backgroundColor: [
+            "#4ade80", "#ef4444", "#ef4444", "#ef4444", "#ef4444",
+            "#ef4444", "#ef4444", "#ef4444", "#ef4444", "#ef4444",
+            "#4ade80", "#ef4444", "#ef4444", "#ef4444", "#fbbf24",
+            "#4ade80", "#fbbf24"
+          ],
+          borderColor: "#1f2937",
+          borderWidth: 1
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: {
+          title: { display: false },
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                let value = context.parsed.x;
+                let label = context.dataset.label;
+                if (value < 1) {
+                  return `${label}: ~${(value * 1000).toFixed(0)}K deaths`;
+                } else {
+                  return `${label}: ~${value.toFixed(1)}M deaths`;
+                }
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            title: { display: true, text: 'Deaths (in millions)' },
+            ticks: {
+              callback: function(value) {
+                return value < 1 ? (value * 1000) + 'K' : value + 'M';
+              }
+            }
+          },
+          y: {
+            title: { display: true, text: 'Conflict (Rising vs Ruling Power)' }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

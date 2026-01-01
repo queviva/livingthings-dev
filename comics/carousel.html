@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, user-scalable=no"
+/>
+<title>Zoom SVG Carousel</title>
+
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    /* background: #111; */
+    /* overflow: hidden; */
+    /* touch-action: none; */
+  }
+
+  #viewer {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    /* overflow: hidden; */
+  }
+
+  object {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    transform-origin: center;
+    transition: transform 0.15s ease;
+    pointer-events: none; /* gesture belongs to container */
+  }
+
+  #hint {
+    position: fixed;
+    bottom: 1rem;
+    width: 100%;
+    text-align: center;
+    color: #aaa;
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="viewer">
+  <object
+    id="svgObject"
+    type="image/svg+xml"
+    aria-label="SVG carousel image">
+  </object>
+</div>
+
+<div id="hint">Pinch out → next • Pinch in → previous </div>
+
+<script>
+  // Example SVGs (replace with your own)
+  const svgs = [
+    "remove.svg",
+    "lids.svg",
+    "donutBox.svg",
+    "blend.svg"
+  ];
+
+  const obj = document.getElementById("svgObject");
+  let index = 0;
+
+  let startDistance = null;
+  let active = false;
+  let locked = false;
+
+  const ZOOM_IN_THRESHOLD = 3.0;
+  const ZOOM_OUT_THRESHOLD = 0.3;
+  const LOCK_TIME = 300;
+
+  function showSVG(i) {
+    index = (i + svgs.length) % svgs.length;
+    obj.data = svgs[index];
+  }
+
+  function distance(a, b) {
+    return Math.hypot(
+      b.clientX - a.clientX,
+      b.clientY - a.clientY
+    );
+  }
+
+  showSVG(index);
+
+  document.addEventListener("touchstart", e => {
+    if (locked) return;
+
+    if (e.touches.length === 2) {
+      startDistance = distance(e.touches[0], e.touches[1]);
+      active = true;
+    }
+  }, { passive: false, cancelable: true });
+
+  document.addEventListener("touchmove", e => {
+    if (!active || locked || e.touches.length !== 2) return;
+
+    e.preventDefault();
+
+    const d = distance(e.touches[0], e.touches[1]);
+    const scale = d / startDistance;
+
+    obj.style.transform = `scale(${scale})`;
+
+    if (scale > ZOOM_IN_THRESHOLD) {
+      triggerSwitch(1);
+    }
+
+    if (scale < ZOOM_OUT_THRESHOLD) {
+      triggerSwitch(-1);
+    }
+  }, { passive: false, cancelable: true });
+
+  document.addEventListener("touchend", reset);
+
+  function triggerSwitch(direction) {
+    locked = true;
+    active = false;
+
+    obj.style.transform = "scale(1)";
+    showSVG(index + direction);
+
+    setTimeout(() => {
+      locked = false;
+    }, LOCK_TIME);
+  }
+
+  function reset() {
+    startDistance = null;
+    active = false;
+    obj.style.transform = "scale(1)";
+  }
+</script>
+
+</body>
+</html>
