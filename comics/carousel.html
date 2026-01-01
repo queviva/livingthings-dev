@@ -10,6 +10,7 @@
 
 <style>
   html, body {
+    box-sizing: border-box;
     margin: 0;
     width: 100%;
     height: 100%;
@@ -27,13 +28,15 @@
   }
 
   object {
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    max-height: 100%;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    /*
+    max-width: none;
+    max-height: none;
+    */
     transform-origin: center;
     transition: transform 0.15s ease;
-    pointer-events: none; /* gesture belongs to container */
+    pointer-events: none; 
   }
 
   #hint {
@@ -46,6 +49,7 @@
     font-size: 0.9rem;
     opacity: 0.7;
   }
+
 </style>
 </head>
 
@@ -62,12 +66,35 @@
 <div id="hint">Pinch out → next • Pinch in → previous </div>
 
 <script>
-  // Example SVGs (replace with your own)
+
+  const portConfigs = {
+      P1: {
+        port: '0 0 650 882.5',
+        land: '0 0 1300 480'
+      },
+      P2: {
+        port: '0 0 650 882.5',
+        land: '0 0 1300 480'
+      },
+      P3: {
+        port: '0 0 434 1260',
+        land: '0 0 1300 480'
+      }
+  };
+
+  const getOrientation = () => {
+    return window.innerHeight >= window.innerWidth ? 'port' : 'land';
+  };
+
   const svgs = [
-    "remove.svg",
-    "lids.svg",
-    "donutBox.svg",
-    "blend.svg"
+    ["remove.svg",'',''],
+    ["samp-three-panel.svg",'P3',''],
+    ["lids.svg",'P2',''],
+    ["donutBox.svg",'',''],
+    ["blend.svg",'P2',''],
+    ["eggerPlease.svg",'',''],
+    ["running-box.svg",'',''],
+    ["scroll-master.svg",'P2','']
   ];
 
   const obj = document.getElementById("svgObject");
@@ -83,7 +110,10 @@
 
   function showSVG(i) {
     index = (i + svgs.length) % svgs.length;
-    obj.data = svgs[index];
+    obj.data = svgs[index][0];
+    
+    obj.addEventListener('load', updateViewBox);
+
   }
 
   function distance(a, b) {
@@ -142,6 +172,22 @@
     active = false;
     obj.style.transform = "scale(1)";
   }
+
+  function updateViewBox (type) {
+
+      if (!svgs[index][1]) return;
+
+      const val = portConfigs[svgs[index][1]][getOrientation()];
+      console.log('ratmast', val);
+      obj.contentDocument.querySelector('svg')
+      .setAttribute('viewBox', val);
+
+  }
+
+  window.addEventListener('resize', () => updateViewBox());
+  window.addEventListener('orientationchange', () => updateViewBox());
+
+
 </script>
 
 </body>

@@ -64,10 +64,6 @@
     }
     
     @media(orientation: portrait) {
-      #ikon {
-        transform: scale(2, 2) translate(0px, -400px);
-      }
-
       #bg-paper {
         width: 650px;
         height: 882.5px;
