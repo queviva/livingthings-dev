@@ -476,30 +476,26 @@
             <g transform="translate(1050 300)">
               <text>
                 <tspan x="0" dy="1em">
-                  Well, how <tspan font-style="italic">else</tspan>
+                  Have yourself a 
                 </tspan>
                 <tspan x="0" dy="1em">
-                  would they get
+                  Berry Little 
                 </tspan>
                 <tspan x="0" dy="1em">
-                  the cereal 
-                </tspan>
-                <tspan x="0" dy="1em">
-                  in the box?
+                  Breakfast
                 </tspan>
               </text>
             </g>
-            <g transform="translate(500 -110)">
+            <g transform="translate(350 -170)">
               <path opacity="0" d="
                 m -10 -10 h 420 v 92 h -420 z
               " fill="none" stroke-width="2" stroke="var(--outline-color, #111)" stroke-miterlimit="300"/>
               <text>
                 <tspan x="0" dy="1em">
-                  Well, how <tspan font-style="italic">else</tspan>
-                  would they get
+                  Have yourself a Berry Little Breakfast
                 </tspan>
                 <tspan x="0" dy="1em">
-                  the cereal in the box?
+                  Make your heart beat right ...
                 </tspan>
               </text>
             </g>

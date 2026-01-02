@@ -10,7 +10,7 @@
   }
 </style>
 
-<g fill="var(--line-color, #000)">
+<g id="ikon" fill="var(--line-color, #000)">
 
 <ellipse id="shadow" cx="164" cy="224" rx="113" ry="3" />
 

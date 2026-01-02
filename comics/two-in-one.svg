@@ -1,0 +1,42 @@
+<svg 
+  width="100%" height="100%"
+  xmlns="http://www.w3.org/2000/svg"
+  style="isolation:isolate;
+   background-image: url(newsprint.jpg);
+  "
+>
+
+  <style>
+    @media (orientation: portrait) {
+      .land { display: none; }
+    }
+    @media (orientation: landscape) {
+      .port { display: none; }
+    }
+  </style>
+
+  <defs id="viewBox_clips">
+    <clipPath id="one_by_four_clip">
+      <path d="M 0 0 H 1300 V 400 H 0 Z" />
+    </clipPath>
+    <clipPath id="two_by_two_clip">
+      <path d="M 0 0 H 650 V800 H0 Z" />
+    </clipPath>
+  </defs>
+
+  <svg class="land" viewBox="0 0 1300 400"
+   clip-path="url(#one_by_four_clip)"
+  >
+    <ellipse cx="650" cy="200" rx="650" ry="200" />
+    <circle cx="0" cy="0" r="50" fill="orange" />
+  </svg>
+
+  <svg class="port" viewBox="0 0 650 800"
+   clip-path="url(#two_by_two_clip)"
+  >
+    <rect width="650" height="800" />
+    <circle cx="0" cy="0" r="50" fill="orange" />
+  </svg>
+
+
+</svg>

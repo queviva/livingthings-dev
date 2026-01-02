@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+  style="
+    isolation:isolate;
+    background-image: url(newsprint.jpg);
+">
+
+  <style id="comic_styles" type="text/css">
+  
+    :root {
+        --x-show-hearts: 0;
+    }
+  
+    @font-face {
+        font-family: 'Comic Neue';
+      src: url('neue.ttf') format('truetype');
+    }
+  
+    text {
+        font-family: 'Comic Neue';
+      font-size: 20px;
+    }
+  
+    #copyright {
+      font-family:'Times New Roman';
+      font-weight: 300;
+      font-size:17px;
+      fill:var(--text-color, var(--outline-color, #000));
+    }
+  
+    @media (orientation: portrait) {
+      .land { display: none; }
+      #titles {transform: translate(260px, 0); }
+      #title_line {width: 625px; }
+    }
+  
+    @media (orientation: landscape) {
+      .port {display: none; }
+      #titles {transform: translate(0, 0); }
+      #title_line {width: 1275px; }
+    }
+  
+  </style>
+
+  <style id="title_styles">
+
+    #title_line {
+      fill: var(--border-color, var(--outline-color, #000));
+      height: 2px;
+    }
+
+    #LIVING {
+      fill: var(--title-color, var(--outline-color, #000));
+    }
+
+    #THINGS {
+      fill: var(--title-color, var(--outline-color, #000));
+    }
+
+    #heart {
+      fill: var(--heart-color, var(--outline-color, #000));
+    }
+
+    #square {
+      fill: var(--square-color, var(--outline-color, #000));
+    }
+
+    #title_hearts {
+      opacity: var(--show-hearts, 1);
+    }
+
+    #title_circs {
+      opacity: calc(1 - var(--show-hearts, 1));
+      fill: var(--circ-color, var(--outline-color, #000));
+    }
+    
+    #title_circs > circle:nth-of-type(1) {
+      fill: var(--circ-1-color, var(--circ-color, var(--outline-color, #000)));
+    }
+    
+    #title_circs > circle:nth-of-type(2) {
+      fill: var(--circ-2-color, var(--circ-color, var(--outline-color, #000)));
+    }
+
+  </style>
+
+  <defs id="copyright_defs">
+    <text id="copyright" transform="rotate(270)">
+      <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
+      <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
+    </text>
+  </defs>
+  
+  <defs id="title_defs">
+    <g id="title">
+      <rect id="title_line" x="12.5" y="12.5" />
+      <use href="title-test.svg#ikon" transform="translate(25 20) scale(2.5) " />
+    </g>
+  </defs>
+
+    <defs id="dialog_def">
+      <g id="dialog">
+      <path fill="none" stroke="#000" stroke-width="1" d="
+       M 330 80 V 6 H 900 V 90 H 790
+       M 380 195 H 270 V 80 H 790 V 180
+       M 380 275 V 180 H 900 V 290 H 440
+       M 270 275 H 440 V 315 H 270 Z
+       M 465 310 H 900 V 380 H 465 Z
+     
+       M 303 195 V 275
+       M 840 90 V 180
+       M 840 290 V 310
+      "/>
+
+      <text transform="translate(350 30)">
+        <tspan>
+          Well, it's definitely an impressive resume, your
+          <tspan font-style="italic">quillmen-ship</tspan> is
+        </tspan>
+        <tspan x="0" dy="1em">
+          excellent, but this position is for the chief
+          <tspan font-style="italic">LIGHTHOUSE</tspan> of the
+        </tspan>
+        <tspan x="0" dy="1em">
+          entire Massachusettes Bay Colony.
+        </tspan>
+      </text>
+
+      <text transform="translate(280 105)">
+        <tspan>
+          It's true that most of my experience has
+          been in facilities
+        </tspan>
+        <tspan x="0" dy="1em">
+          management, but I'm young and I have a
+          lot of ambition.
+        </tspan>
+        <tspan x="0" dy="1em">
+          I think I could really do well with something more
+        </tspan>
+        <tspan x="0" dy="1em">
+          along the lines of
+          <tspan font-style="italic">signaling people</tspan>
+          with light.
+        </tspan>
+
+      </text>
+
+      <text transform="translate(400 205)">
+        <tspan>
+          Hmm - look, I don't think the lighthouse opportunity will
+        </tspan>
+        <tspan x="0" dy="1em">
+          be a good fit for you, but if you're willing to werk in a
+        </tspan>
+        <tspan x="0" dy="1em">
+          <tspan font-style="italic">church</tspan>
+          I have a small part-time opening that might...
+        </tspan>
+        <tspan x="0" dy="1em">
+          be better...
+          <tspan dx="1ch" dy="0">depending on... </tspan>
+          <tspan dx="1ch" dy="0">a few other factors. </tspan>
+        </tspan>
+      </text>
+
+      <text transform="translate(280 300)">
+        <tspan>I'm listening.</tspan>
+      </text>
+
+      <text transform="translate(480 335)">
+        <tspan>
+          What are you feelings on
+        </tspan>
+        <tspan x="-0.3ch" dy="1em" font-size="1.25em" font-style="italic">
+          Taxation Without Representation?
+        </tspan>
+      </text>
+      </g>
+    </defs>
+
+    <svg class="land" viewBox="0 0 1300 480">
+      <use href="#title" style="--show-hearts:0" />
+      <g transform="translate(0 80)">
+        <use href="#dialog" />
+        <path d=" M 12.5 0 h 350 l -4 2 h -344 v 198 l -2 4 z M 1287.5 400 v -200 l -2 4 v 194 h -600 l-4 2 z " />
+        <use href="#copyright" transform="translate(1281 250)" />
+        <path d="M 270 100 v 4 l -40 -10 z M 900 60 v -4 l 40 20 z " />
+        <use href="lamp.svg" transform="scale(1.2) translate(0 50)" />
+        <use href="teapot.svg" transform="scale(1.2) translate(700 20)" />
+      </g>
+    </svg>
+
+    <svg class="port" viewBox="260 0 650 880">
+      <use href="#title" transform="translate(260 0)" />
+      <g transform="translate(0 80)">
+        <use href="#dialog" />
+        <use href="#copyright" transform="translate(275 650)" />
+        <path d=" M 300 315 h 4 l 20 60 z M 800 380 h 4 l -20 40 z " />
+        <path transform="translate(260 0)" d=" 
+         M 0 0 h 350 l -4 2 h -344 v 198 l -2 4 z 
+         M 650 800 v -200 l -2 4 v 194 h -600 l-4 2 z 
+         " />
+        <use href="lamp.svg" transform="scale(1.2) translate(215 375)" />
+        <use href="teapot.svg" transform="translate(532 470)" />
+      </g>
+    </svg>
+
+</svg>

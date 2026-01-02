@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Living Things&trade;</title>
+
+<style>
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  object {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+  }
+
+</style>
+
+</head>
+<body>
+  <object id="svg_object" type="image/svg+xml"></object>
+
+  <script>
+
+    const list = [
+      ['remove.svg','',''],
+      ['blend.svg','',''],
+      ['donutBox.svg','',''],
+      ['lamp-layout.svg','',''],
+      ['running-box.svg','','']
+    ];
+
+    let index = 0;
+
+    const obj = document.getElementById('svg_object');
+
+    const swap = v => {
+      index = (index + v + list.length) % list.length;
+      obj.data = list[index][0];
+    };
+
+    obj.addEventListener('load', () => {
+      obj.contentDocument.addEventListener('click', e => {
+        obj.style.setProperty('transform', '');
+        swap(1);
+      });
+    });
+
+    swap(0);
+
+  </script>
+</body>
