@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+  style="
+    isolation:isolate;
+    background-image: url(newsprint.jpg);
+">
+
+  <style id="var_styles" type="text/css">
+  
+    :root {
+
+        /*
+        --show-hearts: 1;
+        --title-color: orange;
+        --living-color: yellow;
+        --things-color: blue;
+        --circ1-color: green;
+        --circ2-color: white;
+        --heart-color: green;
+        --square-color: purple;
+
+        --border-color: red;
+        --border-width: 9;
+
+        --copy-color: brown;
+        */
+
+    }
+  </style>
+
+  <style id="comic_styles" type="text/css">
+
+    svg {
+      opacity: var(--opacity, 1);
+    }
+  
+    @font-face {
+      font-family: 'Comic Neue';
+      src: url('neue.ttf') format('truetype');
+    }
+  
+    text {
+      font-family: 'Comic Neue';
+      font-size: 20px;
+    }
+  
+    #title_line {
+      fill: var(--border-color, #000);
+      height: 2px;
+    }
+    
+    #copyright {
+      font-family:'Times New Roman';
+      font-weight: 300;
+      font-size:17px;
+      fill:var(--copy-color, var(--border-color, #000));
+    }
+  
+    @media (orientation: portrait) {
+      .land { display: none; }
+      #title_line {width: 625px; }
+    }
+  
+    @media (orientation: landscape) {
+      .port {display: none; }
+      #title_line {width: 1275px; }
+    }
+  
+  </style>
+
+  <defs id="clips_and_masks">
+    <clipPath id="one_by_four">
+      <path d="M 0 0 H 1300 V 400 H 0 Z" />
+    </clipPath>
+    <clipPath id="two_by_two">
+      <path d="M 0 0 H 650 V800 H0 Z" />
+    </clipPath>
+    <clipPath id="one_of_four_clip">
+        <path d="M12.5 12.5 H312.5 V388 H12.5Z"/>
+    </clipPath>
+  </defs>
+
+  <defs id="copyright_defs">
+    <text id="copyright" transform="rotate(270)">
+      <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
+      <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
+    </text>
+  </defs>
+  
+  <defs id="title_defs">
+    <g id="title">
+      <rect id="title_line" x="12.5" y="12.5" />
+      <use href="title-test.svg#ikon" transform="translate(25 20) scale(2.5) " />
+    </g>
+  </defs>
+
+  <defs id="border_defs">
+    <path id="corners_land" d="
+      M 12.5 0 h 430 l -4 2 h -424 v 198 l -2 4 z 
+      M 1287.5 400 v -247 l -2 4 v 241 h -600 l-4 2 z 
+    " fill="var(--border-color, #000)" />
+    <path id="corners_port" d="
+      M 12.5 0 h 350 l -4 2 h -344 v 198 l -2 4 z 
+      M 637.5 787.5 v -300 l -2 4 v 294 h -550 l-4 2 z 
+    " fill="var(--border-color, #000)" />
+    <path id="one_of_four_border" d="
+     M12.5 12.5 H312.5 V388 H12.5Z
+    " fill="none" stroke="var(--border-color, #000)" stroke-width="var(--border-width, 3)" />
+  </defs>
+
+  <defs id="panel_defs">
+    <g id="panel_1" clip-path="url(#one_of_four_clip)">
+      <use href="#one_of_four_border" />
+    </g>
+    <g id="panel_2" clip-path="url(#one_of_four_clip">
+      <use href="#one_of_four_border" />
+    </g>
+    <g id="panel_3" clip-path="url(#one_of_four_clip">
+      <use href="#one_of_four_border" />
+    </g>
+    <g id="panel_4" clip-path="url(#one_of_four_clip">
+      <use href="#one_of_four_border" />
+    </g>
+  </defs>
+
+  <svg class="land" viewBox="0 0 1300 480">
+    <use href="#title"/>
+    <g transform="translate(0 80)" clip-path="url(#one_by_four)">
+      <use href="#copyright" transform="translate(1281 390)" />
+      <use href="#panel_1" />
+      <use href="#panel_2" transform="translate(325 0)" />
+      <use href="#panel_3" transform="translate(650 0)" />
+      <use href="#panel_4" transform="translate(975 0)" />
+    </g>
+  </svg>
+
+  <svg class="port" viewBox="0 0 650 880"> 
+    <use href="#title" />
+    <g transform="translate(0 80)" clip-path="url(#two_by_two)">
+      <use href="#copyright" transform="translate(630 780)" />
+      <use href="#panel_1" />
+      <use href="#panel_2" transform="translate(325 0)" />
+      <use href="#panel_3" transform="translate(0 400)" />
+      <use href="#panel_4" transform="translate(325 400)" />
+    </g>
+  </svg>
+
+</svg>

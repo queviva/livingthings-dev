@@ -30,7 +30,7 @@
                 M 64.07 10.583 C 62.647 8.968 59.953 10.222 59.958 12.001 C 59.97 16.5 64.895 16.109 65.403 13.375 L 66.298 17.409 C 64.372 21.631 57.533 22.182 54.962 15.637 C 51.963 8.002 60.087 2.105 67.134 4.694 L 64.07 10.583 Z
                 M 69.317 20.502 L 64.681 20.046 L 65.038 13.279 L 63.132 13.878 L 62.587 11.473 L 68.319 11.473 L 69.317 20.502 Z
 
-        " fill="var(--living-color, var(--text-color, #000))" />
+        " fill="var(--living-color, var(--title-color, #000))" />
 
         <path id="THINGS" d="
 
@@ -55,16 +55,16 @@
                 M 143.459 13.968 C 144.883 15.583 148.273 15.488 147.431 13.896 C 146.519 12.171 143.148 13.04 141.184 10.852 C 136.708 5.864 147.021 0 153.531 7.142 L 150.332 10.852 C 147.576 8.182 144.383 8.94 146.235 10.533 C 147.582 11.692 152.274 11.525 153.167 13.968 C 155.383 20.029 145.636 23.018 140.027 18.484 L 143.459 13.968 Z
 
 
-        " fill="var(--things-color, var(--text-color, #000))"  />
+        " fill="var(--things-color, var(--title-color, #000))"  />
 
         <g id="title_circs" style="opacity: calc(1 - var(--show-hearts, 0))">
-          <circle cx="17" cy="7.3" r="3.8" fill="var(--circ1-color, var(--text-color, #000))" />
-          <circle cx="109.2" cy="6.5" r="3.8" fill="var(--circ2-color, var(--text-color, #000))"  />
+          <circle cx="17" cy="7.3" r="3.8" fill="var(--circ1-color, var(--title-color, #000))" />
+          <circle cx="109.2" cy="6.5" r="3.8" fill="var(--circ2-color, var(--title-color, #000))"  />
         </g>
 
         <g id="title_hearts" style="opacity: var(--show-hearts, 0)">
-          <path id="heart" d="M 16.089 4.464 C 20.26 0.852 25.207 8.953 14.734 12.088 C 6.118 5.836 13.26 -0.162 16.089 4.464 Z  M 15.831 6.053 C 19.07 2.662 22.505 8.426 14.986 10.611 C 8.76 5.827 13.959 2.006 15.831 6.053 Z" fill-rule="evenodd" fill="var(--heart-color, var(--text-color, #000))" />
-          <path id="square" d=" M 105.92 9.623 L 105.528 2.75 L 113.085 3.039 L 112.365 9.623 L 105.92 9.623 Z  M 107.159 8.337 L 106.917 4.07 L 111.655 4.251 L 111.208 8.337 L 107.159 8.337 Z " fill-rule="evenodd" fill="var(--square-color, var(--text-color, #000))" />
+          <path id="heart" d="M 16.089 4.464 C 20.26 0.852 25.207 8.953 14.734 12.088 C 6.118 5.836 13.26 -0.162 16.089 4.464 Z  M 15.831 6.053 C 19.07 2.662 22.505 8.426 14.986 10.611 C 8.76 5.827 13.959 2.006 15.831 6.053 Z" fill-rule="evenodd" fill="var(--heart-color, var(--title-color, #000))" />
+          <path id="square" d=" M 105.92 9.623 L 105.528 2.75 L 113.085 3.039 L 112.365 9.623 L 105.92 9.623 Z  M 107.159 8.337 L 106.917 4.07 L 111.655 4.251 L 111.208 8.337 L 107.159 8.337 Z " fill-rule="evenodd" fill="var(--square-color, var(--title-color, #000))" />
         </g>
 
       </g>
@@ -75,7 +75,7 @@
   <use href="#ikon" style="
     /*
     --show-hearts: 1;
-    --text-color: #909;
+    --title-color: #909;
     --living-color: red;
     --things-color: blue;
     --circ1-color: green;
