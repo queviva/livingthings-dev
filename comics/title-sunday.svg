@@ -5,8 +5,8 @@ viewBox="0 0 615 277">
 <g id="ikon">
 
   <g>
-    <path fill="var(--heart-inside-color, none)" d=" M 386.71 23.349 C 410.132 -1.173 434.98 40.511 380.602 56.318 C 335.571 21.715 373.167 -5.922 386.71 23.349 Z " />
-    <path fill="var(--rect-inside-color, none)" d=" M 231.037 186.436 L 225.027 156.116 L 259.146 152.671 L 260.038 182.38 L 231.037 186.436 Z " />
+    <path fill="var(--heart-inside-color, none)" d=" M 387 22 C 412 -2 437 40 381 58 C 332 21 374 -8 387 22 Z " />
+    <path fill="var(--rect-inside-color, none)" d=" M 230 189 L 223 155 L 261 151 L 262 184 Z " />
   </g>      
 
   <g id="LivingThings" fill="var(--title-color, #000)">
