@@ -299,7 +299,7 @@
     opacity: var(--bg-opacity, 1);
   ">
 
-  <svg class="land" viewBox="0 0 1300 480">
+  <svg class="land" viewBox="0 0 1300 520">
     <use href="#title"/>
     <g transform="translate(0 80)">
       <use href="#copyright" transform="translate(976 395)" />
