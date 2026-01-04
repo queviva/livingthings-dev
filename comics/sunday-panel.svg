@@ -5,8 +5,8 @@
     :root {
 
         --outline-color: purple;
-        /*
         --bg-fill: url(newsprint.jpg);
+        /*
         --bg-filter: url(#shake);
         --bg-mask: url(#fade_mask);
         --bg-opacity: 0.85;
@@ -67,16 +67,17 @@
       fill: var(--outline-color, #000);
     }
 
-    #title_line {
-      fill: var(--title-color, #000);
-      height: 2px;
-    }
-    
     #copyright {
       font-family:'Times New Roman';
       font-weight: 300;
       font-size:17px;
       fill:var(--copy-color, var(--outline-color, #000));
+    }
+
+    .border {
+      fill: none;
+      stroke: var(--border-color, var(--outline-color, #000));
+      stroke-width: var(--border-width, 2); 
     }
 
     .obj {
@@ -157,23 +158,8 @@
   </defs>
   
   <defs id="border_defs">
-    <g 
-    >
-    
-      <path id="one_of_three_border" 
-       fill="none" 
-       stroke="var(--border-color, var(--outline-color, #000))"
-       stroke-width="var(--border-width, 2)" 
-       d=" M 0 0 H 400 V 400 H 0 Z "
-      />
-      <path id="two_of_three_border" 
-       fill="none" 
-       stroke="var(--border-color, var(--outline-color, #000))"
-       stroke-width="var(--border-width, 2)" 
-       d=" M 0 0 H 825 V 400 H 0 Z "
-      />
-
-    </g>
+      <path id="one_of_three_border" class="border" d=" M 0 0 H 400 V 400 H 0 Z " />
+      <path id="two_of_three_border" class="border" d=" M 0 0 H 825 V 400 H 0 Z " />
   </defs>
 
   <defs id="panel_defs">
@@ -181,6 +167,25 @@
     <g id="panel_1">
 
       <g clip-path="url(#two_of_three_clip)">
+
+        <mask id="ball_mask">
+          <rect width="825" height="400" fill="#fff"/>
+          <circle r="100" cx="800" cy="330" />
+          <circle r="115" cx="60" cy="130" />
+        </mask>
+
+        <g>
+        <use href="output.svg#ikon"
+         mask="url(#ball_mask)"
+         style="
+          --title-color: purple;
+          --heart-inside-color:orange;
+          --rect-inside-color:orange;
+         "
+        />
+        </g>
+        <circle r="100" cx="800" cy="330" fill="orange" fill-opacity="0.5" />
+        <circle r="115" cx="60" cy="130" fill="orange" fill-opacity="0.5" />
 
       </g>
 
@@ -198,6 +203,26 @@
 
     </g>
 
+    <g id="panel_3">
+
+      <g clip-path="url(#one_of_three_clip)">
+
+      </g>
+
+      <use href="#one_of_three_border" />
+
+
+    </g>
+
+    <g id="panel_4">
+
+      <g clip-path="url(#two_of_three_clip)">
+
+      </g>
+
+      <use href="#two_of_three_border" />
+
+    </g>
 
   </defs>
 
@@ -208,21 +233,21 @@
 
   <svg class="land" viewBox="0 0 1300 875">
     <g transform="translate(0 25)">
-      <use href="#copyright" transform="translate(1267 395)" />
+      <use href="#copyright" transform="translate(1267 820)" />
       <use href="#panel_1" transform="translate(25 0)" />
       <use href="#panel_2" transform="translate(875 0)" />
-      <use href="#panel_2" transform="translate(25 425)" />
-      <use href="#panel_1" transform="translate(450 425)" />
+      <use href="#panel_3" transform="translate(25 425)" />
+      <use href="#panel_4" transform="translate(450 425)" />
     </g>
   </svg>
 
   <svg class="port" viewBox="0 0 875 1300"> 
     <g transform="translate(0 25)">
-      <use href="#copyright" transform="translate(416 1235)" />
+      <use href="#copyright" transform="translate(845 1245)" />
       <use href="#panel_1" transform="translate(25 0)" />
       <use href="#panel_2" transform="translate(25 425)" />
-      <use href="#panel_2" transform="translate(450 425)" />
-      <use href="#panel_1" transform="translate(25 850)" />
+      <use href="#panel_3" transform="translate(450 425)" />
+      <use href="#panel_4" transform="translate(25 850)" />
     </g>
   </svg>
   
