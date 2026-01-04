@@ -5,6 +5,8 @@
     :root {
 
         --outline-color: purple;
+        --accent-color: hsl(40, 100%, 50%, 0.8);
+
         --bg-fill: url(newsprint.jpg);
         /*
         --bg-filter: url(#shake);
@@ -118,7 +120,7 @@
     </pattern>
 
     <pattern id="dots" viewBox="-2 -2 4 4" width="4" height="4"
-     patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1.5)">
+     patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1)">
      <circle r="1" fill="var(--outline-color, #000)" transform="scale(1.5)"/>
     </pattern>
 
@@ -170,22 +172,28 @@
 
         <mask id="ball_mask">
           <rect width="825" height="400" fill="#fff"/>
-          <circle r="100" cx="800" cy="330" />
-          <circle r="115" cx="60" cy="130" />
+          <circle r="110" cx="80" cy="80" />
+          <circle r="100" cx="825" cy="300" />
         </mask>
 
-        <g>
-        <use href="output.svg#ikon"
-         mask="url(#ball_mask)"
-         style="
+        <mask id="things_mask">
+          <rect width="825" height="400" fill="#fff"/>
+          <use href="title-sunday.svg#THINGS" />
+        </mask>
+
+        <g style="
           --title-color: purple;
-          --heart-inside-color:orange;
-          --rect-inside-color:orange;
-         "
+          --heart-inside-color:var(--accent-color);
+          --rect-inside-color:var(--accent-color);
+        ">
+        <use href="title-sunday.svg#ikon"
+         mask="url(#ball_mask)"
+         opacity="0.8"
         />
         </g>
-        <circle r="100" cx="800" cy="330" fill="orange" fill-opacity="0.5" />
-        <circle r="115" cx="60" cy="130" fill="orange" fill-opacity="0.5" />
+
+        <circle r="110" cx="80" cy="80" mask="url(#things_mask)" fill="var(--accent-color)" />
+        <circle r="100" cx="825" cy="300" fill="var(--accent-color)" />
 
       </g>
 
@@ -197,6 +205,27 @@
 
       <g clip-path="url(#one_of_three_clip)">
 
+        <g transform="translate(190 32)">
+          <text text-anchor="middle">
+            <tspan>You know that guy who lives off</tspan>
+            <tspan x="0" dy="1em">money he borrows from friends?</tspan>
+            <tspan x="0" dy="1em">Buys lunch, pays rent with it.</tspan>
+          </text>
+        </g>
+        <g transform="translate(90 90)">
+          <text>
+            <tspan x="0" dy="1.4em">If they ask to get paid back,</tspan>
+            <tspan x="0" dy="1em">he <tspan font-style="italic">asks them</tspan> for cigarettes...</tspan>
+          </text>
+        </g>
+        <g transform="translate(50 205) scale(1.5)">
+          <use href="friar.svg#ikon" />
+        </g>
+        <g transform="translate(200 200)">
+          <use href="blendifer.svg#pattern_elements" fill="url(#dots)" />
+          <use href="blendifer.svg#ikon" />
+        </g>
+
       </g>
 
       <use href="#one_of_three_border" />
@@ -207,20 +236,112 @@
 
       <g clip-path="url(#one_of_three_clip)">
 
+        <g transform="translate(200 32)">
+          <text text-anchor="middle">
+            <tspan>He has no job, isn't looking for one,</tspan>
+            <tspan x="0" dy="1em">and goes around town writing I.O.U.'s</tspan>
+          </text>
+        </g>
+        <g transform="translate(60 100)">
+          <text>
+            <tspan>Every dollar he has, he promises</tspan>
+            <tspan x="0" dy="1em">
+              to give to 
+              <tspan font-style="italic">five different people.</tspan>
+            </tspan>
+          </text>
+        </g>
+
+
+        <g transform="translate(70 130) scale(1.9)" >
+          <use href="blendifer.svg#pattern_elements" fill="url(#dots)" />
+          <use href="blendifer.svg#ikon" />
+        </g>
+
       </g>
 
       <use href="#one_of_three_border" />
-
 
     </g>
 
     <g id="panel_4">
 
+      <!--
       <g clip-path="url(#two_of_three_clip)">
 
       </g>
+      -->
 
-      <use href="#two_of_three_border" />
+      <defs>
+        <path id="small_panel" d=" M 0 0 H 300 V 400 H 0 Z "/>
+        <path id="large_panel" d=" M 325 0 H 825 V 400 H 325 Z "/>
+        <clipPath id="small_panel_clip">
+          <use href="#small_panel"/>
+        </clipPath>
+        <clipPath id="large_panel_clip">
+          <use href="#large_panel"/>
+        </clipPath>
+        <mask id="small_panel_mask">
+          <rect width="300" height="400" fill="#fff"/>
+          <use href="friar.svg#mask"
+           transform="translate(10 80) scale(3)"
+          />
+          <rect x="7" y="7" width="200" height="60" />
+        </mask>
+      </defs>
+
+      <g clip-path="url(#small_panel_clip">
+
+        <text transform="translate(20 32)" >
+          <tspan>No - I don't know</tspan>
+          <tspan x="0" dy="1em">anyone like that.</tspan>
+        </text>
+        <rect style="stroke-width:2px;" class="text-bubble" x="7" y="7" width="200" height="60" />
+        <path d="M 20 67 h 5 l 8 20 z" />
+
+        <use href="friar.svg#ikon"
+         transform="translate(10 80) scale(3)"
+        />
+
+      </g>
+
+      <g clip-path="url(#large_panel_clip)">
+
+        <g transform="translate(575 32)">
+          <text text-anchor="middle">
+            <tspan>Really? You've never heard of</tspan>
+            <tspan x="0" dy="1.2em" font-size="30" font-style="italic" font-weight="bold">
+              The United States of America
+            </tspan>
+          </text>
+        </g>
+
+        <g transform="translate(370 160) scale(1)">
+          <use href="friar.svg#ikon" />
+        </g>
+        <g transform="translate(530 65) scale(2)">
+          <use href="blendifer.svg#pattern_elements" fill="url(#dots)" />
+          <use href="blendifer.svg#ikon" />
+        </g>
+
+        <defs>
+          <mask id="shadow_mask">
+            <rect width="825" height="400" fill="#fff" />
+            <ellipse cx="415.5" cy="287" rx="35" ry="2.3" />
+          </mask>
+        </defs>
+        <ellipse class="obj" mask="url(#shadow_mask)" 
+         cx="450" cy="289" rx="75" ry="2.8" />
+
+      </g>
+
+      <use href="#small_panel"
+       fill="url(#dots)"
+       mask="url(#small_panel_mask"
+      />
+      <use class="border" href="#large_panel"/>
+
+      <!-- <use href="#two_of_three_border" /> -->
 
     </g>
 
@@ -233,7 +354,7 @@
 
   <svg class="land" viewBox="0 0 1300 875">
     <g transform="translate(0 25)">
-      <use href="#copyright" transform="translate(1267 820)" />
+      <use href="#copyright" transform="translate(768.5 820)" />
       <use href="#panel_1" transform="translate(25 0)" />
       <use href="#panel_2" transform="translate(875 0)" />
       <use href="#panel_3" transform="translate(25 425)" />
@@ -243,7 +364,7 @@
 
   <svg class="port" viewBox="0 0 875 1300"> 
     <g transform="translate(0 25)">
-      <use href="#copyright" transform="translate(845 1245)" />
+      <use href="#copyright" transform="translate(343.5 1245)" />
       <use href="#panel_1" transform="translate(25 0)" />
       <use href="#panel_2" transform="translate(25 425)" />
       <use href="#panel_3" transform="translate(450 425)" />

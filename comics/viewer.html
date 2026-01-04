@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Living Things&trade;</title>
-
+<script src="sketch.js"></script>
 <style>
 
   html, body {
@@ -36,7 +36,7 @@
       ['four-panel.svg','',''],
       ['three-panel.svg','',''],
       ['sunday-panel.svg','',''],
-      ['donutBox.svg','','']
+      ['morris.svg','','']
     ];
 
     let index = 0;
@@ -49,8 +49,25 @@
     };
 
     obj.addEventListener('load', () => {
+      obj.contentDocument.querySelectorAll('path[data-sketch]')
+      .forEach(path => {
+        const shirt = sketch.svg(obj, {options: {
+          hachureAngle: -60,
+          hachureGap: 8,
+          fillWeight: 4, 
+          roughness: 3.2,
+          stroke: 'none'
+        }});
+        const vals = JSON.parse(path.dataset.sketch);
+        vals.fill = window.getComputedStyle(path).getPropertyValue('fill');
+        const oldD = path.getAttribute('d');
+        const newG = shirt.path(oldD, vals);
+        const parent = path.parentNode;
+        parent.replaceChild(newG, path);
+
+      });
       obj.contentDocument.addEventListener('click', e => {
-        obj.style.setProperty('transform', '');
+        //obj.style.setProperty('transform', '');
         swap(1);
       });
     });
