@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate;">
+
+  <style id="config_styles" type="text/css">
+  
+    :root {
+
+        --outline-color: purple;
+        /*
+        --bg-fill: url(newsprint.jpg);
+        --bg-filter: url(#shake);
+        --bg-mask: url(#fade_mask);
+        --bg-opacity: 0.85;
+        */
+
+        /*
+        --show-hearts: 1;
+        --title-color: orange;
+        --living-color: yellow;
+        --things-color: blue;
+        --circ1-color: green;
+        --circ2-color: white;
+        --heart-color: green;
+        --square-color: purple;
+
+        --border-color: red;
+        --border-width: 9;
+
+        --copy-color: brown;
+
+        --outline-color: pink;
+        */
+
+    }
+  </style>
+
+  <style id="svg_styles" type="text/css">
+
+    svg {
+      background-image: var(--bg-fill, none);
+      mask: var(--bg-mask, none);
+    }
+  
+  </style>
+
+  <style id="comic_styles" type="text/css">
+
+    @font-face {
+      font-family: 'Comic Neue';
+      /* src: url('neue.ttf') format('truetype'); */
+      src: url('ComingSoon.ttf') format('truetype');
+    }
+  
+    text {
+      font-family:'Comic Neue';
+      font-weight: 400;
+      font-size: 22px;
+      fill: var(--text-color, var(--outline-color, #000));
+    }
+  
+    .text-bubble {
+      fill: none;
+      stroke: var(--outline-color, #000);
+      stroke-width: 1px;
+    }
+
+    .text-bubble + path {
+      fill: var(--outline-color, #000);
+    }
+
+    #title_line {
+      fill: var(--title-color, #000);
+      height: 2px;
+    }
+    
+    #copyright {
+      font-family:'Times New Roman';
+      font-weight: 300;
+      font-size:17px;
+      fill:var(--copy-color, var(--outline-color, #000));
+    }
+
+    .obj {
+      fill: var(--outline-color, #000);
+    }
+  
+    @media (orientation: portrait) {
+      .land { display: none; }
+    }
+  
+    @media (orientation: landscape) {
+      .port { display: none; }
+    }
+  
+  </style>
+
+  <defs id="pats_and_filters">
+
+    <linearGradient id="fade" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" />
+    </linearGradient>
+
+    <filter id="blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.3" />
+    </filter>
+
+    <filter id="shake" width="120%" height="220%" color-interpolation-filters="sRGB">
+      <feImage href="newsprint.jpg" x="0" y="0" width="220%" height="120%" preserveAspectRatio="xMidYMid slice" result="mig" />
+      <feDisplacementMap in="SourceGraphic" in2="mig" result="rat" scale="5" xChannelSelector="R" yChannelSelector="B" />
+      <feGaussianBlur in="rat" stdDeviation="0.3" result="blur" />
+      <!-- shift image back based on displacement's scale -->
+      <feOffset in="blurred" dx="0.5" dy="5" result="final" />
+    </filter>
+    
+    <pattern id="newsprint" patternUnits="userSpaceOnUse" width="100%" height="100%">
+      <image href="newsprint.jpg" width="100%" height="100%" preserveAspectRatio="none" />
+    </pattern>
+
+    <pattern id="dots" viewBox="-2 -2 4 4" width="4" height="4"
+     patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1.5)">
+     <circle r="1" fill="var(--outline-color, #000)" transform="scale(1.5)"/>
+    </pattern>
+
+  </defs>
+
+  <defs id="clips_and_masks">
+
+    <clipPath id="one_of_three_clip">
+        <path d="M 0 0 H 400 V 400 H 0 Z"/>
+    </clipPath>
+
+    <clipPath id="two_of_three_clip">
+        <path d="M 0 0 H 825 V 400 H 0 Z"/>
+    </clipPath>
+
+    <mask id="fade_mask"
+     maskUnits="objectBoundingBox"
+     maskContentUnits="objectBoundingBox"
+    >
+      <linearGradient id="fade_gradient"
+       x1="0%" y1="100%"
+       x2="90%" y2="0%"
+      >
+        <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+        <stop offset="100%" stop-color="#fff" stop-opacity="0.4" />
+      </linearGradient>
+      <rect width="1" height="1" fill="url(#fade_gradient)" />
+    </mask>
+
+  </defs>
+
+  <defs id="copyright_defs">
+    <text id="copyright" transform="rotate(270)">
+      <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
+      <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
+    </text>
+  </defs>
+  
+  <defs id="border_defs">
+    <g 
+    >
+    
+      <path id="one_of_three_border" 
+       fill="none" 
+       stroke="var(--border-color, var(--outline-color, #000))"
+       stroke-width="var(--border-width, 2)" 
+       d=" M 0 0 H 400 V 400 H 0 Z "
+      />
+      <path id="two_of_three_border" 
+       fill="none" 
+       stroke="var(--border-color, var(--outline-color, #000))"
+       stroke-width="var(--border-width, 2)" 
+       d=" M 0 0 H 825 V 400 H 0 Z "
+      />
+
+    </g>
+  </defs>
+
+  <defs id="panel_defs">
+
+    <g id="panel_1">
+
+      <g clip-path="url(#two_of_three_clip)">
+
+      </g>
+
+      <use href="#two_of_three_border" />
+
+    </g>
+
+    <g id="panel_2">
+
+      <g clip-path="url(#one_of_three_clip)">
+
+      </g>
+
+      <use href="#one_of_three_border" />
+
+    </g>
+
+
+  </defs>
+
+  <g id="haxxor" style="
+    filter: var(--bg-filter, none);
+    opacity: var(--bg-opacity, 1);
+  ">
+
+  <svg class="land" viewBox="0 0 1300 875">
+    <g transform="translate(0 25)">
+      <use href="#copyright" transform="translate(1267 395)" />
+      <use href="#panel_1" transform="translate(25 0)" />
+      <use href="#panel_2" transform="translate(875 0)" />
+      <use href="#panel_2" transform="translate(25 425)" />
+      <use href="#panel_1" transform="translate(450 425)" />
+    </g>
+  </svg>
+
+  <svg class="port" viewBox="0 0 875 1300"> 
+    <g transform="translate(0 25)">
+      <use href="#copyright" transform="translate(416 1235)" />
+      <use href="#panel_1" transform="translate(25 0)" />
+      <use href="#panel_2" transform="translate(25 425)" />
+      <use href="#panel_2" transform="translate(450 425)" />
+      <use href="#panel_1" transform="translate(25 850)" />
+    </g>
+  </svg>
+  
+  </g>
+
+</svg>
