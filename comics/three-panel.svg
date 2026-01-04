@@ -285,7 +285,7 @@
 
     <use href="#title"/>
     <g transform="translate(0 80)">
-      <use href="#copyright" transform="translate(867 395)" />
+      <use href="#copyright" transform="translate(1267 395)" />
       <use href="#panel_1" transform="translate(25 0)" />
       <use href="#panel_2" transform="translate(450 0)" />
       <use href="#panel_3" transform="translate(875 0)" />
@@ -296,7 +296,7 @@
   <svg class="port" viewBox="0 0 440 1380"> 
     <use href="#title" />
     <g transform="translate(0 80)">
-      <use href="#copyright" transform="translate(417 815)" />
+      <use href="#copyright" transform="translate(416 1235)" />
       <use href="#panel_1" transform="translate(20 0)" />
       <use href="#panel_2" transform="translate(20 420)" />
       <use href="#panel_3" transform="translate(20 840)" />
