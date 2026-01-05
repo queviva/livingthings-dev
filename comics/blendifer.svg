@@ -2,10 +2,6 @@
  
  <defs>
   <path id="mask" transform="scale(0.25)" d=" M228 630 q100 -25 218 -14 l18 25 l-20 140 h-261 l-29 -55 z " />
-  <pattern id="dotz" viewBox="-2 -2 4 4" width="4" height="4"
-   patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1.5)">
-   <circle r="1" fill="var(--outline-color, #000)" transform="scale(1.5)"/>
-  </pattern>
   <g id="pattern_elements" transform="scale(0.25)">
    <path id="lid_fill" d="m199.01,100.37c-36.03,16.98 -70.97,34.66 -106.9,57.24c-11.55,13.59 0.45,26.01 3.99,21.72l65.92,2.79l38.55,-25.14c56.61,13.22 99.81,74.49 164.8,44.69l5.03,-46.93c8.01,-10.99 22.16,-29.24 25.7,-48.04l-84.92,-11.73l-8.38,40.78c-39.56,8.12 -85.19,12.27 -111.69,-18.19c5.6,-2.06 9.7,-12.43 7.9,-17.19z" />
    <path id="cup_fill" d="m243.14,502.75c13.19,-10.87 125.43,-39.36 208.43,-3.38c-17.82,37.95 -29.98,75.58 -38.36,112.89c-42.66,-1.57 -89.1,-0.94 -140.25,7.55c2.95,-32.42 6.54,-70.49 -29.82,-117.06z" />
@@ -98,7 +94,7 @@
 
  </g>
 
- <use href="#pattern_elements" fill="url(#dotz)" />
+ <use href="#pattern_elements" fill="#888" />
  
 
 </svg>

@@ -4,13 +4,13 @@
   
     :root {
 
-        --outline-color: purple;
+        --outline-color: #707;
         --accent-color: hsl(40, 100%, 50%, 0.8);
 
         --bg-fill: url(newsprint.jpg);
+        --bg-mask: url(#fade_mask);
         /*
         --bg-filter: url(#shake);
-        --bg-mask: url(#fade_mask);
         --bg-opacity: 0.85;
         */
 
@@ -124,6 +124,11 @@
      <circle r="1" fill="var(--outline-color, #000)" transform="scale(1.5)"/>
     </pattern>
 
+    <pattern id="dots_big" viewBox="-2 -2 4 4" width="4" height="4"
+     patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(2.5)">
+     <circle r="1" fill="var(--outline-color, #000)" transform="scale(1.5)"/>
+    </pattern>
+
   </defs>
 
   <defs id="clips_and_masks">
@@ -172,12 +177,16 @@
 
         <mask id="ball_mask">
           <rect width="825" height="400" fill="#fff"/>
-          <circle r="110" cx="80" cy="80" />
-          <circle r="100" cx="825" cy="300" />
+          <circle r="105" cx="82" cy="82"/>
+          <circle r="100" cx="822" cy="307" />
+          <circle r="35" cx="491" cy="66" />
+          <circle r="35" cx="350" cy="230" />
+          <path d=" M 0 355 A 500 500 0 0 1 254 400 H 0 Z "/>
         </mask>
 
         <mask id="things_mask">
           <rect width="825" height="400" fill="#fff"/>
+          <use href="title-sunday.svg#LIVING" />
           <use href="title-sunday.svg#THINGS" />
         </mask>
 
@@ -185,18 +194,35 @@
           --title-color: purple;
           --heart-inside-color:var(--accent-color);
           --rect-inside-color:var(--accent-color);
-        ">
-          <use href="title-sunday.svg#ikon"
+          --show-hearts: none;
+        "
            mask="url(#ball_mask)"
-           opacity="0.7"
-          />
+        >
+          <g
+           fill="none"
+           stroke="var(--outline-color)"
+           stroke-width="7"
+           mask="url(#things_mask)"
+          >
+          </g>
+
+          <use href="title-sunday.svg#solid" fill="url(#dots)" />
+          <use href="title-sunday.svg#outline" style="
+            --outline-width: 6;
+          "/>
+
         </g>
 
         <g
-         fill="var(--accent-color)" 
+         fill="none"
+         stroke="var(--outline-color)"
+         stroke-width="4"
         >
-          <circle r="110" cx="80" cy="80" mask="url(#things_mask)"/>
-          <circle r="100" cx="825" cy="300" />
+          <circle r="105" cx="82" cy="82"/>
+          <circle r="100" cx="822" cy="307" />
+          <circle r="35" cx="491" cy="66" />
+          <circle r="35" cx="350" cy="230" />
+          <path d=" M 0 355 A 500 500 0 0 1 254 400 H 0 Z "/>
         </g>
 
       </g>
@@ -213,7 +239,7 @@
           <text text-anchor="middle">
             <tspan>You know that guy who lives off</tspan>
             <tspan x="0" dy="1em">money he borrows from friends?</tspan>
-            <tspan x="0" dy="1em">Buys lunch, pays rent with it.</tspan>
+            <tspan x="0" dy="1em">Buys lunch, pays rent with it...</tspan>
           </text>
         </g>
         <g transform="translate(90 90)">
@@ -234,9 +260,18 @@
         </g>
        
         <g transform="translate(200 191)">
-          <use href="blendifer.svg#pattern_elements" fill="url(#dots)" />
           <use href="blendifer.svg#ikon" />
         </g>
+
+        <mask id="dot_mask_panel_1">
+          <rect width="400" height="400" fill="#000"/>
+          <use href="blendifer.svg#pattern_elements" fill="#fff"
+            transform="translate(200 191)"
+          />
+        </mask>
+        <rect width="400" height="400" fill="url(#dots)"
+          mask="url(#dot_mask_panel_1)"
+        />
 
         <path class="obj" d=" m 10 392 q 190 -20 380 0 q -190 -5 -380 0 z " />
 
@@ -249,6 +284,16 @@
     <g id="panel_3">
 
       <g clip-path="url(#one_of_three_clip)">
+
+        <mask id="dot_mask_panel_2">
+          <rect width="400" height="400" fill="#000"/>
+          <use href="blendifer.svg#pattern_elements" fill="#fff"
+            transform="translate(70 130) scale(1.9)" 
+          />
+        </mask>
+        <rect width="400" height="400" fill="url(#dots)"
+          mask="url(#dot_mask_panel_2)"
+        />
 
         <g transform="translate(200 32)">
           <text text-anchor="middle">
@@ -273,7 +318,6 @@
         <path d="M 350 135 h 4 l -30 20 z" />
 
         <g transform="translate(70 130) scale(1.9)" >
-          <use href="blendifer.svg#pattern_elements" fill="url(#dots)" />
           <use href="blendifer.svg#ikon" />
         </g>
 
@@ -326,6 +370,16 @@
 
       <g clip-path="url(#large_panel_clip)">
 
+        <mask id="dot_mask_panel_4">
+          <rect width="400" height="400" fill="#000"/>
+          <use href="blendifer.svg#pattern_elements" fill="#fff"
+           transform="translate(530 65) scale(2)"
+          />
+        </mask>
+        <rect width="825" height="400" fill="url(#dots)"
+          mask="url(#dot_mask_panel_4)"
+        />
+
         <g transform="translate(575 32)">
           <text text-anchor="middle">
             <tspan>Really? You've never heard of</tspan>
@@ -339,7 +393,6 @@
           <use href="friar.svg#ikon" />
         </g>
         <g transform="translate(530 65) scale(2)">
-          <use href="blendifer.svg#pattern_elements" fill="url(#dots)" />
           <use href="blendifer.svg#ikon" />
         </g>
 
