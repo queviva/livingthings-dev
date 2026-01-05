@@ -1,139 +1,78 @@
-<html>
-<head><title>LivingThings&trade;</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="favicon.ico">
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Living Things&trade;</title>
+<script src="sketch.js"></script>
 <style>
-  body, div, object {
+
+  html, body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-  }
-  
-  object {
-      width: 100%;
-      height: auto;
-  }
-  
-  object:not([data-cred]) {
-    margin-bottom: 50px;
-  }
-  
-  div.cred {
-    padding: 3px;
-    height: 50px;
     width: 100%;
-    font-family: 'Times New Roman';
-    font-size: 8px;
-    font-style: italic;
-    font-weight: 100;
-    text-align: right;
+    height: 100%;
   }
-  
+
+  object {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+  }
+
 </style>
+
 </head>
 <body>
+  <object id="svg_object" type="image/svg+xml"></object>
 
-  <div>
-    <object type="image/svg+xml" data="comics/remove.svg"
-     style="padding: 5px;"
-     data-stys="--title-color:#111;"
-    ></object>
-    <object data-stys="--show-hearts: 0;" data-port="P2" type="image/svg+xml" data="comics/scroll-master.svg"></object>
-    <object data="comics/comic000.svg"></object>
-    <object data-port="P2" data-cred type="image/svg+xml" data="comics/lids.svg"></object>
-    <div class="cred">(The Wheeling Daily Scoundrel)</div>
-    <object data-stys="
-        --show-hearts : 0;
-        --outline-color : #909;
-    " type="image/svg+xml" data="comics/lids.svg"></object>
-    <object type="image/svg+xml" data="comics/stPattys2025.svg"></object>
-    <object data-cred data-port="P3" type="image/svg+xml" data="comics/samp-three-panel.svg"></object>
-    <div class="cred">(The Wheeling Daily Scoundrel)</div>
-    <object type="image/svg+xml" data="comics/hexapoid.svg"></object>
-    <object data-port="P2" type="image/svg+xml" data="comics/donut-invite.svg"></object>
-  </div>
-  
-<script>
+  <script>
 
-document.addEventListener('DOMContentLoaded', () => {
+    const list = [
+      ['comics/living-things-intro00.svg','',''],
+      ['comics/four-panel.svg','',''],
+      ['comics/three-panel.svg','',''],
+      ['comics/sunday-panel.svg','',''],
+      ['comics/pop-house.svg','','']
+    ];
 
-    const log = console.log;
+    let index = 0;
 
-    const portConfigs = {
-        P1: {
-            port: '0 0 650 882.5',
-            land: '0 0 1300 480'
-        },
-        P2: {
-            port: '0 0 650 882.5',
-            land: '0 0 1300 480'
-        },
-        P3: {
-            port: '0 0 434 1260',
-            land: '0 0 1300 480'
-        }
+    const obj = document.getElementById('svg_object');
+
+    const swap = v => {
+      index = (index + v + list.length) % list.length;
+      obj.data = list[index][0];
     };
 
-    const getOrientation = () => {
-        return window.innerHeight >= window.innerWidth ? 'port' : 'land';
-    };
+    obj.addEventListener('load', () => {
+      obj.contentDocument.querySelectorAll('path[data-sketch]')
+      .forEach(path => {
+        const shirt = sketch.svg(obj, {options: {
+          hachureAngle: -60,
+          hachureGap: 8,
+          fillWeight: 4, 
+          roughness: 3.2,
+          stroke: 'none'
+        }});
+        const vals = JSON.parse(path.dataset.sketch);
+        //vals.fill = window.getComputedStyle(path).getPropertyValue('fill');
+        const oldD = path.getAttribute('d');
+        const newG = shirt.path(oldD, vals);
+        newG.setAttribute('id', path.id);
+        const parent = path.parentNode;
+        parent.replaceChild(newG, path);
 
-    const updateViewBox = (obj, val) => {
-        obj.contentDocument.querySelector('svg').setAttribute('viewBox', val);
-    };
-
-    const updatePorts = (portType) => {
-        const viewBoxVal = portConfigs[portType][getOrientation()];
-        const ports = document.querySelectorAll(`[data-port="${portType}"]`);
-        ports.forEach(obj => updateViewBox(obj, viewBoxVal));
-    };
-
-    const handleLoad = (portType, obj) => {
-        const viewBoxVal = portConfigs[portType][getOrientation()];
-        updateViewBox(obj, viewBoxVal);
-    };
-
-    ['P1', 'P2', 'P3'].forEach(portType => {
-        const ports = document.querySelectorAll(`[data-port="${portType}"]`);
-
-        ports.forEach(obj => {
-            if (obj.contentDocument.documentElement.querySelector('svg')) {
-                handleLoad(portType, obj);
-            } else {
-                obj.addEventListener('load', () => handleLoad(portType, obj), {once: true});
-            }
-        });
-
-        window.addEventListener('resize', () => updatePorts(portType));
-        window.addEventListener('orientationchange', () => updatePorts(portType));
+      });
+      obj.contentDocument.addEventListener('click', e => {
+        swap(1);
+      });
     });
 
+    swap(0);
 
-    const stys = document.querySelectorAll('[data-stys]');
-
-    const loadStys = obj => {
-        obj.dataset.stys.replace(/\s/g, '').split(';').filter(Boolean).forEach(v => {
-            const [a, b] = v.split(':');
-            obj.contentDocument.documentElement.style.setProperty(a, b);
-        });
-    };
-
-    stys.forEach(obj => {
-        if(obj.contentDocument.querySelector('svg')) {
-            loadStys(obj);
-        } else {
-            obj.addEventListener('load', () => {loadStys(obj)}, {once: true});
-        }
-    });
-
-});
-
-</script>
-<script 
-  type="module"
-  src="pattern-master.js"
-></script>
+  </script>
 </body>
-</html>

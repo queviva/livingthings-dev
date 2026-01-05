@@ -175,13 +175,19 @@
 
       <g clip-path="url(#two_of_three_clip)">
 
-        <mask id="ball_mask">
-          <rect width="825" height="400" fill="#fff"/>
+        <defs>
+          <g id="all_ball">
           <circle r="105" cx="82" cy="82"/>
           <circle r="100" cx="822" cy="307" />
-          <circle r="35" cx="491" cy="66" />
-          <circle r="35" cx="350" cy="230" />
+          <circle r="35" cx="491" cy="98" />
+          <circle r="35" cx="350" cy="210" />
           <path d=" M 0 355 A 500 500 0 0 1 254 400 H 0 Z "/>
+          </g>
+        </defs>
+
+        <mask id="ball_mask">
+          <rect width="825" height="400" fill="#fff"/>
+          <use href="#all_ball" fill="#000"/>
         </mask>
 
         <mask id="things_mask">
@@ -218,11 +224,7 @@
          stroke="var(--outline-color)"
          stroke-width="4"
         >
-          <circle r="105" cx="82" cy="82"/>
-          <circle r="100" cx="822" cy="307" />
-          <circle r="35" cx="491" cy="66" />
-          <circle r="35" cx="350" cy="230" />
-          <path d=" M 0 355 A 500 500 0 0 1 254 400 H 0 Z "/>
+          <use href="#all_ball"/>
         </g>
 
       </g>

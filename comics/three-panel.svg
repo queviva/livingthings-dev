@@ -4,10 +4,10 @@
   
     :root {
 
-        /*
         --bg-mask: url(#fade_mask);
         --bg-fill: url(newsprint.jpg);
         --bg-filter: url(#shake);
+        /*
         --bg-opacity: 0.85;
         */
 
@@ -178,7 +178,7 @@
   </defs>
 
   <defs id="border_defs">
-    <path class="border" id="one_of_three_border" d=" M 0 0 H 400 V 400 H 0 Z " />
+    <path id="one_of_three_border" class="border" d=" M 0 0 H 400 V 400 H 0 Z " />
     <marker id="slant_cap" markerWidth="3" markerHeight="1"
             refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
       <path d=" M 0 0 L 1 0 L 3 1 L 0 1 Z" fill="context-stroke"/>
@@ -232,13 +232,14 @@
          transform="translate(125 5) scale(1.8)"
         />
       </mask>
-
+      <!--
       <g mask="url(#top_fill_mask">
         <path data-sketch='{
           "fill" : "hsla(0,90%,20%,0.5)",
           "hachureGap" : 10
-        }' fill="hsla(0,90%,20%,0.7)" d=" M 0 0 V 370 L 400 270 V0 Z "/>
+        }' d=" M 0 0 V 370 L 400 270 V0 Z "/>
       </g>
+      -->
 
       <defs>
         <path id="top_fill_small" data-sketch='{
@@ -246,7 +247,7 @@
           "hachureGap" : 5,
           "fillWeight" : 6 
         }' d=" M 39.721 99.353 C 42.65 64.338 48.535 34.793 51.367 27.444 C 72.62 24.494 92.76 15.718 124.327 4.811 C 131.435 19.301 142.665 32.291 146.031 45.8 L 132.538 71.386 C 135.645 73.557 137.415 76.136 137.813 79.085 C 132.956 95.812 123.95 117.471 111.052 147.233 L 119.577 197.02 L 98.624 219.768 C 83.143 202.376 69.387 188.121 57.319 176.966 C 52.547 185.451 49.856 193.226 49.21 200.254 L 40.394 155.436 L 60.611 156.612 L 79.169 144.341 L 72.469 101.872 C 65.807 102.694 51.141 102.04 39.721 99.353 L 39.721 99.353 Z " />
-        <path id="top_fill" data-xxx-sketch='{
+        <path id="top_fill" data-sketch='{
           "fill" : "hsla(0,90%,20%,0.5)",
           "hachureGap" : 10,
           "fillWeight" : 10
