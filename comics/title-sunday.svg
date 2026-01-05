@@ -49,7 +49,7 @@
       <use href="#rect_outside" fill="var(--rect-outside-color, var(--title-color, #000))" />
     </g>
 
-    <g id="all_shapes">
+    <g id="matte">
       <use href="#LIVING" />
       <use href="#THINGS" />
       <use href="#heart_outside" />
@@ -58,19 +58,19 @@
       <use href="#rect_inside" />
     </g>
 
-    <mask id="all_shapes_mask">
+    <mask id="matte_mask">
       <rect width="825" height="400" fill="#fff"/>
-      <use href="#all_shapes" fill="#000" />
+      <use href="#matte" fill="#000" />
     </mask>
 
     <g id="outline">
-      <use href="#all_shapes" stroke="var(--outline-color, #000)"
-       stroke-width="var(--outline-width, 4)" mask="url(#all_shapes_mask)"/>
+      <use href="#matte" stroke="var(--outline-color, #000)"
+       stroke-width="var(--outline-width, 4)" mask="url(#matte_mask)"/>
     </g>
 
     <mask id="solid_mask">
       <rect width="825" height="400" fill="#000"/>
-      <use href="#all_shapes" fill="#fff" />
+      <use href="#matte" fill="#fff" />
     </mask>
 
     <g id="solid" mask="url(#solid_mask)">

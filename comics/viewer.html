@@ -60,9 +60,10 @@
           stroke: 'none'
         }});
         const vals = JSON.parse(path.dataset.sketch);
-        vals.fill = window.getComputedStyle(path).getPropertyValue('fill');
+        //vals.fill = window.getComputedStyle(path).getPropertyValue('fill');
         const oldD = path.getAttribute('d');
         const newG = shirt.path(oldD, vals);
+        newG.setAttribute('id', path.id);
         const parent = path.parentNode;
         parent.replaceChild(newG, path);
 

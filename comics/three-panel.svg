@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate;">
 
-  <style id="config_styles" type="text/css">
+  <style id="config_styles">
   
     :root {
 
+        /*
+        --bg-mask: url(#fade_mask);
         --bg-fill: url(newsprint.jpg);
         --bg-filter: url(#shake);
-        --bg-mask: url(#fade_mask);
-        /*
         --bg-opacity: 0.85;
         */
 
@@ -34,7 +34,7 @@
     }
   </style>
 
-  <style id="svg_styles" type="text/css">
+  <style id="svg_styles">
 
     svg {
       background-image: var(--bg-fill, none);
@@ -43,7 +43,7 @@
   
   </style>
 
-  <style id="comic_styles" type="text/css">
+  <style id="comic_styles">
 
     @font-face {
       font-family: 'Comic Neue';
@@ -94,6 +94,21 @@
       #title_line { width: 1275px; }
     }
   
+  </style>
+
+  <style id="border_styles">
+
+    .border {
+     fill: none ;
+     stroke: var(--border-color, var(--outline-color, #000));
+     stroke-width: var(--border-width, 2); 
+    }
+
+    .slant {
+      marker-start: url(#slant_cap);
+      marker-end: url(#slant_cap);
+    }
+
   </style>
 
   <defs id="pats_and_filters">
@@ -163,12 +178,11 @@
   </defs>
 
   <defs id="border_defs">
-    <path id="one_of_three_border" d="
-     M 0 0 H 400 V 400 H 0 Z
-    " fill="none" 
-     stroke="var(--border-color, var(--outline-color, #000))"
-     stroke-width="var(--border-width, 2)" 
-    />
+    <path class="border" id="one_of_three_border" d=" M 0 0 H 400 V 400 H 0 Z " />
+    <marker id="slant_cap" markerWidth="3" markerHeight="1"
+            refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d=" M 0 0 L 1 0 L 3 1 L 0 1 Z" fill="context-stroke"/>
+    </marker>
   </defs>
 
   <defs id="panel_defs">
@@ -196,8 +210,8 @@
         </g>
 
         <g transform="translate(215 102) scale(1)">
-          <use href="morris-mask.svg#top_fill" fill="hsla(0, 90%, 20%, 0.8)" />
-          <use href="morris-mask.svg#foot_fill" fill="hsla(0, 90%, 20%, 0.8)"  />
+          <use href="#top_fill_small" fill="hsla(0, 90%, 20%, 0.8)" />
+          <use href="#foot_fill" fill="hsla(0, 90%, 20%, 0.8)"  />
           <use href="morris-mask.svg#sigil_fill" fill="hsla(0, 90%, 20%, 0.8)"  />
           <use href="morris-mask.svg#ikon" />
         </g>
@@ -212,6 +226,40 @@
 
     <g id="panel_2">
 
+      <mask id="top_fill_mask">
+        <rect width="400" height="400" fill="#fff"/>
+        <use href="morris-mask.svg#top_fill"
+         transform="translate(125 5) scale(1.8)"
+        />
+      </mask>
+
+      <g mask="url(#top_fill_mask">
+        <path data-sketch='{
+          "fill" : "hsla(0,90%,20%,0.5)",
+          "hachureGap" : 10
+        }' fill="hsla(0,90%,20%,0.7)" d=" M 0 0 V 370 L 400 270 V0 Z "/>
+      </g>
+
+      <defs>
+        <path id="top_fill_small" data-sketch='{
+          "fill" : "hsla(0,90%,20%,0.5)",
+          "hachureGap" : 5,
+          "fillWeight" : 6 
+        }' d=" M 39.721 99.353 C 42.65 64.338 48.535 34.793 51.367 27.444 C 72.62 24.494 92.76 15.718 124.327 4.811 C 131.435 19.301 142.665 32.291 146.031 45.8 L 132.538 71.386 C 135.645 73.557 137.415 76.136 137.813 79.085 C 132.956 95.812 123.95 117.471 111.052 147.233 L 119.577 197.02 L 98.624 219.768 C 83.143 202.376 69.387 188.121 57.319 176.966 C 52.547 185.451 49.856 193.226 49.21 200.254 L 40.394 155.436 L 60.611 156.612 L 79.169 144.341 L 72.469 101.872 C 65.807 102.694 51.141 102.04 39.721 99.353 L 39.721 99.353 Z " />
+        <path id="top_fill" data-xxx-sketch='{
+          "fill" : "hsla(0,90%,20%,0.5)",
+          "hachureGap" : 10,
+          "fillWeight" : 10
+        }' d=" M 39.721 99.353 C 42.65 64.338 48.535 34.793 51.367 27.444 C 72.62 24.494 92.76 15.718 124.327 4.811 C 131.435 19.301 142.665 32.291 146.031 45.8 L 132.538 71.386 C 135.645 73.557 137.415 76.136 137.813 79.085 C 132.956 95.812 123.95 117.471 111.052 147.233 L 119.577 197.02 L 98.624 219.768 C 83.143 202.376 69.387 188.121 57.319 176.966 C 52.547 185.451 49.856 193.226 49.21 200.254 L 40.394 155.436 L 60.611 156.612 L 79.169 144.341 L 72.469 101.872 C 65.807 102.694 51.141 102.04 39.721 99.353 L 39.721 99.353 Z " />
+
+        <path id="foot_fill" data-sketch='{
+          "fill" : "hsla(0,90%,20%,0.5)",
+          "hachureAngle" : 70,
+          "hachureGap" : 5,
+          "fillWeight" : 6 
+        }' d=" M 7.229 233.971 L 26.949 231.014 L 39.381 236.628 C 56.134 242.782 75.651 246.024 96.811 248.015 L 124.145 253.634 L 124.145 266.123 L 94.65 264.263 L 31.675 259.214 L 7.229 233.971 L 7.229 233.971 Z " fill="url(#dotz)" x-fill="rgb(152,0,0)"/>
+      </defs>
+
       <g clip-path="url(#one_of_three_clip">
 
         <g transform="translate(90 42)">
@@ -221,7 +269,7 @@
         </g>
 
         <g transform="translate(125 5) scale(1.8)">
-          <use href="morris-mask.svg#top_fill" fill="hsla(0,90%,20%,0.7)" />
+          <use href="#top_fill" fill="hsla(0,90%,20%,0.7)" />
           <use href="morris-mask.svg#sigil_fill" fill="hsla(0,90%,20%,0.7)" />
           <use href="morris-mask.svg#ikon" />
         </g>
@@ -249,8 +297,8 @@
 
         <g transform="translate(115 37)">
           <text text-anchor="middle">
-            <tspan font-style="italic" font-weight="bold" font-size="30">
-              The porn star?
+            <tspan font-weight="bold" font-size="30">
+              The <tspan font-style="italic">porn</tspan> star?
             </tspan>
           </text>
         </g>
@@ -266,8 +314,8 @@
 
       </g>
 
-       <path fill="none" stroke="var(--outline, #000)" stroke-width="3" d="
-          M 280 8 H 400 V 400 H 8 V 70  
+       <path class="border slant" d="
+          M 280 8 H 400 V 400 H 8 V 80  
         "/>
       <!-- <use href="#one_of_three_border" />
       -->

@@ -4,10 +4,10 @@
   
     :root {
 
-        /*
         --bg-fill: url(newsprint.jpg);
         --bg-filter: url(#shake);
         --bg-mask: url(#fade_mask);
+        /*
         */
 
         /*
