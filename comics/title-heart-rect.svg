@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 100 100">
+
+  <defs>
+
+    <path id="heart" fill-rule="evenodd" d="
+      M 50 22 C 82 -14 142 50 50 95 C -42 50 18 -14 50 22 Z 
+      M 50 37 C 72 2 115 47 50 81 C -15 47 28 2 50 37 Z
+    "/>
+
+    <path id="rect" fill-rule="evenodd" d="
+      M 15 19 L 87 21 L 80 84.5 H 18 Z 
+      M 28 31 L 73.5 32.5 L 69 72 H 30 Z
+    "/>
+
+  </defs>
+
+</svg>
