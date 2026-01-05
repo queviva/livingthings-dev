@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Living Things&trade;</title>
 <script src="sketch.js"></script>
+<script type="module" src="pattern-master.js"></script>
 <style>
 
   html, body {
@@ -33,6 +34,7 @@
 
     const list = [
       ['comics/living-things-intro00.svg','',''],
+      ['comics/scroll-master.svg','',''],
       ['comics/four-panel.svg','',''],
       ['comics/three-panel.svg','',''],
       ['comics/sunday-panel.svg','',''],
@@ -49,6 +51,7 @@
     };
 
     obj.addEventListener('load', () => {
+
       obj.contentDocument.querySelectorAll('path[data-sketch]')
       .forEach(path => {
         const shirt = sketch.svg(obj, {options: {
@@ -67,12 +70,20 @@
         parent.replaceChild(newG, path);
 
       });
+
       obj.contentDocument.addEventListener('click', e => {
-        swap(1);
+        if (e.clientX > 0.7 * window.innerWidth ) {
+          swap(1);
+        }
+        else if (e.clientX < 0.3 * window.innerWidth) {
+          swap(-1);
+        }
       });
+
     });
 
     swap(0);
 
   </script>
+
 </body>

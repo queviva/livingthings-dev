@@ -242,6 +242,7 @@
       -->
 
       <defs>
+        <path id="sketch_fill" fill="sketch(hacureAngle:40)"/>
         <path id="top_fill_small" data-sketch='{
           "fill" : "hsla(0,90%,20%,0.5)",
           "hachureGap" : 5,

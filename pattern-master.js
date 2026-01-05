@@ -27,6 +27,7 @@ const allDs = {
   scales:'M0 2V1.8A1.5 1.5 0 0 1 1.6 1.6A1.5 1.5 0 0 1 1.8 0H2V.2A1.3 1.3 0 0 0 2 1.8V2H1.8A1.3 1.3 0 0 0 .2 2ZM0 .2A1.3 1.3 0 0 1 .2 0H0Z',
   hound: 'M0 0H.5V1L.75 .75V.25L1 .5L1.25 .25V.75L1.5 1V0H2V.5L1.75 .25V.75L1.5 1V2L1.75 1.75V1.25L2 1.5V2H1.5L1.25 1.75V1.25L1 1.5L.75 1.25V1.75L.5 2H0V1.5L.25 1.25V1.75L.5 2V1L.25 .75V.25L0 .5Z',
   plaid: 'M0 1.2V0h1v.2l.2 -.2h.2l-.4 .4v.2l.6 -.6h.2l-.8 .8v.2l1 -1v.2l-.8 .8h-.2l-1 1v-.2l.8 -.8H.6l-.6 .6v-.2l.4 -.4h-.2zM.2 2h.6l.2 -.2v-.2l-.4 .4h-.2l.6 -.6v-.2zM1.4 1H2V.8l-.2 .2h-.2l.4 -.4V.4',
+  livingthings: 'M.07 .6 L.52 .1 L.9 .59 L.5 .95 M 1.1 1.5 l.4 -.4 l.4 .4 l-.4 .4 z M.74 1.86L.34 1.78A.2 .2 0 0 1 .44 1.34A.2 .2 0 0 1 .86 1.46Z M1.8 .8H1.4A.2 .2 0 0 1 1.4 .4A.2 .2 0 0 1 1.8 .4Z ',
   clueless: `
      M.8 .8h.1l-.1 -.1v-.1l.2 .2h.1l-.3 -.3v-.1l.4 .4
      h.1l.4 .4h-.1l-.4 -.4v.1l.3 .3h-.1l-.2 -.2v.1l.1 .1h-.1
@@ -77,8 +78,14 @@ const handleFill = obj => {
 
   const defs = obj.closest?.('svg')?.querySelector(`[data-${prefs.fix}]`);
 
+  if (/^sketch\w*\(/i.test(fill)) {
+    console.log('got a sketch!');
+    return;
+  }
+
   if (!/^(?:pat|ima?g)\w*\(/i.test(fill) || !defs) return;
 
+    console.log('PATTERN!',Math.random());
   const id = obj.localName === 'pattern' ? obj.id : makeID(fill);
 
   obj.setAttribute('fill',
