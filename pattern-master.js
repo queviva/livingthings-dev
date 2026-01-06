@@ -1,5 +1,4 @@
 
-
 const dataPrefs = [...document.scripts].find(
   s => s.src && new URL(s.src, document.baseURI).href === import.meta.url
 )?.dataset?.prefs || '{}';
@@ -14,17 +13,17 @@ const prefs = {
 
 const allDs = {
 
-  dots:  'M1 .5a.5 .5 0 1 0 0.01 0Z',
+  dots: 'M1 .5a.5 .5 0 1 0 0.01 0Z',
   hatch: 'M0 0 V2H1V0Z',
   check: 'M0 0H1V2H2V1H0Z',
   cross: 'M0 0V2H2V1.75H.25V0Z',
   strip: 'M.5 0H1.5L0 1.5V.5ZM2 .5V1.5L1.5 2H.5Z',
-  wave:  'M0 0H.5V.5H0ZM1 0H2V.5H1.5V1.5H.5V2H0V1H1V0Z',
-  love:  'M1.5 1.5 h-.8 a.3 .3 0 0 1 0 -.8 a.3 .3 0 0 1 .8 0 z',
-  stix:  'M.375 .375h.25v.5h.25v-.5h.75v.25h-.5v.25h.5v.75h-.25v-.5h-.25v.5h-.75v-.25h.5v-.25h-.5',
+  wave: 'M0 0H.5V.5H0ZM1 0H2V.5H1.5V1.5H.5V2H0V1H1V0Z',
+  love: 'M1.5 1.5 h-.8 a.3 .3 0 0 1 0 -.8 a.3 .3 0 0 1 .8 0 z',
+  stix: 'M.375 .375h.25v.5h.25v-.5h.75v.25h-.5v.25h.5v.75h-.25v-.5h-.25v.5h-.75v-.25h.5v-.25h-.5',
   stars: 'M.45 .45l.50 .25l.41 -.40l-.09 .57l.51 .26l-.57 .08l-.08 .57l-.26 -.51l-.57 .09l.40 -.41 z',
   curve: 'M.75 -.25A.75 .75 0 0 0 .25 .25A.75 .75 0 0 1 -.25 .75V-.25ZM1.25 2.25A.75 .75 0 0 0 1.75 1.75A.75 .75 0 0 1 2.25 1.25V2.25ZM-.25 1.75A.75 .75 0 0 1 .25 1.25A.75 .75 0 0 0 .75 .75A.75 .75 0 0 1 1.25 .25A.75 .75 0 0 0 1.75 -.25L2.25 .25A.75 .75 0 0 1 1.75 .75A.75 .75 0 0 0 1.25 1.25A.75 .75 0 0 1 .75 1.75A.75 .75 0 0 0 .25 2.25Z',
-  scales:'M0 2V1.8A1.5 1.5 0 0 1 1.6 1.6A1.5 1.5 0 0 1 1.8 0H2V.2A1.3 1.3 0 0 0 2 1.8V2H1.8A1.3 1.3 0 0 0 .2 2ZM0 .2A1.3 1.3 0 0 1 .2 0H0Z',
+  scales: 'M0 2V1.8A1.5 1.5 0 0 1 1.6 1.6A1.5 1.5 0 0 1 1.8 0H2V.2A1.3 1.3 0 0 0 2 1.8V2H1.8A1.3 1.3 0 0 0 .2 2ZM0 .2A1.3 1.3 0 0 1 .2 0H0Z',
   hound: 'M0 0H.5V1L.75 .75V.25L1 .5L1.25 .25V.75L1.5 1V0H2V.5L1.75 .25V.75L1.5 1V2L1.75 1.75V1.25L2 1.5V2H1.5L1.25 1.75V1.25L1 1.5L.75 1.25V1.75L.5 2H0V1.5L.25 1.25V1.75L.5 2V1L.25 .75V.25L0 .5Z',
   plaid: 'M0 1.2V0h1v.2l.2 -.2h.2l-.4 .4v.2l.6 -.6h.2l-.8 .8v.2l1 -1v.2l-.8 .8h-.2l-1 1v-.2l.8 -.8H.6l-.6 .6v-.2l.4 -.4h-.2zM.2 2h.6l.2 -.2v-.2l-.4 .4h-.2l.6 -.6v-.2zM1.4 1H2V.8l-.2 .2h-.2l.4 -.4V.4',
   livingthings: 'M.07 .6 L.52 .1 L.9 .59 L.5 .95 M 1.1 1.5 l.4 -.4 l.4 .4 l-.4 .4 z M.74 1.86L.34 1.78A.2 .2 0 0 1 .44 1.34A.2 .2 0 0 1 .86 1.46Z M1.8 .8H1.4A.2 .2 0 0 1 1.4 .4A.2 .2 0 0 1 1.8 .4Z ',
@@ -70,6 +69,7 @@ const PAT = (
 );
 
 const makeURL = (defs, id, fill) => (/^ima?g\w*\(/.test(fill) ? (MIG(defs, [id, ...(fill.match(/\((.*)\)$/)[1].split(/,/))]), `url(#${id})`) : /^pat\w*\(/.test(fill) ? (PAT(defs, [id, ...(fill.match(/\((.*)\)$/)[1].split(/,(?![^(]*\))/))]), `url(#${id})`) : fill);
+
 const makeID = v => btoa(encodeURIComponent(v)).replace(/[+/=]/g, '_');
 
 const handleFill = obj => {
@@ -78,14 +78,36 @@ const handleFill = obj => {
 
   const defs = obj.closest?.('svg')?.querySelector(`[data-${prefs.fix}]`);
 
-  if (/^sketch\w*\(/i.test(fill)) {
-    console.log('got a sketch!');
+  if (/^(?:sketch)\w*\(/i.test(fill)) {
+
+    const shirt = sketch.svg(obj, {options: {
+      stroke: 'none',
+      hachureAngle: -60,
+      hachureGap: 2,
+      fillWeight: 5, 
+      roughness: 3.2
+    }});
+
+    const opts = fill
+      .match(/\(\s*(.*)\s*\)$/)[1]
+      .split(/\s*,\s*(?![^(]*\))/)
+      .reduce((obj, item) => {
+        const [key, value] = item.split(/\s*:\s*/);
+        obj[key] = value ?? true;
+        return obj;
+      }, {});
+
+    const newG = shirt.path(obj.getAttribute('d'), opts);
+    newG.setAttribute('id', obj.getAttribute('id'));
+    if (obj.attributes.transform) newG.setAttribute('transform', obj.getAttribute('transform'));
+    obj.replaceWith(newG);
+
     return;
+
   }
 
   if (!/^(?:pat|ima?g)\w*\(/i.test(fill) || !defs) return;
 
-    console.log('PATTERN!',Math.random());
   const id = obj.localName === 'pattern' ? obj.id : makeID(fill);
 
   obj.setAttribute('fill',
