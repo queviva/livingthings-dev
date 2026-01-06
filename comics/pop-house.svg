@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg"
   style="isolation:isolate;
- background-color: orange;
+ background-image: url(newsprint.jpg);
  "
   viewBox="-5 -5 225 330"
 >
@@ -10,7 +10,7 @@
       <path id="shade" d=" M 104.3 73.9 L 122.9 66.1 L 125.0 131.5 Z M 31.8 136.0 L 55.8 28.5 L 80 137 L 95.8 136.0 L 101.8 188.5 L 90.4 197.1 L 104.3 204.0 L 107.2 207.8 L 92.7 216.9 L 107.2 225.9 L 93.8 239.2 L 95.8 245.1 L 44.8 211.3 L 40.7 209.6 L 50.6 203.1 L 40.7 198.9 L 56.3 193.8 L 42.1 187.9 L 55.2 178.3 L 40.7 136.5 L 31.8 136.0 Z " />
     </defs>
 
-    <use href="#shade" fill="pat(dots,white,5,0)"/>
+    <use href="#shade" fill="pat(dots,white)" fill-opacity="0.7"/>
     <use href="#shade" fill="#000" fill-opacity="0.3"/>
 
     <g>
