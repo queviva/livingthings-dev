@@ -7,13 +7,13 @@
         --bg-fill: url(newsprint.jpg);
         --bg-filter: url(#shake);
         --bg-mask: url(#fade_mask);
+        --show-hearts: 1;
         /*
         */
 
         /*
         --bg-opacity: 0.85;
 
-        --show-hearts: 1;
         --title-color: orange;
         --living-color: yellow;
         --things-color: blue;
@@ -93,6 +93,22 @@
       #title_line { width: 1275px; }
     }
   
+  </style>
+   
+  <style id="thought_styles">
+
+    @media (orientation: portrait) {
+      #thought_bubble {
+        transform: translate(200px, 220px) rotate(-45deg);
+      }
+    }
+
+    @media (orientation: landscape) {
+      #thought_bubble {
+        transform: translate(540px, 130px) rotate(-60deg);
+      }
+    }
+
   </style>
 
   <style id="border_styles">
@@ -203,22 +219,6 @@
           </text>
         </g>
 
-        <style id="thought_styles">
-
-          @media (orientation: portrait) {
-            #thought_bubble {
-              transform: translate(200px, 220px) rotate(-45deg);
-            }
-          }
-
-          @media (orientation: landscape) {
-            #thought_bubble {
-              transform: translate(540px, 130px) rotate(-60deg);
-            }
-          }
-
-        </style>
-
         <g id="thought_bubble" class="obj" >
           <circle r="6" />
           <circle r="4" cy="20"/>
@@ -235,12 +235,9 @@
 
       <g clip-path="url(#one_and_two_of_four_clip">
 
-            <g id="stuff" transform="translate(2 -390)"
-            fill="white"
-            >
+            <g id="stuff" transform="translate(2 -390)">
 
               <path id="pillowFill" d=" M 137 430 C 133 464 136 496 145 525 C 134 580 134 631 144 677 L 134 684 C 136 689 139 694 142 698 C 131 717 126 731 126 740 C 187 747 251 741 311 729 C 304 714 299 701 295 690 C 298 638 288 595 263 561 C 263 548 262 535 260 520 C 259 503 261 488 265 475 C 305 480 341 481 373 480 L 395 507 C 374 532 363 571 364 615 L 372 618 C 378 591 384 565 390 544 C 395 540 409 540 431 540 L 400 487 Q 403 468 402 460 C 373 450 337 449 294 458 C 244 439 191 429 137 430 L 137 430 Z  M 467 620 C 481 648 493 682 501 723 C 474 727 450 726 427 722 L 419 705 L 467 620 Z  M 455 590 L 459 601 C 456 606 451 611 445 617 L 455 590 Z " fill-rule="evenodd" 
-               xxx-fill="pat(dots,white,2)"
                fill="white" fill-opacity="0.8"
               />
               

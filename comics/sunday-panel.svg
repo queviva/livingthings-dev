@@ -5,7 +5,7 @@
     :root {
 
         --outline-color: #707;
-        --accent-color: hsl(40, 100%, 50%, 0.8);
+        --accent-color: hsla(40, 100%, 50%, 0.8);
 
         --bg-fill: url(newsprint.jpg);
         --bg-mask: url(#fade_mask);
@@ -190,27 +190,7 @@
           <use href="#all_ball" fill="#000"/>
         </mask>
 
-        <mask id="things_mask">
-          <rect width="825" height="400" fill="#fff"/>
-          <use href="title-sunday.svg#LIVING" />
-          <use href="title-sunday.svg#THINGS" />
-        </mask>
-
-        <g style="
-          --title-color: purple;
-          --heart-inside-color:var(--accent-color);
-          --rect-inside-color:var(--accent-color);
-          --show-hearts: none;
-        "
-           mask="url(#ball_mask)"
-        >
-          <g
-           fill="none"
-           stroke="var(--outline-color)"
-           stroke-width="7"
-           mask="url(#things_mask)"
-          >
-          </g>
+        <g mask="url(#ball_mask)" >
 
           <use href="title-sunday.svg#solid" fill="url(#dots)" />
           <use href="title-sunday.svg#outline" style="

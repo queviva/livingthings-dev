@@ -7,6 +7,7 @@
         --bg-fill: url(newsprint.jpg);
         --bg-filter: url(#shake);
         --bg-mask: url(#fade_mask);
+        --show-hearts: 1;
         /*
         */
 
@@ -184,29 +185,29 @@
     </marker>
   </defs>
 
+  <def id="image_def">
+    <g fill="img(building0.png)"/>
+  </def>
+  
   <defs id="panel_defs">
 
     <g id="panel_1">
 
-      <g clip-path="url(#one_of_four_clip)">
+      <g xxx-clip-path="url(#one_of_four_clip)">
 
         <g transform="translate(150 30)">
           <text text-anchor="middle">
             <tspan>Do you know the special</tspan>
-            <tspan x="-0.4ch" dy="1em">perfume that</tspan>
-            <tspan font-weight="600" font-style="italic">Cafe Nero</tspan>
-            <tspan x="0" dy="1em">sprays on everything?</tspan>
           </text>
         </g>
         <rect class="text-bubble" width="286" height="80" x="7" y="7" />
         <path d="m 270 87 h5 l -15 20 z " />
 
-        <use transform="translate(5 180) scale(1.6)" href="friar.svg#ikon" />
-
-        <g transform="translate(125 150) scale(1.2)">
-          <use href="blendifer.svg#ikon" />
-          <use href="blendifer.svg#pattern_elements" fill="url(#dots)" />
-        </g>
+        <defs>
+          <pattern id="ratmaster" 
+           fill="pat(xlivingthings,purple,2)"
+          />
+        </defs>
 
         <path class="obj" d="M0 384 Q 148 370 312 384 V400 H0 Z" />
 
@@ -223,8 +224,6 @@
         <g transform="translate(150 32)">
           <text text-anchor="middle">
             <tspan>No, I don't believe I'm</tspan>
-            <tspan x="0" dy="1em" font-style="italic">familiar</tspan>
-            with that.
           </text>
         </g>
         <rect class="text-bubble"
@@ -233,7 +232,6 @@
         />
         <path d="m 45 67 h5 l 15 20 z " />
 
-        <use transform="translate(25 125) scale(2.5)" href="friar.svg#ikon" />
 
       </g>
 
@@ -248,63 +246,18 @@
         <g transform="translate(150 32)">
           <text text-anchor="middle">
             It's harvested from a
-            <tspan x="-0.5ch" dy="1em"
-              font-size="25"
-              font-weight="700"
-              font-style="italic"
-            >
-              Homeless Guy's Crotch
-            </tspan>
           </text>
         </g>
 
-        <mask id="base_mask" >
-          <rect width="300" height="400" fill="#fff" />
-          <path transform="translate(40 110) scale(0.25)  scale(1.5)" d=" M228 630 q100 -25 218 -14 l18 25 l-20 140 h-261 l-29 -55 z " />
-          <path transform="scale(0.25) translate(175 455) scale(1.49 1.49)" d="m454.7,701.9l0.7,-0.4l0.8,-0.2l0.7,0.2l0.7,0.4l2.4,1.9l2.7,1.5l2.9,1.1l5.4,1.3l7.4,0.6l3.2,0.1l10.1,-0.9l8.2,-1.3l4.3,-0.9l12.4,-3.5l12.3,-4.7l8.6,-4l3.9,-2.1l5.8,-4.2l3.2,-2.6l2.8,-2.8l2.3,-2.8l3.2,-5.1l1.3,-3.1l0.8,-3.3l0.2,-6.6l-0.4,-4.2l-0.7,-4.3l-2,-7.6l-1.8,-4.7l-3.7,-8.2l-2.8,-5l-3.1,-5l-3.4,-5.1l-7.4,-9.8l-6.6,-7.8l-10.7,-11.5l-13.3,-13.4l-5.7,-6.4l-2.4,-3l-1.9,-3.2l-1.3,-4l0,-1.2l1.5,-5.9l0.5,-1l4.2,-4.4l3,-2l3.7,-1.9l8,-3l5.4,-1.7l11,-2.8l14.7,-3l16.2,-2.7l24.2,-2.8l25.3,-1.8l24.6,-0.7l17.1,0.1l8,0.2l12.1,0.8l6.8,0.6l9.7,1.4l8.9,1.8l6.8,1.7l5,1.6l5.4,2.1l0.6,0.4l0.5,0.7l0.2,0.7l0,0.8l-0.3,0.7l-0.5,0.6l-0.7,0.4l-0.8,0.1l-6,-2.3l-4.7,-1.4l-6.6,-1.7l-8.6,-1.7l-9.5,-1.4l-6.6,-0.6l-11.9,-0.8l-7.9,-0.2l-16.9,-0.1l-24.6,0.7l-25,1.8l-24,2.8l-16,2.6l-14.5,3l-10.8,2.7l-5.2,1.7l-7.7,2.9l-3.2,1.7l-2.4,1.7l-3.3,3.4l-1.2,4.7l1,3.1l1.5,2.3l4.6,5.6l16.2,16.5l10.9,11.6l6.7,8l7.6,10.1l3.5,5.2l3.2,5.2l2.9,5.2l3.9,8.5l1.9,5l2.1,8.1l0.8,4.7l0.4,4.5l-0.2,7.2l-1,4.2l-1.5,3.8l-3.5,5.8l-2.8,3.2l-3,3.1l-3.4,2.8l-6.2,4.4l-4.2,2.4l-4.4,2.2l-9.3,3.9l-8,2.9l-12.6,3.6l-4.6,0.9l-8.5,1.4l-10.5,0.9l-3.5,-0.1l-7.8,-0.6l-6.1,-1.4l-3.4,-1.3l-3.3,-1.8l-3,-2.4l-0.5,-0.6l-0.3,-0.7l0,-0.8l0.3,-0.7l0.5,-0.6z" />
-        </mask>
-
-        <path class="obj" d="M 0 385 L 300 325 V 400 H 0 Z" mask="url(#base_mask)" />
-
-        <g transform="translate(40 110) scale(1.5)">
-          <use href="blendifer.svg#ikon" />
-          <use href="blendifer.svg#pattern_elements" fill="url(#dots)" />
-        </g>
       </g>
 
-      <!-- <use href="#one_of_four_border" /> -->
+      <use href="#one_of_four_border" />
 
     </g>
 
     <g id="panel_4">
 
       <g clip-path="url(#one_of_four_clip">
-
-        <g transform="translate(150 32)">
-          <text text-anchor="middle">
-            Oh yeah - <tspan font-style="italic">now</tspan>
-            I know
-            <tspan x="0" dy="0.9em">
-              what you're talking about.
-            </tspan>
-          </text>
-        </g>
-        <rect class="text-bubble"
-          width="286" height="60"
-          x="7" y="7"
-        />
-        <path d="m 65 67 h5 l 20 35 z " />
-
-        <use href="friar.svg#ikon" transform="translate(105 230) scale(1)" />
-
-
-        <defs>
-          <mask id="shadow_mask">
-            <rect width="300" height="400" fill="#fff" />
-            <ellipse cx="150.5" cy="357.7" rx="35" ry="2" />
-          </mask>
-        </defs>
-        <ellipse class="obj" mask="url(#shadow_mask)" cx="140" cy="360" rx="55" ry="3" />
 
       </g>
 

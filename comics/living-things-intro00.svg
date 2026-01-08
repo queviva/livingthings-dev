@@ -1,16 +1,18 @@
 <svg 
  xmlns="http://www.w3.org/2000/svg"
  style="isolation:isolate;"
- viewBox="-5 -5 830 400"
 >
 
 <style>
   :root {
 
+    --animation-duration: 10s;
+
     --title-color: #333;
     --outline-color: var(--title-color);
     
-    --accent-color: #800;
+    --accent-color: rgba(128,0,0,0.8);
+
 
     --heart-inside-color: var(--accent-color);
     --rect-inside-color: var(--accent-color);
@@ -22,11 +24,137 @@
     --foot-color: var(--accent-color);
 
   }
+  @media (orientation: portrait) {
+    .land { display: none; }
+  }
+
+  @media (orientation: landscape) {
+    .port { display: none; }
+  }
+
 </style>
 
-<defs>
+<style id="dialog_styles">
+
+  @font-face {
+  font-family: 'Comic Neue';
+    /* src: url('neue.ttf') format('truetype'); */
+    src: url('ComingSoon.ttf') format('truetype');
+  }
+
+  text {
+    font-family:'Comic Neue';
+    font-weight: 400;
+    font-size: 22px;
+    fill: var(--text-color, var(--outline-color, #000));
+  }
+
+  .text_line {
+    fill: var(--outline-color);
+  }
+
+  .text_bubble {
+    fill: #eee;
+    stroke: var(--outline-color);
+    stroke-width: 4;
+  }
+
+</style>
+
+<style id="dialog_animations">
+
+ @keyframes dialog_1_fade_cycle {
+
+  0% { transform: scale(0)}
+  30% { transform: scale(0)}
+  33% { transform: scale(1.2)}
+  34% { transform: scale(1)}
+  70% { transform: scale(1)}
+  72% { transform: scale(0)}
+  100% { transform: scale(0)}
+
+ }
+
+ @keyframes dialog_2_fade_cycle {
+
+  0% { transform: scale(0)}
+  70% { transform: scale(0)}
+  73% { transform: scale(1.2)}
+  74% { transform: scale(1)}
+  97% { transform: scale(1)}
+  98% { transform: scale(0)}
+  100% { transform: scale(0)}
+
+ }
+
+ #dialog_1_land {
+  transform-origin: 100px 10px;
+  transform: scale(0);
+  animation: dialog_1_fade_cycle var(--animation-duration) linear infinite;
+ }
+
+ #dialog_2_land {
+  transform-origin: 100px 10px;
+  transform: scale(0);
+  animation: dialog_2_fade_cycle var(--animation-duration) linear infinite;
+ }
+
+</style>
+
+<defs id="pattern_defs">
+ <pattern id="dotty" fill="pat(dots,var(--accent-color),3)"/>
+</defs>
+
+<defs id="item_defs">
+
+  <g id="logo_stuff">
+
+    <g mask="url(#mask0)" >
+      <use href="title-sunday.svg#ikon" />
+    </g>
+
+    <use href="red-line-sad.svg#ikon"
+      transform="translate(0 15) scale(1.35)"
+    />
+
+    <g transform="translate(705 225) scale(1.5)">
+      <use href="lil-morris.svg#ikon" />
+      <use fill="var(--outline-color)" href="lil-morris.svg#shadow" />
+    </g>
+  </g>
+
+  <g id="dialog_1_land">
+
+    <path class="text_bubble" d="M0 0h270v60h-270z"
+     transform="translate(-10 -25)"
+    />
+
+    <text>
+      <tspan>click on the bottom right</tspan>
+      <tspan x="0" dy="1em">to go forward ...</tspan>
+    </text>
+
+  </g>
+
+  <g id="dialog_2_land">
+
+    <path class="text_bubble" 
+     transform="translate(-10 -25)"
+     d="M0 0h220v60h-220z"
+    />
+    <text>
+      <tspan>click on the top left</tspan>
+      <tspan x="0" dy="1em">to go back ...</tspan>
+    </text>
+
+  </g>
+
+</defs>
+
+<defs id="mask_defs">
+
   <mask id="mask0">
-    <rect width="100%" height="100%" fill="#fff"/>
+    <rect width="820" height="400" fill="#fff"/>
       <use href="lil-morris.svg#mask" 
         transform="translate(705 225) scale(1.5)"
       />
@@ -34,20 +162,47 @@
      transform="translate(0 15) scale(1.35)"
     />
   </mask>
+  
 </defs>
 
-<g mask="url(#mask0)" >
-  <use href="title-sunday.svg#ikon"/>
-</g>
- 
-<use href="red-line-sad.svg#ikon" 
- transform="translate(0 15) scale(1.35)"
-/>
+<g id="svgs">
 
- <g transform="translate(705 225) scale(1.5)">
-  <use href="lil-morris.svg#ikon" />
-  <use fill="var(--outline-color)" href="lil-morris.svg#shadow" />
- </g>
+  <svg class="land" viewBox="0 0 840 400">
+
+    <use href="#logo_stuff" 
+     transform="translate(10 0)"
+    />
+
+    <use href="#dialog_1_land"
+     fill="url(#dotty)"
+     transform="translate(90 298) scale(1.5)"
+    />
+
+    <use href="#dialog_2_land"
+     transform=" translate(435 110) scale(1.5)"
+    />
+
+  </svg>
+
+  <svg class="port" viewBox="0 0 630 600"> 
+
+    <use href="#logo_stuff"
+     transform="scale(0.75) translate(10 200)" 
+    />
+
+    <use href="#dialog_1_land"
+     transform="translate(40 80) scale(1.8)"
+    />
+
+    <use href="#dialog_2_land"
+     transform=" translate(200 500) scale(1.8)"
+    />
+
+  </svg>
+
+</g>
+
+
 
 </svg>
     

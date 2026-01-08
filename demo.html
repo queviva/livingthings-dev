@@ -14,6 +14,8 @@
       padding: 0;
       width: 100%;
       height: 100%;
+      background-image: url(comics/newsprint.jpg);
+      /* background-color: orange; */
     }
 
     object {
@@ -26,6 +28,7 @@
       transform-origin: center;
       pointer-events: none;
     }
+
   </style>
 
 </head>
@@ -37,10 +40,11 @@
 
     const list = [
       ['comics/living-things-intro00.svg', '', ''],
-      ['comics/three-panel.svg', '', ''],
       ['comics/scroll-master.svg', '', ''],
       ['comics/four-panel.svg', '', ''],
+      ['comics/three-panel.svg', '', ''],
       ['comics/sunday-panel.svg', '', ''],
+      ['comics/lamp-layout.svg', '', ''],
       ['comics/pop-house.svg', '', '']
     ];
 
@@ -49,6 +53,7 @@
 
     const swap = v => {
       index = (index + v + list.length) % list.length;
+      obj.type = list[index][1] || 'image/svg+xml';
       obj.data = list[index][0];
     };
 
@@ -60,8 +65,8 @@
         ? e.clientY / window.innerHeight
         : e.clientX / window.innerWidth;
        
-      perc < 0.2 ? swap(-1) :
-      perc > 0.8 ? swap(1) : null
+      perc < 0.25 ? swap(-1) :
+      perc > 0.75 ? swap(1) : null
 
     });
 
