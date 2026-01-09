@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 300 300">
+
+  <defs></defs>
+
+  <rect id="required_id"
+        x="100" y="100"
+        width="300" height="100"
+        data-halftone="50 1" 
+        stroke="#000"
+        stroke-width="5"
+  />
+
+  <script><![CDATA[
+
+    (function () {
+      var NS = "http://www.w3.org/2000/svg";
+      var svg = document.documentElement;
+      var defs = svg.querySelector("defs");
+
+      if (!defs) {
+        defs = document.createElementNS(NS, "defs");
+        svg.insertBefore(defs, svg.firstChild);
+      }
+
+      var targets = svg.querySelectorAll("[data-halftone]");
+
+      targets.forEach(function (el) {
+        if (!el.id) return;
+
+        var parts = el.getAttribute("data-halftone").trim().split(/\s+/);
+        var startP = parseFloat(parts[0]) / 100;
+        var endP   = parseFloat(parts[1]) / 100;
+        
+        var bbox = el.getBBox();
+        var size = Math.max(bbox.height, bbox.width);
+        var cell = 8;
+
+        var cols = Math.ceil(size / cell);
+        var rows = Math.ceil(size / cell);
+
+        var pattern = document.createElementNS(NS, "pattern");
+        pattern.setAttribute("id", el.id + "_halftone");
+
+        pattern.setAttribute("patternUnits", "objectBoundingBox");
+        pattern.setAttribute("patternContentUnits", "userSpaceOnUse");
+        pattern.setAttribute("width", "1");
+        pattern.setAttribute("height", "1");
+
+        var g = document.createElementNS(NS, "g");
+        g.setAttribute("fill", "black");
+
+        for (var y = 0; y < rows; y++) {
+          for (var x = 0; x < cols; x++) {
+            var t = x / (cols - 1);
+            var coverage = startP + t * (endP - startP);
+            if (coverage <= 0) continue;
+
+            var r = Math.sqrt((coverage * cell * cell) / Math.PI);
+
+            var c = document.createElementNS(NS, "circle");
+            c.setAttribute("cx",
+              x * cell + cell / 2 + (y % 2) * cell / 2
+            );
+            c.setAttribute("cy", y * cell + cell / 2);
+            c.setAttribute("r", r);
+
+            g.appendChild(c);
+          }
+        }
+
+        pattern.appendChild(g);
+        defs.appendChild(pattern);
+
+        el.setAttribute("fill", "url(#" + el.id + "_halftone)");
+      });
+    })();
+  ]]></script>
+
+</svg>

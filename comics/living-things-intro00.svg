@@ -3,7 +3,7 @@
  style="isolation:isolate;"
 >
 
-<style>
+<style id="config_styles">
   :root {
 
     --animation-duration: 10s;
@@ -24,6 +24,7 @@
     --foot-color: var(--accent-color);
 
   }
+
   @media (orientation: portrait) {
     .land { display: none; }
   }
@@ -49,12 +50,9 @@
     fill: var(--text-color, var(--outline-color, #000));
   }
 
-  .text_line {
-    fill: var(--outline-color);
-  }
-
   .text_bubble {
-    fill: #eee;
+    xxx-fill: #eee;
+    fill: url(#dotty);
     stroke: var(--outline-color);
     stroke-width: 4;
   }
@@ -66,8 +64,8 @@
  @keyframes dialog_1_fade_cycle {
 
   0% { transform: scale(0)}
-  30% { transform: scale(0)}
-  33% { transform: scale(1.2)}
+  32% { transform: scale(0)}
+  33% { transform: scale(1.1)}
   34% { transform: scale(1)}
   70% { transform: scale(1)}
   72% { transform: scale(0)}
@@ -78,8 +76,8 @@
  @keyframes dialog_2_fade_cycle {
 
   0% { transform: scale(0)}
-  70% { transform: scale(0)}
-  73% { transform: scale(1.2)}
+  72% { transform: scale(0)}
+  73% { transform: scale(1.1)}
   74% { transform: scale(1)}
   97% { transform: scale(1)}
   98% { transform: scale(0)}
@@ -87,31 +85,32 @@
 
  }
 
- #dialog_1_land {
-  transform-origin: 100px 10px;
+ #dialog_1_bubble, #dialog_1_land, #dialog_1_port {
+  transform-origin: 135px 5px;
   transform: scale(0);
   animation: dialog_1_fade_cycle var(--animation-duration) linear infinite;
  }
 
- #dialog_2_land {
-  transform-origin: 100px 10px;
+ #dialog_2_bubble, #dialog_2_land, #dialog_2_port {
+  transform-origin: 110px 5px;
   transform: scale(0);
   animation: dialog_2_fade_cycle var(--animation-duration) linear infinite;
  }
 
+
 </style>
 
 <defs id="pattern_defs">
- <pattern id="dotty" fill="pat(dots,var(--accent-color),3)"/>
+ <pattern id="dotty" fill="pat(dots,var(--outline-color),1)"/>
 </defs>
 
 <defs id="item_defs">
 
   <g id="logo_stuff">
 
-    <g mask="url(#mask0)" >
-      <use href="title-sunday.svg#ikon" />
-    </g>
+    <use id="title_sunday" href="title-sunday.svg#ikon" 
+    mask="url(#mask0)"
+    />
 
     <use href="red-line-sad.svg#ikon"
       transform="translate(0 15) scale(1.35)"
@@ -123,30 +122,45 @@
     </g>
   </g>
 
-  <g id="dialog_1_land">
+  <g id="dialog_1_stuff">
 
-    <path class="text_bubble" d="M0 0h270v60h-270z"
-     transform="translate(-10 -25)"
-    />
-
-    <text>
-      <tspan>click on the bottom right</tspan>
+    <text id="dialog_1">
+      <tspan>click on the bottom/right</tspan>
       <tspan x="0" dy="1em">to go forward ...</tspan>
     </text>
 
+    <path id="dialog_1_bubble" d="M-10 -25h270v60h-270z" />
+
+    <g id="dialog_1_land">
+      <use href="#dialog_1_bubble" class="text_bubble" />
+      <use href="#dialog_1" />
+    </g>
+
+    <g id="dialog_1_port">
+      <path class="text_bubble" d="M-10 -25h270v60h-270z" />
+      <use href="#dialog_1" />
+    </g>
+
   </g>
 
-  <g id="dialog_2_land">
-
-    <path class="text_bubble" 
-     transform="translate(-10 -25)"
-     d="M0 0h220v60h-220z"
-    />
-    <text>
-      <tspan>click on the top left</tspan>
+  <g id="dialog_2_stuff">
+  
+    <text id="dialog_2">
+      <tspan>click on the top/left</tspan>
       <tspan x="0" dy="1em">to go back ...</tspan>
     </text>
-
+  
+    <path id="dialog_2_bubble" d="M-10 -25h220v60h-220z" />
+  
+    <g id="dialog_2_land">
+      <use href="#dialog_2_bubble" class="text_bubble" />
+      <use href="#dialog_2"/>
+    </g>
+  
+    <g id="dialog_2_port">
+      <path class="text_bubble" d="M-10 -25h220v60h-220z" />
+      <use href="#dialog_2"/>
+    </g>
   </g>
 
 </defs>
@@ -155,11 +169,21 @@
 
   <mask id="mask0">
     <rect width="820" height="400" fill="#fff"/>
-      <use href="lil-morris.svg#mask" 
-        transform="translate(705 225) scale(1.5)"
-      />
+    <use href="lil-morris.svg#mask" 
+     transform="translate(705 225) scale(1.5)"
+    />
     <use href="red-line-sad.svg#mask" 
      transform="translate(0 15) scale(1.35)"
+    />
+
+    <use href="#dialog_1_bubble" fill="#000"
+     class="land"
+     transform="translate(80 300) scale(1.5)"
+    />
+
+    <use href="#dialog_2_bubble" fill="#000"
+     class="land"
+     transform=" translate(425 110) scale(1.5)"
     />
   </mask>
   
@@ -173,12 +197,11 @@
      transform="translate(10 0)"
     />
 
-    <use href="#dialog_1_land"
-     fill="url(#dotty)"
+    <use href="#dialog_1_land" 
      transform="translate(90 298) scale(1.5)"
     />
 
-    <use href="#dialog_2_land"
+    <use href="#dialog_2_land" 
      transform=" translate(435 110) scale(1.5)"
     />
 
@@ -190,11 +213,11 @@
      transform="scale(0.75) translate(10 200)" 
     />
 
-    <use href="#dialog_1_land"
+    <use href="#dialog_1_port"
      transform="translate(40 80) scale(1.8)"
     />
 
-    <use href="#dialog_2_land"
+    <use href="#dialog_2_port"
      transform=" translate(200 500) scale(1.8)"
     />
 
