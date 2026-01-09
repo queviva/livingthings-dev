@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 300 300">
-
+ viewBox="0 0 1000 1000"
+>
   <defs></defs>
 
   <rect id="required_id"
         x="100" y="100"
-        width="300" height="100"
-        data-halftone="50 1" 
+        width="400" height="300"
+        data-halftone="50 0 -20" 
         stroke="#000"
         stroke-width="5"
   />
-
+  
   <script><![CDATA[
 
     (function () {
@@ -31,19 +31,40 @@
         var parts = el.getAttribute("data-halftone").trim().split(/\s+/);
         var startP = parseFloat(parts[0]) / 100;
         var endP   = parseFloat(parts[1]) / 100;
+        var angle  = parseFloat(parts[2]) || 0;
+        
+        var theta = angle * Math.PI / 180;
+        var cosTheta = Math.cos(theta);
+        var sinTheta = Math.sin(theta);
         
         var bbox = el.getBBox();
-        var size = Math.max(bbox.height, bbox.width);
-        var cell = 8;
+        var w = bbox.width;
+        var h = bbox.height;
+        var cell = 4;
 
-        var cols = Math.ceil(size / cell);
-        var rows = Math.ceil(size / cell);
+        var cols = Math.ceil(w / cell);
+        var rows = Math.ceil(h / cell);
+
+        var corners = [
+          {x: 0, y: 0},
+          {x: w, y: 0},
+          {x: w, y: h},
+          {x: 0, y: h}
+        ];
+        var projections = corners.map(function(p) {
+          return p.x * cosTheta + p.y * sinTheta;
+        });
+        var s_min = Math.min.apply(null, projections);
+        var s_max = Math.max.apply(null, projections);
+        var s_range = s_max - s_min;
+        if (s_range === 0) s_range = 1; // Avoid division by zero, though unlikely
 
         var pattern = document.createElementNS(NS, "pattern");
         pattern.setAttribute("id", el.id + "_halftone");
 
         pattern.setAttribute("patternUnits", "objectBoundingBox");
         pattern.setAttribute("patternContentUnits", "userSpaceOnUse");
+        pattern.setAttribute("patternTransform", "rotate(0)");
         pattern.setAttribute("width", "1");
         pattern.setAttribute("height", "1");
 
@@ -52,17 +73,18 @@
 
         for (var y = 0; y < rows; y++) {
           for (var x = 0; x < cols; x++) {
-            var t = x / (cols - 1);
+            var px = x * cell + cell / 2 + (y % 2) * cell / 2;
+            var py = y * cell + cell / 2;
+            var s = px * cosTheta + py * sinTheta;
+            var t = (s - s_min) / s_range;
             var coverage = startP + t * (endP - startP);
             if (coverage <= 0) continue;
 
             var r = Math.sqrt((coverage * cell * cell) / Math.PI);
 
             var c = document.createElementNS(NS, "circle");
-            c.setAttribute("cx",
-              x * cell + cell / 2 + (y % 2) * cell / 2
-            );
-            c.setAttribute("cy", y * cell + cell / 2);
+            c.setAttribute("cx", px);
+            c.setAttribute("cy", py);
             c.setAttribute("r", r);
 
             g.appendChild(c);
@@ -78,3 +100,4 @@
   ]]></script>
 
 </svg>
+

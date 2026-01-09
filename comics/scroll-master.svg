@@ -231,7 +231,7 @@
 
     </g>
 
-    <g id="panel_3">
+    <g id="panel_2">
 
       <g clip-path="url(#one_and_two_of_four_clip">
 
@@ -299,7 +299,7 @@
     <g transform="translate(0 80)">
       <use href="#copyright" transform="translate(1276 395)" />
       <use href="#panel_1" transform="translate(20 0)" />
-      <use href="#panel_3" transform="translate(660 0)" />
+      <use href="#panel_2" transform="translate(660 0)" />
     </g>
 
   </svg>
@@ -309,7 +309,7 @@
     <g transform="translate(0 80)">
       <use href="#copyright" transform="translate(630 814)" />
       <use href="#panel_1" transform="translate(15 0)" />
-      <use href="#panel_3" transform="translate(15 420)" />
+      <use href="#panel_2" transform="translate(15 420)" />
     </g>
   </svg>
   

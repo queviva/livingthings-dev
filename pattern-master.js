@@ -78,15 +78,10 @@ const handleFill = obj => {
 
   const defs = obj.closest?.('svg')?.querySelector(`[data-${prefs.fix}]`);
 
+
   if (/^(?:sketch)\w*\(/i.test(fill)) {
 
-    const shirt = sketch.svg(obj, {options: {
-      stroke: 'none',
-      hachureAngle: -60,
-      hachureGap: 2,
-      fillWeight: 5, 
-      roughness: 3.2
-    }});
+    const shirt = sketch.svg(obj);
 
     const opts = fill
       .match(/\(\s*(.*)\s*\)$/)[1]
@@ -98,8 +93,7 @@ const handleFill = obj => {
       }, {});
 
     const newG = shirt.path(obj.getAttribute('d'), opts);
-    newG.setAttribute('id', obj.getAttribute('id'));
-    if (obj.attributes.transform) newG.setAttribute('transform', obj.getAttribute('transform'));
+    ['id','transform'].forEach(a => (!obj.attributes[a]) || newG.setAttribute(a, obj.getAttribute(a)));
     obj.replaceWith(newG);
 
     return;

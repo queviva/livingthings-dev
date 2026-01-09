@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link id="next_link" rel="prefetch" href="comics/scroll-master.svg" />
   <title>Living Things&trade;</title>
   <script src="sketch.js"></script>
   <script type="module" src="pattern-master.js"></script>
@@ -49,12 +50,15 @@
     ];
 
     let index = 0;
+    const inc = (i, v, l=list.length) => (((i + v) % l) + l) % l;
     const obj = document.getElementById('svg_object');
+    const nxt = document.getElementById('next_link');
 
     const swap = v => {
-      index = (index + v + list.length) % list.length;
+      index = (((index + v) % list.length) + list.length) % list.length;
       obj.type = list[index][1] || 'image/svg+xml';
       obj.data = list[index][0];
+      nxt.href = list[(index + 1) % list.length][0];
     };
 
     swap(0);

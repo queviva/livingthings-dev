@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 100 100">
+  viewBox="0 0 150 150">
 
   <defs>
 
@@ -13,6 +13,21 @@
       M 28 31 L 73.5 32.5 L 69 72 H 30 Z
     "/>
 
+    <g id="link">
+
+      <use href="#heart" fill="green" 
+       transform-origin="50 50"
+       transform="rotate(10) translate(-3.2 0)"
+      />
+      <use href="#rect" fill="pink" 
+       transform-origin="50 50"
+       transform="scale(1.2) translate(38 28.5)"
+      />
+
+    </g>
+
   </defs>
+
+  <use href="#link"/>
 
 </svg>

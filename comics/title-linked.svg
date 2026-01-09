@@ -1,11 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 400 400">
 
+  <style id="REMOVE">
+
+    :root {
+      --outline-color: #060;
+      --heart-color: #009;
+      --rect-color: #909;
+    }
+  </style>
+
   <defs>
 
+    <g id="ikon">
+      <use href="title-heart-rect.svg#heart"
+       transform="translate(0 0) scale(1)"
+       fill="var(--heart-color, var(--outline-color, #000))"
+      />
+      <use href="title-heart-rect.svg#rect"
+       transform="translate(0 0) scale(1)"
+       fill="var(--rect-color, var(--outline-color, #000))"
+      />
+    </g>
 
   </defs>
 
   <rect width="400" height="400" fill="orange" />
+  <use href="#ikon"/>
 
 </svg>

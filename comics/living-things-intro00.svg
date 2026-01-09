@@ -51,8 +51,7 @@
   }
 
   .text_bubble {
-    xxx-fill: #eee;
-    fill: url(#dotty);
+    fill: var(--roof-color);
     stroke: var(--outline-color);
     stroke-width: 4;
   }
@@ -64,11 +63,11 @@
  @keyframes dialog_1_fade_cycle {
 
   0% { transform: scale(0)}
-  32% { transform: scale(0)}
-  33% { transform: scale(1.1)}
-  34% { transform: scale(1)}
-  70% { transform: scale(1)}
-  72% { transform: scale(0)}
+  12% { transform: scale(0)}
+  13% { transform: scale(1.1)}
+  14% { transform: scale(1)}
+  40% { transform: scale(1)}
+  42% { transform: scale(0)}
   100% { transform: scale(0)}
 
  }
@@ -76,11 +75,11 @@
  @keyframes dialog_2_fade_cycle {
 
   0% { transform: scale(0)}
-  72% { transform: scale(0)}
-  73% { transform: scale(1.1)}
-  74% { transform: scale(1)}
-  97% { transform: scale(1)}
-  98% { transform: scale(0)}
+  42% { transform: scale(0)}
+  43% { transform: scale(1.1)}
+  44% { transform: scale(1)}
+  67% { transform: scale(1)}
+  68% { transform: scale(0)}
   100% { transform: scale(0)}
 
  }
@@ -129,7 +128,13 @@
       <tspan x="0" dy="1em">to go forward ...</tspan>
     </text>
 
-    <path id="dialog_1_bubble" d="M-10 -25h270v60h-270z" />
+    <path id="dialog_1_bubble" d="
+    M-10 -25
+    h 30 l -10 -20 l20 20
+    h230
+    v60h-270z" 
+    stroke-miterlimit="300"
+    />
 
     <g id="dialog_1_land">
       <use href="#dialog_1_bubble" class="text_bubble" />
@@ -214,11 +219,11 @@
     />
 
     <use href="#dialog_1_port"
-     transform="translate(40 80) scale(1.8)"
+     transform="translate(150 500) scale(1.8)"
     />
 
     <use href="#dialog_2_port"
-     transform=" translate(200 500) scale(1.8)"
+     transform=" translate(40 80) scale(1.8)"
     />
 
   </svg>
