@@ -1,7 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 150 150">
+  viewBox="-5 -5 150 150">
 
   <defs>
+
+    <pattern id="red_dots" fill="pat(dots,#700,0.5)"/>
+    <pattern id="black_dots" fill="pat(dots,#000,0.5)"/>
 
     <path id="heart" fill-rule="evenodd" d="
       M 50 22 C 82 -14 142 50 50 95 C -42 50 18 -14 50 22 Z 
@@ -13,21 +16,24 @@
       M 28 31 L 73.5 32.5 L 69 72 H 30 Z
     "/>
 
-    <g id="link">
+    <path id="rect_big" fill-rule="evenodd" d=" M53.00 46.80 L139.40 49.20 L131.00 125.40 L56.60 125.40 Z M68.60 61.20 L123.20 63.00 L117.80 110.40 L71.00 110.40 Z "/>
 
-      <use href="#heart" fill="green" 
-       transform-origin="50 50"
-       transform="rotate(10) translate(-3.2 0)"
-      />
-      <use href="#rect" fill="pink" 
-       transform-origin="50 50"
-       transform="scale(1.2) translate(38 28.5)"
-      />
 
+    <path id="link_heart" d="M51.66215,22.42538c32.99254,-26.11814 73.77738,26.63687 17.93834,59.2846l-0.72005,-14.76096c30.72048,-24.05212 3.12604,-55.1032 -19.82301,-29.75153c-15.58808,-38.28853 -65.74899,-1.43905 -7.64052,43.33154c4.77639,-1.51636 9.06532,-3.1708 12.90224,-4.9276l0.60692,13.2511c-4.82413,1.95826 -10.12679,3.78973 -15.94024,5.46381c-82.78815,-60.29198 -12.5862,-112.90079 12.67632,-71.89097z" />
+    <path id="link_rect" d=" M53,46.8 l29.17517,0.81042 c-0.81509,4.3947 -3.10976,9.13471 -7.30478,13.79629 l-6.27039,-0.20672 L 71 110.4 L 117.80 110.40 L 123.20 63.00 l-31.74099,-1.04641 c2.986,-4.68741 4.71438,-9.40119 5.40259,-13.93522 L 139.40 49.20 L 131.00 125.40 L 56.60 125.40 z" />
+
+    <g id="linked" stroke-width="var(--outline-width, 0)">
+      <use href="#link_heart" fill="var(--heart-color, #700)" stroke="var(--heart-outline-color, none)" />
+      <use href="#link_rect" fill="var(--rect-color, #000)" stroke="var(--rect-outline-color, none)" />
     </g>
 
   </defs>
 
-  <use href="#link"/>
+<g stroke="#222" stroke-width="2"> 
+  <use href="#link_heart" fill="url(#red_dots)"/>
+  <use href="#link_rect" fill="url(#black_dots)"/>
+</g>
+
+
 
 </svg>
