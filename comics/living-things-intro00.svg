@@ -99,16 +99,40 @@
 
 </style>
 
-<defs id="pattern_defs">
- <pattern id="dotty" fill="pat(dots,var(--outline-color),1)"/>
+<defs id="mask_defs">
+
+  <mask id="title_mask">
+    <rect width="820" height="400" fill="#fff"/>
+    <use href="lil-morris.svg#mask" 
+     transform="translate(705 225) scale(1.5)"
+    />
+    <use href="red-line-sad.svg#mask" 
+     transform="translate(0 15) scale(1.35)"
+    />
+  </mask>
+
+  <mask id="dialogs_mask">
+    <rect width="820" height="400" fill="#fff"/>
+
+    <use href="#dialog_1_bubble" fill="#000"
+     class="land"
+     transform="translate(340 300) scale(1.5)"
+    />
+
+    <use href="#dialog_2_bubble" fill="#000"
+     class="land"
+     transform=" translate(100 102) scale(1.5)"
+    />
+  </mask>
+  
 </defs>
 
 <defs id="item_defs">
 
-  <g id="logo_stuff">
+  <g id="logo_stuff" mask="url(#dialogs_mask)">
 
     <use id="title_sunday" href="title-sunday.svg#ikon" 
-    mask="url(#mask0)"
+      mask="url(#title_mask)"
     />
 
     <use href="red-line-sad.svg#ikon"
@@ -119,6 +143,7 @@
       <use href="lil-morris.svg#ikon" />
       <use fill="var(--outline-color)" href="lil-morris.svg#shadow" />
     </g>
+
   </g>
 
   <g id="dialog_1_stuff">
@@ -128,13 +153,7 @@
       <tspan x="0" dy="1em">to go forward ...</tspan>
     </text>
 
-    <path id="dialog_1_bubble" d="
-    M-10 -25
-    h 30 l -10 -20 l20 20
-    h230
-    v60h-270z" 
-    stroke-miterlimit="300"
-    />
+    <path id="dialog_1_bubble" d=" M-10 -25 h270 v60h-270z" stroke-miterlimit="300" />
 
     <g id="dialog_1_land">
       <use href="#dialog_1_bubble" class="text_bubble" />
@@ -170,30 +189,6 @@
 
 </defs>
 
-<defs id="mask_defs">
-
-  <mask id="mask0">
-    <rect width="820" height="400" fill="#fff"/>
-    <use href="lil-morris.svg#mask" 
-     transform="translate(705 225) scale(1.5)"
-    />
-    <use href="red-line-sad.svg#mask" 
-     transform="translate(0 15) scale(1.35)"
-    />
-
-    <use href="#dialog_1_bubble" fill="#000"
-     class="land"
-     transform="translate(80 300) scale(1.5)"
-    />
-
-    <use href="#dialog_2_bubble" fill="#000"
-     class="land"
-     transform=" translate(425 110) scale(1.5)"
-    />
-  </mask>
-  
-</defs>
-
 <g id="svgs">
 
   <svg class="land" viewBox="0 0 840 400">
@@ -203,11 +198,11 @@
     />
 
     <use href="#dialog_1_land" 
-     transform="translate(90 298) scale(1.5)"
+     transform="translate(350 298) scale(1.5)"
     />
 
     <use href="#dialog_2_land" 
-     transform=" translate(435 110) scale(1.5)"
+     transform=" translate(110 102) scale(1.5)"
     />
 
   </svg>

@@ -150,7 +150,7 @@
        x2="90%" y2="0%"
       >
         <stop offset="0%" stop-color="#fff" stop-opacity="1" />
-        <stop offset="100%" stop-color="#fff" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#fff" stop-opacity="0.5" />
       </linearGradient>
       <rect width="1" height="1" fill="url(#fade_gradient)" />
     </mask>
