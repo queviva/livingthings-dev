@@ -51,7 +51,8 @@
   }
 
   .text_bubble {
-    fill: var(--roof-color);
+    --x-fill: var(--roof-color);
+    fill: #eee;
     stroke: var(--outline-color);
     stroke-width: 4;
   }
@@ -129,7 +130,7 @@
 
 <defs id="item_defs">
 
-  <g id="logo_stuff" mask="url(#dialogs_mask)">
+  <g id="logo_stuff" xxx-mask="url(#dialogs_mask)">
 
     <use id="title_sunday" href="title-sunday.svg#ikon" 
       mask="url(#title_mask)"
