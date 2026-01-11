@@ -4,7 +4,7 @@ viewBox="0 0 400 650">
   <g transorm-origin="200 325" transform="scale(0.5)">
 
     <path id="head" d=" M 65 50 Q 192 20 290 47 L 257 47 Q 282 51 297 65 L 268 61 Q 300 140 315 223 L 332 222 Q 280 330  266 400 Q 265 377 253 347 Q 195 380 152 472 L 100 474 L 122 320 L 97 285 L 105 252 L 45 160 Z "
-     fill="#700" stroke="#222" stroke-width="8"
+     fill="#700" stroke="#222" stroke-width="0"
       xxx-fill="sketch(
         fill: #700,
         fillStyle: solid,
@@ -12,10 +12,15 @@ viewBox="0 0 400 650">
         strokeWidth: 5,
         roughness: 0
       )"
+      data-bool="
+      unite:chest, unite:foot, subtract:arc,
+      subtract:sharp
+      "
     />
 
     <path id="chest" d=" M 97 493 L 150 490 Q 195 390 250 355 Q 265 400 261 428 Q 248 480 244 525 L 255 534 L 249 542 L 270 550 Q 210 579 150 577 L 95 579 Q 95 550 90 525 Z "
-      fill="sketch(
+      fill="#fff"
+      xxx-fill="sketch(
         fill: #fff,
         stroke: #bbb,
         strokeWidth: 3,
@@ -25,7 +30,7 @@ viewBox="0 0 400 650">
     />
     
     <path id="foot" d=" M 270 550 Q 210 579 150 577 L 95 579 L 94 620 H 180 Q 320 585 355 557 Q 300 560 270 550 Z "
-      fill="sketch(
+      xxx-fill="sketch(
         fill: #700,
         stroke: #222,
         strokeWidth: 3,
@@ -34,8 +39,21 @@ viewBox="0 0 400 650">
       )"
     />
 
-    <path id="shades" d=" M 244 525 l-10 3 L 244.3 522z M 255 534 L 249 542 l-40 6z M 122 320 l 17 25 L 122 327 z M 152 472 l18 -90 l-21 90 l-3 50 l1 7 z M 125 530 l 50 8 l-40 2 l19 -3 z M 145 545 L 160 620 h -2 L 144 550 z M 65 50 Q 100 100 130 170 Q 95 100 64 55 Z M 268 61 L 220 47 Q 255 50 297 65 Z M 105 252 l 8 -30 l -11.6 25 z M 290 47 L 257 47 l-20 -3 z"
-      fill="sketch(
+    <path id="sharp" d=" M 65 45 Q 100 100 130 170 Q 95 100 63 53 Z 
+    " fill="green"/>
+    
+    <path id="shades" d=" 
+      M 244 525 l-10 3 L 244.3 522z 
+      M 255 534 L 249 542 l-40 6z
+      M 122 320 l 17 25 L 122 327 z
+      M 152 472 l18 -90 l-21 90 l-3 50 l1 7 z
+      M 125 530 l 50 8 l-40 2 l19 -3 z
+      M 145 545 L 160 620 h -2 L 144 550 z
+      M 290 47 L 257 47 l-20 -3 z
+      M 268 61 L 220 47 Q 255 50 297 65 Z 
+      M 105 252 l 8 -30 l -11.6 25 z
+    "
+      xxx-fill="sketch(
         fill: #222,
         stroke: #222,
         strokeWidth: 0.5,
@@ -45,7 +63,7 @@ viewBox="0 0 400 650">
       />
 
     <path id="underfoot" d=" M 180 620 Q 320 585 355 557 Q 300 600 290 620 z "
-      fill="sketch(
+      xxx-fill="sketch(
         fill: #222,
         stroke: #222,
         strokeWidth: 3,
@@ -55,7 +73,7 @@ viewBox="0 0 400 650">
     />
 
     <path id="arc" d=" M 266 400 Q 265 377 253 347 Q 195 380 152 472 L 100 474 L 97 493 L 150 490 Q 195 390 250 355 Q 265 400 261 428 L 261 428 Z "
-      fill="sketch(
+      xxx-fill="sketch(
         fill: #222,
         stroke: #222,
         strokeWidth: 1,

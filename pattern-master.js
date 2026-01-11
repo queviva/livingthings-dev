@@ -68,20 +68,7 @@ const PAT = (
   `</pattern>`
 );
 
-const makeURL = (defs, id, fill) => (/^ima?g\w*\(/.test(fill) ? (MIG(defs, [id, ...(fill.match(/\((.*)\)$/)[1].split(/,/))]), `url(#${id})`) : /^pat\w*\(/.test(fill) ? (PAT(defs, [id, ...(fill.match(/\((.*)\)$/)[1].split(/,(?![^(]*\))/))]), `url(#${id})`) : fill);
-
-const makeID = v => btoa(encodeURIComponent(v)).replace(/[+/=]/g, '_');
-
-const handleFill = obj => {
-
-  const fill = obj.getAttribute('fill');
-
-  const defs = obj.closest?.('svg')?.querySelector(`[data-${prefs.fix}]`);
-
-
-  if (/^(?:sketch)\w*\(/i.test(fill)) {
-
-    const shirt = sketch.svg(obj);
+const SKT = ( obj, fill) => {
 
     const opts = fill
       .match(/\(\s*(.*)\s*\)$/)[1]
@@ -92,9 +79,27 @@ const handleFill = obj => {
         return obj;
       }, {});
 
-    const newG = shirt.path(obj.getAttribute('d'), opts);
-    ['id','transform'].forEach(a => (!obj.attributes[a]) || newG.setAttribute(a, obj.getAttribute(a)));
+    const newG = sketch.svg(obj).path(obj.getAttribute('d'), opts);
+    ['id','transform'].forEach(a => obj.attributes[a] && newG.setAttribute(a, obj.getAttribute(a)));
     obj.replaceWith(newG);
+
+};
+
+
+
+const makeURL = (defs, id, fill) => (/^ima?g\w*\(/.test(fill) ? (MIG(defs, [id, ...(fill.match(/\((.*)\)$/)[1].split(/,/))]), `url(#${id})`) : /^pat\w*\(/.test(fill) ? (PAT(defs, [id, ...(fill.match(/\((.*)\)$/)[1].split(/,(?![^(]*\))/))]), `url(#${id})`) : fill);
+
+const makeID = v => btoa(encodeURIComponent(v)).replace(/[+/=]/g, '_');
+
+const handleFill = obj => {
+
+  const fill = obj.getAttribute('fill');
+
+  const defs = obj.closest?.('svg')?.querySelector(`[data-${prefs.fix}]`);
+
+  if (/^(?:sketch)\w*\(/i.test(fill)) {
+
+    SKT(obj, fill);
 
     return;
 
@@ -114,6 +119,36 @@ const handleFill = obj => {
 
 };
 
+paper.setup(document.createElement('canvas'));
+
+const handleBool = obj => {
+
+  // unite intersect subtract exclude
+
+  let basePath = new paper.Path(obj.getAttribute('d'));
+
+  const ops = obj.dataset.bool.replace(/\s/g,'').split(',').forEach(val => {
+
+    const [op, id, keep] = val.split(/:/);
+
+    const targetObj = obj.closest?.('svg').querySelector(`#${id}`);
+    const targetPath = new paper.Path(targetObj?.getAttribute('d'));
+
+    basePath = basePath?.[op](targetPath);
+    keep || targetObj.remove();
+
+  });
+
+  const newPath = document.createElementNS(prefs.svgNS,'path');
+
+  ['fill', 'stroke', 'stroke-width', 'opacity', 'class'].forEach(
+    a =>  obj.hasAttribute(a) && newPath.setAttribute(a, obj.getAttribute(a))
+  );
+  newPath.setAttribute('d', basePath.pathData);
+  obj.replaceWith(newPath);
+
+};
+
 const handleNode = n => {
   if (n.nodeType !== 1) return;
   if (n.localName === 'svg') processSVG(n);
@@ -129,6 +164,8 @@ const processSVG = svg => {
   defs.setAttribute(`data-${prefs.fix}`, '');
 
   svg.querySelectorAll('[fill]').forEach(handleFill);
+  svg.querySelectorAll('[data-bool').forEach(handleBool);
+
 };
 
 document.querySelectorAll('svg, object[type="image/svg+xml"]').forEach(obj => {
