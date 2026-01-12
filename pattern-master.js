@@ -121,33 +121,94 @@ const handleFill = obj => {
 
 paper.setup(document.createElement('canvas'));
 
-const handleBool = obj => {
+const best_paperize = obj => {
 
-  // unite intersect subtract exclude
+  const item = paper.project.importSVG(obj, { 
+    insert: false,
+    applyMatrix: true,
+    expandShapes: true
+  });
 
-  let basePath = new paper.Path(obj.getAttribute('d'));
+  return item.toPath ? item.toPath() : item;
+
+};
+
+const best_handleBool = obj => { // unite intersect subtract exclude
+
+  let basePath = paperize(obj); 
 
   const ops = obj.dataset.bool.replace(/\s/g,'').split(',').forEach(val => {
 
     const [op, id, keep] = val.split(/:/);
 
-    const targetObj = obj.closest?.('svg').querySelector(`#${id}`);
-    const targetPath = new paper.Path(targetObj?.getAttribute('d'));
+    const targetObj = obj.ownerDocument.querySelector(`#${id}`);
+    const targetPath =  paperize(targetObj);
 
-    basePath = basePath?.[op](targetPath);
-    keep || targetObj.remove();
+    console.log(targetPath.id, targetPath.matrix);
+
+    basePath = basePath[op](targetPath);
+    if (!keep) targetObj.remove();
 
   });
 
-  const newPath = document.createElementNS(prefs.svgNS,'path');
-
-  ['fill', 'stroke', 'stroke-width', 'opacity', 'class'].forEach(
-    a =>  obj.hasAttribute(a) && newPath.setAttribute(a, obj.getAttribute(a))
-  );
-  newPath.setAttribute('d', basePath.pathData);
-  obj.replaceWith(newPath);
+  const newNode = basePath.exportSVG({ asString: false });
+  obj.replaceWith(newNode);
 
 };
+
+// new attempts //
+const paperize = obj => {
+  const item = paper.project.importSVG(obj, {
+    insert: false,
+    applyMatrix: true,
+    expandShapes: true
+  });
+
+  if (item instanceof paper.Path || item instanceof paper.CompoundPath) {
+    return item;
+  }
+
+  const paths = item.getItems({ class: paper.Path });
+
+  if (paths.length === 1) {
+    return paths[0];
+  }
+
+  return new paper.CompoundPath({
+    children: paths.map(p => p.clone())
+  });
+};
+
+const handleBool = obj => {
+  let basePath = paperize(obj);
+  const toRemove = new Set();
+
+  const ops = obj.dataset.bool.replace(/\s/g,'').split(',');
+
+  for (const val of ops) {
+    const [op, id, keep] = val.split(':');
+    const targetObj = obj.ownerDocument.querySelector(`#${id}`);
+    if (!targetObj) continue;
+
+    const targetPath = paperize(targetObj);
+
+    const result = basePath[op](targetPath);
+
+    basePath.remove();
+    targetPath.remove();
+    basePath = result;
+
+    if (!keep) toRemove.add(targetObj);
+  }
+
+  const newNode = basePath.exportSVG({ asString: false });
+  obj.replaceWith(newNode);
+
+  toRemove.forEach(n => n.remove());
+};
+
+
+
 
 const handleNode = n => {
   if (n.nodeType !== 1) return;
