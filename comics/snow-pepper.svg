@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+  style="
+    isolation:isolate;
+    --x-background-image: url(newsprint.jpg);
+">
+
+  <style id="config_styles" type="text/css">
+  
+    :root {
+			--outline-color: #505;
+			--title-color: var(--outline-color);
+			--border-color: var(--outline-color);
+    }
+    
+  </style>
+
+  <style id="comic_styles" type="text/css">
+  
+    @font-face {
+      font-family: 'Comic Neue';
+      src: url('neue.ttf') format('truetype');
+    }
+  
+    text {
+      font-family: 'Comic Neue';
+      font-size: 24px;
+			fill: var(--text-color, var(--outline-color, #000));
+    }
+  
+    #title_line {
+      fill: var(--border-color, var(--outline-color, #000));
+      height: 2px;
+    }
+
+		.border, .obj {
+			fill: var(--border-color, var(--outline-color), #000);
+		}
+    
+    #copyright {
+      font-family:'Times New Roman';
+      font-weight: 300;
+      font-size:17px;
+      fill:var(--text-color, var(--outline-color, #000));
+    }
+  
+    @media (orientation: portrait) {
+      .land { display: none; }
+      #title_line {width: 625px; }
+    }
+  
+    @media (orientation: landscape) {
+      .port {display: none; }
+      #title_line {width: 1275px; }
+    }
+  
+  </style>
+
+  <defs id="copyright_defs">
+    <text id="copyright" transform="rotate(270)">
+      <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
+      <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
+    </text>
+  </defs>
+
+  <defs id="pattern_defs">
+    <pattern id="dotty" fill="pat(dots,2,var(--outline-color,#000))"/>
+  </defs>
+
+	<defs id="clip_defs">
+		<clipPath id="clip_port">
+			<rect x="12.5" y="0" width="625" height="787.5" />
+		</clipPath>
+	</defs>
+  
+  <defs id="title_defs">
+    <g id="title">
+      <rect id="title_line" x="12.5" y="12.5" />
+      <use href="title-test.svg#ikon" transform="translate(25 20) scale(2.5) " />
+    </g>
+  </defs>
+
+  <defs id="dialog_defs">
+		
+    <g id="dialog">
+
+    <path fill="none" stroke="#000" stroke-width="1" d="
+
+    "/>
+
+    <text transform="translate(0 30)">
+      <tspan>
+        Are you <tspan font-style="italic">peppering</tspan>
+        the sidewalk?
+      </tspan>
+    </text>
+
+    <text transform="translate(500 60)" text-anchor="end">
+      <tspan>
+        Of <tspan font-style="italic">course</tspan>.
+      </tspan>
+    </text>
+
+    <text transform="translate(0 100)">
+      <tspan>
+        It's supposed to be SALT.
+				We decided
+      </tspan>
+			<tspan x="0" dy="1em">
+				that salt was the perfect
+				<tspan font-weight="bold">seaonal seaoning</tspan>
+			</tspan>
+			<tspan x="0" dy="1em">for snow.</tspan>
+    </text>
+
+    <text transform="translate(550 177)" text-anchor="end">
+      <tspan>
+				What? Don't be ridiculous. That is liter-
+      </tspan>
+			<tspan x="0" dy="1em">
+				ally the 
+				<tspan font-style="italic">most boring possible</tspan>
+				spice!
+			</tspan>
+			<tspan x="0" dy="1.5em">
+				... Now, hand me the mustard.
+			</tspan>
+    </text>
+
+    </g>
+
+  </defs>
+
+	<defs id="character_defs">
+
+		<g id="lamp00">
+      	<use href="pepper-lamp00.svg#lamp_glow"
+					fill="hsl(40,70%,50%)" fill-opacity="0.5" />
+				<use href="pepper-lamp00.svg#metal_black" 
+				fill="var(--outline-color, #000)" 
+				fill-opacity="0.8" />
+				<use href="pepper-lamp00.svg#metal_grey" 
+					fill="#fff" fill-opacity="0.1" />
+      	<use href="pepper-lamp00.svg#outline" 
+				fill="var(--outline-color, #000)" />
+		</g>
+
+		<g id="house00">
+      	<use href="pepper-house00.svg#roof_color" 
+      	  fill="url(#dotty)"
+      	/>
+      	<use href="pepper-house00.svg#ikon" 
+				 	style="
+				 		--mill-color: var(--outline-color);
+						--hat-shade: var(--outline-color);
+				 	"
+				/>
+		</g>
+
+		<g id="mustard00">
+			<use href="mustard.svg#mustard" fill="url(#dotty)"/>
+			<use href="mustard.svg#ikon"/>
+		</g>
+
+	</defs>
+
+  <g id="haxxor" style="
+    filter: var(--bg-filter, none);
+    opacity: var(--bg-opacity, 1);
+  ">
+
+  <svg class="land" viewBox="0 0 1300 480">
+    <use href="#title" />
+    <g transform="translate(0 80)">
+
+      <path class="border" d=" M 12.5 0 h 280 l -4 2 h -274 v 198 l -2 4 z M 1287.5 400 v -280 l -2 4 v 274 h -600 l-4 2 z " />
+      <use href="#copyright" transform="translate(1281 390)" />
+
+      <use href="#dialog" transform="translate(320 10)" />
+
+      <path class="border" d="
+				M 260 60 l 40 -14 v 4 z 
+				M 890 84 l -40 -14 v 4 z
+			" />
+
+			<use href="#lamp00" transform="translate(80 0) scale(0.8)" />
+
+			<use href="#house00" transform="translate(920 0) scale(0.8)"/> 
+
+			<use href="#mustard00" transform="translate(320 258) scale(0.75)"/>
+
+    </g>
+  </svg>
+
+  <svg class="port" viewBox="0 0 650 880">
+
+
+    <use href="#title" transform="translate(0 0)" style="--show-hearts: 1" />
+
+		<path class="border" d=" 
+			M 637.5 867.5 v -380 l -2 4 v 374 H 270 l -4 2  z 
+			M 12.5 80 h 280 l -4 2 h -274 v 198 l -2 4 z " />
+
+    <g transform="translate(0 80)" clip-path="url(#clip_port)">
+
+
+      <use href="#dialog" transform="translate(55 10)" />
+
+      <use href="#copyright" transform="translate(890 780)" />
+      <path class="border" d=" 
+        M 110 280 l -10 -54 h 4 z 
+        M 480 320 l 10 -50  h 4 z 
+      " />
+
+      	<use href="#lamp00" transform="translate(8 315) scale(0.9)" />
+      	<use href="#house00" transform="translate(280 315) scale(0.9)" />
+      	<use href="#mustard00" transform="translate(140 625) scale(0.7)" />
+
+    </g>
+  </svg>
+
+  </g>
+
+</svg>
