@@ -95,6 +95,12 @@
         <use href="#rect" fill="var(--rect-color, var(--title-color, #000))" />
       </g>
 
+      <g style="opacity: var(--fill-hearts, 0)" 
+        fill="var(--inside-color, var(--title-color, #000))">
+        <use href="#heart_inside" />
+        <use href="#rect_inside" />
+      </g>
+
     </g>
 
     <g id="heart_matte">

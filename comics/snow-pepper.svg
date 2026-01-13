@@ -1,15 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg"
-  style="
-    isolation:isolate;
-    --x-background-image: url(newsprint.jpg);
-">
+<svg xmlns="http://www.w3.org/2000/svg">
 
   <style id="config_styles" type="text/css">
   
     :root {
-			--outline-color: #505;
+			--outline-color: hsla(40,100%,20%,0.8);
+			--accent-color: hsl(40,70%,50%);
 			--title-color: var(--outline-color);
 			--border-color: var(--outline-color);
+
+			--bg-opacity: 0.8;
     }
     
   </style>
@@ -63,19 +62,34 @@
   </defs>
 
   <defs id="pattern_defs">
-    <pattern id="dotty" fill="pat(dots,2,var(--outline-color,#000))"/>
+    <pattern id="dotty" fill="pat(dots,2.5,var(--outline-color,#000))"/>
   </defs>
 
-	<defs id="clip_defs">
+	<defs id="clip_and_masks">
 		<clipPath id="clip_port">
 			<rect x="12.5" y="0" width="625" height="787.5" />
 		</clipPath>
+
+    <mask id="fade_mask"
+     maskUnits="objectBoundingBox"
+     maskContentUnits="objectBoundingBox"
+    >
+      <linearGradient id="fade_gradient"
+       x1="0%" y1="100%"
+       x2="90%" y2="0%"
+      >
+        <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+        <stop offset="70%" stop-color="#fff" stop-opacity="0.1" />
+      </linearGradient>
+      <rect width="1" height="1" fill="url(#fade_gradient)" />
+    </mask>
+
 	</defs>
   
   <defs id="title_defs">
     <g id="title">
       <rect id="title_line" x="12.5" y="12.5" />
-      <use href="title-test.svg#ikon" transform="translate(25 20) scale(2.5) " />
+      <use href="title-test.svg#ikon" transform="translate(25 20) scale(2.5)"/>
     </g>
   </defs>
 
@@ -83,8 +97,14 @@
 		
     <g id="dialog">
 
-    <path fill="none" stroke="#000" stroke-width="1" d="
+    <path fill="none" stroke="var(--outline-color,#000)" stroke-width="1" d="
 
+			M 220 220 V 250 H 560 V 150 H 130 V 220 Z
+			M 130 160 H -10 V 75 H 440 V 150
+			M 380 75 V 30 H 530 V 80 H 440
+			M 480 80 V 150
+			M 380 50 H -10 V -5 H 400 V 30 
+			M 50 50 V 75
     "/>
 
     <text transform="translate(0 30)">
@@ -103,7 +123,7 @@
     <text transform="translate(0 100)">
       <tspan>
         It's supposed to be SALT.
-				We decided
+				<tspan dx="1ch">We decided</tspan>
       </tspan>
 			<tspan x="0" dy="1em">
 				that salt was the perfect
@@ -134,7 +154,7 @@
 
 		<g id="lamp00">
       	<use href="pepper-lamp00.svg#lamp_glow"
-					fill="hsl(40,70%,50%)" fill-opacity="0.5" />
+					fill="var(--accent-color)" fill-opacity="0.5" />
 				<use href="pepper-lamp00.svg#metal_black" 
 				fill="var(--outline-color, #000)" 
 				fill-opacity="0.8" />
@@ -146,8 +166,11 @@
 
 		<g id="house00">
       	<use href="pepper-house00.svg#roof_color" 
-      	  fill="url(#dotty)"
-      	/>
+					fill="var(--accent-color)" fill-opacity="0.5" /> 
+      	<use href="pepper-house00.svg#roof_color" 
+					xxx-mask="url(#fade_mask)"
+					fill="url(#dotty)"
+					/>
       	<use href="pepper-house00.svg#ikon" 
 				 	style="
 				 		--mill-color: var(--outline-color);
@@ -157,7 +180,8 @@
 		</g>
 
 		<g id="mustard00">
-			<use href="mustard.svg#mustard" fill="url(#dotty)"/>
+			<use href="mustard.svg#mustard" 
+				fill="var(--accent-color)" fill-opacity="0.5" /> 
 			<use href="mustard.svg#ikon"/>
 		</g>
 
@@ -178,7 +202,7 @@
       <use href="#dialog" transform="translate(320 10)" />
 
       <path class="border" d="
-				M 260 60 l 40 -14 v 4 z 
+				M 270 60 l 40 -14 v 4 z 
 				M 890 84 l -40 -14 v 4 z
 			" />
 
@@ -194,7 +218,13 @@
   <svg class="port" viewBox="0 0 650 880">
 
 
-    <use href="#title" transform="translate(0 0)" style="--show-hearts: 1" />
+    <use href="#title" transform="translate(0 0)" 
+			style="
+				--show-hearts: 1;
+				--fill-hearts: 1;
+				--inside-color: var(--accent-color);
+			"
+		/>
 
 		<path class="border" d=" 
 			M 637.5 867.5 v -380 l -2 4 v 374 H 270 l -4 2  z 
@@ -205,10 +235,11 @@
 
       <use href="#dialog" transform="translate(55 10)" />
 
-      <use href="#copyright" transform="translate(890 780)" />
+      <use href="#copyright" transform="translate(632 780)" />
+
       <path class="border" d=" 
-        M 110 280 l -10 -54 h 4 z 
-        M 480 320 l 10 -50  h 4 z 
+        M 110 234 l -10 -64 h 4 z 
+        M 480 310 l 10 -50  h 4 z 
       " />
 
       	<use href="#lamp00" transform="translate(8 315) scale(0.9)" />
