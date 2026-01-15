@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" 
-viewBox="0 0 500 500">
-
-  <path fill="green"
-    d="M200,200 L300,200 L300,300 L200,300 Z"
-    data-bool='{"id":"shape_A","op":"difference"}'
-  />
-</svg>

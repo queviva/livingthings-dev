@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" display="block" version="1.1">
+ <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="svg_55" transform="matrix(1 0 0 1 0 0)">
+   <path d="m185.52,110.37c-23,3.88 -58.85,34.83 -35.97,63.94c-33.64,7.65 -56.26,54.31 -27.97,77.55c-24.92,18.96 -11.79,51.65 4.11,52.72c-34.81,41.88 -27.51,90.23 39.91,85.32c40.52,-3.67 83.97,-47.14 86.87,-131.55c2.91,-84.4 -22.19,-149.72 -66.95,-148l0,0.02zm-19.27,122.53c13.54,-2.71 22.96,-4.04 37.42,-1.71c-4.13,22.48 -13.76,37.16 -28.9,52.29c-7.43,-9.52 -10.73,-22.71 -8.52,-50.58z" fill="#ffaa56" id="svg_41" stroke="#000000" stroke-opacity="0" stroke-width="5"/>
+   <g id="svg_5" transform="matrix(1 0 0 1 0 0)">
+    <path d="m90.79,275.01c-10.35,-90.69 35,-159.62 85.32,-166.26c97.7,-12.4 120.87,288.99 -39.67,294.85" fill="#000000" fill-opacity="0" id="svg_1" stroke="#7fff00" stroke-width="5"/>
+    <path d="m88.27,264.13c-6.87,3.23 -10.53,15.87 4.4,32.6" fill="#000000" fill-opacity="0" id="svg_6" stroke="#7fff00" stroke-width="5"/>
+    <path d="m86.71,284.09c-26.15,41.92 -22.49,119.56 42.36,120l11.47,-0.27" fill="#000000" fill-opacity="0" id="svg_8" stroke="#7fff00" stroke-width="5"/>
+    <path d="m86.2,271.87c5.25,4.05 9.86,6.17 15.75,7.32" fill="#000000" fill-opacity="0" id="svg_2" stroke="#7fff00" stroke-width="3"/>
+   </g>
+   <path d="m185.78,108.71c-28.24,3.2 -55.42,39.07 -34.96,65.43c-43.28,10.85 -53.49,57.72 -27.53,78.34c-28.31,8.48 -14.87,47.98 2.3,50.65c-29.9,37.18 -29.21,85.76 25.58,88.37" fill="#000000" fill-opacity="0" id="svg_15" stroke="#7fff00" stroke-width="5" transform="matrix(1 0 0 1 0 0)"/>
+   <path d="m124.43,307.76c-34.13,34.68 -19.64,86.3 28.27,83.51" fill="#000000" fill-opacity="0" id="svg_16" stroke="#7fff00" stroke-opacity="0.5" stroke-width="5" transform="matrix(1 0 0 1 0 0)"/>
+   <path d="m197.17,255.02c4.77,-8.61 10.63,-16.54 18.39,-18.88l-12.71,-4.47l-5.68,23.35z" fill="#7fff00" id="svg_7" stroke="#000000" stroke-opacity="0" stroke-width="3"/>
+   <g id="svg_4">
+    <path d="m158.94,233.81c8.6,-5.53 47.43,-3.95 59.21,1.38" fill="#000000" fill-opacity="0" id="svg_9" stroke="#7fff00" stroke-width="5"/>
+    <path d="m184.32,294.16c-20.47,-14.56 -20.1,-46.72 -17.87,-62.43" fill="#000000" fill-opacity="0" id="svg_13" stroke="#7fff00" stroke-width="5"/>
+    <path d="m203.29,231.61c0.01,17.26 -17.8,42.97 -28.52,52.59" fill="#000000" fill-opacity="0" id="svg_14" stroke="#7fff00" stroke-width="5"/>
+   </g>
+  </g>
+  <g id="svg_51">
+   <circle cx="317.14" cy="222.27" fill="#cccccc" id="svg_34" r="30.67" stroke="#7fff00" stroke-width="5"/>
+   <path d="m343.69,204.51l-20.21,-35.96l2.35,-6.57l-8.92,-32.39l35.68,-19.25l31.92,-11.74l40.38,-5.63l4.23,8.45l15.02,-3.29l9.39,17.84l-33.8,-1.88l-28.64,13.15l-23.47,13.62l-20.66,22.07l-3.26,41.6l-0.01,-0.02z" fill="#ffaa56" fill-opacity="0.5" id="svg_50" stroke="#000000" stroke-opacity="0" stroke-width="5"/>
+   <path d="m415.61,94.54c-17.21,-19.73 -34.22,-30.43 -52.8,-43.3c-30.84,17.33 -56.38,31.14 -80.17,66.12c13,30.11 23.46,58.65 31.95,90.91l13.03,-30.27l-3.15,-7.94l2.48,-6.26l-8.89,-33.25c38.53,-22 65.49,-33.61 97.55,-36l0,-0.01z" fill="#ffaa56" id="svg_43" stroke="#000000" stroke-opacity="0" stroke-width="5"/>
+   <path d="m346.71,162.66c20.21,-19.72 40.42,-40.84 76.36,-48.67c51.05,0.82 117.13,10.02 140.56,48.6l-14.03,28.63c12.22,-2 28.29,-1.19 40.87,3.45c3.13,57.56 -5.27,148.69 -47.25,156.95l-25.31,-5.73c-0.61,19.32 2.27,37.94 3.41,56.91l-118.53,0.35c-32.68,-46.6 -66.06,-119.77 -56.08,-240.49zm199.69,79.06l-27.18,51.63l-1.75,29.37c13.72,-14.76 35.13,-47.01 28.92,-81.01l0.01,0.01z" fill="#ffaa56" fill-opacity="0.7" id="svg_45" stroke="#000000" stroke-opacity="0" stroke-width="5"/>
+   <path d="m326.45,178.51c-5,11.33 -9.99,21.62 -11.87,31.91c-7.52,-29.28 -16.44,-61.69 -30.9,-93.06c17.01,-25.35 44.44,-50 79.17,-65.63c13.08,10.88 38.66,24.88 52.78,43.06" fill="#000000" fill-opacity="0" id="svg_18" stroke="#7fff00" stroke-width="5"/>
+   <path d="m346.28,204.55c-9.64,-9.62 -16.5,-20.62 -22.67,-35.1l18.75,-32.29" fill="#000000" fill-opacity="0" id="svg_19" stroke="#7fff00" stroke-width="5"/>
+   <path d="m399.93,109.19l44.51,-10.58c4.28,5.9 7.87,13.19 8.68,18.75" fill="#000000" fill-opacity="0" id="svg_20" stroke="#7fff00" stroke-width="5"/>
+   <path d="m429.44,101.21l-5.49,-7.11c-38.66,2.78 -79.05,15.28 -106.6,37.5l9.03,32.99" fill="#000000" fill-opacity="0" id="svg_21" stroke="#7fff00" stroke-width="5"/>
+   <path d="m337.47,176.34c19.11,-32.39 57.31,-58.88 102.8,-65.92" fill="#000000" fill-opacity="0" id="svg_22" stroke="#7fff00" stroke-width="5"/>
+   <path d="m418.81,115.31c70.81,-2.91 122.88,18.15 145.77,47.53c-41.44,59.84 -55.44,150.58 -43.06,237.85" fill="#000000" fill-opacity="0" id="svg_23" stroke="#7fff00" stroke-width="5"/>
+   <path d="m547.93,191.96c8.79,-2.18 28.69,-0.89 40.95,2.83c8.8,43.63 -12.96,167.82 -49.65,154.86" fill="#000000" fill-opacity="0" id="svg_24" stroke="#7fff00" stroke-width="5"/>
+   <path d="m572.59,214.92c-31.26,22.57 -44.11,59.38 -54.18,86.47" fill="#000000" fill-opacity="0" id="svg_25" stroke="#7fff00" stroke-width="5"/>
+   <path d="m326.59,124.32c-0.29,-9.59 -0.53,-14.08 6.74,-29.09" fill="#000000" fill-opacity="0" id="svg_29" stroke="#7fff00" stroke-width="5"/>
+   <path d="m330.44,121.58c8.03,-15.18 9.53,-32.3 30,-43.8" fill="#000000" fill-opacity="0" id="svg_30" stroke="#7fff00" stroke-width="5"/>
+   <path d="m299.64,115.21c5.59,2.33 16.32,4.88 32.85,5.18" fill="#000000" fill-opacity="0" id="svg_31" stroke="#7fff00" stroke-width="5"/>
+   <path d="m303.25,124.43c7.49,-0.25 18.35,-2.58 22.27,-4.72" fill="#000000" fill-opacity="0" id="svg_32" stroke="#7fff00" stroke-width="5"/>
+   <path d="m348.64,162.2c-8.58,63.36 1.71,173.91 55.4,240.07" fill="#000000" fill-opacity="0" id="svg_33" stroke="#7fff00" stroke-width="5"/>
+   <path d="m518.64,320.75c26.16,-22.35 31.23,-65.04 29,-79.91" fill="#000000" fill-opacity="0" id="svg_35" stroke="#7fff00" stroke-width="5"/>
+   <path d="m520.38,164.74c-24.54,62.88 -32.26,142.28 -22.71,173" fill="#000000" fill-opacity="0" id="svg_36" stroke="#7fff00" stroke-width="2"/>
+   <path d="m529.38,169.23c-25.57,57.23 -30.05,143.36 -20.65,194.74" fill="#000000" fill-opacity="0" id="svg_37" stroke="#7fff00" stroke-width="2"/>
+   <path d="m578.79,230.42c0.84,34.33 -7.26,64.79 -16.06,84.39" fill="#000000" fill-opacity="0" id="svg_38" stroke="#7fff00" stroke-width="2"/>
+   <path d="m569.58,204.98c-12.26,8.47 -22.69,18.98 -30.77,33.68" fill="#000000" fill-opacity="0" id="svg_39" stroke="#7fff00" stroke-width="2"/>
+  </g>
+  <g id="svg_58">
+   <path d="m294.79,329.21c-1.26,20.92 -20.01,31 -47.75,29.76l22.14,-20.3c8.54,-3.15 17.07,-6.31 25.61,-9.46z" fill="#ffaa56" fill-opacity="0.7" id="svg_56" stroke="#000000" stroke-opacity="0" stroke-width="5"/>
+   <path d="m240.25,373.94c6.67,-26.27 46.76,-51.89 70.94,-45.32" fill="#000000" fill-opacity="0" id="svg_53" stroke="#7fff00" stroke-width="5"/>
+   <path d="m247.34,359.72c15.45,0.18 41.9,-2.6 48.4,-28.32" fill="#000000" fill-opacity="0" id="svg_54" stroke="#7fff00" stroke-width="5"/>
+  </g>
+  <line fill="none" fill-opacity="0" id="svg_40" stroke="#7fff00" stroke-width="5" x1="3.33" x2="614.49" y1="403.56" y2="403.56"/>
+ </g>
+</svg>

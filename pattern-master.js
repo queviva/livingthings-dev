@@ -45,7 +45,7 @@ const allDs = {
   `
 };
 
-const makePath = (d, f) => `<path d="${d}" fill="${f}" fill-rule="evenodd" />`;
+const makePath = (d, f, s=1) => `<path d="${d}" fill="${f}" fill-rule="evenodd" transform-origin="1 1" transform="scale(${s})" />`;
 
 const MIG = (defs, [id, url, scl]) => defs.insertAdjacentHTML('beforeend',
   `<pattern id="${id}" width="1" height="1">
@@ -56,14 +56,14 @@ const MIG = (defs, [id, url, scl]) => defs.insertAdjacentHTML('beforeend',
 
 const PAT = (
   defs, [id, typ, ...opts],
-  [scl = 1.3, rot = 45] = [...opts.filter(a => !isNaN(Number(a)))],
+  [scl = 1.3, rot = 1] = [...opts.filter(a => !isNaN(Number(a)))],
   [col = 'currentColor', bak] = [...opts.filter(a => CSS.supports('color', a))]
 ) => defs.insertAdjacentHTML('beforeend',
-  `<pattern id="${id}" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(${rot}) scale(${scl})">` +
+  `<pattern id="${id}" width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(${45}) scale(${scl})">` +
   (bak ? makePath("M0 0H2V2H0Z", bak) : '') +
   makePath(
     (/^x/i.test(typ) ? (typ = typ.replace(/^x/i, ''), 'M0 0H2V2H0Z') : '') +
-    (allDs[typ] || typ), col
+    (allDs[typ] || typ), col, rot
   ) +
   `</pattern>`
 );
@@ -119,7 +119,7 @@ const handleFill = obj => {
 
 };
 
-paper.setup(document.createElement('canvas'));
+//paper.setup(document.createElement('canvas'));
 
 const best_paperize = obj => {
 
@@ -206,7 +206,7 @@ const handleBool = obj => {
 
   toRemove.forEach(n => n.remove());
 };
-
+/////
 
 
 
@@ -225,7 +225,7 @@ const processSVG = svg => {
   defs.setAttribute(`data-${prefs.fix}`, '');
 
   svg.querySelectorAll('[fill]').forEach(handleFill);
-  svg.querySelectorAll('[data-bool').forEach(handleBool);
+  //svg.querySelectorAll('[data-bool').forEach(handleBool);
 
 };
 

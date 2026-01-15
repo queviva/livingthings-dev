@@ -62,7 +62,7 @@
   </defs>
 
   <defs id="pattern_defs">
-    <pattern id="dotty" fill="pat(dots,2.5,var(--outline-color,#000))"/>
+    <pattern id="dotty" fill="pat(livingthings,4.5,var(--outline-color,#000))"/>
   </defs>
 
 	<defs id="clip_and_masks">
@@ -97,7 +97,7 @@
 		
     <g id="dialog">
 
-    <path fill="none" stroke="var(--outline-color,#000)" stroke-width="1" d="
+    <path class="port" fill="none" stroke="var(--outline-color,#000)" stroke-width="1" d="
 
 			M 220 220 V 250 H 560 V 150 H 130 V 220 Z
 			M 130 160 H -10 V 75 H 440 V 150
@@ -242,9 +242,9 @@
         M 480 310 l 10 -50  h 4 z 
       " />
 
-      	<use href="#lamp00" transform="translate(8 315) scale(0.9)" />
-      	<use href="#house00" transform="translate(280 315) scale(0.9)" />
-      	<use href="#mustard00" transform="translate(140 625) scale(0.7)" />
+      <use href="#lamp00" transform="translate(8 315) scale(0.9)" />
+      <use href="#house00" transform="translate(280 315) scale(0.9)" />
+      <use href="#mustard00" transform="translate(140 625) scale(0.7)" />
 
     </g>
   </svg>

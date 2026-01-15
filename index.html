@@ -7,7 +7,7 @@
   <link id="next_link" rel="prefetch" href="comics/scroll-master.svg" />
   <title>Living Things&trade;</title>
   <script src="sketch.js"></script>
-  <script src="paper-full.min.js"></script>
+  <!-- <script src="paper-full.min.js"></script> -->
   <script type="module" src="pattern-master.js"></script>
   <style>
     html,
@@ -43,9 +43,10 @@
     const list = [
       ['comics/living-things-intro00.svg', '', ''],
       ['comics/scroll-master.svg', '', ''],
-      ['comics/four-panel.svg', '', ''],
+      ['comics/pencil-vania.svg', '', ''],
       ['comics/snow-pepper.svg','',''],
       ['comics/three-panel.svg', '', ''],
+      ['comics/handicap-T.svg', '', ''],
       ['comics/sunday-panel.svg', '', ''],
       ['comics/lamp-layout.svg', '', ''],
       ['comics/pop-house.svg', '', ''],
@@ -53,7 +54,6 @@
     ];
 
     let index = 0;
-    const inc = (i, v, l=list.length) => (((i + v) % l) + l) % l;
     const obj = document.getElementById('svg_object');
     const nxt = document.getElementById('next_link');
 
