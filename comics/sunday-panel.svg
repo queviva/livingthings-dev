@@ -169,6 +169,10 @@
       <path id="two_of_three_border" class="border" d=" M 0 0 H 825 V 400 H 0 Z " />
   </defs>
 
+  <defs id="character_defs">
+
+  </defs>
+
   <defs id="panel_defs">
 
     <g id="panel_1">

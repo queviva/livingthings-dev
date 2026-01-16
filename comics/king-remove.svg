@@ -2,27 +2,6 @@
   viewBox="0 0 800 480" 
 >
 
-  <style>
-    :root {
-
-      --bg-color: rgb(116,116,116);
-      --outline-color: rgb(64,31,16);
-      --shade-color: rgb(106,54,30);
-      --x-box-color: url(#dotz);
-      --box-color: rgb(200,133,32);
-      --bowl-color: rgb(255,255,255);
-
-    }
-  </style>
-
-  <defs id="pattern_defs">
-    <pattern id="dotz" viewBox="-2 -2 4 4" width="4" height="4"
-      patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(0.7)">
-      <circle r="1" fill="var(--dot-color, var(--outline-color, #000))" transform="scale(1.5)"/>
-    </pattern>
-  </defs>
-
-  <defs id="ikon_def">
   <g id="ikon">
     
     <path id="bowl" d="M 136 213 C 61 224 17 268 4 345 C 21 360 49 369 86 371 L 168 294 C 167 266 156 239 136 213 Z M 139 258 L 146 242 C 100 251 69 285 35 345 L 35 345 L 52 348 C 76 303 106 262 139 258 Z" fill="var(--bowl-color, #eee)" />
@@ -209,8 +188,5 @@ M 376 268 C 366 268 356 269 346 270 C 353 278 360 293 363 309 C 425 307 476 312 
     </g>
   
   </g>
-  </defs>
-  
-  <use href="#ikon"/>
 
 </svg>
