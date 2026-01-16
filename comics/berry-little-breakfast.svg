@@ -4,18 +4,20 @@
   
     :root {
 
-        --outline-color: rgb(64,31,16);
-        --x-shade-color: rgb(106,54,30);
-        --x-box-color: rgb(200,133,32);
-        --shade-color: hsl(38,80%,30%);
-        --box-color: none;
-        --bowl-color: rgb(255,255,255);
+      --outline-color: rgb(64,31,16);
+      --x-shade-color: rgb(106,54,30);
+      --x-box-color: rgb(200,133,32);
+      --x-shade-color: hsl(38,80%,30%);
+      --outline-color: hsl(270,80%,35%);
+      --shade-color: hsl(268,80%,70%);
 
-			--accent-color: hsl(40,70%,50%);
+      --box-color: none;
+      --bowl-color: #fff;
+
 			--title-color: var(--outline-color);
 			--border-color: var(--outline-color);
-			--bg-opacity: 0.8;
 
+			--bg-opacity: 0.8;
       --font-size: 40px;
 
     }
@@ -32,6 +34,7 @@
     text {
       font-family: 'Comic Neue';
       font-size: var(--font-size, 24px);
+      word-spacing: -0.2ch;
 			fill: var(--text-color, var(--outline-color, #000));
     }
   
@@ -59,6 +62,15 @@
     @media (orientation: landscape) {
       .port {display: none; }
       #title_line {width: 1275px; }
+    }
+  
+  </style>
+
+  <style id="svg_styles" type="text/css">
+
+    svg {
+      background-image: var(--bg-fill, none);
+      mask: var(--bg-mask, none);
     }
   
   </style>
@@ -95,11 +107,17 @@
     </mask>
 
 	</defs>
-  
+
   <defs id="title_defs">
     <g id="title">
       <rect id="title_line" x="12.5" y="12.5" />
-      <use href="title-test.svg#ikon" transform="translate(25 20) scale(2.5)"/>
+      <g transform="translate(25 20) scale(2.5)">
+        <use href="title-test.svg#outline_circ"
+          style="--outline-width:2px;"
+        />
+        <use href="title-test.svg#circ1" style="fill: var(--shade-color)" />
+        <use href="title-test.svg#circ2" style="fill: var(--shade-color)" />
+      </g>
     </g>
   </defs>
 
@@ -136,10 +154,16 @@
       </tspan>
     </text>
 
+    <path id="float" fill="none" stroke="red" stroke-width="4" d="
+      M0 0 c 93 40 277 -40 370 10 
+    "/>
+
     <text id="dialog_4">
+      <textPath href="#float">
       <tspan font-size="20" font-style="italic">
         So have yourself a Berry Little Breakfast-time!
       </tspan>
+      </textPath>
     </text>
   </defs>
 
@@ -345,7 +369,7 @@
       <use href="#dialog_1" transform="translate(42.5 60)" />
       <use href="#dialog_2" transform="translate(620 165)" />
       <use href="#dialog_3" transform="translate(80 250)" />
-      <use href="#dialog_4" transform="translate(150 340)" />
+      <use href="#dialog_4" transform="translate(200 340)" />
 
       <use href="#king" transform="translate(-57 380) scale(0.9)" />
       <use href="#bowl" transform="translate(10 420) scale(0.85)" />
