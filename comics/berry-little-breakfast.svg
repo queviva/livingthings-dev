@@ -8,8 +8,8 @@
       --x-shade-color: rgb(106,54,30);
       --x-box-color: rgb(200,133,32);
       --x-shade-color: hsl(38,80%,30%);
-      --outline-color: hsl(270,80%,35%);
-      --shade-color: hsl(268,80%,70%);
+      --outline-color: hsl(270,80%,25%);
+      --shade-color: hsla(270,80%,70%,0.8);
 
       --box-color: none;
       --bowl-color: #fff;
@@ -17,7 +17,7 @@
 			--title-color: var(--outline-color);
 			--border-color: var(--outline-color);
 
-			--bg-opacity: 0.8;
+			--bg-opacity: 0.4;
       --font-size: 40px;
 
     }
@@ -28,6 +28,7 @@
   
     @font-face {
       font-family: 'Comic Neue';
+      /*src: url('CommingSoon.ttf') format('truetype');*/
       src: url('neue.ttf') format('truetype');
     }
   
@@ -371,7 +372,7 @@
       <use href="#dialog_3" transform="translate(80 250)" />
       <use href="#dialog_4" transform="translate(200 340)" />
 
-      <use href="#king" transform="translate(-57 380) scale(0.9)" />
+      <use href="#king" transform="translate(-57 365) scale(0.9)" />
       <use href="#bowl" transform="translate(10 420) scale(0.85)" />
 
     </g>

@@ -1,18 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate;">
+<svg xmlns="http://www.w3.org/2000/svg">
 
   <style id="config_styles" type="text/css">
   
     :root {
 
+        /*
         --bg-fill: url(newsprint.jpg);
         --bg-filter: url(#shake);
         --bg-mask: url(#fade_mask);
-        /*
+        --bg-opacity: 0.85;
         */
 
         /*
-        --bg-opacity: 0.85;
-
         --show-hearts: 1;
         --title-color: orange;
         --living-color: yellow;
@@ -22,12 +21,12 @@
         --heart-color: green;
         --square-color: purple;
 
-        --border-color: red;
+        --border-color: hotpink;
         --border-width: 9;
 
         --copy-color: brown;
 
-        --outline-color: pink;
+        --outline-color: purple;
         */
 
     }
@@ -162,13 +161,6 @@
 
   </defs>
 
-  <defs id="copyright_defs">
-    <text id="copyright" transform="rotate(270)">
-      <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
-      <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
-    </text>
-  </defs>
-  
   <defs id="title_defs">
     <g id="title">
       <rect id="title_line" x="12.5" y="12.5" />
@@ -176,12 +168,23 @@
     </g>
   </defs>
 
+  <defs id="copyright_defs">
+    <text id="copyright" transform="rotate(270)">
+      <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
+      <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
+    </text>
+  </defs>
+  
   <defs id="border_defs">
     <path class="border" id="one_of_four_border" d=" M 0 0 H 300 V 400 H 0 Z " />
     <marker id="slant_cap" markerWidth="3" markerHeight="1"
             refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
       <path d=" M 0 0 L 1 0 L 3 1 L 0 1 Z" fill="context-stroke"/>
     </marker>
+  </defs>
+
+  <defs id="character_defs">
+
   </defs>
 
   <defs id="panel_defs">

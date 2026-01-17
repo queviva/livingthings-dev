@@ -449,7 +449,7 @@
                 people can use
             </tspan>
             <tspan x="0" dy="1em">
-                public trains?
+                public transit?
             </tspan>
           </text>
         </g>
@@ -480,10 +480,10 @@
           <text id="dialog_p2" text-anchor="middle" >
             <tspan>No, it's because, by the time</tspan>
             <tspan x="0" dy="1em" >
-               the train arrives, most of
+               your train gets there, most
             </tspan>
             <tspan x="0" dy="1em" >
-              the passengers will be 
+              of the passengers will be 
             </tspan>
             <tspan x="0" dy="1.2em" font-style="italic"
               style="font-size:26px"

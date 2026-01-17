@@ -50,6 +50,11 @@
       src: url('ComingSoon.ttf') format('truetype');
     }
 
+    @font-face {
+      font-family: 'Pirata';
+      src: url('Pirata.ttf') format('truetype');
+    }
+
     text {
       font-family:'Comic Neue';
       font-weight: 400;
@@ -561,19 +566,20 @@
 
       <g xxx-clip-path="url(#one_of_four_clip">
 
-        <g transform="translate(150 32)">
+        <g transform="translate(150 25)">
           <text text-anchor="middle">
             <tspan x="-0.5ch" 
-              xxx-font-size="32"
+              font-size="22"
               font-style="italic"
             >
-            It shall be named
-            <tspan x="0" dy="1em" 
-              font-style="italic"
-              font-weight="700"
-            >
-              PENCIL&#183;VANIA
+            It shall hence be known as
             </tspan>
+            <tspan x="0" dy="1em" 
+              font-size="50"
+              data-font-weight="700"
+              font-family="Pirata"
+            >
+              Pencil&#183;Vania
             <tspan x="0" dy="1em">
             </tspan>
             </tspan>

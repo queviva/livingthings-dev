@@ -413,20 +413,9 @@
         <path d=" m 300 85 h 4 l -7 22 z"/>
 
         <g transform="translate(-45 108) scale(1.40)">
+          <use href="#boat_mask" fill="url(#dots)" transform="translate(-604 -71)" />
           <use href="#char_2" style="--accent-color: none"/>
         </g>
-
-        <mask id="dot_mask_panel_2">
-          <rect width="400" height="400" fill="#000" />
-          <g transform="translate(-45 108) scale(1.40)">
-            <use href="#boat_mask" fill="#fff"
-              transform="translate(-604 -71)"
-            />
-          </g>
-        </mask>
-        <rect width="400" height="400" fill="url(#dots)"
-          mask="url(#dot_mask_panel_2)"
-        />
 
       </g>
 

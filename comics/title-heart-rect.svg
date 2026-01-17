@@ -3,8 +3,8 @@
 
   <defs>
 
-    <pattern id="red_dots" fill="pat(dots,#700,0.5)"/>
-    <pattern id="black_dots" fill="pat(dots,#000,0.5)"/>
+    <pattern id="red_dots" fill="pat(M1 .25L1.75 1L1 1.75L.25 1z, #700,0.5)"/>
+    <pattern id="black_dots" fill="pat(love,#000,0.5)"/>
 
     <path id="heart" fill-rule="evenodd" d="
       M 50 22 C 82 -14 142 50 50 95 C -42 50 18 -14 50 22 Z 

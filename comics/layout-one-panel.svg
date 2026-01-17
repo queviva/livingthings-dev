@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+
+  <style id="config_styles" type="text/css">
+  
+    :root {
+
+        /*
+        --bg-filter: url(#shake);
+        --bg-fill: url(newsprint.jpg);
+        --bg-mask: url(#fade_mask);
+        --bg-opacity: 0.85;
+        */
+
+        /*
+        --show-hearts: 1;
+        --title-color: orange;
+        --living-color: yellow;
+        --things-color: blue;
+        --circ1-color: green;
+        --circ2-color: white;
+        --heart-color: green;
+        --square-color: purple;
+
+        --border-color: red;
+        --border-width: 9;
+
+        --copy-color: brown;
+
+        --outline-color: pink;
+        */
+
+    }
+    
+  </style>
+
+  <style id="svg_styles" type="text/css">
+
+    svg {
+      background-image: var(--bg-fill, none);
+      mask: var(--bg-mask, none);
+    }
+  
+  </style>
+
+  <style id="comic_styles" type="text/css">
+  
+    @font-face {
+      font-family: 'Comic Neue';
+      src: url('neue.ttf') format('truetype');
+    }
+  
+    text {
+      font-family: 'Comic Neue';
+      font-size: 24px;
+			fill: var(--text-color, var(--outline-color, #000));
+    }
+  
+    #title_line {
+      fill: var(--border-color, var(--outline-color, #000));
+      height: 2px;
+    }
+
+    .text-bubble {
+      fill: none;
+      stroke: var(--outline-color, #000);
+      stroke-width: 1px;
+    }
+
+    .text-bubble + path {
+      fill: var(--outline-color, #000);
+    }
+
+	  .obj {
+			fill: var(--outline-color, #000);
+		}
+    
+    #copyright, #scoundrel {
+      font-family:'Times New Roman';
+      font-weight: 300;
+      font-size:17px;
+      fill:var(--border-color, var(--outline-color, #000));
+    }
+  
+    @media (orientation: portrait) {
+      .land { display: none; }
+      #title_line {width: 625px; }
+    }
+  
+    @media (orientation: landscape) {
+      .port {display: none; }
+      #title_line {width: 1275px; }
+    }
+  
+  </style>
+
+  <style id="border_styles">
+
+    .border {
+     fill: none ;
+     stroke: var(--border-color, var(--outline-color, #000));
+     stroke-width: var(--border-width, 2); 
+    }
+
+    .slant {
+      marker-start: url(#slant_cap);
+      marker-end: url(#slant_cap);
+    }
+
+  </style>
+
+  <defs id="pats_and_filters">
+
+    <linearGradient id="fade" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" />
+    </linearGradient>
+
+    <filter id="blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.3" />
+    </filter>
+
+    <filter id="shake" width="120%" height="220%" color-interpolation-filters="sRGB">
+      <feImage href="newsprint.jpg" x="0" y="0" width="220%" height="120%" preserveAspectRatio="xMidYMid slice" result="mig" />
+      <feDisplacementMap in="SourceGraphic" in2="mig" result="rat" scale="5" xChannelSelector="R" yChannelSelector="B" />
+      <feGaussianBlur in="rat" stdDeviation="0.3" result="blur" />
+      <!-- shift image back based on displacement's scale -->
+      <feOffset in="blurred" dx="0.5" dy="5" result="final" />
+    </filter>
+    
+    <pattern id="newsprint" patternUnits="userSpaceOnUse" width="100%" height="100%">
+      <image href="newsprint.jpg" width="100%" height="100%" preserveAspectRatio="none" />
+    </pattern>
+
+    <pattern id="dots" viewBox="-2 -2 4 4" width="4" height="4"
+     patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1.5)">
+     <circle r="1" fill="var(--outline-color, #000)" transform="scale(1.5)"/>
+    </pattern>
+
+    <pattern id="dotty" fill="pat(livingthings,4.5,var(--outline-color,#000))"/>
+
+  </defs>
+
+  <defs id="clip_and_masks">
+
+    <clipPath id="clip_land">
+      <rect x="12.5" y="0" width="1275" height="400" />
+    </clipPath>
+
+    <clipPath id="clip_port">
+      <rect x="12.5" y="0" width="625" height="825" />
+    </clipPath>
+
+    <mask id="fade_mask"
+      maskUnits="objectBoundingBox"
+      maskContentUnits="objectBoundingBox"
+    >
+      <linearGradient id="fade_gradient"
+        x1="0%" y1="100%"
+        x2="90%" y2="0%"
+      >
+        <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+        <stop offset="70%" stop-color="#fff" stop-opacity="0.5" />
+      </linearGradient>
+      <rect width="1" height="1" fill="url(#fade_gradient)" />
+    </mask>
+
+  </defs>
+
+  <defs id="title_defs">
+    <g id="title">
+      <rect id="title_line" x="12.5" y="12.5" />
+      <use href="title-test.svg#ikon" transform="translate(25 20) scale(2.5)"/>
+    </g>
+  </defs>
+
+  <defs id="copyright_defs">
+    <text id="copyright" transform="rotate(270)">
+      <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
+      <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
+    </text>
+    <text id="scoundrel" text-anchor="end">
+      <tspan letter-spacing="-0.04em" font-style="italic">
+        [The Wheeling Daily Scoundrel]
+      </tspan>
+    </text>
+  </defs>
+
+  <defs id="border_defs">
+
+    <marker id="slant_cap" markerWidth="3" markerHeight="1"
+            refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d=" M 0 0 L 1 0 L 3 1 L 0 1 Z" fill="context-stroke"/>
+    </marker>
+
+    <path id="left_corner" class="border slant" d=" M 0 220 V 0 H 310 " />
+    <path id="right_corner" class="border slant" d=" M -420 0 H 0 V -200 "/>
+
+  </defs>
+
+  <defs id="dialog_defs">
+
+    <g id="dialog_1">
+      <text text-anchor="middle">
+          Dialog One.
+      </text>
+    </g>
+
+    <g id="dialog_2">
+      <text text-anchor="middle">
+          Dialog Two.
+      </text>
+    </g>
+
+    <g id="dialog">
+      <use href="#dialog_1" transform="translate(0 0)"/>
+      <use href="#dialog_2" transform="translate(350 50)"/>
+    </g>
+
+  </defs>
+
+	<defs id="character_defs">
+
+	</defs>
+
+  <g id="haxxor" style="
+    filter: var(--bg-filter, none);
+    opacity: var(--bg-opacity, 1);
+  ">
+
+  <svg class="land" viewBox="0 0 1300 520">
+  <!-- 1275 x 400 visible area -->
+
+    <use href="#title" />
+    <use href="#copyright" transform="translate(1281 475)" />
+    <use href="#scoundrel" transform="translate(1281 70)" />
+
+    <g transform="translate(0 80)" clip-path="url(#clip_land)">
+
+      <path id="ZONES_LAND" fill="lightblue" fill-opacity="0.4" d=" M12.5 0 h300v400h-300z M337.5 0 h300v400h-300z M662.5 0 h300v400h-300z M987.6 0h300v400h-300z "/>
+      <use href="#dialog" transform="translate(470 40)" />
+      <path d="
+        M 337.5 90 v 5 l -40 10 z
+        M 962.5 110 v 5 l 40 10 z
+      "/>
+
+    </g>
+
+    <use href="#left_corner" transform="translate(12.5 80)" />
+    <use href="#right_corner" transform="translate(1287.5 480)" />
+
+  </svg>
+
+  <svg class="port" viewBox="0 0 650 925">
+  <!-- 625 x 825 visible area -->
+
+    <use href="#title" style="--show-hearts: 1;" />
+    <use href="#copyright" transform="translate(630 900)" />
+    <use href="#scoundrel" transform="translate(637.5 925)" />
+
+    <g transform="translate(0 80)" clip-path="url(#clip_port)">
+
+
+      <path id="ZONES_PORT" fill="lightblue" fill-opacity="0.4" d=" M12.5 0 h300v400h-300z M337.5 0 h300v400h-300z M12.5 425 h300v400h-300z M337.6 426 h300v400h-300z "/>
+
+      <use href="#dialog" transform="translate(120 80)" />
+      <path d="
+        M 87.5 400 h 5 l 10 50 z
+        M 527.5 400 h 5 l -10 55 z
+      "/>
+
+    </g>
+
+
+    <use href="#left_corner" transform="translate(12.5 80)" />
+    <use href="#right_corner" transform="translate(637.5 905)" />
+  </svg>
+
+  </g>
+
+</svg>
