@@ -15,13 +15,14 @@ const allDs = {
 
   dots: 'M1 .5a.5 .5 0 1 0 0.01 0Z',
   hatch: 'M0 0 V2H1V0Z',
+  chex: 'M0 0H1V2H2V1H0Z',
   check: 'M0 0H1V2H2V1H0Z',
   cross: 'M0 0V2H2V1.75H.25V0Z',
   strip: 'M.5 0H1.5L0 1.5V.5ZM2 .5V1.5L1.5 2H.5Z',
   wave: 'M0 0H.5V.5H0ZM1 0H2V.5H1.5V1.5H.5V2H0V1H1V0Z',
   love: 'M1.5 1.5 h-.8 a.3 .3 0 0 1 0 -.8 a.3 .3 0 0 1 .8 0 z',
   stix: 'M.375 .375h.25v.5h.25v-.5h.75v.25h-.5v.25h.5v.75h-.25v-.5h-.25v.5h-.75v-.25h.5v-.25h-.5',
-  stars: 'M.45 .45l.50 .25l.41 -.40l-.09 .57l.51 .26l-.57 .08l-.08 .57l-.26 -.51l-.57 .09l.40 -.41 z',
+  stars: 'M.45 .45l.50 .25l.41 -.4l-.09 .57l.51 .26l-.57 .08l-.08 .57l-.26 -.51l-.57 .09l.4 -.41 z',
   curve: 'M.75 -.25A.75 .75 0 0 0 .25 .25A.75 .75 0 0 1 -.25 .75V-.25ZM1.25 2.25A.75 .75 0 0 0 1.75 1.75A.75 .75 0 0 1 2.25 1.25V2.25ZM-.25 1.75A.75 .75 0 0 1 .25 1.25A.75 .75 0 0 0 .75 .75A.75 .75 0 0 1 1.25 .25A.75 .75 0 0 0 1.75 -.25L2.25 .25A.75 .75 0 0 1 1.75 .75A.75 .75 0 0 0 1.25 1.25A.75 .75 0 0 1 .75 1.75A.75 .75 0 0 0 .25 2.25Z',
   scales: 'M0 2V1.8A1.5 1.5 0 0 1 1.6 1.6A1.5 1.5 0 0 1 1.8 0H2V.2A1.3 1.3 0 0 0 2 1.8V2H1.8A1.3 1.3 0 0 0 .2 2ZM0 .2A1.3 1.3 0 0 1 .2 0H0Z',
   hound: 'M0 0H.5V1L.75 .75V.25L1 .5L1.25 .25V.75L1.5 1V0H2V.5L1.75 .25V.75L1.5 1V2L1.75 1.75V1.25L2 1.5V2H1.5L1.25 1.75V1.25L1 1.5L.75 1.25V1.75L.5 2H0V1.5L.25 1.25V1.75L.5 2V1L.25 .75V.25L0 .5Z',
@@ -91,36 +92,8 @@ const makeURL = (defs, id, fill) => (/^ima?g\w*\(/.test(fill) ? (MIG(defs, [id, 
 
 const makeID = v => btoa(encodeURIComponent(v)).replace(/[+/=]/g, '_');
 
-const handleFill = obj => {
-
-  const fill = obj.getAttribute('fill');
-
-  const defs = obj.closest?.('svg')?.querySelector(`[data-${prefs.fix}]`);
-
-  if (/^(?:sketch)\w*\(/i.test(fill)) {
-
-    SKT(obj, fill);
-
-    return;
-
-  }
-
-  if (!/^(?:pat|ima?g)\w*\(/i.test(fill) || !defs) return;
-
-  const id = obj.localName === 'pattern' ? obj.id : makeID(fill);
-
-  obj.setAttribute('fill',
-    defs.querySelector(`#${id}`)
-      ? `url(#${id})`
-      : makeURL(defs, id, fill)
-  );
-
-  if (id === obj.id) obj.remove();
-
-};
-
 //paper.setup(document.createElement('canvas'));
-
+/*
 const best_paperize = obj => {
 
   const item = paper.project.importSVG(obj, { 
@@ -155,8 +128,11 @@ const best_handleBool = obj => { // unite intersect subtract exclude
   obj.replaceWith(newNode);
 
 };
+*/
+/////
 
 // new attempts //
+/*
 const paperize = obj => {
   const item = paper.project.importSVG(obj, {
     insert: false,
@@ -206,9 +182,36 @@ const handleBool = obj => {
 
   toRemove.forEach(n => n.remove());
 };
+*/
 /////
 
+const handleFill = obj => {
 
+  const fill = obj.getAttribute('fill');
+
+  const defs = obj.closest?.('svg')?.querySelector(`[data-${prefs.fix}]`);
+
+  if (/^(?:sketch)\w*\(/i.test(fill)) {
+
+    SKT(obj, fill);
+
+    return;
+
+  }
+
+  if (!/^(?:pat|ima?g)\w*\(/i.test(fill) || !defs) return;
+
+  const id = obj.localName === 'pattern' ? obj.id : makeID(fill);
+
+  obj.setAttribute('fill',
+    defs.querySelector(`#${id}`)
+      ? `url(#${id})`
+      : makeURL(defs, id, fill)
+  );
+
+  if (id === obj.id) obj.remove();
+
+};
 
 const handleNode = n => {
   if (n.nodeType !== 1) return;

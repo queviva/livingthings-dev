@@ -1,13 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate;">
 
   <style id="config_styles" type="text/css">
   
     :root {
 
-        /*
+        --outline-color: #707;
+        --x-accent-color: none;
+        --accent-color: hsla(40, 100%, 100%, 0.2);
+
         --bg-fill: url(newsprint.jpg);
-        --bg-filter: url(#shake);
         --bg-mask: url(#fade_mask);
+        /*
+        --bg-filter: url(#shake);
         --bg-opacity: 0.85;
         */
 
@@ -21,12 +25,12 @@
         --heart-color: green;
         --square-color: purple;
 
-        --border-color: hotpink;
+        --border-color: red;
         --border-width: 9;
 
         --copy-color: brown;
 
-        --outline-color: purple;
+        --outline-color: pink;
         */
 
     }
@@ -66,11 +70,6 @@
       fill: var(--outline-color, #000);
     }
 
-    #title_line {
-      fill: var(--title-color, #000);
-      height: 2px;
-    }
-    
     #copyright, #scoundrel {
       font-family:'Times New Roman';
       font-weight: 300;
@@ -84,12 +83,10 @@
   
     @media (orientation: portrait) {
       .land { display: none; }
-      #title_line {width: 625px; }
     }
   
     @media (orientation: landscape) {
       .port { display: none; }
-      #title_line { width: 1275px; }
     }
   
   </style>
@@ -138,8 +135,12 @@
 
   <defs id="clips_and_masks">
 
-    <clipPath id="one_of_four_clip">
-        <path d="M 0 0 H 300 V 400 H 0 Z"/>
+    <clipPath id="one_of_three_clip">
+        <path d="M 0 0 H 400 V 400 H 0 Z"/>
+    </clipPath>
+
+    <clipPath id="two_of_three_clip">
+        <path d="M 0 0 H 825 V 400 H 0 Z"/>
     </clipPath>
 
     <mask id="fade_mask"
@@ -151,18 +152,11 @@
        x2="90%" y2="0%"
       >
         <stop offset="0%" stop-color="#fff" stop-opacity="1" />
-        <stop offset="100%" stop-color="#fff" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#fff" stop-opacity="0.5" />
       </linearGradient>
       <rect width="1" height="1" fill="url(#fade_gradient)" />
     </mask>
 
-  </defs>
-
-  <defs id="title_defs">
-    <g id="title">
-      <rect id="title_line" x="12.5" y="12.5" />
-      <use href="title-test.svg#ikon" transform="translate(30 17) scale(2.5) " />
-    </g>
   </defs>
 
   <defs id="copyright_defs">
@@ -183,13 +177,16 @@
       <path d=" M 0 0 L 3 0 L 1 1 H 0 Z" fill="context-stroke"/>
     </marker>
 
-    <path id="one_of_four_border" class="border" d=" M 0 0 H 300 V 400 H 0 Z " />
+    <path id="one_of_three_border" class="border" d=" M 0 0 H 400 V 400 H 0 Z " />
+    <path id="two_of_three_border" class="border" d=" M 0 0 H 825 V 400 H 0 Z " />
 
   </defs>
 
   <defs id="character_defs">
 
-		<path id="ground_arc" class="obj" d=" M 3 384 Q 150 370 297 384 Q 150 379 0 384 Z" />
+    <ellipse id="char_1" rx="65" ry="90" />
+
+    <path id="ground_arc" class="obj" d=" M 10 380 Q 200 360 390 380 Q 200 370 10 380 Z " />
 
   </defs>
 
@@ -197,123 +194,109 @@
 
     <g id="panel_1">
 
-      <g clip-path="url(#one_of_four_clip)">
+      <g clip-path="url(#two_of_three_clip)">
 
-        <g transform="translate(150 32)">
-          <text text-anchor="middle">
-            <tspan>this can fit about tw&#183;</tspan>
-            <tspan x="0" dy="1em">enty one letters on a</tspan>
-            <tspan x="0" dy="1em">line at 28px font size.</tspan>
-          </text>
+        <mask id="panel_1_mask">
+          <rect width="900" height="400" fill="#fff"/>
+          <use href="#char_1" fill="#000"
+            transform="translate(100 120) rotate(-5)"
+          />
+          <use href="lil-morris.svg#mask" fill="#000"
+            transform="translate(826 207) scale(-1 1) scale(1.75)"
+          />
+        </mask>
+
+        <g mask="url(#panel_1_mask)" >
+
+          <use href="title-sunday.svg#solid" fill="url(#dots)" />
+          <use href="title-sunday.svg#outline" style=" --outline-width: 6; "/>
+
         </g>
-        <rect class="text-bubble" width="286" height="90" x="7" y="7" />
-        <path d="m 270 97 h5 l -15 70 z " />
 
-        <g transform="translate(119.5 129)">
-          <text text-anchor="middle">
-            <tspan>That's maybe 15</tspan>
-            <tspan x="0" dy="1em">werds max.</tspan>
-          </text>
+        <use href="#char_1"
+          transform="translate(100 120) rotate(-5)"
+          fill="none"
+          stroke="var(--outline-color, #000"
+          stroke-width="7"
+        />
+      
+        <g transform="translate(826 207) scale(-1 1) scale(1.75)" >
+          <use href="lil-morris.svg#ikon" />
         </g>
-        <rect class="text-bubble" width="225" height="60" x="7" y="104" />
-        <path d="m 40 164 h5 l 5 20 z " />
-
-
-
-				<use href="#ground_arc" />
-
-
 
       </g>
 
-      <use href="#one_of_four_border" />
+      <!--<use href="#two_of_three_border" />-->
 
     </g>
 
     <g id="panel_2">
 
-      <g clip-path="url(#one_of_four_clip">
+      <g clip-path="url(#one_of_three_clip)">
 
-        <g transform="translate(150 32)">
+        <g transform="translate(200 40)">
           <text text-anchor="middle">
-            <tspan> yyy </tspan>
+            <tspan>Thease are the times 
+              <tspan font-style="italic">that</tspan>
+            </tspan>
+            <tspan x="0" dy="1em">try on men's clothing.</tspan>
           </text>
         </g>
-        <rect class="text-bubble" width="286" height="60" x="7" y="7" />
-        <path d="m 45 67 h5 l 5 50 z " />
+        <path class="text-bubble" d=" M 7 7 H 393 V 85 H 7 Z "/>
+        <path d=" m 300 85 h 4 l -7 22 z"/>
 
+        <use href="#ground_arc"/>
 
       </g>
 
-      <use href="#one_of_four_border" />
+      <use href="#one_of_three_border" />
 
     </g>
 
     <g id="panel_3">
 
-      <g clip-path="url(#one_of_four_clip">
+      <g clip-path="url(#one_of_three_clip)">
 
-        <g transform="translate(150 32)">
+        <g transform="translate(200 40)">
           <text text-anchor="middle">
-            <tspan x="-0.5ch" dy="1em"
-              font-size="25"
-              font-weight="700"
-              font-style="italic"
-            >
-              ZZZ
+            <tspan>
+              <tspan font-style="italic">I'm</tspan> 
+              so expensive
             </tspan>
+            <tspan x="0" dy="1em">I bankrupted a nation!</tspan>
           </text>
         </g>
+        <path class="text-bubble" d=" M 7 7 H 393 V 85 H 7 Z "/>
+        <path d=" m 300 85 h 4 l -7 22 z"/>
 
-        <mask id="panel_3_mask" >
-          <rect width="300" height="400" fill="#fff" />
-					<circle cx="150" cy="250" r="80" fill="#000" />
-        </mask>
-
-        <path class="obj" d="M 0 300 L 300 200 V 400 H 0 Z" mask="url(#panel_3_mask)" />
-
-				<circle cx="150" cy="250" r="80" fill="pat(dots,3)" 
-					stroke="#000" stroke-width="8"
-				/>
+        <ellipse class="obj" 
+          cx="190" cy="360"
+          rx="150" ry="3"
+        />
 
       </g>
 
-      <use href="#one_of_four_border" />
+      <use href="#one_of_three_border" />
 
     </g>
 
     <g id="panel_4">
 
-      <g clip-path="url(#one_of_four_clip">
-
-        <g transform="translate(150 32)">
-          <text text-anchor="middle">
-            XYZ
-          </text>
-        </g>
-        <rect class="text-bubble" x="7" y="7" width="286" height="60" style="stroke-width:3;" />
-        <path d="m 65 67 h5 l 20 35 z " />
-
-        <mask id="panel_4_mask" >
-          <rect width="300" height="400" fill="#fff" />
-        	<rect x="7" y="7" width="286" height="60" fill="#000" />
-					<ellipse cx="134" cy="250" rx="70" ry="107" fill="#000" transform-origin="134 250" transform="rotate(-5)" />
-        </mask>
+      <g clip-path="url(#two_of_three_clip)">
 
 
-				<rect width="300" height="400" fill="pat(dots,3.5)"
-					mask="url(#panel_4_mask)"
-				/>
-				<ellipse cx="134" cy="250" rx="70" ry="107" 
-					fill="none" stroke="#000" stroke-width="8"
-					transform-origin="134 250"
-					transform="rotate(-5)"
-				/>
-        <ellipse class="obj" cx="140" cy="360" rx="55" ry="3" />
+        <text transform="translate(20 60)" >
+          <tspan
+            font-size="40"
+            font-weight="700"
+          >
+            <tspan font-style="italic">Bold claim...</tspan>
+          </tspan>
+        </text>
 
       </g>
 
-      <use href="#one_of_four_border" />
+      <use href="#two_of_three_border" /> 
 
     </g>
 
@@ -324,27 +307,23 @@
     opacity: var(--bg-opacity, 1);
   ">
 
-  <svg class="land" viewBox="0 0 1300 520">
-
-    <use href="#title"/>
-    <g transform="translate(0 80)">
-      <use href="#copyright" transform="translate(976 395)" />
-      <use href="#panel_1" transform="translate(20 0)" />
-      <use href="#panel_2" transform="translate(340 0)" />
-      <use href="#panel_3" transform="translate(660 0)" />
-      <use href="#panel_4" transform="translate(980 0)" />
+  <svg class="land" viewBox="0 0 1300 875">
+    <g transform="translate(0 25)">
+      <use href="#copyright" transform="translate(442.5 820)" />
+      <use href="#panel_1" transform="translate(25 0)" />
+      <use href="#panel_2" transform="translate(875 0)" />
+      <use href="#panel_3" transform="translate(25 425)" />
+      <use href="#panel_4" transform="translate(450 425)" />
     </g>
-
   </svg>
 
-  <svg class="port" viewBox="0 0 650 905"> 
-    <use href="#title" />
-    <g transform="translate(0 80)">
-      <use href="#copyright" transform="translate(330 814)" />
-      <use href="#panel_1" transform="translate(15 0)" />
-      <use href="#panel_2" transform="translate(335 0)" />
-      <use href="#panel_3" transform="translate(15 420)" />
-      <use href="#panel_4" transform="translate(335 420)" />
+  <svg class="port" viewBox="0 0 875 1300"> 
+    <g transform="translate(0 25)">
+      <use href="#copyright" transform="translate(443.5 825)" />
+      <use href="#panel_1" transform="translate(25 0)" />
+      <use href="#panel_2" transform="translate(25 425)" />
+      <use href="#panel_3" transform="translate(450 425)" />
+      <use href="#panel_4" transform="translate(25 850)" />
     </g>
   </svg>
   

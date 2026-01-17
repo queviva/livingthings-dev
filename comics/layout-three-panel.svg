@@ -1,13 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate;">
 
-  <style id="config_styles" type="text/css">
+  <style id="config_styles">
   
     :root {
 
+        --border-width: 3px;
+
         /*
+        --bg-mask: url(#fade_mask);
         --bg-fill: url(newsprint.jpg);
         --bg-filter: url(#shake);
-        --bg-mask: url(#fade_mask);
         --bg-opacity: 0.85;
         */
 
@@ -21,18 +23,18 @@
         --heart-color: green;
         --square-color: purple;
 
-        --border-color: hotpink;
+        --border-color: red;
         --border-width: 9;
 
         --copy-color: brown;
 
-        --outline-color: purple;
+        --outline-color: pink;
         */
 
     }
   </style>
 
-  <style id="svg_styles" type="text/css">
+  <style id="svg_styles">
 
     svg {
       background-image: var(--bg-fill, none);
@@ -41,7 +43,7 @@
   
   </style>
 
-  <style id="comic_styles" type="text/css">
+  <style id="comic_styles">
 
     @font-face {
       font-family: 'Comic Neue';
@@ -84,7 +86,7 @@
   
     @media (orientation: portrait) {
       .land { display: none; }
-      #title_line {width: 625px; }
+      #title_line {width: calc(440px - 25px); }
     }
   
     @media (orientation: landscape) {
@@ -138,8 +140,8 @@
 
   <defs id="clips_and_masks">
 
-    <clipPath id="one_of_four_clip">
-        <path d="M 0 0 H 300 V 400 H 0 Z"/>
+    <clipPath id="one_of_three_clip">
+        <path d="M 0 0 H 400 V 400 H 0 Z"/>
     </clipPath>
 
     <mask id="fade_mask"
@@ -183,13 +185,13 @@
       <path d=" M 0 0 L 3 0 L 1 1 H 0 Z" fill="context-stroke"/>
     </marker>
 
-    <path id="one_of_four_border" class="border" d=" M 0 0 H 300 V 400 H 0 Z " />
+    <path id="one_of_three_border" class="border" d=" M 0 0 H 400 V 400 H 0 Z " />
 
   </defs>
 
   <defs id="character_defs">
 
-		<path id="ground_arc" class="obj" d=" M 3 384 Q 150 370 297 384 Q 150 379 0 384 Z" />
+    <path id="ground_arc" class="obj" d=" M 10 380 Q 200 360 390 380 Q 200 370 10 380 Z " />
 
   </defs>
 
@@ -197,123 +199,75 @@
 
     <g id="panel_1">
 
-      <g clip-path="url(#one_of_four_clip)">
+      <g clip-path="url(#one_of_three_clip)">
 
-        <g transform="translate(150 32)">
+        <g transform="translate(200 35)">
           <text text-anchor="middle">
-            <tspan>this can fit about tw&#183;</tspan>
-            <tspan x="0" dy="1em">enty one letters on a</tspan>
-            <tspan x="0" dy="1em">line at 28px font size.</tspan>
+            <tspan>Quite a few things fit with </tspan>
+            <tspan x="0" dy="1em">
+              an 
+              <tspan font-style="italic">italic</tspan>
+              remark at 28px font.</tspan>
           </text>
         </g>
-        <rect class="text-bubble" width="286" height="90" x="7" y="7" />
-        <path d="m 270 97 h5 l -15 70 z " />
+        <rect class="text-bubble" width="386" height="70" x="7" y="7" />
+        <path d="m 30 77 h5 l 15 20 z " />
 
-        <g transform="translate(119.5 129)">
-          <text text-anchor="middle">
-            <tspan>That's maybe 15</tspan>
-            <tspan x="0" dy="1em">werds max.</tspan>
-          </text>
-        </g>
-        <rect class="text-bubble" width="225" height="60" x="7" y="104" />
-        <path d="m 40 164 h5 l 5 20 z " />
-
-
-
-				<use href="#ground_arc" />
-
-
+        <use href="#ground_arc" />
 
       </g>
 
-      <use href="#one_of_four_border" />
+      <use href="#one_of_three_border" />
 
     </g>
 
     <g id="panel_2">
 
-      <g clip-path="url(#one_of_four_clip">
+      <mask id="panel_2_mask">
+        <rect width="400" height="400" fill="#fff"/>
+        <circle cx="200" cy="280" r="90" fill="#000" />
+      </mask>
 
-        <g transform="translate(150 32)">
+      <g clip-path="url(#one_of_three_clip">
+
+        <g transform="translate(90 42)">
           <text text-anchor="middle">
-            <tspan> yyy </tspan>
+            <tspan font-size="40">Panel Two.</tspan>
           </text>
         </g>
-        <rect class="text-bubble" width="286" height="60" x="7" y="7" />
-        <path d="m 45 67 h5 l 5 50 z " />
 
+        <path class="obj" d=" M 0 300 L 400 200 V400 H 0 Z " mask="url(#panel_2_mask)" />
+
+        <circle cx="200" cy="280" r="90" 
+          stroke="#000" stroke-width="8"
+          fill="pat(stix,3)" />
 
       </g>
 
-      <use href="#one_of_four_border" />
+      <!-- <use href="#one_of_three_border" /> -->
 
     </g>
 
     <g id="panel_3">
 
-      <g clip-path="url(#one_of_four_clip">
+      <g clip-path="url(#one_of_three_clip">
 
-        <g transform="translate(150 32)">
+        <g transform="translate(115 37)">
           <text text-anchor="middle">
-            <tspan x="-0.5ch" dy="1em"
-              font-size="25"
-              font-weight="700"
-              font-style="italic"
-            >
-              ZZZ
+            <tspan font-weight="bold" font-size="30">
+              <tspan font-style="italic">Bold</tspan>
+              claim.
             </tspan>
           </text>
         </g>
-
-        <mask id="panel_3_mask" >
-          <rect width="300" height="400" fill="#fff" />
-					<circle cx="150" cy="250" r="80" fill="#000" />
-        </mask>
-
-        <path class="obj" d="M 0 300 L 300 200 V 400 H 0 Z" mask="url(#panel_3_mask)" />
-
-				<circle cx="150" cy="250" r="80" fill="pat(dots,3)" 
-					stroke="#000" stroke-width="8"
-				/>
+        <rect class="text-bubble" x="3" y="4"
+         width="230" height="50" style="stroke-width:3px"/>
+        <path d="M 40 54 h 7 l 15 25 z" />
 
       </g>
 
-      <use href="#one_of_four_border" />
-
-    </g>
-
-    <g id="panel_4">
-
-      <g clip-path="url(#one_of_four_clip">
-
-        <g transform="translate(150 32)">
-          <text text-anchor="middle">
-            XYZ
-          </text>
-        </g>
-        <rect class="text-bubble" x="7" y="7" width="286" height="60" style="stroke-width:3;" />
-        <path d="m 65 67 h5 l 20 35 z " />
-
-        <mask id="panel_4_mask" >
-          <rect width="300" height="400" fill="#fff" />
-        	<rect x="7" y="7" width="286" height="60" fill="#000" />
-					<ellipse cx="134" cy="250" rx="70" ry="107" fill="#000" transform-origin="134 250" transform="rotate(-5)" />
-        </mask>
-
-
-				<rect width="300" height="400" fill="pat(dots,3.5)"
-					mask="url(#panel_4_mask)"
-				/>
-				<ellipse cx="134" cy="250" rx="70" ry="107" 
-					fill="none" stroke="#000" stroke-width="8"
-					transform-origin="134 250"
-					transform="rotate(-5)"
-				/>
-        <ellipse class="obj" cx="140" cy="360" rx="55" ry="3" />
-
-      </g>
-
-      <use href="#one_of_four_border" />
+      <path class="border slant" d=" M 280 8 H 400 V 400 H 8 V 80  "/>
+      <!-- <use href="#one_of_three_border" /> -->
 
     </g>
 
@@ -328,23 +282,21 @@
 
     <use href="#title"/>
     <g transform="translate(0 80)">
-      <use href="#copyright" transform="translate(976 395)" />
-      <use href="#panel_1" transform="translate(20 0)" />
-      <use href="#panel_2" transform="translate(340 0)" />
-      <use href="#panel_3" transform="translate(660 0)" />
-      <use href="#panel_4" transform="translate(980 0)" />
+      <use href="#copyright" transform="translate(1267 395)" />
+      <use href="#panel_1" transform="translate(25 0)" />
+      <use href="#panel_2" transform="translate(450 0)" />
+      <use href="#panel_3" transform="translate(875 0)" />
     </g>
 
   </svg>
 
-  <svg class="port" viewBox="0 0 650 905"> 
+  <svg class="port" viewBox="0 0 440 1380"> 
     <use href="#title" />
     <g transform="translate(0 80)">
-      <use href="#copyright" transform="translate(330 814)" />
-      <use href="#panel_1" transform="translate(15 0)" />
-      <use href="#panel_2" transform="translate(335 0)" />
-      <use href="#panel_3" transform="translate(15 420)" />
-      <use href="#panel_4" transform="translate(335 420)" />
+      <use href="#copyright" transform="translate(416 1235)" />
+      <use href="#panel_1" transform="translate(20 0)" />
+      <use href="#panel_2" transform="translate(20 420)" />
+      <use href="#panel_3" transform="translate(20 840)" />
     </g>
   </svg>
   

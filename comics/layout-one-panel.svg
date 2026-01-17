@@ -47,19 +47,16 @@
     @font-face {
       font-family: 'Comic Neue';
       src: url('neue.ttf') format('truetype');
+      /* src: url('ComingSoon.ttf') format('truetype'); */
     }
   
     text {
       font-family: 'Comic Neue';
+      dont-weight: 400;
       font-size: 24px;
 			fill: var(--text-color, var(--outline-color, #000));
     }
   
-    #title_line {
-      fill: var(--border-color, var(--outline-color, #000));
-      height: 2px;
-    }
-
     .text-bubble {
       fill: none;
       stroke: var(--outline-color, #000);
@@ -70,10 +67,11 @@
       fill: var(--outline-color, #000);
     }
 
-	  .obj {
-			fill: var(--outline-color, #000);
-		}
-    
+    #title_line {
+      fill: var(--border-color, var(--outline-color, #000));
+      height: 2px;
+    }
+
     #copyright, #scoundrel {
       font-family:'Times New Roman';
       font-weight: 300;
@@ -81,6 +79,10 @@
       fill:var(--border-color, var(--outline-color, #000));
     }
   
+    .obj {
+        fill: var(--outline-color, #000);
+    }
+    
     @media (orientation: portrait) {
       .land { display: none; }
       #title_line {width: 625px; }
@@ -131,12 +133,7 @@
       <image href="newsprint.jpg" width="100%" height="100%" preserveAspectRatio="none" />
     </pattern>
 
-    <pattern id="dots" viewBox="-2 -2 4 4" width="4" height="4"
-     patternUnits="userSpaceOnUse" patternTransform="rotate(45) scale(1.5)">
-     <circle r="1" fill="var(--outline-color, #000)" transform="scale(1.5)"/>
-    </pattern>
-
-    <pattern id="dotty" fill="pat(livingthings,4.5,var(--outline-color,#000))"/>
+    <pattern id="dots" fill="pat(dots,var(--outline-color,#000))"/>
 
   </defs>
 
@@ -187,13 +184,12 @@
 
   <defs id="border_defs">
 
-    <marker id="slant_cap" markerWidth="3" markerHeight="1"
-            refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
-      <path d=" M 0 0 L 1 0 L 3 1 L 0 1 Z" fill="context-stroke"/>
+    <marker id="slant_cap" markerWidth="3" markerHeight="1" refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d=" M 0 0 L 3 0 L 1 1 H 0 Z" fill="context-stroke"/>
     </marker>
 
     <path id="left_corner" class="border slant" d=" M 0 220 V 0 H 310 " />
-    <path id="right_corner" class="border slant" d=" M -420 0 H 0 V -200 "/>
+    <path id="right_corner" class="border slant" d=" M 0 -200 V 0 H -420 "/>
 
   </defs>
 
@@ -236,7 +232,6 @@
 
     <g transform="translate(0 80)" clip-path="url(#clip_land)">
 
-      <path id="ZONES_LAND" fill="lightblue" fill-opacity="0.4" d=" M12.5 0 h300v400h-300z M337.5 0 h300v400h-300z M662.5 0 h300v400h-300z M987.6 0h300v400h-300z "/>
       <use href="#dialog" transform="translate(470 40)" />
       <path d="
         M 337.5 90 v 5 l -40 10 z
@@ -255,12 +250,10 @@
 
     <use href="#title" style="--show-hearts: 1;" />
     <use href="#copyright" transform="translate(630 900)" />
-    <use href="#scoundrel" transform="translate(637.5 925)" />
+    <use href="#scoundrel" transform="translate(637.5 7)" />
 
     <g transform="translate(0 80)" clip-path="url(#clip_port)">
 
-
-      <path id="ZONES_PORT" fill="lightblue" fill-opacity="0.4" d=" M12.5 0 h300v400h-300z M337.5 0 h300v400h-300z M12.5 425 h300v400h-300z M337.6 426 h300v400h-300z "/>
 
       <use href="#dialog" transform="translate(120 80)" />
       <path d="
