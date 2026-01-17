@@ -214,9 +214,9 @@
 
   </defs>
 
-	<defs id="character_defs">
+  <defs id="character_defs">
 
-	</defs>
+  </defs>
 
   <g id="haxxor" style="
     filter: var(--bg-filter, none);
