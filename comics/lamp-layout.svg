@@ -1,15 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg"
-opacity="0.6" >
+<svg xmlns="http://www.w3.org/2000/svg" >
 
   <style id="config_styles">
 
     :root {
-      --front-color: #999;
-      --back-color: #333;
-      --shirt-color: #999;
-      --pot-color: #ccc;
-      --hat-color: #333;
-      --pants-color: #333;
+      --pot-color: rgba(255,255,255,0.8);
+      --outline-color: #500;
+      --text-color: var(--outline-color);
+      --title-color: var(--outline-color);
+      --border-color: var(--outline-color);
     }
 
   </style>
@@ -28,6 +26,7 @@ opacity="0.6" >
     text {
       font-family: 'Comic Neue';
       font-size: 20px;
+      fill: var(--text-color, var(--outline-color, #000));
     }
   
     #title_line {
@@ -42,6 +41,10 @@ opacity="0.6" >
       fill:var(--text-color, var(--outline-color, #000));
     }
   
+    .obj {
+      fill: var(--outline-color, #000);
+    }
+
     @media (orientation: portrait) {
       .land { display: none; }
       #titles {transform: translate(260px, 0); }
@@ -70,9 +73,34 @@ opacity="0.6" >
     </g>
   </defs>
 
+  <defs id="character_defs">
+
+    <pattern id="lite_dots" fill="pat(dots,var(--outline-color),0.8)"/>
+    <pattern id="dark_dots" fill="pat(dots,var(--outline-color),0.8,1.8)"/>
+
+    <g id="lamp_land">
+      <use href="lamp.svg#ikon"/>
+      <use href="lamp.svg#front"
+      fill="url(#lite_dots)" />
+      <use href="lamp.svg#back"
+      fill="url(#dark_dots)" />
+    </g>
+
+    <g id="teapot_land">
+      <use href="teapot.svg#pot_body" fill="var(--pot-color)" />
+      <use href="teapot.svg#hat" fill="url(#dark_dots)" />
+      <use href="teapot.svg#shirt" fill="url(#lite_dots)" />
+      <use href="teapot.svg#pants" fill="url(#dark_dots)" />
+      <!--use href="teapot.svg#resume_paper" fill="red" /-->
+      <use href="teapot.svg#back_of_hand" fill="var(--pot-color)" />
+      <use href="teapot.svg#blank_ikon" />
+    </g>
+
+  </defs>
+
   <defs id="dialog_def">
     <g id="dialog">
-    <path class="port" fill="none" stroke="#000" stroke-width="1" d="
+    <path class="port" fill="none" stroke="var(--outline-color, #000)"  stroke-width="1" d="
      M 330 80 V 6 H 900 V 90 H 790
      M 380 195 H 270 V 80 H 790 V 180
      M 380 275 V 180 H 900 V 290 H 440
@@ -155,11 +183,11 @@ opacity="0.6" >
     <use href="#title" />
     <g transform="translate(0 80)">
       <use href="#dialog" />
-      <path d=" M 12.5 0 h 280 l -4 2 h -274 v 198 l -2 4 z M 1287.5 400 v -280 l -2 4 v 274 h -600 l-4 2 z " />
+      <path class="obj" d=" M 12.5 0 h 280 l -4 2 h -274 v 198 l -2 4 z M 1287.5 400 v -280 l -2 4 v 274 h -600 l-4 2 z " />
       <use href="#copyright" transform="translate(1281 390)" />
-      <path d="M 270 100 v 4 l -40 -10 z M 900 60 v -4 l 40 20 z " />
-      <use href="lamp.svg#ikon" transform="scale(1.6) translate(0 28)" />
-      <use href="teapot.svg#ikon" transform="scale(1.5) translate(580 20)" />
+      <path class="obj" d="M 270 100 v 4 l -40 -10 z M 900 60 v -4 l 40 20 z " />
+      <use href="#lamp_land" transform="scale(1.6) translate(0 28)" />
+      <use href="#teapot_land" transform="scale(1.5) translate(580 20)" />
     </g>
   </svg>
 
@@ -168,17 +196,17 @@ opacity="0.6" >
     <g transform="translate(0 80)">
       <use href="#dialog" />
       <use href="#copyright" transform="translate(890 780)" />
-      <path d=" 
+      <path class="obj" d=" 
         M 300 315 h 4 l 20 60 z 
         M 800 380 h 4 l -20 40 z 
       " />
 
-      <path transform="translate(260 0)" d="
+      <path class="obj" transform="translate(260 0)" d="
         M 637.5 787.5 v -380 l -2 4 v 374 H 8.5 v -250 l -2 -4 v 256 z 
       " />
 
-      <use href="lamp.svg#ikon" transform="scale(1.8) translate(130 214)" />
-      <use href="teapot.svg#ikon" transform="scale(1.5) translate(322 270)" />
+      <use href="#lamp_land" transform="scale(1.8) translate(130 214)" />
+      <use href="#teapot_land" transform="scale(1.5) translate(322 270)" />
     </g>
   </svg>
 
