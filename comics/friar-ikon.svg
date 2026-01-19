@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+
+
+
+    <g id="ikon">
+
+      <use href="#mask" fill="pink" />
+    
+
+    </g>
+
+  </defs>
+
+  <use href="friar-remove.svg#outlet" 
+    style="--line-width: 8px;"
+  />
+
+</svg>

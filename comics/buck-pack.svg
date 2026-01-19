@@ -583,7 +583,7 @@
 
         <g transform="translate(90 42)">
           <text text-anchor="middle">
-            <tspan font-size="40">??!</tspan>
+            <tspan font-size="40">...</tspan>
           </text>
         </g>
 
@@ -610,7 +610,7 @@
         <g transform="translate(282 37)">
           <text text-anchor="middle">
             <tspan font-weight="bold" font-size="30">
-              You sure?
+              ...
               <tspan font-style="italic"> </tspan>
             </tspan>
           </text>
