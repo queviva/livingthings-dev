@@ -4,6 +4,7 @@
   
     :root {
 
+        --show-hearts: 1;
         /*
         --bg-fill: url(newsprint.jpg);
         --bg-filter: url(#shake);
@@ -53,7 +54,7 @@
     text {
       font-family:'Comic Neue';
       font-weight: 400;
-      font-size: var(--font-size, 24px);
+      font-size: var(--font-size, 28px);
       fill: var(--text-color, var(--outline-color, #000));
     }
   
@@ -144,8 +145,8 @@
 
   <defs id="clips_and_masks">
 
-    <clipPath id="one_of_four_clip">
-        <path d="M 0 0 H 300 V 400 H 0 Z"/>
+    <clipPath id="two_of_four_clip">
+        <path d="M 0 0 H 620 V 400 H 0 Z"/>
     </clipPath>
 
     <mask id="fade_mask"
@@ -189,13 +190,13 @@
       <path d=" M 0 0 L 3 0 L 1 1 H 0 Z" fill="context-stroke"/>
     </marker>
 
-    <path id="one_of_four_border" class="border" d=" M 0 0 H 300 V 400 H 0 Z " />
+    <path id="two_of_four_border" class="border" d=" M 0 0 H 620 V 400 H 0 Z " />
 
   </defs>
 
   <defs id="character_defs">
 
-		<path id="ground_arc" class="obj" d=" M 3 384 Q 150 370 297 384 Q 150 379 0 384 Z" />
+		<path id="ground_arc" class="obj" d=" M 3 384 Q 310 370 617 384 Q 310 379 0 384 Z" />
 
   </defs>
 
@@ -203,22 +204,27 @@
 
     <g id="panel_1">
 
-      <g clip-path="url(#one_of_four_clip)">
+      <mask id="panel_1_mask" >
+        <rect width="620" height="400" fill="#fff" />
+  			<circle cx="150" cy="250" r="80" fill="#000" />
+      </mask>
 
-        <g transform="translate(150 32)">
+      <g clip-path="url(#two_of_four_clip)">
+
+        <g transform="translate(310 32)">
           <text text-anchor="middle">
-            <tspan>this can fit about tw&#183;</tspan>
-            <tspan x="0" dy="1em">enty one letters on a</tspan>
-            <tspan x="0" dy="1em">line at 28px font size.</tspan>
+            <tspan>Line one,</tspan>
+            <tspan x="0" dy="1em">line two,</tspan>
+            <tspan x="0" dy="1em">line three.</tspan>
           </text>
         </g>
-        <rect class="text-bubble" width="286" height="90" x="7" y="7" />
+        <rect class="text-bubble" width="606" height="90" x="7" y="7" />
         <path d="m 270 97 h5 l -15 70 z " />
 
         <g transform="translate(119.5 129)">
           <text text-anchor="middle">
-            <tspan>That's maybe 15</tspan>
-            <tspan x="0" dy="1em">werds max.</tspan>
+            <tspan>Line One.</tspan>
+            <tspan x="0" dy="1em">Line Two.</tspan>
           </text>
         </g>
         <rect class="text-bubble" width="225" height="60" x="7" y="104" />
@@ -232,32 +238,18 @@
 
       </g>
 
-      <use href="#one_of_four_border" />
+      <use href="#two_of_four_border" />
 
     </g>
 
     <g id="panel_2">
 
-      <g clip-path="url(#one_of_four_clip">
+      <mask id="panel_2_mask" >
+        <rect width="620" height="400" fill="#fff" />
+				<ellipse cx="134" cy="250" rx="70" ry="107" fill="#000" />
+      </mask>
 
-        <g transform="translate(150 32)">
-          <text text-anchor="middle">
-            <tspan> yyy </tspan>
-          </text>
-        </g>
-        <rect class="text-bubble" width="286" height="60" x="7" y="7" />
-        <path d="m 45 67 h5 l 5 50 z " />
-
-
-      </g>
-
-      <use href="#one_of_four_border" />
-
-    </g>
-
-    <g id="panel_3">
-
-      <g clip-path="url(#one_of_four_clip">
+      <g clip-path="url(#two_of_four_clip">
 
         <g transform="translate(150 32)">
           <text text-anchor="middle">
@@ -271,45 +263,8 @@
           </text>
         </g>
 
-        <mask id="panel_3_mask" >
-          <rect width="300" height="400" fill="#fff" />
-					<circle cx="150" cy="250" r="80" fill="#000" />
-        </mask>
+        <path d="M 0 300 L 620 200 V 400 H 0 Z" mask="url(#panel_2_mask)" fill="pat(dots,3)" />
 
-        <path class="obj" d="M 0 300 L 300 200 V 400 H 0 Z" mask="url(#panel_3_mask)" />
-
-				<circle cx="150" cy="250" r="80" fill="pat(dots,3)" 
-					stroke="#000" stroke-width="8"
-				/>
-
-      </g>
-
-      <use href="#one_of_four_border" />
-
-    </g>
-
-    <g id="panel_4">
-
-      <g clip-path="url(#one_of_four_clip">
-
-        <g transform="translate(150 32)">
-          <text text-anchor="middle">
-            XYZ
-          </text>
-        </g>
-        <rect class="text-bubble" x="7" y="7" width="286" height="60" style="stroke-width:3;" />
-        <path d="m 65 67 h5 l 20 35 z " />
-
-        <mask id="panel_4_mask" >
-          <rect width="300" height="400" fill="#fff" />
-        	<rect x="7" y="7" width="286" height="60" fill="#000" />
-					<ellipse cx="134" cy="250" rx="70" ry="107" fill="#000" transform-origin="134 250" transform="rotate(-5)" />
-        </mask>
-
-
-				<rect width="300" height="400" fill="pat(dots,3.5)"
-					mask="url(#panel_4_mask)"
-				/>
 				<ellipse cx="134" cy="250" rx="70" ry="107" 
 					fill="none" stroke="#000" stroke-width="8"
 					transform-origin="134 250"
@@ -319,7 +274,7 @@
 
       </g>
 
-      <use href="#one_of_four_border" />
+      <use href="#two_of_four_border" />
 
     </g>
 
@@ -334,11 +289,9 @@
 
     <use href="#title"/>
     <g transform="translate(0 80)">
-      <use href="#copyright" transform="translate(976 395)" />
+      <use href="#copyright" transform="translate(1276 395)" />
       <use href="#panel_1" transform="translate(20 0)" />
-      <use href="#panel_2" transform="translate(340 0)" />
-      <use href="#panel_3" transform="translate(660 0)" />
-      <use href="#panel_4" transform="translate(980 0)" />
+      <use href="#panel_2" transform="translate(660 0)" />
     </g>
 
   </svg>
@@ -346,11 +299,9 @@
   <svg class="port" viewBox="0 0 650 905"> 
     <use href="#title" />
     <g transform="translate(0 80)">
-      <use href="#copyright" transform="translate(330 814)" />
+      <use href="#copyright" transform="translate(631 814)" />
       <use href="#panel_1" transform="translate(15 0)" />
-      <use href="#panel_2" transform="translate(335 0)" />
-      <use href="#panel_3" transform="translate(15 420)" />
-      <use href="#panel_4" transform="translate(335 420)" />
+      <use href="#panel_2" transform="translate(15 420)" />
     </g>
   </svg>
   
