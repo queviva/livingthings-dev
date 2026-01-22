@@ -11,6 +11,7 @@
         --bg-fill: url(newsprint.jpg);
         --bg-mask: url(#fade_mask);
         /*
+        --bg-color: none;
         --bg-filter: url(#shake);
         --bg-opacity: 0.85;
         */
@@ -39,6 +40,7 @@
   <style id="svg_styles" type="text/css">
 
     svg {
+      background-color: var(--bg-color, none);
       background-image: var(--bg-fill, none);
       mask: var(--bg-mask, none);
     }
