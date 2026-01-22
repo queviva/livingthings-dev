@@ -104,7 +104,7 @@
 
   <mask id="title_mask">
     <rect width="820" height="400" fill="#fff"/>
-    <use href="lil-morris.svg#mask" 
+    <use href="lil-morris.svg#matte" 
      transform="translate(705 225) scale(1.5)"
     />
     <use href="red-line-sad.svg#mask" 

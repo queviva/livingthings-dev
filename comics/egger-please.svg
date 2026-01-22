@@ -368,7 +368,7 @@
           <use href="#title_jet_mask" fill="#000"
             transform="translate(22 5)"
           />
-          <use href="lil-morris.svg#mask" fill="#000"
+          <use href="lil-morris.svg#matte" fill="#000"
             transform="translate(826 207) scale(-1 1) scale(1.75)"
           />
         </mask>
