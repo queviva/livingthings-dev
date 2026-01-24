@@ -73,6 +73,12 @@
     </g>
   </defs>
 
+  <defs id="clip_defs">
+    <clipPath id="port_clip">
+      <path d="M267 0 h 650 v 880 h -650 z" />
+    </clipPath>
+  </defs>
+
   <defs id="character_defs">
 
     <pattern id="lite_dots" fill="pat(dots,var(--outline-color),0.8)"/>
@@ -193,7 +199,7 @@
 
   <svg class="port" viewBox="260 0 650 880">
     <use href="#title" transform="translate(260 0)" style="--show-hearts: 1" />
-    <g transform="translate(0 80)">
+    <g transform="translate(0 80)" clip-path="url(#port_clip)">
       <use href="#dialog" />
       <use href="#copyright" transform="translate(890 780)" />
       <path class="obj" d=" 
@@ -201,13 +207,13 @@
         M 800 380 h 4 l -20 40 z 
       " />
 
-      <path class="obj" transform="translate(260 0)" d="
-        M 637.5 787.5 v -380 l -2 4 v 374 H 8.5 v -250 l -2 -4 v 256 z 
-      " />
-
       <use href="#lamp_land" transform="scale(1.8) translate(130 214)" />
       <use href="#teapot_land" transform="scale(1.5) translate(322 270)" />
     </g>
+    <path xxx-display="none" class="obj" transform="translate(260 80)" d="
+      M 637.5 787.5 v -380 l -2 4 v 374 H 8.5 v -250 l -2 -4 v 256 z 
+    " />
+
   </svg>
 
 </svg>
