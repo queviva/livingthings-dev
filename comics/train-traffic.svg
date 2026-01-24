@@ -544,14 +544,20 @@
         <rect class="text-bubble" width="225" height="60" x="7" y="7" />
         <path d="m 40 67 h5 l 5 20 z " />
 
-        <path d="M 0 300 L 620 200 V 400 H 0 Z" mask="url(#panel_2_mask)" fill="pat(dots,3)" />
+        <path d="M 0 300 L 620 200 V 400 H 0 Z" mask="url(#panel_2_mask)" fill="pat(dots,var(--outline-color),3)" />
 
 				<ellipse cx="134" cy="250" rx="70" ry="107" 
 					fill="none" stroke="#000" stroke-width="8"
 					transform-origin="134 250"
 					transform="rotate(-5)"
 				/>
+
         <ellipse class="obj" cx="140" cy="360" rx="55" ry="3" />
+
+        <use href="lil-morris.svg#ikon" 
+          transform-origin="37 0"
+          transform="translate(400 50) scale(-2.5 2.5)"
+        />
 
       </g>
 

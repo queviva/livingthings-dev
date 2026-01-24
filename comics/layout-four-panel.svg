@@ -1,18 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg">
 
   <style id="config_styles" type="text/css">
-  
     :root {
 
-        /*
+      --bg-color: none;
+      /*
         --bg-fill: url(newsprint.jpg);
-        --bg-color: none;
         --bg-filter: url(#shake);
         --bg-mask: url(#fade_mask);
         --bg-opacity: 0.85;
         */
 
-        /*
+      /*
         --show-hearts: 1;
         --font-size: 22px;
         --title-color: orange;
@@ -35,30 +34,27 @@
   </style>
 
   <style id="svg_styles" type="text/css">
-
     svg {
       background-color: var(--bg-color, none);
       background-image: var(--bg-fill, none);
       mask: var(--bg-mask, none);
     }
-  
   </style>
 
   <style id="comic_styles" type="text/css">
-
     @font-face {
       font-family: 'Comic Neue';
       /* src: url('neue.ttf') format('truetype'); */
       src: url('ComingSoon.ttf') format('truetype');
     }
-  
+
     text {
-      font-family:'Comic Neue';
+      font-family: 'Comic Neue';
       font-weight: 400;
       font-size: var(--font-size, 24px);
       fill: var(--text-color, var(--outline-color, #000));
     }
-  
+
     .emph {
       font-style: italic;
       font-weight: bold;
@@ -70,7 +66,7 @@
       stroke-width: 1px;
     }
 
-    .text-bubble + path {
+    .text-bubble+path {
       fill: var(--outline-color, #000);
     }
 
@@ -78,49 +74,57 @@
       fill: var(--title-color, #000);
       height: 2px;
     }
-    
-    #copyright, #scoundrel {
-      font-family:'Times New Roman';
+
+    #copyright,
+    #scoundrel {
+      font-family: 'Times New Roman';
       font-weight: 300;
-      font-size:17px;
-      fill:var(--copy-color, var(--outline-color, #000));
+      font-size: 17px;
+      fill: var(--copy-color, var(--outline-color, #000));
     }
 
     .obj {
       fill: var(--outline-color, #000);
     }
-  
+
     @media (orientation: portrait) {
-      .land { display: none; }
-      #title_line {width: 625px; }
+      .land {
+        display: none;
+      }
+
+      #title_line {
+        width: 625px;
+      }
     }
-  
+
     @media (orientation: landscape) {
-      .port { display: none; }
-      #title_line { width: 1275px; }
+      .port {
+        display: none;
+      }
+
+      #title_line {
+        width: 1275px;
+      }
     }
-  
   </style>
 
   <style id="border_styles">
-
     .border {
-     fill: none ;
-     stroke: var(--border-color, var(--outline-color, #000));
-     stroke-width: var(--border-width, 2); 
+      fill: none;
+      stroke: var(--border-color, var(--outline-color, #000));
+      stroke-width: var(--border-width, 2);
     }
 
     .slant {
       marker-start: url(#slant_cap);
       marker-end: url(#slant_cap);
     }
-
   </style>
 
   <defs id="pats_and_filters">
 
     <linearGradient id="fade" gradientUnits="objectBoundingBox">
-      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#000" stop-opacity="0" />
       <stop offset="100%" stop-color="#000" />
     </linearGradient>
 
@@ -129,35 +133,31 @@
     </filter>
 
     <filter id="shake" width="120%" height="220%" color-interpolation-filters="sRGB">
-      <feImage href="newsprint.jpg" x="0" y="0" width="220%" height="120%" preserveAspectRatio="xMidYMid slice" result="mig" />
-      <feDisplacementMap in="SourceGraphic" in2="mig" result="rat" scale="5" xChannelSelector="R" yChannelSelector="B" />
+      <feImage href="newsprint.jpg" x="0" y="0" width="220%" height="120%" preserveAspectRatio="xMidYMid slice"
+        result="mig" />
+      <feDisplacementMap in="SourceGraphic" in2="mig" result="rat" scale="5" xChannelSelector="R"
+        yChannelSelector="B" />
       <feGaussianBlur in="rat" stdDeviation="0.3" result="blur" />
       <!-- shift image back based on displacement's scale -->
       <feOffset in="blurred" dx="0.5" dy="5" result="final" />
     </filter>
-    
+
     <pattern id="newsprint" patternUnits="userSpaceOnUse" width="100%" height="100%">
       <image href="newsprint.jpg" width="100%" height="100%" preserveAspectRatio="none" />
     </pattern>
 
-    <pattern id="dots" fill="pat(dots,var(--outline-color,#000))"/>
+    <pattern id="dots" fill="pat(dots,var(--outline-color,#000))" />
 
   </defs>
 
   <defs id="clips_and_masks">
 
     <clipPath id="one_of_four_clip">
-        <path d="M 0 0 H 300 V 400 H 0 Z"/>
+      <path d="M 0 0 H 300 V 400 H 0 Z" />
     </clipPath>
 
-    <mask id="fade_mask"
-     maskUnits="objectBoundingBox"
-     maskContentUnits="objectBoundingBox"
-    >
-      <linearGradient id="fade_gradient"
-       x1="0%" y1="100%"
-       x2="90%" y2="0%"
-      >
+    <mask id="fade_mask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <linearGradient id="fade_gradient" x1="0%" y1="100%" x2="90%" y2="0%">
         <stop offset="0%" stop-color="#fff" stop-opacity="1" />
         <stop offset="100%" stop-color="#fff" stop-opacity="0.4" />
       </linearGradient>
@@ -184,11 +184,12 @@
       </tspan>
     </text>
   </defs>
-  
+
   <defs id="border_defs">
 
-    <marker id="slant_cap" markerWidth="3" markerHeight="1" refX="1" refY="0.5" orient="auto-start-reverse" markerUnits="strokeWidth">
-      <path d=" M 0 0 L 3 0 L 1 1 H 0 Z" fill="context-stroke"/>
+    <marker id="slant_cap" markerWidth="3" markerHeight="1" refX="1" refY="0.5" orient="auto-start-reverse"
+      markerUnits="strokeWidth">
+      <path d=" M 0 0 L 3 0 L 1 1 H 0 Z" fill="context-stroke" />
     </marker>
 
     <path id="one_of_four_border" class="border" d=" M 0 0 H 300 V 400 H 0 Z " />
@@ -197,7 +198,7 @@
 
   <defs id="character_defs">
 
-		<path id="ground_arc" class="obj" d=" M 3 384 Q 150 370 297 384 Q 150 379 0 384 Z" />
+    <path id="ground_arc" class="obj" d=" M 3 384 Q 150 370 297 384 Q 150 379 0 384 Z" />
 
   </defs>
 
@@ -228,7 +229,7 @@
 
 
 
-				<use href="#ground_arc" />
+        <use href="#ground_arc" />
 
 
 
@@ -240,7 +241,7 @@
 
     <g id="panel_2">
 
-      <g clip-path="url(#one_of_four_clip">
+      <g clip-path="url(#one_of_four_clip)">
 
         <g transform="translate(150 32)">
           <text text-anchor="middle">
@@ -259,30 +260,24 @@
 
     <g id="panel_3">
 
-      <g clip-path="url(#one_of_four_clip">
+      <g clip-path="url(#one_of_four_clip)">
 
         <g transform="translate(150 32)">
           <text text-anchor="middle">
-            <tspan x="-0.5ch" dy="1em"
-              font-size="25"
-              font-weight="700"
-              font-style="italic"
-            >
+            <tspan x="-0.5ch" dy="1em" font-size="25" font-weight="700" font-style="italic">
               ZZZ
             </tspan>
           </text>
         </g>
 
-        <mask id="panel_3_mask" >
+        <mask id="panel_3_mask">
           <rect width="300" height="400" fill="#fff" />
-					<circle cx="150" cy="250" r="80" fill="#000" />
+          <circle cx="150" cy="250" r="80" fill="#000" />
         </mask>
 
         <path class="obj" d="M 0 300 L 300 200 V 400 H 0 Z" mask="url(#panel_3_mask)" />
 
-				<circle cx="150" cy="250" r="80" fill="pat(dots,3)" 
-					stroke="#000" stroke-width="8"
-				/>
+        <circle cx="150" cy="250" r="80" fill="pat(dots,3)" stroke="#000" stroke-width="8" />
 
       </g>
 
@@ -292,7 +287,7 @@
 
     <g id="panel_4">
 
-      <g clip-path="url(#one_of_four_clip">
+      <g clip-path="url(#one_of_four_clip)">
 
         <g transform="translate(150 32)">
           <text text-anchor="middle">
@@ -302,21 +297,16 @@
         <rect class="text-bubble" x="7" y="7" width="286" height="60" style="stroke-width:3;" />
         <path d="m 65 67 h5 l 20 35 z " />
 
-        <mask id="panel_4_mask" >
+        <mask id="panel_4_mask">
           <rect width="300" height="400" fill="#fff" />
-        	<rect x="7" y="7" width="286" height="60" fill="#000" />
-					<ellipse cx="134" cy="250" rx="70" ry="107" fill="#000" transform-origin="134 250" transform="rotate(-5)" />
+          <rect x="7" y="7" width="286" height="60" fill="#000" />
+          <ellipse cx="134" cy="250" rx="70" ry="107" fill="#000" transform-origin="134 250" transform="rotate(-5)" />
         </mask>
 
 
-				<rect width="300" height="400" fill="pat(dots,3.5)"
-					mask="url(#panel_4_mask)"
-				/>
-				<ellipse cx="134" cy="250" rx="70" ry="107" 
-					fill="none" stroke="#000" stroke-width="8"
-					transform-origin="134 250"
-					transform="rotate(-5)"
-				/>
+        <rect width="300" height="400" fill="pat(dots,3.5)" mask="url(#panel_4_mask)" />
+        <ellipse cx="134" cy="250" rx="70" ry="107" fill="none" stroke="#000" stroke-width="8"
+          transform-origin="134 250" transform="rotate(-5)" />
         <ellipse class="obj" cx="140" cy="360" rx="55" ry="3" />
 
       </g>
@@ -332,30 +322,31 @@
     opacity: var(--bg-opacity, 1);
   ">
 
-  <svg class="land" viewBox="0 0 1300 520">
+    <svg class="land" viewBox="0 0 1300 520">
 
-    <use href="#title"/>
-    <g transform="translate(0 80)">
-      <use href="#copyright" transform="translate(976 395)" />
-      <use href="#panel_1" transform="translate(20 0)" />
-      <use href="#panel_2" transform="translate(340 0)" />
-      <use href="#panel_3" transform="translate(660 0)" />
-      <use href="#panel_4" transform="translate(980 0)" />
-    </g>
+      <use href="#title" />
+      <g transform="translate(0 80)">
+        <use href="#copyright" transform="translate(976 395)" />
+        <use href="#panel_1" transform="translate(20 0)" />
+        <use href="#panel_2" transform="translate(340 0)" />
+        <use href="#panel_3" transform="translate(660 0)" />
+        <use href="#panel_4" transform="translate(980 0)" />
+      </g>
 
-  </svg>
+    </svg>
 
-  <svg class="port" viewBox="0 0 650 905"> 
-    <use href="#title" />
-    <g transform="translate(0 80)">
-      <use href="#copyright" transform="translate(330 814)" />
-      <use href="#panel_1" transform="translate(15 0)" />
-      <use href="#panel_2" transform="translate(335 0)" />
-      <use href="#panel_3" transform="translate(15 420)" />
-      <use href="#panel_4" transform="translate(335 420)" />
-    </g>
-  </svg>
-  
+    <svg class="port" viewBox="0 0 650 905">
+      <use href="#title" />
+      <g transform="translate(0 80)">
+        <use href="#copyright" transform="translate(330 814)" />
+        <use href="#panel_1" transform="translate(15 0)" />
+        <use href="#panel_2" transform="translate(335 0)" />
+        <use href="#panel_3" transform="translate(15 420)" />
+        <use href="#panel_4" transform="translate(335 420)" />
+      </g>
+    </svg>
+
   </g>
+
 
 </svg>

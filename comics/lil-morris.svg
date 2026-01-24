@@ -16,7 +16,7 @@
       <path id="under_foot" d="M 66.8 102.3 L 63.5 106.1 L 61.6 106.1 L 22.9 106.1 L 26.3 102.3 C 44.4 102.9 60.4 101.4 71.9 98.2 L 66.8 102.3 Z" />
       <path id="head_and_back" d="M 22 106.1 C 26 81 21 52.2 1 19.5 L 11.2 0.5 Q 36.2 1 46.5 5.0 L 57.8 37.3 L 54.0 37.3 L 44.0 7.4 Q 33 3 12.5 4.1 L 4.6 18.6 C 21.3 48.0 28.6 77.2 26.3 106.1 L 22.9 106.1 Z" />
       <path id="mouth_front_toe" d=" M 24 44.1 Q 45 35.3 60.9 35.4 L 57.8 87.7 L 75.5 97.8 L 63.2 106.1 L 59.9 106.1 L 71.1 98.4 L 54.0 88.8 L 57.8 39.3 Q 48 38 24 46.9 Z " opacity="calc(1 - var(--open-mouth, 0))" />
-      <path id="open_mouth_front_toe" d=" M 24 44.1 Q 45 34 53.5 36 L 57.8 37.3 L 55 39.5 Q 59 39.8 62 41 L 57.8 87.7 L 75.5 97.8 L 63.2 106.1 L 59.9 106.1 L 71.1 98.4 L 54.0 88.8 L 57.8 44 Q 48 40 24 46.9 Z " opacity="var(--open-mouth, 0)" />
+      <path id="open_mouth_front_toe" d=" M 24 44.1 Q 35 34.5 53.5 36 L 57.8 37.3 L 55 39.5 Q 59 39.8 62 41 L 57.8 87.7 L 75.5 97.8 L 63.2 106.1 L 59.9 106.1 L 71.1 98.4 L 54.0 88.8 L 57.8 44 C 48 40 27 43 24 48 Z " opacity="var(--open-mouth, 0)" />
       <path id="mouth_corner" d="M 24.9 41.5 L 23.4 40.9 C 23.3 44.2 23.5 47.1 23.9 49.5 L 25.2 50.2 C 24.7 47.4 24.5 44.5 24.9 41.5 Z" />
       <path id="foot_line" d="M 60.4 91.5 L 58.7 89.9 C 54.2 95.5 41.5 97.0 25.4 96.3 L 25.4 97.5 C 39.3 97.0 52.3 97.1 60.4 91.5 Z" />
       <g id="crease_lines">
@@ -39,7 +39,9 @@
 
   </defs>
 
-  <use href="#ikon" style="
+  <use href="#ikon" transform-origin="37 100" 
+    transform="scale(-1 1)"
+  style="
   --x-head-color: red;
   --chest-color: pink;
   --foot-color: green;
@@ -47,7 +49,7 @@
   --fill-color: green;
   --arc-color: orange;
   --outline-color: blue;
-  --open-mouth: 1;
+  --open-mouth: 0;
   " />
 
 </svg>

@@ -251,7 +251,7 @@
 				<ellipse cx="134" cy="250" rx="70" ry="107" fill="#000" />
       </mask>
 
-      <g clip-path="url(#two_of_four_clip">
+      <g clip-path="url(#two_of_four_clip)">
 
         <g transform="translate(150 32)">
           <text text-anchor="middle">
