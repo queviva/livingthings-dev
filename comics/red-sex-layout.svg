@@ -3,15 +3,15 @@
   <style id="config_styles" type="text/css">
     :root {
 
-      --outline-color: darkblue;
+      --outline-color: hsl(225, 80%, 20%); 
       --accent-color: hsla(0, 100%, 20%, 0.8);
       --title-color: var(--outline-color);
 
-      /*
       --bg-color: none;
       --bg-filter: url(#shake);
+      --bg-opacity: 0.65;
+      /*
       --bg-mask: url(#fade_mask);
-      --bg-opacity: 0.85;
       */
 
       /*
@@ -465,32 +465,29 @@
 
     <g id="panel_2">
 
-      <g xxx-clip-path="url(#one_of_four_clip)">
+      <g>
 
         <g transform="translate(150 25)">
           <text text-anchor="middle">
-            <tspan>Nice proposal one thing,</tspan>
+            <tspan>Nice proposal - one thing,</tspan>
             <tspan x="0" dy="1em">
               does that not look, just...
             </tspan>
             <tspan x="0" dy="1em">
               <tspan font-style="italic">
-              exactly like
+              exactly like ...
               </tspan>
               it says <tspan font-weight="bold">SEX</tspan>?
             </tspan>
           </text>
         </g>
-        <rect class="text-bubble" width="300" height="80" />
-        <path d="m 245 87 h5 l -5 50 z " />
+        <rect class="text-bubble" width="300" height="83" 
+          style="stroke-width:2px;"
+        />
+        <path d="m 250 83 h5 l -15 50 z " />
 
         <use href="#ball_logo"
-          transform="
-            skewX(12)
-            skewY(5)
-            scale(0.24 0.48)
-            translate(-110 270)
-          "
+          transform=" skewX(12) skewY(5) scale(0.24 0.48) translate(-110 270) "
           opacity="0.5"
         />
         <use href="#chars_panel_2" 
@@ -511,13 +508,13 @@
           <text text-anchor="middle">
             <tspan>Also, it sort of features</tspan>
             <tspan x="0" dy="1em">
-              <tspan font-style="italic">YOU</tspan>
-              a little too promi&#183;
+              YOU maybe a little
+              <tspan font-style="italic">
+                too
+              </tspan>
             </tspan>
             <tspan x="0" dy="1em">
-              <tspan font-style="italic">
-              nently.
-              </tspan>
+              prominently
             </tspan>
           </text>
         </g>
@@ -535,6 +532,7 @@
             </tspan>
           </text>
         </g>
+        <path class="obj" d="m 50 200 h5 l 5 20 z" />
 
         <use href="#chars_panel_3" 
           transform="scale(1.4) translate(-33 130)"
