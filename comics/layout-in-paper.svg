@@ -353,9 +353,25 @@
 
     </svg>
 
-    <svg class="port" viewBox="0 0 650 905">
-      <use href="#title" />
-      <g transform="translate(0 80)">
+    <svg class="port" viewBox="-70 -50 790 955">
+
+      <use href="#title_line" 
+        transform="translate(0 -10)"
+      />
+      <text style="
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-weight: bold;
+        font-size: 28px;
+      " x="40" y="30">
+        LiVING THiNGS
+      </text>
+      <g transform="scale(1.39) translate(-80 0)">
+        <use href="vert-comics-border.svg#left_side"/>
+        <use href="vert-comics-border.svg#right_side"/>
+        <use href="vert-comics-border.svg#bottom_side"/>
+      </g>
+
+      <g transform="translate(0 40)">
         <use href="#copyright" transform="translate(330 814)" />
         <use href="#panel_1" transform="translate(15 0)" />
         <use href="#panel_2" transform="translate(335 0)" />
