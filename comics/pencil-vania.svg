@@ -55,6 +55,11 @@
       src: url('Pirata.ttf') format('truetype');
     }
 
+    @font-face {
+      font-family: 'Comic Font';
+      src: url('ComicRelief-Regular.ttf') format('truetype');
+    }
+
     text {
       font-family:'Comic Neue';
       font-weight: 400;
@@ -623,6 +628,14 @@
   ">
 
     <svg class="land" viewBox="0 0 1300 520">
+
+      <use href="horz-comics-border.svg#upper_comics" 
+        transform="translate(0 -80)"
+      />
+
+      <use href="horz-comics-border.svg#lower_comics" 
+        transform="translate(0 500)"
+      />
 
       <use href="#title" />
       <g transform="translate(0 80)">
