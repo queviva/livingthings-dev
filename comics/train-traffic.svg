@@ -42,12 +42,17 @@
 
   <style id="svg_styles" type="text/css">
 
+    g:has(> svg) {
+      filter: var(--bg-filter, none);
+      opacity: var(--bg-opacity, 1);
+    }
+
     svg {
       background-image: var(--bg-fill, none);
       background-color: var(--bg-color, none);
       mask: var(--bg-mask, none);
     }
-  
+
   </style>
 
   <style id="comic_styles" type="text/css">
@@ -644,10 +649,7 @@
 
   </defs>
 
-  <g id="haxxor" style="
-    filter: var(--bg-filter, none);
-    opacity: var(--bg-opacity, 1);
-  ">
+  <g>
 
   <svg class="land" viewBox="0 0 1300 520">
     <use href="#title"/>

@@ -5,40 +5,47 @@
 
       --bg-color: none;
       /*
-        --bg-fill: url(newsprint.jpg);
-        --bg-filter: url(#shake);
-        --bg-mask: url(#fade_mask);
-        --bg-opacity: 0.85;
-        */
+      --bg-fill: url(newsprint.jpg);
+      --bg-filter: url(#shake);
+      --bg-mask: url(#fade_mask);
+      --bg-opacity: 0.25;
+      */
 
       /*
-        --show-hearts: 1;
-        --font-size: 22px;
-        --title-color: orange;
-        --living-color: yellow;
-        --things-color: blue;
-        --circ1-color: green;
-        --circ2-color: white;
-        --heart-color: green;
-        --square-color: purple;
+      --show-hearts: 1;
+      --font-size: 22px;
+      --title-color: orange;
+      --living-color: yellow;
+      --things-color: blue;
+      --circ1-color: green;
+      --circ2-color: white;
+      --heart-color: green;
+      --square-color: purple;
 
-        --border-color: hotpink;
-        --border-width: 9;
+      --border-color: hotpink;
+      --border-width: 9;
 
-        --copy-color: brown;
+      --copy-color: brown;
 
-        --outline-color: purple;
-        */
+      --outline-color: purple;
+      */
 
     }
   </style>
 
   <style id="svg_styles" type="text/css">
+
+    #layouts {
+      filter: var(--bg-filter, none);
+      opacity: var(--bg-opacity, 1);
+    }
+
     svg {
       background-color: var(--bg-color, none);
       background-image: var(--bg-fill, none);
       mask: var(--bg-mask, none);
     }
+
   </style>
 
   <style id="comic_styles" type="text/css">
@@ -317,13 +324,9 @@
 
   </defs>
 
-  <g id="haxxor" style="
-    filter: var(--bg-filter, none);
-    opacity: var(--bg-opacity, 1);
-  ">
+  <g id="layouts">
 
     <svg class="land" viewBox="0 0 1300 520">
-
       <use href="#title" />
       <g transform="translate(0 80)">
         <use href="#copyright" transform="translate(976 395)" />
@@ -332,7 +335,6 @@
         <use href="#panel_3" transform="translate(660 0)" />
         <use href="#panel_4" transform="translate(980 0)" />
       </g>
-
     </svg>
 
     <svg class="port" viewBox="0 0 650 905">

@@ -1,13 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" >
 
   <style id="config_styles" type="text/css">
+
     :root {
 
       --bg-color: none;
+      --bg-opacity: 0.85;
       --bg-fill: url(newsprint.jpg);
       --bg-filter: url(#shake);
       --bg-mask: url(#fade_mask);
-      --bg-opacity: 0.85;
       /*
       */
 
@@ -31,14 +32,22 @@
       */
 
     }
+
   </style>
 
   <style id="svg_styles" type="text/css">
+
+    #layouts {
+      filter: var(--bg-filter, none);
+      opacity: var(--bg-opacity, 1);
+    }
+
     svg {
       background-color: var(--bg-color, none);
       background-image: var(--bg-fill, none);
       mask: var(--bg-mask, none);
     }
+
   </style>
 
   <style id="comic_styles" type="text/css">
@@ -322,10 +331,7 @@
 
   </defs>
 
-  <g id="haxxor" style="
-    filter: var(--bg-filter, none);
-    opacity: var(--bg-opacity, 1);
-  ">
+  <g id="layouts">
 
     <svg class="land" viewBox="0 0 1300 520" >
 
@@ -355,9 +361,8 @@
 
     <svg class="port" viewBox="-70 -50 790 955">
 
-      <use href="#title_line" 
-        transform="translate(0 -10)"
-      />
+      <use href="#title_line" transform="translate(0 -10)" />
+
       <text style="
         font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-weight: bold;
@@ -365,6 +370,7 @@
       " x="40" y="30">
         LiVING THiNGS
       </text>
+
       <g transform="scale(1.39) translate(-80 0)">
         <use href="vert-comics-border.svg#left_side"/>
         <use href="vert-comics-border.svg#right_side"/>

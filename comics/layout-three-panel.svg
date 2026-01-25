@@ -6,40 +6,48 @@
       --border-width: 3px;
 
       /*
-        --bg-mask: url(#fade_mask);
-        --bg-color: none;
-        --bg-fill: url(newsprint.jpg);
-        --bg-filter: url(#shake);
-        --bg-opacity: 0.85;
-        */
+      --bg-mask: url(#fade_mask);
+      --bg-color: none;
+      --bg-fill: url(newsprint.jpg);
+      --bg-filter: url(#shake);
+      --bg-opacity: 0.85;
+      */
 
       /*
-        --show-hearts: 1;
-        --title-color: orange;
-        --living-color: yellow;
-        --things-color: blue;
-        --circ1-color: green;
-        --circ2-color: white;
-        --heart-color: green;
-        --square-color: purple;
+      --show-hearts: 1;
+      --title-color: orange;
+      --living-color: yellow;
+      --things-color: blue;
+      --circ1-color: green;
+      --circ2-color: white;
+      --heart-color: green;
+      --square-color: purple;
 
-        --border-color: red;
-        --border-width: 9;
+      --border-color: red;
+      --border-width: 9;
 
-        --copy-color: brown;
+      --copy-color: brown;
 
-        --outline-color: pink;
-        */
+      --outline-color: pink;
+      */
 
     }
+
   </style>
 
   <style id="svg_styles">
+
+    #layouts {
+      filter: var(--bg-filter, none);
+      opacity: var(--bg-opacity, 1);
+    }
+
     svg {
       background-color: var(--bg-color, none);
       background-image: var(--bg-fill, none);
       mask: var(--bg-mask, none);
     }
+
   </style>
 
   <style id="comic_styles">
@@ -274,13 +282,9 @@
 
   </defs>
 
-  <g id="haxxor" style="
-    filter: var(--bg-filter, none);
-    opacity: var(--bg-opacity, 1);
-  ">
+  <g id="layouts">
 
     <svg class="land" viewBox="0 0 1300 520">
-
       <use href="#title" />
       <g transform="translate(0 80)">
         <use href="#copyright" transform="translate(1267 395)" />
@@ -288,7 +292,6 @@
         <use href="#panel_2" transform="translate(450 0)" />
         <use href="#panel_3" transform="translate(875 0)" />
       </g>
-
     </svg>
 
     <svg class="port" viewBox="0 0 440 1380">

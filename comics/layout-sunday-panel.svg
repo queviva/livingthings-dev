@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate;">
+<svg xmlns="http://www.w3.org/2000/svg">
 
   <style id="config_styles" type="text/css">
+
     :root {
 
       --outline-color: #707;
@@ -10,38 +11,46 @@
       --bg-fill: url(newsprint.jpg);
       --bg-mask: url(#fade_mask);
       /*
-        --bg-color: none;
-        --bg-filter: url(#shake);
-        --bg-opacity: 0.85;
-        */
+      --bg-color: none;
+      --bg-filter: url(#shake);
+      --bg-opacity: 0.85;
+      */
 
       /*
-        --show-hearts: 1;
-        --title-color: orange;
-        --living-color: yellow;
-        --things-color: blue;
-        --circ1-color: green;
-        --circ2-color: white;
-        --heart-color: green;
-        --square-color: purple;
+      --show-hearts: 1;
+      --title-color: orange;
+      --living-color: yellow;
+      --things-color: blue;
+      --circ1-color: green;
+      --circ2-color: white;
+      --heart-color: green;
+      --square-color: purple;
 
-        --border-color: red;
-        --border-width: 9;
+      --border-color: red;
+      --border-width: 9;
 
-        --copy-color: brown;
+      --copy-color: brown;
 
-        --outline-color: pink;
-        */
+      --outline-color: pink;
+      */
 
     }
+
   </style>
 
   <style id="svg_styles" type="text/css">
+
+    #layouts {
+      filter: var(--bg-filter, none);
+      opacity: var(--bg-opacity, 1);
+    }
+
     svg {
       background-color: var(--bg-color, none);
       background-image: var(--bg-fill, none);
       mask: var(--bg-mask, none);
     }
+
   </style>
 
   <style id="comic_styles" type="text/css">
@@ -285,10 +294,7 @@
 
   </defs>
 
-  <g id="haxxor" style="
-    filter: var(--bg-filter, none);
-    opacity: var(--bg-opacity, 1);
-  ">
+  <g id="layouts">
 
     <svg class="land" viewBox="0 0 1300 875">
       <g transform="translate(0 25)">

@@ -1,43 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg">
 
   <style id="config_styles" type="text/css">
+
     :root {
 
       --bg-color: none;
       /*
-        --bg-filter: url(#shake);
-        --bg-fill: url(newsprint.jpg);
-        --bg-mask: url(#fade_mask);
-        --bg-opacity: 0.85;
-        */
+      --bg-filter: url(#shake);
+      --bg-fill: url(newsprint.jpg);
+      --bg-mask: url(#fade_mask);
+      --bg-opacity: 0.85;
+      */
 
       /*
-        --show-hearts: 1;
-        --title-color: orange;
-        --living-color: yellow;
-        --things-color: blue;
-        --circ1-color: green;
-        --circ2-color: white;
-        --heart-color: green;
-        --square-color: purple;
+      --show-hearts: 1;
+      --title-color: orange;
+      --living-color: yellow;
+      --things-color: blue;
+      --circ1-color: green;
+      --circ2-color: white;
+      --heart-color: green;
+      --square-color: purple;
 
-        --border-color: red;
-        --border-width: 9;
+      --border-color: red;
+      --border-width: 9;
 
-        --copy-color: brown;
+      --copy-color: brown;
 
-        --outline-color: pink;
-        */
+      --outline-color: pink;
+      */
 
     }
+
   </style>
 
   <style id="svg_styles" type="text/css">
+
+    #layouts {
+      filter: var(--bg-filter, none);
+      opacity: var(--bg-opacity, 1);
+    }
+
     svg {
       background-color: var(--bg-color, none);
       background-image: var(--bg-fill, none);
       mask: var(--bg-mask, none);
     }
+
   </style>
 
   <style id="comic_styles" type="text/css">
@@ -220,18 +229,13 @@
 
   </defs>
 
-  <g id="haxxor" style="
-    filter: var(--bg-filter, none);
-    opacity: var(--bg-opacity, 1);
-  ">
+  <g id="layouts">
 
     <svg class="land" viewBox="0 0 1300 520">
       <!-- 1275 x 400 visible area -->
-
       <use href="#title" />
       <use href="#copyright" transform="translate(1281 475)" />
       <use href="#scoundrel" transform="translate(1281 70)" />
-
       <g transform="translate(0 80)" clip-path="url(#clip_land)">
 
         <use href="#dialog" transform="translate(470 40)" />
@@ -241,19 +245,15 @@
       " />
 
       </g>
-
       <use href="#left_corner" transform="translate(12.5 80)" />
       <use href="#right_corner" transform="translate(1287.5 480)" />
-
     </svg>
 
     <svg class="port" viewBox="0 0 650 925">
       <!-- 625 x 825 visible area -->
-
       <use href="#title" style="--show-hearts: 1;" />
       <use href="#copyright" transform="translate(630 900)" />
       <use href="#scoundrel" transform="translate(637.5 7)" />
-
       <g transform="translate(0 80)" clip-path="url(#clip_port)">
 
 
@@ -264,8 +264,6 @@
       " />
 
       </g>
-
-
       <use href="#left_corner" transform="translate(12.5 80)" />
       <use href="#right_corner" transform="translate(637.5 905)" />
     </svg>
