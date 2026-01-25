@@ -589,13 +589,13 @@
         <g transform="translate(7 7)">
           <text text-anchor="middle" transform="translate(310 25)">
             <tspan>
-              You're telling me that TRAINS can get
+              So, you're saying that TRAINS can get
               <tspan font-style="italic">
                 stuck in traffic
               </tspan>
             </tspan>
             <tspan x="0" dy="1.1em">
-              and you find nothing at all unusual about it?
+              and you don't find it to be, in any way... unusual?
               <tspan class="emph">
               </tspan>
             </tspan>
@@ -610,8 +610,8 @@
               Is that something you have a pro&#183;
             </tspan>
             <tspan x="0" dy="1.1em">
-              blem with 
-              <tspan dx="1.1ch" class="emph">
+              blem with, 
+              <tspan dx="0.3ch" class="emph">
                 Doctor Manhattan
               </tspan>
               ?!

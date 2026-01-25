@@ -99,7 +99,7 @@
 
     <path class="port" fill="none" stroke="var(--outline-color,#000)" stroke-width="1" d="
 
-			M 220 220 V 250 H 560 V 150 H 130 V 220 Z
+			M 280 220 V 250 H 560 V 150 H 130 V 220 Z
 			M 130 160 H -10 V 75 H 440 V 150
 			M 380 75 V 30 H 530 V 80 H 440
 			M 480 80 V 150
@@ -122,11 +122,10 @@
 
     <text transform="translate(0 100)">
       <tspan>
-        It's supposed to be SALT.
-				<tspan dx="1ch">We decided</tspan>
+        It's supposed to be SALT. We decided that
       </tspan>
 			<tspan x="0" dy="1em">
-				that salt was the perfect
+				salt was the perfect
 				<tspan font-weight="bold">seasonal seasoning</tspan>
 			</tspan>
 			<tspan x="0" dy="1em">for snow.</tspan>
