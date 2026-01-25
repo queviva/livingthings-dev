@@ -36,6 +36,11 @@
 
   <style id="svg_styles">
 
+    #layouts {
+      filter: var(--bg-filter, none);
+      opacity: var(--bg-opacity, 1);
+    }
+
     svg {
       background-image: var(--bg-fill, none);
       mask: var(--bg-mask, none);
@@ -330,13 +335,9 @@
 
   </defs>
 
-  <g id="haxxor" style="
-    filter: var(--bg-filter, none);
-    opacity: var(--bg-opacity, 1);
-  ">
+  <g id="layouts">
 
   <svg class="land" viewBox="0 0 1300 520">
-
     <use href="#title"/>
     <g transform="translate(0 80)">
       <use href="#copyright" transform="translate(1267 395)" />
@@ -344,17 +345,19 @@
       <use href="#panel_2" transform="translate(450 0)" />
       <use href="#panel_3" transform="translate(875 0)" />
     </g>
-
   </svg>
 
   <svg class="port" viewBox="0 0 440 1380"> 
 
-    <use href="vert-comics-border.svg#left_side"
-      transform="scale(2) translate(-80 20)"
-    />
-    <use href="vert-comics-border.svg#right_side"
-      transform="scale(2) translate(-330 20)"
-    />
+    <g id="comic_borders" display="none">
+      <use href="vert-comics-border.svg#left_side"
+        transform="scale(2) translate(-80 20)"
+      />
+      <use href="vert-comics-border.svg#right_side"
+        transform="scale(2) translate(-330 20)"
+      />
+    </g>
+    
     <use href="#title" />
     <g transform="translate(0 80)">
       <use href="#copyright" transform="translate(416 1235)" />
