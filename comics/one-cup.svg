@@ -348,6 +348,13 @@
   </svg>
 
   <svg class="port" viewBox="0 0 440 1380"> 
+
+    <use href="vert-comics-border.svg#left_side"
+      transform="scale(2) translate(-80 20)"
+    />
+    <use href="vert-comics-border.svg#right_side"
+      transform="scale(2) translate(-330 20)"
+    />
     <use href="#title" />
     <g transform="translate(0 80)">
       <use href="#copyright" transform="translate(416 1235)" />

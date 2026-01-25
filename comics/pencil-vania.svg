@@ -628,15 +628,6 @@
   ">
 
     <svg class="land" viewBox="0 0 1300 520">
-
-      <use href="horz-comics-border.svg#upper_comics" 
-        transform="translate(0 -80)"
-      />
-
-      <use href="horz-comics-border.svg#lower_comics" 
-        transform="translate(0 500)"
-      />
-
       <use href="#title" />
       <g transform="translate(0 80)">
         <use href="#copyright" transform="translate(1276 395)" />
@@ -645,7 +636,6 @@
         <use href="#panel_3" transform="translate(660 0)" />
         <use href="#panel_4" transform="translate(980 0)" />
       </g>
-
     </svg>
 
     <svg class="port" viewBox="0 0 650 905">
