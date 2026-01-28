@@ -3,17 +3,18 @@
   <style id="config_styles" type="text/css">
     :root {
 
+      --bg-opacity: 0.85;
       --shade-opacity: 0.15;
-      --outline-color: #000;
+      --outline-color: #333;
       --title-color: var(--outline-color);
       --accent-color: hsla(0,80%,20%,0.85);
       --font-size: 30px;
 
       /*
+      --bg-color: #fff;
       --bg-filter: url(#shake);
       --bg-fill: url(newsprint.jpg);
       --bg-mask: url(#fade_mask);
-      --bg-opacity: 0.85;
       */
 
       /*
