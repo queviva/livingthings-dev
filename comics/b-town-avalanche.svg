@@ -1,0 +1,545 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+
+  <style id="config_styles" type="text/css">
+    :root {
+
+      --shade-opacity: 0.15;
+      --outline-color: #000;
+      --title-color: var(--outline-color);
+      --accent-color: hsla(0,80%,20%,0.85);
+      --font-size: 30px;
+
+      /*
+      --bg-filter: url(#shake);
+      --bg-fill: url(newsprint.jpg);
+      --bg-mask: url(#fade_mask);
+      --bg-opacity: 0.85;
+      */
+
+      /*
+      --show-hearts: 1;
+      --title-color: orange;
+      --living-color: yellow;
+      --things-color: blue;
+      --circ1-color: green;
+      --circ2-color: white;
+      --heart-color: green;
+      --square-color: purple;
+
+      --border-color: red;
+      --border-width: 9;
+
+      --copy-color: brown;
+
+      --outline-color: pink;
+      */
+
+    }
+
+  </style>
+
+  <style  type="text/css">
+    #layouts {
+      filter: var(--bg-filter, none);
+      opacity: var(--bg-opacity, 1);
+    }
+
+    svg {
+      background-color: var(--bg-color, none);
+      background-image: var(--bg-fill, none);
+      mask: var(--bg-mask, none);
+    }
+  </style>
+
+  <style id="comic_styles" type="text/css">
+    @font-face {
+      font-family: 'Comic Neue';
+      src: url('neue.ttf') format('truetype');
+      /* src: url('ComingSoon.ttf') format('truetype'); */
+    }
+
+    text {
+      font-family: 'Comic Neue';
+      font-weight: 400;
+      font-size: var(--font-size, 24px);
+      fill: var(--text-color, var(--outline-color, #000));
+    }
+
+    .text-bubble {
+      fill: none;
+      stroke: var(--outline-color, #000);
+      stroke-width: 1px;
+    }
+
+    .text-bubble+path {
+      fill: var(--outline-color, #000);
+    }
+
+    #title_line {
+      fill: var(--border-color, var(--outline-color, #000));
+      height: 2px;
+    }
+
+    #copyright,
+    #scoundrel {
+      font-family: 'Times New Roman';
+      font-weight: 300;
+      font-size: 17px;
+      fill: var(--border-color, var(--outline-color, #000));
+    }
+
+    .obj {
+      fill: var(--outline-color, #000);
+    }
+
+    @media (orientation: portrait) {
+      .land {
+        display: none;
+      }
+
+      #title_line {
+        width: 625px;
+      }
+    }
+
+    @media (orientation: landscape) {
+      .port {
+        display: none;
+      }
+
+      #title_line {
+        width: 1275px;
+      }
+    }
+  </style>
+
+  <style id="border_styles">
+    .border {
+      fill: none;
+      stroke: var(--border-color, var(--outline-color, #000));
+      stroke-width: var(--border-width, 2);
+    }
+
+    .slant {
+      marker-start: url(#slant_cap);
+      marker-end: url(#slant_cap);
+    }
+  </style>
+
+  <defs id="pats_and_filters">
+
+    <linearGradient id="fade" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#000" />
+    </linearGradient>
+
+    <filter id="blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.3" />
+    </filter>
+
+    <filter id="shake" width="120%" height="220%" color-interpolation-filters="sRGB">
+      <feImage href="newsprint.jpg" x="0" y="0" width="220%" height="120%" preserveAspectRatio="xMidYMid slice"
+        result="mig" />
+      <feDisplacementMap in="SourceGraphic" in2="mig" result="rat" scale="5" xChannelSelector="R"
+        yChannelSelector="B" />
+      <feGaussianBlur in="rat" stdDeviation="0.3" result="blur" />
+      <!-- shift image back based on displacement's scale -->
+      <feOffset in="blurred" dx="0.5" dy="5" result="final" />
+    </filter>
+
+    <pattern id="newsprint" patternUnits="userSpaceOnUse" width="100%" height="100%">
+      <image href="newsprint.jpg" width="100%" height="100%" preserveAspectRatio="none" />
+    </pattern>
+
+    <pattern id="dots" fill="pat(dots,var(--outline-color,#000))" />
+
+  </defs>
+
+  <defs id="clip_and_masks">
+
+    <clipPath id="clip_land">
+      <rect x="12.5" y="0" width="1275" height="400" />
+    </clipPath>
+
+    <clipPath id="clip_port">
+      <rect x="12.5" y="0" width="625" height="825" />
+    </clipPath>
+
+    <mask id="fade_mask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <linearGradient id="fade_gradient" x1="0%" y1="100%" x2="90%" y2="0%">
+        <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+        <stop offset="70%" stop-color="#fff" stop-opacity="0.5" />
+      </linearGradient>
+      <rect width="1" height="1" fill="url(#fade_gradient)" />
+    </mask>
+
+  </defs>
+
+  <defs id="title_defs">
+    <mask id="snow_mask">
+      <rect width="1300" height="1300" fill="#fff" />
+      <use href="title-test.svg#snow_matte" transform="translate(30 17) scale(2.5)" />
+    </mask>
+    <g id="title">
+      <rect id="title_line" x="12.5" y="12.5" />
+      <g mask="url(#snow_mask)">
+      <use href="title-test.svg#outline_circ" 
+        transform="translate(30 17) scale(2.5)" 
+        style="--outline-width: 1.5;"
+      />
+      </g>
+      <use href="title-test.svg#snow_lines" 
+        fill="var(--outline-color, #000)"
+        transform="translate(30 17) scale(2.5)" 
+      /> 
+    </g>
+  </defs>
+
+  <defs id="copyright_defs">
+    <text id="copyright" transform="rotate(270)">
+      <tspan letter-spacing="-0.04em">&#xA9;MCMLXXXVIII</tspan>
+      <tspan letter-spacing="0.03em">&#xB7; Trilobyte</tspan>
+    </text>
+    <text id="scoundrel" text-anchor="end">
+      <tspan letter-spacing="-0.04em" font-style="italic">
+        [The Wheeling Daily Scoundrel]
+      </tspan>
+    </text>
+    <mask id="copyright_mask">
+      <rect width="1300" height="1300" fill="#fff" />
+      <use href="#copyright" transform="translate(1281 295)" fill="#000"/>
+    </mask>
+  </defs>
+
+  <defs id="border_defs">
+
+    <marker id="slant_cap" markerWidth="3" markerHeight="1" refX="1" refY="0.5" orient="auto-start-reverse"
+      markerUnits="strokeWidth">
+      <path d=" M 0 0 L 3 0 L 1 1 H 0 Z" fill="context-stroke" />
+    </marker>
+
+    <path id="left_corner" class="border slant" d=" M 0 220 V 0 H 440 " />
+    <path id="right_corner" class="border slant" d=" M 0 -370 V 0 H -520 " />
+
+  </defs>
+
+  <defs id="character_defs">
+
+    <g id="char_1" fill="var(--outline-color, #000)">
+
+      <defs>
+        <g id="window_matte" >
+          <path d="m483.81,167.89l25.93,0l-2.11,50.99l-23.82,2.43l0,-53.42z" />
+          <path d="m483.81,159.63l-2.43,-7.2l33.94,0l-1.96,7.2l-29.55,0z" />
+          <path d="m550.37,176.86l-0.53,-6.99l9.42,9.52l-1.3,3.35l-7.59,-5.88z" />
+          <path d="m487.6,78.7l23.14,0l1.45,53.19l-24.59,-0.77l0,-52.42z" />
+          <path d="m480.63,288.86l25.73,0l-0.19,49.52l-25.54,1.98l0,-51.5z" />
+          <path d="m537.81,296.34l-2.38,50.53l8.63,4.29l1.69,-48.74l-7.94,-6.08z" />
+          <path d="m545.25,180.91l-2.37,57.94l8.62,5.95l1.69,-57.81l-7.94,-6.08z" />
+          <path d="m548.13,90.4l-2.38,58.66l8.63,6.94l1.69,-57.81l-7.94,-7.79z" />
+          <path d="m588.39,133.12l-1.79,46.69l6.49,5.9l1.27,-47.59l-5.97,-5z" />
+          <path d="m584.91,215.02l-1.78,49.93l6.49,5.12l1.27,-49.81l-5.98,-5.24z" />
+          <path d="m576.46,316.87l-1.9,40.5l6.49,5.04l1.39,-41.28l-5.98,-4.26z" />
+          <path d="m366.8,190.67l15.78,-11.98l-0.17,1.67l-16.38,12.36l0.77,-2.05z" />
+          <path d="m367.02,192.82l15.53,-11.53l-0.43,2.18l-15.87,11.41l0.77,-2.06z" />
+          <path d="m366.96,186.18l15.46,-12.32l-0.32,2.15l-15.91,12.23l0.77,-2.06z" />
+          <path d="m367.05,195.02l15.56,-11.25l-0.73,2.41l-15.6,10.89l0.77,-2.05z" />
+          <path d="m366.99,188.4l15.26,-11.27l-0.21,1.6l-15.93,11.6l0.88,-1.93z" />
+        </g>
+        <mask id="window_mask">
+          <rect width="1300" height="1300" fill="#fff" />
+          <use href="#window_matte" fill="#000" />
+        </mask>
+      </defs>
+
+      <g id="building" mask="url(#traffic_mask)">
+
+        <g id="building_shadow">
+          <path
+            d="m459.37,415.98c-171.61,-21.02 -200.75,-87.92 -274.99,-56.09c13.73,-13.13 42.04,-25.83 56.39,-25.39c65,-0.87 136.12,47.13 218.6,81.48z"
+            fill-opacity="var(--shade-opacity, 0.25)" />
+          <path
+            d="m601.43,359.89l39.15,3.45c19.17,-9.61 41.31,-14.08 51.64,-12.24c-37.29,3.59 -71.69,53.71 -175.7,61.93c19.47,-8.78 47.79,-26.49 84.91,-53.14z"
+            fill-opacity="var(--shade-opacity, 0.25)" />
+        </g>
+      
+        <path id="building_matte"
+          d="m308,199.03l-26.08,2.51l0.96,138.2c85.55,23.36 112.42,60.44 178.31,74.87l24.62,1.37c33.86,-2.82 58.15,-12.32 115.62,-56.74l39.15,2.9l18.3,-6.27l6.81,-204.31l-15.56,-21.36l-30.51,0l-33.02,-43.16l-36.76,-55.39l-92.95,-1.01l-148.89,168.39z"
+          fill="url(#dots)" />
+      
+        <g id="building_shade" fill-opacity="0.5">
+          <path
+            d="m308,199.03l-26.08,2.51l0,137.01l-16.36,-0.88c61.22,8.26 131.5,58.36 194.65,76.94l-3.32,-384.72l-148.89,169.14z" />
+          <path d="m614.37,130.2l35.76,0l-10.38,231.94l-39.61,-2.9l14.23,-229.04z" />
+        </g>
+      
+        <use href="#window_matte" fill-opacity="0.5" />
+      
+        <g id="building_outline" mask="url(#window_mask)">
+          <path d="m292 334 h 12 v 10 h -12 z" />
+          <path d="m292.19,213.34l0,28.78l12.07,0l0,-28.78l-12.07,0z" />
+          <path d="m292.19,255.04l0,28.78l12.07,0l0,-28.78l-12.07,0z" />
+          <path d="m292.19,295.05l0,28.77l12.07,0l0,-28.77l-12.07,0z" />
+          <path d="m610.42,333.29l-0.85,24.9l23.35,2.5l-0.16,-27.4c-7.61,-3.69 -15.04,-3.68 -22.34,0z" />
+          <path
+            d="m654.92,357.23l7.31,-1.36l9.65,-206.36l-17.8,-25.75l-34.46,2.2l-31.29,-43.35l-38.49,-56.82l-97.47,-2.79l-88.4,113.07l-55.97,59.94l-28.15,-2.26l-22.15,25.53l5.36,118.39l4.84,0l17.01,1.97l-1,-136.61l27.22,0l56.65,-59.91l89.11,-109.47l90.16,0.16l36.51,54.37l31.53,44.79l34.46,0l14.59,18.59l-10.34,205.67l1.12,0z" />
+          <path d="m595.15,103.28l-4.33,-12.09l39.41,-15.72l17.5,22.72l-3.05,29.77l-26.98,-0.25l-22.55,-24.43z" />
+          <path
+            d="m321.38,151.75q-4.33,-0.66 -9.69,-2.01l11.75,-6.15l8.66,8.6q-2.68,0.35 -6.3,0.07l-2.35,11.12c-0.32,1.53 0.66,2.54 2.21,2.25q3.34,-0.64 7.12,-1.31q3.03,-0.53 0,12.67l-4.41,1.7l1.86,-9.11q-11.49,3.75 -11.79,1.3q-0.29,-2.44 0,-18.04c1.02,-0.5 2,-0.87 2.94,-1.09z"
+            fill-rule="evenodd" />
+          <path d="m516.52,403.86c-13.96,-3.32 -27.36,-3.31 -40.24,0l0,12.12c12.79,1.52 26.22,-1.32 40.24,-4.81l0,-7.31z" />
+          <path
+            d="m461.45,380.17l67.39,-1.23l38.04,10.48l0.55,-4.52l-39.13,-11.41l-66.85,0l-45.12,11.64l0,5.18l45.12,-10.14z" />
+          <path d="m416.33,268.02l42.47,-23.21l69.5,-0.95l36.6,26.25l0,8l-36.6,-27.92l-69.5,2.42l-42.47,22.79l0,-7.38z" />
+          <path d="m382.7,289.91l34.63,-19.9l0,7.1l-34.06,18.84l-0.57,-6.04z" />
+          <path d="m602.92,312.8l39.12,1l13.55,8.94l0,1.76l-13.55,-8.18l-39.12,0l-39.02,-35.74l0,-6.18l39.02,38.4z" />
+          <path d="m475.29,280.5l0,65.31l41.92,-1.32l0,-63.99c-13.76,-6.78 -27.73,-6.77 -41.92,0z" />
+          <path d="m617.7,169.87l-3.94,50.44l26.27,-1.03l0,-49.41l-22.33,0z" />
+          <path d="m654.08,174.31l4.8,7.53l-1.86,44.79l-5.33,-4.74l2.39,-47.58z" />
+          <path d="m650.13,244.48l4.79,7.54l-1.85,44.78l-5.34,-4.74l2.4,-47.58z" />
+          <path d="m644.68,362.01l1.85,-27.51l5.57,2.05l-1.63,23.34l-5.79,2.12l0,0z" />
+          <path d="m613.76,239.28l-3.33,50.43l26.28,-1.02l0,-49.41l-22.95,0z" />
+          <path d="m478.22,161.1l-0.94,65.27l43.6,-1.32l0,-63.99l-42.66,0.04z" />
+          <path d="m481.38,163.21l-4.1,-13.67l43.6,0l-4.06,13.67l-35.44,0z" />
+          <path d="m547.45,177.13l-1.01,-10.35l2.53,-0.82l12.17,12.05l-1.88,8.98l-11.81,-9.86z" />
+          <path d="m480.68,70.31l0,68.27l41.2,-1.32l1.46,-65.63l-42.66,-1.32z" />
+          <path
+            d="m242.18,334.5c100.16,-1.17 146.15,65.11 223.25,78.53c50.71,8.83 97.72,-27.47 135.06,-56.14q19.63,-3.6 39.66,4.24q23.34,-12.91 46.02,-12.6l12.82,3.17q-28.84,-2.81 -58.41,14.32c-13.65,-3.68 -26.66,-6.22 -39.15,-4.29c-34.52,24.22 -71.93,61.45 -134.28,55.57c-57.19,-5.39 -170.62,-93.85 -238.48,-79.73c4.02,-1.77 8.63,-2.41 13.51,-3.07z" />
+          <path d="m424.16,191.27l23.35,-16.8l0,15.97l-16.57,10.1l0,43.43l-6.78,3.56l0,-56.26z" />
+          <path d="m427.83,222.42l19.68,-11.92l0,6.22l-19.68,11.07l0,-5.37z" />
+          <path d="m423.2,112.24l23.34,-21.8l0,17.28l-16.56,12.8l0.07,40.22l-6.85,5.22l0,-53.72z" />
+          <path d="m427.83,142.12l18.71,-14.16l0,4.24l-18.71,16.02l0,-6.1z" />
+          <path d="m346.71,183.05l9.53,-8.21l0,6.72l-4.92,4.38l0,32.6l-3.82,2l-0.79,-37.49z" />
+          <path d="m320.36,207.17l9.61,-8.14l0,9.03l-5.96,4.03l0,23.17l-2.85,1.5l-0.8,-29.59z" />
+          <path d="m537.81,286.03c6.2,1.33 11.5,5.56 15.89,12.69l-3.72,55.29l-14.55,-7.14l2.38,-60.84z" />
+          <path d="m545.25,174.31l15.89,12.68l-3.72,61.87l-14.54,-10.01l2.37,-57.94l0,-6.6z" />
+          <path d="m548.13,80.2l15.88,17.99l-3.71,61.87l-14.55,-11l2.38,-62.26l0,-6.6z" />
+          <path d="m588.39,127.68l11.95,10.44l-2.8,50.92l-10.94,-9.23l1.79,-46.69l0,-5.44z" />
+          <path d="m584.91,209.33l11.95,10.93l-2.79,53.31l-10.94,-8.62l1.78,-49.93l0,-5.69z" />
+          <path d="m576.46,310.18c4.81,0.9 8.8,3.59 11.95,8.05l-2.91,47.63l-10.94,-8.49l1.9,-39.59l0,-7.6z" />
+          <path d="m376.02,156.67l16.84,-15.09l0,26.29l-1.26,-13.29l-9.2,7.56l0,33.87l-4.98,2.81l-1.4,-42.15z" />
+          <path d="m392.86,190.04l0,-15.2l-9.21,-4.03l-18.7,14.9l0,14.11l7.35,2.22l20.56,-12z" />
+          <path d="m444.8,178.73l1.74,-12.97l-2.4,-0.82l-19.98,15.98l2.97,10.35l17.67,-12.54z" />
+        </g>
+
+        <g id="cross_bars">
+          <path d="m482.26,193.55l-2.58,3.72l35.64,-0.26l0,-6.97l-33.06,3.51z"   />
+          <path d="m516.52,104.36l2.58,3.72l-35.63,-0.26l0,-6.96l33.05,3.5z"   />
+          <path d="m481,312.6l-2.57,3.72l33.2,1.44l0.98,-5.16l-31.61,0z"   />
+          <path d="m536.51,316.06l10.3,6.45l0,3.27l-10.3,-5.88l0,-3.84z"   />
+          <path d="m543.95,207.74l10.3,6.45l0,3.27l-10.3,-5.88l0,-3.84z"   />
+          <path d="m546.83,118.94l10.3,6.45l0,3.27l-10.3,-5.88l0,-3.84z"   />
+          <path d="m587.41,155.2l7.74,5.31l0,2.7l-7.74,-4.85l0,-3.16z"   />
+          <path d="m583.94,238.14l7.74,5.55l0,2.83l-7.74,-5.07l0,-3.31z"   />
+          <path d="m575.76,334.09l7.36,5.47l0,2.78l-7.36,-4.99l0,-3.26z"   />
+        </g>
+  
+      </g>
+
+      <g id="lamp_post">
+        <path d="m710.16,324.25l-3.58,-1.01l-0.38,-31.2l-2.6,-3.2c21.29,-19.22 35.8,-26.47 44.28,-25.07c10.05,1.65 3.72,9.99 -3.57,6.31c-9.96,-4.02 -22.28,1.82 -34.04,18.34l-0.11,35.83z" />
+        <path d="m698.52,323.04q8.76,0.32 20.37,4.19q-8.48,-5.81 -20.37,-4.19z"   />
+      </g>
+
+      <g id="other_building">
+        <path d="m744.11,352.58c100.71,43.21 -169.96,97.47 159.01,143.97l32.3,0l0,-230.85l-74.62,75.8q-75.19,-10.6 -116.69,11.08z"
+          fill-opacity="var(--shade-opacity, 0.25)"  />
+        <path d="m 848 180 v 165 h 22 v -165 z " 
+          fill="url(#dots)"  />
+        <path d="m 848 180 v 165 h 22 v -165 z " 
+          fill-opacity="0.5" />
+        <path d="m830.82,183.01l1.78,158.25l16.78,1.21l-0.41,-160.32l-18.15,0.85l0,0.01z" />
+        <path d="m 863 180 v 165 l 60 10 v -175 z "   />
+        <path d="m794.76,338.59q80.24,-7.2 140.66,15.29l0,21.97q-38.08,-34.64 -152.68,-35.67l12.02,-1.59z" />
+      </g>
+
+      <g id="truck" transform="translate(-10 -7)">
+        <path d="m195.81,378.17l7.25,-58.93l-48.07,-9.63l0,79l40.82,-10.44z M86.14,366.36l-5.7,-1.55l-2.82,4.12l-4.62,0.62l1.08,-9.48l8.04,-3.79l1.04,-16.99l66.23,-29.68l1.99,78.31c-17.29,-0.48 -39.03,-7.65 -65.26,-21.56z " 
+          fill="url(#dots)" />
+        <path
+          d="m86.14,366.36l-5.7,-1.55l-2.82,4.12l-4.62,0.62l1.08,-9.48l8.04,-3.79l1.04,-16.99l66.23,-29.68l1.99,78.31c-17.29,-0.48 -39.03,-7.65 -65.26,-21.56z"
+          fill-opacity="0.5" />
+        <path
+          d="m151.43,393.64q-38.05,4.32 -75.55,-1.3c-7.23,-4.09 -23.34,-9.48 -48.38,-16.21c22.88,1.58 35.17,-1.31 42.65,-5.89c3.37,-1.54 7.91,-2.01 11.82,-1.01l0,-4.33c25.35,14.42 48.51,24.01 69.46,28.74z"
+          fill-opacity="var(--shade-opacity, 0.25)"  />
+
+        <path d="m74.71,369.19l0.23,-8.26l6.56,-2.67l0.96,-5.77l-8.96,6.72l-1.21,11.61l2.42,-1.64z" />
+        <path d="m76.3,362.37l-0.35,6.47l6.05,-0.85l-0.63,-7.33l-5.07,1.71z"  />
+        <path d="m91.17,350.61l4.97,-1.01l0,-8.9l-10.12,4.08l0,0l0,0l0,0l0,0l0,0l0,0l0,0l0.71,6.73l2.9,-0.59l1.66,17.84l2.03,0.99l0,0l-2.15,-19.14zm8.94,9.59l-0.06,-11.89c1.89,-0.97 3.09,1.06 3.28,3.09q0.3,7.75 -3.02,8.8l0,0l0,0l0,0l0,0l-0.2,0zm37.12,17.46l0.69,11.05l-2.83,0l-3.86,-59.8l2.9,-0.73l1.81,28.81l3.45,-29.77l3.4,-0.86l-5.94,40.15l7.26,22.2l-3.02,-0.96l-3.86,-10.09l0,0l0,0l0,0l0,0l0,0l0,0l0,0zm-14.72,6.4c-2.36,-21.11 -2.93,-33.29 -1.73,-36.63c1.73,-4.78 3.87,-5.1 6.39,-0.97l0.66,-13.19c-4.2,-5.42 -11.41,-0.57 -9.91,17.74l1.56,31.53l3.03,1.52l0,0l0,0l0,0l0,0l0,0zm-11.38,-5.58l-2,-41.62l-1.99,0.93l1.65,39.54l2.34,1.15l0,0l0,0l0,0zm6.4,3.14l-2.11,-46.29l-2.36,0.75l2.16,44.41l2.31,1.13l0,0l0,0zm-14.24,-14.38q2.6,-3.93 2.58,-14.07c-0.01,-4.77 0.38,-17.87 -6.67,-13.74l0,0.01l-1.14,0.48l1.15,32.72l1.8,0.88l0,0l0,0l-0.21,-4.14l0,0l0,0q0.79,-0.31 1.47,-0.93l0.79,6.08l1.55,0.75l0,0l-1.32,-8.04l0,0l0,0l0,0z"
+           fill-rule="evenodd"  />
+        <path d="m81.16,368.75l-2.43,-33.73l72.5,-32.71l55.43,12.3l-7.67,61.65l-4.05,1.88l6.8,-58.47l-45.73,-8.97l-0.14,76.56l-4.92,0.58l-2.17,-76.56l-64.83,28.51l2.69,27.56l-5.47,1.39z" />
+        <path d="m65.9,372.28c26.11,-8.67 39.78,17.52 83.65,21.81q14.97,-0.39 71.07,-24.25l-23.62,6.81q-26.7,10.51 -52.49,8.89c-14.68,-0.93 -34.77,-4.83 -63.54,-24.56l0.2,2.67l-15.27,8.63z" />
+      </g>
+
+
+    <defs>
+      <path id="street_sign_body" d="m574.42,451.29l1.01,-54.24l13.06,-1.51c1.1,-0.12 2.03,-1.12 2.07,-2.23l2.24,-51.21c0.24,-3.12 -2.07,-5.3 -5.16,-4.88l-24.95,4.05c-1.72,0.24 -3.16,1.84 -3.21,3.57l-1.44,50.89c-0.05,1.66 1.25,2.87 2.9,2.71l7.31,-0.7l-2.11,55.69l8.28,-2.14l0,0z" />
+      <g id="traffic_light_body">
+        <path d="m408.92,333.45l0,-3.48l12.95,-6.75l20.31,3.75l1.72,2.34l6.61,1.82l-2.96,72.59l-19.81,2.76l-21.82,-2.76l-1.38,-67.44l4.38,-2.83z" />
+        <path d="m431.96,449.4l0.1,-37.65l1.9,-1.35l0,-10.92l-15.64,3.78l0,6.47l1.53,0.79l0.58,36.31l11.53,2.57l0,0z" />
+      </g>
+      <mask id="traffic_light_mask">
+        <rect width="1300" height="1300" fill="#fff" />
+        <ellipse cx="437.3" cy="344.1" rx="6.37" ry="9.09" fill="#000"/>
+      </mask>
+      <mask id="traffic_mask">
+        <rect width="1300" height="1300" fill="#fff" />
+        <use href="#traffic_light_body" fill="#000" />
+        <use href="#street_sign_body" fill="#000" />
+      </mask>
+    </defs>
+
+    <g id="street_sign">
+      <path d="m566.14,453.14c-12.89,3.56 -27.48,4.99 -44.14,5.28q-3.72,-0.9 -5.18,-0.96c-17.13,-0.71 -31.57,-1.48 -45.53,-4.03l52.47,11.88c9.51,-0.09 23.4,0.75 32.16,0l-23.97,-4.73c12.29,-1.42 28.88,-3.4 42.47,-7.98l-8.28,0.54z"
+        fill-opacity="var(--shade-opacity, 0.25)"  />
+      <use href="#street_sign_body" />
+      <path id="street_sign_back" 
+        d="m568.25,391.36l0,-13.69c0.86,-2.19 5.08,-2.98 7.71,-1.23l0,14.51l8.49,-0.66c1.1,-0.09 2.03,-1.05 2.08,-2.16l1.92,-45.18c0.06,-1.39 -1.01,-2.35 -2.38,-2.14l-21.16,3.14c-1.71,0.26 -3.12,1.87 -3.12,3.61l-0.24,43.66c0,0.55 0.44,0.95 0.99,0.88l5.71,-0.74z"
+        fill="#fff" fill-opacity="1" />
+      <path d="m572.54,452.21l1.47,-73.54c-0.69,-0.42 -1.63,-0.49 -2.84,-0.23l-1.01,74.97l2.76,-1.28l-0.38,0.08z"
+        fill="#fff" fill-opacity="0.25" />
+      <path d="m580.39,448.83q-9.95,3.65 -23.31,6.25q16.75,1.86 23.31,-6.25z"   />
+    </g>
+
+    <g id="traffic_light">
+
+      <g mask="url(#traffic_light_mask)">
+        <path
+          d="m419.33,444.7c-11.99,-2.12 -24.17,-5.83 -36.6,-11.21l-1.65,-3.23c-3.91,-5.35 -14.79,-12.21 -30.79,-20.14l-21.44,-6.36l-5.56,12.48c23.33,7.74 39.71,16.04 49.11,22.81l7.15,-3.26c9.66,4.48 28.84,10.28 51.93,14.5l-12.15,-5.59z"
+          fill-opacity="var(--shade-opacity, 0.25)"  />
+        <use href="#traffic_light_body" />
+        <path d="m429.92,414.85q-1.07,4.11 -3.45,5.74l-0.11,26.24l3.45,1.98l0.11,-33.96z" 
+          fill="#fff" fill-opacity="0.25" />
+        <path d="m412.69,442.06q11.43,5.27 27.24,8.23q-15.81,2.97 -27.24,-8.23z"   />
+      </g>
+
+      <ellipse cx="437.3" cy="344.1" fill="var(--accent-color, none)"  rx="6.37" ry="9.09" />
+      <ellipse cx="435.57" cy="366.11" fill="#fff" fill-opacity="0.5"  rx="6.43" ry="9.09" />
+      <ellipse cx="433.59" cy="387.52" fill="#fff" fill-opacity="0.25"  rx="7.35" ry="9.02" />
+
+      <path opacity="0.25" d="m431.74,343.21c0.57,9.14 6.03,10.67 7.65,7.89c1,-1.7 -5.82,2.53 -5.38,-8.23l-2.27,0.34z" />
+      <path opacity="0.25" d="m429.87,364.66c0.57,9.14 6.03,10.67 7.65,7.89c1,-1.7 -5.83,2.52 -5.39,-8.24l-2.26,0.35z" />
+      <path opacity="0.4" d="m427.68,386.11c0.57,9.13 6.03,10.66 7.65,7.89c1,-1.7 -5.82,2.52 -5.38,-8.24l-2.27,0.35z" />
+      <path opacity="0.5" d="m437.65,337.82q3.66,1.93 5.08,10.33q0.5,-8.82 -3.34,-11.57l-1.74,1.24z" 
+        fill="#fff" />
+      <path opacity="0.5" d="m435.62,359.77q3.66,1.93 5.07,10.33q0.51,-8.81 -3.33,-11.57l-1.74,1.24z" 
+        fill="#fff" />
+      <path opacity="0.25" d="m434.36,381.22q3.66,1.93 5.08,10.33q0.5,-8.82 -3.33,-11.57l-1.75,1.24z" 
+        fill="#fff" />
+
+      <path d="m442.73,332.88q-6.21,11.81 -13.93,13.44l-1.29,-11.35l15.22,-2.09z"   />
+      <path d="m440.03,354.9q-6.21,11.81 -13.93,13.43l-1.29,-11.35l15.22,-2.08z"   />
+      <path d="m438.76,376.52q-6.21,11.82 -13.92,13.44l-1.3,-11.35l15.22,-2.09z"   />
+
+    </g>
+
+    </g>
+
+  </defs>
+
+  <g id="layouts">
+
+    <svg class="land" viewBox="0 0 1300 520">
+      <use href="#title" />
+      <use href="#scoundrel" transform="translate(1281 70)" />
+      <g transform="translate(0 80)" clip-path="url(#clip_land)"
+        mask="url(#copyright_mask)"
+      >
+
+        <mask id="dialog_1_land_mask">
+          <rect width="1300" height="1300" fill="#fff" />
+          <path d=" M -15 -36 h 225 v 20 l 19 -3 l -19 13 v 110 h -225 z " fill="#000" 
+            transform="translate(333 95)"
+          />
+        </mask>
+
+        <g mask="url(#dialog_1_land_mask)" >
+          <use href="#char_1" transform="scale(1.4) translate(0 -184)" />
+        </g>
+
+        <g transform="translate(333 95)">
+          <g id="dialog_1">
+            <path d=" M -15 -36 h 225 v 20 l 19 -3 l -19 13 v 110 h -225 z " 
+              fill="none" stroke="var(--outline-color, #000)" stroke-width="5" stroke-miterlimit="300" 
+            />
+            <text>
+              Well, the good
+              <tspan x="0" dy="1em">
+                news is, I re-
+              </tspan>
+              <tspan x="0" dy="1em">
+                member where
+              </tspan>
+              <tspan x="0" dy="1em">
+                we parked.
+              </tspan>
+              <tspan x="0" dy="1em"></tspan>
+            </text>
+            </g>
+        </g>
+         
+        <g transform="translate(870 330)">
+        <text id="dialog_2"> 
+          The bad news is, we have to
+          <tspan x="0" dy="1em">
+            move the car every
+            <tspan font-style="italic">two hours.</tspan>
+          </tspan>
+        </text>
+        </g>
+         
+
+      </g>
+      <path class="border slant" d="M 12.5 200 V 80 H 1287.5 V 480 H 960" />
+    </svg>
+
+    <svg class="port" viewBox="0 0 650 925">
+      <use href="#title" style="--show-hearts: 1;" />
+      <use href="#copyright" transform="translate(630 700)" />
+      <use href="#scoundrel" transform="translate(637.5 7)" />
+      <g transform="translate(0 80)" clip-path="url(#clip_port)">
+
+        <mask id="dialog_1_port_mask">
+          <rect width="1300" height="1300" fill="#fff" />
+          <path d=" M -15 -36 h 170 v 20 l 19 -3 l -19 13 v 170 h -170 z " fill="#000" 
+            transform="translate(70 385)"
+          /> 
+        </mask>
+
+        <g mask="url(#dialog_1_port_mask)">
+          <use href="#char_1" transform="scale(1.4) translate(-235 20)" />
+        </g>
+
+        <g transform="translate(70 385)">
+          <path d=" M -15 -36 h 170 v 20 l 19 -3 l -19 13 v 170 h -170 z " 
+            fill="none" stroke="var(--outline-color, #000)" stroke-width="5" stroke-miterlimit="300" />
+          <text>
+              Well, the 
+            <tspan x="0" dy="1em">
+              good news
+            </tspan>
+            <tspan x="0" dy="1em">
+              is I re-
+            </tspan>
+            <tspan x="0" dy="1em">
+              member 
+            </tspan>
+            <tspan x="0" dy="1em">
+              where we
+            </tspan>
+            <tspan x="0" dy="1em">
+              parked.
+            </tspan>
+          </text>
+        </g>
+
+        <use href="#dialog_2" x="220" y="770"/>
+
+      </g>
+      <use href="#left_corner" transform="translate(12.5 80)" />
+      <use href="#right_corner" transform="translate(637.5 905)" />
+    </svg>
+
+  </g>
+
+</svg>
