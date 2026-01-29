@@ -116,13 +116,8 @@
   
     <g id="scene" transform="translate(30 -15)">
     
-      <g id="dialog_1" transform="translate(80 60)">
-        <path class="text-bubble" d="
-          M -10 -50 h 800 
-          v 45 l 32 12 l -32 -5 
-          v 27 
-          h -800 z
-        "/>
+      <g id="dialog_1" transform="translate(60 90)">
+        <path class="text-bubble" d=" M -10 -50 h 800 v 45 l 32 12 l -32 -5 v 27 h -800 z "/>
         <text>
           Ok listen everybody! It's time to go DRINK.
         </text>
