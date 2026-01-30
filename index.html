@@ -17,7 +17,7 @@
       width: 100%;
       height: 100%;
       background-image: url(comics/newsprint.jpg);
-      /* background-color: orange; */
+      touch-action: pan-y;
     }
 
     object {
@@ -41,7 +41,6 @@
   <script>
 
     const list = [
-      ['comics/pinterview-speech.svg', '', ''],
       ['comics/living-things-intro00.svg', '', ''],
       ['comics/scroll-master.svg', '', ''],
       ['comics/snow-pepper.svg','',''],
@@ -72,9 +71,12 @@
       obj.type = list[index][1] || 'image/svg+xml';
       obj.data = list[index][0];
       nxt.href = list[(index + 1) % list.length][0];
+      //location.hash = index;
     };
 
-    swap(0);
+    location.hash.slice(1) 
+      ? (obj.data = `comics/${location.hash.slice(1)}.svg`)
+      : swap(0);
 
     document.addEventListener('pointerup', e => {
 
