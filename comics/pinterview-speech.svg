@@ -37,7 +37,8 @@
   @font-face {
   font-family: 'Comic Neue';
     /* src: url('neue.ttf') format('truetype'); */
-    src: url('ComingSoon.ttf') format('truetype');
+    /*src: url('ComingSoon.ttf') format('truetype');*/
+    src: url('ComingNew.otf') format('truetype');
   }
 
   text {
