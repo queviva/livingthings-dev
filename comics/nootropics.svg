@@ -229,7 +229,7 @@
       }
     </style>
 
-    <path id="ground_arc" class="obj" d=" M 3 384 Q 150 370 297 384 Q 150 379 0 384 Z" />
+    <path id="ground_arc" class="obj" d=" M 3 384 Q 150 370 297 384 Q 150 379 3 384 Z" />
 
     <g id="char_1" transform="scale(0.45) translate(-100 420) " >
      <g id="char_1_boot" transform="translate(-86.9565 -313.043)">
@@ -642,11 +642,9 @@
 
         <use href="#char_2" />
 
-        <use href="#ground_arc" transform="translate(0 12)" />
+        <path class="obj" d=" M 45 387 L 272 380 C 400 390 -150 399 45 387 Z "/>
 
       </g>
-
-      <!-- <use href="#one_of_four_border" /> -->
 
     </g>
 
@@ -716,13 +714,13 @@
 
         <mask id="panel_4_mask">
           <rect width="300" height="400" fill="#fff" />
-          <rect x="7" y="7" width="286" height="60" fill="#000" />
-          <ellipse cx="134" cy="250" rx="70" ry="107" fill="#000" transform-origin="134 250" transform="rotate(-5)" />
+          <path d=" M 300 376 H 297 Q 150 371 3 376 H 0 V 400 H 300 Z " fill="#000" />
         </mask>
 
-        <use href="#char_4" />
+        <use href="#char_4" mask="url(#panel_4_mask)"/>
 
         <use href="#ground_arc" transform="translate(0 -8)" />
+
 
       </g>
 

@@ -205,7 +205,7 @@
 
   <defs id="character_defs">
 
-    <path id="ground_arc" class="obj" d=" M 3 384 Q 150 370 297 384 Q 150 379 0 384 Z" />
+    <path id="ground_arc" class="obj" d=" M 3 384 Q 150 370 297 384 Q 150 379 3 384 Z" />
 
   </defs>
 
