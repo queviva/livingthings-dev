@@ -20,7 +20,7 @@
 
       <path id="_N1" d="M 684.7 177.8 L 633.9 189.7 L 592.7 113.9 L 593.9 184.3 L 566.3 184.6 L 555.4 45.4 L 555.4 45.4 L 555.4 45.4 L 613.4 33.1 L 640.9 89.0 L 636.7 33.1 L 679.9 38.3 L 684.7 177.8 Z" />
 
-      <path id="_G1" d="M 778.1 132.4 L 778.7 122.19999999999999 L 760.4 128.0 L 755.2 104.9 L 810.2 104.9 L 819.8 191.5 L 775.3 187.2 L 775.6 181.0 C 748.7 201.8 702.0 195.6 682.0 144.8 C 653.3 71.5 731.2 15.2 798.8 39.9 L 769.4 96.3 C 755.8 80.9 729.9 92.8 730.0 110.0 C 730.1 147.3 765.5 149.6 778.1 132.4 Z" />
+      <path id="_G1" d="M 778.1 132.4 L 778.7 122.2 L 760.4 128.0 L 755.2 104.9 L 810.2 104.9 L 819.8 191.5 L 775.3 187.2 L 775.6 181.0 C 748.7 201.8 702.0 195.6 682.0 144.8 C 653.3 71.5 731.2 15.2 798.8 39.9 L 769.4 96.3 C 755.8 80.9 729.9 92.8 730.0 110.0 C 730.1 147.3 765.5 149.6 778.1 132.4 Z" />
 
     </g>
 
@@ -77,8 +77,74 @@
       <rect width="825" height="400"/>
     </g>
 
+    <g id="LIVING_square" style="
+      transform-box: fill-box;
+      transform-origin: center;
+      transform: translate(25px, 20px) scale(1.1);
+    ">
+      <g id="LIV" transform="translate(-139 -14)">
+        <use href="#_L1" />
+        <use href="#_I1" />
+        <use href="#_V1" />
+      </g>
+      <g id="ING" transform="translate(-470 150)">
+        <use href="#_I2" />
+        <use href="#_N1" />
+        <use href="#_G1" transform="translate(-5 0)" />
+        <g transform="translate(1 -1)">
+          <use href="#heart_outside" />
+          <use href="#heart_inside" fill="var(--heart-inside-color, none)" />
+        </g>
+      </g>
+    </g>
+
+    <g id="THINGS_square" xxx-clip-path="url(#things_clip)" style="
+      transform-box: fill-box;
+      transform-origin: center;
+      transform: scale(1.1);
+    ">
+      <clipPath id="T1_clip">
+        <path d=" M 15 200 v 220 h 200 v -220 z" />
+      </clipPath>
+      <g id="THI" transform="translate(4 -180)" >
+        <use href="#_T1" clip-path="url(#T1_clip)" transform="translate(8 -2)"/>
+        <use href="#_H1" transform="translate(-10 1)" />
+        <use href="#_I3" transform="translate(-17 0)" />
+        <g transform="translate(-10 7)">
+          <use href="#rect_outside" />
+          <use href="#rect_inside" 
+            fill="var(--rect-inside-color, none)"
+          />
+        </g>
+      </g>
+      <g id="NGS" transform="translate(-335 -18)" >
+        <use href="#_N2"/>
+        <use href="#_G2" transform="translate(-14 -2)" />
+        <use href="#_S1" 
+        style="
+          transform-box: fill-box;
+          transform-origin: center;
+          transform: scale(0.90, 0.97) translate(-31px, -2px);
+        "
+         />
+    </g>
+
+    </g>
+
   </defs>
 
-  <use href="#solid"/>
+  <g>
+
+    <g>
+      <rect width="400" height="400" fill="orange" />
+      <use href="#LIVING_square" />
+    </g>
+    
+    <g transform="translate(400 0)">
+      <rect width="400" height="400" fill="green" />
+      <use href="#THINGS_square" />
+    </g>
+
+  </g>
 
 </svg>

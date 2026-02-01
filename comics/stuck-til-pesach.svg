@@ -179,7 +179,7 @@
   <defs id="title_defs">
     <g id="title">
       <rect id="title_line" x="12.5" y="12.5" />
-      <use href="title-test.svg#ikon" transform="translate(25 20) scale(2.5)" />
+      <use href="title-test.svg#snow_title" transform="translate(30 17) scale(2.5)" />
     </g>
   </defs>
 

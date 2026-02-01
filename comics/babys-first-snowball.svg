@@ -175,22 +175,9 @@
   </defs>
 
   <defs id="title_defs">
-    <mask id="snow_mask">
-      <rect width="1300" height="1300" fill="#fff" />
-      <use href="title-test.svg#snow_matte" transform="translate(30 17) scale(2.5)" />
-    </mask>
     <g id="title">
       <rect id="title_line" x="12.5" y="12.5" />
-      <g mask="url(#snow_mask)">
-      <use href="title-test.svg#outline_circ" 
-        transform="translate(30 17) scale(2.5)" 
-        style="--outline-width: 1.5;"
-      />
-      </g>
-      <use href="title-test.svg#snow_lines" 
-        fill="var(--outline-color, #000)"
-        transform="translate(30 17) scale(2.5)" 
-      /> 
+      <use href="title-test.svg#snow_title" transform="translate(30 17) scale(2.5)" />
     </g>
   </defs>
 
