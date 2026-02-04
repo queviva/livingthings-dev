@@ -261,7 +261,7 @@
             <use href="friar-ikon.svg#blender_chord_matte" 
               fill="var(--outline-color, #000)"
             />
-            <use href="friar-ikon.svg#ole_blendifer" />
+            <use href="friar-ikon.svg#blendifer" />
           </g>
         </g>
 
@@ -318,7 +318,7 @@
             fill="var(--outline-color, #000)" 
             transform="scale(1 1.5) translate(0 -130)"
           />
-          <use href="friar-ikon.svg#ole_blendifer" />
+          <use href="friar-ikon.svg#blendifer" />
         </g>
         <!-- <rect class="text-bubble" width="286" height="60" x="7" y="7" /> -->
         <!-- <path d="m 45 67 h5 l 5 50 z " /> -->

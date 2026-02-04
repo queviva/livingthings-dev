@@ -65,8 +65,8 @@
     </g>
   </defs>
 
-  <use href="#title" style="
-    --show-hearts: 0;
+  <use href="#ikon" style="
+    --show-hearts: 1;
     --circ1-color: blue;
     --heart-color: #700;
     --square-color: #060;
