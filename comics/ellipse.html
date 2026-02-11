@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Medial Axis </title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #eee;
+      margin-top: 30px;
+    }
+
+    svg {
+      border: 1px solid #ccc;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      cursor: crosshair;
+    }
+
+    .info {
+      margin: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      width: 650px;
+      line-height: 1.5;
+    }
+
+    .highlight {
+      color: #ff5722;
+      font-weight: bold;
+    }
+
+    .medial {
+      color: #4CAF50;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Medial Axis Bifurcation Visualization</h2>
+
+  <div class="info">
+    &middot; Move your mouse near the <span class="medial">Green Medial Axis</span>.<br>
+    &middot; <span class="highlight">Two vectors</span> appear when a point has two equidistant "nearest" exits.<br>
+    &middot; Notice how the two vectors merge into <b>one</b> at the tip of the green line.
+  </div>
+
+  <svg id="viz" width="800" height="500" viewBox="0 0 800 500">
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="5" refX="0" refY="2" orient="auto">
+        <polygon points="0 0, 5 2, 0 4" fill="context-stroke" />
+      </marker>
+    </defs>
+
+    <g transform="translate(400, 250)">
+      <line x1="-350" y1="0" x2="350" y2="0" stroke="#eee" stroke-width="1" />
+      <line x1="0" y1="-200" x2="0" y2="200" stroke="#eee" stroke-width="1" />
+
+      <ellipse id="boundary" cx="0" cy="0" rx="300" ry="150" fill="none" stroke="#333" stroke-width="2" />
+
+      <!-- Medial Axis -->
+      <line id="medial-axis" x1="-225" y1="0" x2="225" y2="0" stroke="#4CAF50" stroke-width="4" stroke-linecap="round"
+        stroke-opacity="0.5" />
+
+      <g id="focii" fill="none" stroke="#ddd" stroke-width="0.5">
+        <circle cx="259.8" cy="0" r="4" />
+        <circle cx="-259.8" cy="0" r="4" />
+      </g>
+
+      <!-- Vectors -->
+      <line id="vec1" x1="0" y1="0" x2="0" y2="0" stroke="#f00" stroke-width="3" marker-end="url(#arrowhead)"
+        opacity="0" />
+      <line id="vec2" x1="0" y1="0" x2="0" y2="0" stroke="#00f" stroke-width="8" marker-end="url(#arrowhead)"
+        opacity="0" />
+      <circle id="mouse-point" cx="0" cy="0" r="4" fill="#f0f" />
+    </g>
+  </svg>
+
+  <script>
+
+    const svg = document.getElementById('viz');
+    const vec1 = document.getElementById('vec1');
+    const vec2 = document.getElementById('vec2');
+    const mousePoint = document.getElementById('mouse-point');
+
+    const a = 300;
+    const b = 150;
+    const a2 = a * a;
+    const b2 = b * b;
+    const xLimit = (a2 - b2) / a; // 225
+    const snapThreshold = 10;
+    svg.addEventListener('mousemove', (e) => {
+      const rect = svg.getBoundingClientRect();
+      let mx = e.clientX - rect.left - 400;
+      let my = e.clientY - rect.top - 250;
+
+      // Boundary Check: Is mouse inside the ellipse?
+      if ((mx * mx) / a2 + (my * my) / b2 <= 1) {
+
+        // --- THE SNAP ---
+        // We modify the input to the solver, but not the solver itself
+        if (Math.abs(my) <= snapThreshold) {
+          my = 0;
+        }
+
+        mousePoint.setAttribute('cx', mx);
+        mousePoint.setAttribute('cy', my);
+
+        // --- THE COMPUTATION ---
+        // Run solver 1 (biased toward positive Y)
+        const near1 = getNearestPoint(mx, my, a, b, 1);
+        // Run solver 2 (biased toward negative Y)
+        const near2 = getNearestPoint(mx, my, a, b, -1);
+
+        // Update Vector 1
+        updateVector(vec1, mx, my, near1.x, near1.y);
+
+        // --- THE VISUALIZATION ---
+        // Calculate the distance between the two computed targets
+        const targetDist = Math.hypot(near1.x - near2.x, near1.y - near2.y);
+
+        // If the solver found two different "nearest" points, show the second vector
+        if (targetDist > 1) {
+          updateVector(vec2, mx, my, near2.x, near2.y);
+        } else {
+          updateVector(vec2, mx, my, near2.x, near2.y);
+          //vec2.setAttribute('opacity', '0');
+        }
+      } else {
+        vec1.setAttribute('opacity', '0');
+        vec2.setAttribute('opacity', '0');
+      }
+    });
+
+    /**
+     * Iterative solver for nearest point on ellipse
+     * @param bias: 1 starts the search in the upper half, -1 in the lower half
+     */
+    function getNearestPoint(px, py, a, b, bias) {
+      // We work in absolute X for the solver, then restore sign at the end
+      let x = Math.abs(px);
+      let y = py;
+
+      // Initial Guess: 
+      // If py is 0 (snapped), the bias is the ONLY thing telling the 
+      // solver which way to go.
+      let tx = 0.707;
+      let ty = 0.707 * bias;
+
+      for (let i = 0; i < 5; i++) {
+        let x_curr = a * tx, y_curr = b * ty;
+        let ex = (a2 - b2) * Math.pow(tx, 3) / a;
+        let ey = (b2 - a2) * Math.pow(ty, 3) / b;
+        let rx = x_curr - ex, ry = y_curr - ey;
+        let qx = x - ex, qy = y - ey;
+        let r = Math.hypot(rx, ry), q = Math.hypot(qx, qy);
+
+        tx = Math.min(1, Math.max(0, (qx * r / q + ex) / a));
+        // Clamp ty between -1 and 1 since it can be negative now
+        ty = Math.min(1, Math.max(-1, (qy * r / q + ey) / b));
+
+        let t = Math.hypot(tx, ty);
+        tx /= t; ty /= t;
+      }
+
+      return {
+        x: Math.sign(px) * a * tx,
+        y: b * ty
+      };
+    }
+
+    function updateVector(el, x1, y1, x2, y2) {
+      el.setAttribute('x1', x1);
+      el.setAttribute('y1', y1);
+      el.setAttribute('x2', x2);
+      el.setAttribute('y2', y2);
+      el.setAttribute('opacity', '0.5');
+    }
+
+
+  </script>
+</body>
+
+</html>
